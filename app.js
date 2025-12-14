@@ -1,97 +1,91 @@
-// PDF.js worker
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+<script>
+  let DICTIONARY = {};
 
-const pdfInput = document.getElementById("pdfInput");
-const viewer = document.getElementById("pdfViewer");
-const popup = document.getElementById("popup");
-const toast = document.getElementById("toast");
+  /* ---------- Load Dictionary ---------- */
+  fetch("pdcs_a1_sample.json")
+    .then(res => res.json())
+    .then(data => {
+      DICTIONARY = data.dictionary || data;
+      console.log("Dictionary loaded");
+    });
 
-// dictionary
-let dictionary = {};
-let femaleVoice = null;
-
-fetch("pdcs_a1_sample.json")
-  .then(res => res.json())
-  .then(data => dictionary = data);
-
-// voices
-function loadVoices() {
-  const voices = speechSynthesis.getVoices();
-  femaleVoice = voices.find(v => v.lang === "en-US");
-}
-speechSynthesis.onvoiceschanged = loadVoices;
-
-// helpers
-function showToast(msg) {
-  toast.textContent = msg;
-  toast.style.display = "block";
-  setTimeout(() => toast.style.display = "none", 3000);
-}
-
-function normalize(w) {
-  return w.toLowerCase().replace(/[^a-z']/g, "");
-}
-
-function speak(text) {
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = "en-US";
-  u.rate = 0.7;
-  if (femaleVoice) u.voice = femaleVoice;
-  speechSynthesis.cancel();
-  speechSynthesis.speak(u);
-}
-
-function showPopup(word) {
-  const item = dictionary[word];
-  popup.innerHTML = item
-    ? `
-      <div class="w">${word}</div>
-      <div class="fa">${item.fa}</div>
-      <div class="en">${item.en || ""}</div>
-    `
-    : `
-      <div class="w">${word}</div>
-      <div class="fa">در دیکشنری نیست</div>
-    `;
-  popup.style.display = "block";
-  speak(word);
-}
-
-// render PDF
-pdfInput.addEventListener("change", async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  viewer.innerHTML = "";
-  popup.style.display = "none";
-
-  const buf = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
-
-  for (let i = 1; i <= pdf.numPages; i++) {
-    const page = await pdf.getPage(i);
-    const viewport = page.getViewport({ scale: 1.4 });
-
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
-
-    viewer.appendChild(canvas);
-    await page.render({ canvasContext: ctx, viewport }).promise;
+  /* ---------- Helpers ---------- */
+  function normalize(word) {
+    return word
+      .toLowerCase()
+      .replace(/[^a-z']/g, "")
+      .trim();
   }
 
-  showToast("متن را لمس کن و یک کلمه را انتخاب کن");
-});
+  function speak(word) {
+    const u = new SpeechSynthesisUtterance(word);
+    u.lang = "en-US";
+    u.rate = 0.7;
 
-// selection listener (THIS is the key)
-document.addEventListener("selectionchange", () => {
-  const sel = window.getSelection().toString().trim();
-  if (!sel) return;
+    const voices = speechSynthesis.getVoices();
+    const female = voices.find(v =>
+      v.lang === "en-US" && /female|woman/i.test(v.name)
+    );
+    if (female) u.voice = female;
 
-  const word = normalize(sel);
-  if (!word) return;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  }
 
-  showPopup(word);
-});
+  /* ---------- UI ---------- */
+  function showMeaning(wordKey, entry) {
+    let box = document.getElementById("meaningBox");
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "meaningBox";
+      document.querySelector(".container").appendChild(box);
+    }
+
+    if (!entry) {
+      box.innerHTML = `
+        <div style="font-size:1.3rem;font-weight:700">${wordKey}</div>
+        <div style="margin-top:8px;color:#666">
+          این کلمه هنوز در دیکشنری نیست
+        </div>
+      `;
+      speak(wordKey);
+      return;
+    }
+
+    const ex = entry.examples && entry.examples[0];
+
+    box.innerHTML = `
+      <div style="font-size:1.6rem;font-weight:800">${entry.word}</div>
+      <div style="font-size:1.3rem;margin-top:6px">${entry.fa}</div>
+      <div style="font-size:1.15rem;margin-top:6px;color:#444">${entry.en}</div>
+      ${ex ? `
+        <hr>
+        <div style="font-size:1.1rem">${ex.en}</div>
+        <div style="font-size:1.1rem;color:#555">${ex.fa}</div>
+      ` : ""}
+    `;
+
+    speak(entry.word);
+  }
+
+  /* ---------- Render Clickable Text ---------- */
+  function renderClickableText(text) {
+    const container = document.getElementById("pdfText");
+    container.innerHTML = "";
+
+    text.split(/\s+/).forEach(raw => {
+      const clean = normalize(raw);
+      const span = document.createElement("span");
+      span.textContent = raw + " ";
+      span.className = "word";
+
+      span.addEventListener("click", () => {
+        if (!clean) return;
+        const entry = DICTIONARY[clean];
+        showMeaning(clean, entry);
+      });
+
+      container.appendChild(span);
+    });
+  }
+</script>
