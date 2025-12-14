@@ -1,4 +1,5 @@
 let dictionary = {};
+let femaleVoice = null;
 
 // بارگذاری دیکشنری
 fetch("pdcs_a1_sample.json")
@@ -7,11 +8,21 @@ fetch("pdcs_a1_sample.json")
     dictionary = data;
   });
 
-// عناصر صفحه
+// گرفتن صداها (با تأخیر – مخصوص Safari)
+function loadVoices() {
+  const voices = speechSynthesis.getVoices();
+  femaleVoice = voices.find(v =>
+    v.lang === "en-US" &&
+    /female|woman|zira|samantha|karen|allison/i.test(v.name)
+  );
+}
+speechSynthesis.onvoiceschanged = loadVoices;
+
+// عناصر
 const input = document.getElementById("search");
 const result = document.getElementById("result");
 
-// جستجو هنگام تایپ
+// جستجو
 input.addEventListener("input", () => {
   const word = input.value.trim().toLowerCase();
 
@@ -21,24 +32,33 @@ input.addEventListener("input", () => {
   }
 
   const item = dictionary[word];
+  const exEn = item.examples?.[0]?.en || "";
+  const exFa = item.examples?.[0]?.fa || "";
 
   result.innerHTML = `
     <div class="card">
       <div class="word" onclick="speak('${word}')">${word}</div>
       <div class="fa">${item.fa}</div>
-      <div class="en">${item.definition}</div>
-      <div class="example">${item.example}</div>
+      <div class="en">${item.en}</div>
+      <div class="example">
+        ${exEn}<br/>
+        ${exFa}
+      </div>
     </div>
   `;
 });
 
-// تلفظ (US – سرعت آموزشی)
+// تلفظ
 function speak(text) {
   const utter = new SpeechSynthesisUtterance(text);
   utter.lang = "en-US";
-  utter.rate = 0.7;   // 👈 دقیقاً طبق خواسته‌ات
+  utter.rate = 0.7;
   utter.pitch = 1;
 
-  speechSynthesis.cancel(); // جلوگیری از هم‌پوشانی صدا
+  if (femaleVoice) {
+    utter.voice = femaleVoice; // 🎯 اگر زنانه بود
+  }
+
+  speechSynthesis.cancel();
   speechSynthesis.speak(utter);
 }
