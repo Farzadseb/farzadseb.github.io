@@ -1,67 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>PDCS Dictionary</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <meta charset="UTF-8" />
+  <title>FredDic – Personal Dictionary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-  font-family: system-ui, -apple-system;
-  margin: 0;
-  padding: 16px;
-  background: #f4f5f7;
-}
-h1 { font-size: 20px; }
-button {
-  width: 100%;
-  padding: 12px;
-  margin: 6px 0;
-  font-size: 16px;
-}
-#pdfInput { margin: 10px 0; }
-#viewer {
-  background: white;
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 10px;
-  line-height: 1.9;
-}
-.word {
-  padding: 2px 4px;
-  border-radius: 6px;
-}
-.word:active {
-  background: #ffe08a;
-}
-#popup {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: white;
-  border-top: 1px solid #ccc;
-  padding: 14px;
-  display: none;
-}
-</style>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+      margin: 0;
+      padding: 16px;
+      background: #f7f7f7;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #555;
+      margin-top: 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin: 16px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .word-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .word {
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .fa {
+      margin-top: 6px;
+      color: #222;
+      font-size: 16px;
+    }
+
+    .en {
+      margin-top: 4px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .example {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+      background: #f0f0f0;
+      padding: 8px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>📘 PDCS Dictionary</h1>
-<p>Tap a word → meaning + pronunciation</p>
+  <h1>FredDic</h1>
+  <p class="subtitle">Tap a word to hear pronunciation</p>
 
-<button onclick="mode='ps'">📘 Practice PDF (PS)</button>
-<button onclick="mode='personal'">📂 My Book (PDF)</button>
-<button onclick="showSaved()">🧠 My Words</button>
+  <input type="text" id="search" placeholder="Type an English word…" />
 
-<input type="file" id="pdfInput" accept="application/pdf">
+  <div id="results"></div>
 
-<div id="viewer"></div>
-<div id="popup"></div>
+  <script>
+    let dictionary = {};
 
-<script src="app.js"></script>
+    // 🔹 Load dictionary JSON
+    fetch("pdcs_a1_sample.json")
+      .then(res => res.json())
+      .then(data => {
+        dictionary = data.dictionary;
+      });
+
+    const searchInput = document.getElementById("search");
+    const resultsDiv = document.getElementById("results");
+
+    searchInput.addEventListener("input", () => {
+      const value = searchInput.value.toLowerCase();
+      resultsDiv.innerHTML = "";
+
+      if (!value) return;
+
+      Object.values(dictionary).forEach(item => {
+        if (item.word.toLowerCase().startsWith(value)) {
+          const card = document.createElement("div");
+          card.className = "word-card";
+
+          const word = document.createElement("div");
+          word.className = "word";
+          word.textContent = item.word;
+
+          // 🔊 Pronunciation on tap
+          word.onclick = () => speak(item.word);
+
+          const fa = document.createElement("div");
+          fa.className = "fa";
+          fa.textContent = "فارسی: " + item.fa;
+
+          const en = document.createElement("div");
+          en.className = "en";
+          en.textContent = item.en;
+
+          const ex = document.createElement("div");
+          ex.className = "example";
+          ex.textContent = item.examples[0].en + " — " + item.examples[0].fa;
+
+          card.appendChild(word);
+          card.appendChild(fa);
+          card.appendChild(en);
+          card.appendChild(ex);
+
+          resultsDiv.appendChild(card);
+        }
+      });
+    });
+
+    // 🔊 TTS – female, American, slow
+    function speak(text) {
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "en-US";
+      utter.rate = 0.5;
+
+      const voices = speechSynthesis.getVoices();
+      const female = voices.find(v => 
+        v.lang === "en-US" && v.name.toLowerCase().includes("female")
+      );
+
+      if (female) utter.voice = female;
+
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utter);
+    }
+
+    // iOS needs this
+    speechSynthesis.getVoices();
+  </script>
+
 </body>
 </html>
