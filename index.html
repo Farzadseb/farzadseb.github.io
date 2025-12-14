@@ -2,57 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FredDic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
     body {
-      background: #f7f7f7;
-      padding: 24px 16px;
-      text-align: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+      margin: 0;
+      padding: 24px;
+      background: #ffffff;
+      color: #111;
     }
 
     h1 {
-      font-size: 32px;
+      text-align: center;
       margin-bottom: 6px;
     }
 
     p {
-      color: #666;
-      margin-bottom: 20px;
+      text-align: center;
+      color: #555;
+      margin-bottom: 24px;
     }
 
     input {
       width: 100%;
       max-width: 420px;
-      padding: 14px 16px;
-      font-size: 18px;
+      display: block;
+      margin: 0 auto 20px;
+      padding: 14px;
+      font-size: 16px;
+      border: 2px solid #f2b705;
       border-radius: 12px;
-      border: 3px solid #e0a400;
       outline: none;
-      margin-bottom: 20px;
     }
 
     .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 16px;
       max-width: 420px;
       margin: 0 auto;
-      text-align: left;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      display: none;
+      padding: 16px;
+      border-radius: 14px;
+      background: #fafafa;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     .word {
-      font-size: 22px;
+      font-size: 26px;
       font-weight: bold;
       cursor: pointer;
       margin-bottom: 8px;
@@ -64,15 +59,14 @@
     }
 
     .en {
-      color: #555;
-      margin-bottom: 10px;
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 6px;
     }
 
     .example {
-      background: #f3f3f3;
-      border-radius: 8px;
-      padding: 10px;
-      font-size: 15px;
+      font-size: 14px;
+      color: #666;
     }
   </style>
 </head>
@@ -84,51 +78,8 @@
 
   <input id="search" placeholder="Type an English word..." />
 
-  <div id="result" class="card"></div>
+  <div id="result"></div>
 
-  <script>
-    let dictionary = {};
-
-    fetch("pdcs_a1_sample.json")
-      .then(res => res.json())
-      .then(data => {
-        dictionary = data.dictionary;
-      });
-
-    const input = document.getElementById("search");
-    const result = document.getElementById("result");
-
-    input.addEventListener("input", () => {
-      const value = input.value.trim().toLowerCase();
-      result.style.display = "none";
-
-      if (!value) return;
-
-      const entry = Object.values(dictionary)
-        .find(item => item.word.toLowerCase() === value);
-
-      if (!entry) return;
-
-      result.innerHTML = `
-        <div class="word" onclick="speak('${entry.word}')">${entry.word}</div>
-        <div class="fa">${entry.fa}</div>
-        <div class="en">${entry.en}</div>
-        <div class="example">
-          ${entry.examples[0].en}<br/>
-          ${entry.examples[0].fa}
-        </div>
-      `;
-
-      result.style.display = "block";
-    });
-
-    function speak(text) {
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang = "en-US";
-      u.rate = 0.5;
-      speechSynthesis.speak(u);
-    }
-  </script>
-
+  <script src="app.js"></script>
 </body>
 </html>
