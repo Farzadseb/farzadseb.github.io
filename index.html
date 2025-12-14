@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,18 +16,18 @@ h1{font-size:24px}
 textarea{
   width:100%;
   height:120px;
-  font-size:18px;
-  padding:10px;
+  font-size:20px;
+  padding:12px;
 }
 button{
-  font-size:16px;
+  font-size:18px;
   padding:10px 16px;
   margin-top:10px;
 }
 #text-area{
   margin-top:20px;
-  font-size:20px;
-  line-height:1.8;
+  font-size:22px;
+  line-height:1.9;
 }
 .click-word{
   cursor:pointer;
@@ -43,7 +43,7 @@ button{
   padding:20px;
   display:none;
 }
-#dict-word{font-size:24px;font-weight:bold}
+#dict-word{font-size:26px;font-weight:bold}
 #dict-fa{font-size:22px;margin:8px 0}
 #dict-def{font-size:16px;color:#555}
 #dict-ex-en{margin-top:10px}
@@ -52,7 +52,7 @@ button{
   position:absolute;
   top:10px;
   right:15px;
-  font-size:24px;
+  font-size:26px;
 }
 </style>
 </head>
@@ -61,14 +61,14 @@ button{
 
 <h1>FredDic</h1>
 
-<p>1️⃣ Paste Text</p>
+<p>متن را وارد کن:</p>
 <textarea id="inputText" placeholder="Paste your text here..."></textarea>
 <br>
-<button onclick="loadText()">Load Text</button>
+<button onclick="loadText()">نمایش متن</button>
 
 <hr>
 
-<p>2️⃣ Load PDF (Text-based)</p>
+<p>PDF متنی را انتخاب کن:</p>
 <input type="file" accept="application/pdf" id="pdfFile">
 
 <div id="text-area"></div>
@@ -87,10 +87,22 @@ button{
 <script>
 let WORDS = {};
 
+// ===== LOAD DICTIONARY (FIXED) =====
 fetch("pdcs_a1_sample.json")
 .then(r=>r.json())
-.then(d=>WORDS=d.dictionary||{});
+.then(d=>{
+  WORDS = {};
+  Object.values(d.dictionary).forEach(e=>{
+    WORDS[e.word.toLowerCase()] = {
+      fa: e.fa,
+      def: e.en,
+      exEn: e.examples?.[0]?.en || "",
+      exFa: e.examples?.[0]?.fa || ""
+    };
+  });
+});
 
+// ===== HELPERS =====
 function normalize(w){
   return w.toLowerCase().replace(/[^a-z']/g,"");
 }
@@ -103,10 +115,10 @@ function speak(word){
   speechSynthesis.speak(u);
 }
 
+// ===== SHOW CARD =====
 function show(word){
   const w=normalize(word);
   const e=WORDS[w];
-  const card=document.getElementById("dict-card");
   document.getElementById("dict-word").textContent=w;
   if(!e){
     document.getElementById("dict-fa").textContent="لغت در دیکشنری نیست";
@@ -114,12 +126,12 @@ function show(word){
     document.getElementById("dict-ex-en").textContent="";
     document.getElementById("dict-ex-fa").textContent="";
   }else{
-    document.getElementById("dict-fa").textContent=e.fa||"";
-    document.getElementById("dict-def").textContent=e.definition||"";
-    document.getElementById("dict-ex-en").textContent=e.example?.en||"";
-    document.getElementById("dict-ex-fa").textContent=e.example?.fa||"";
+    document.getElementById("dict-fa").textContent=e.fa;
+    document.getElementById("dict-def").textContent=e.def;
+    document.getElementById("dict-ex-en").textContent=e.exEn;
+    document.getElementById("dict-ex-fa").textContent=e.exFa;
   }
-  card.style.display="block";
+  document.getElementById("dict-card").style.display="block";
   speak(w);
 }
 
@@ -127,6 +139,7 @@ function closeCard(){
   document.getElementById("dict-card").style.display="none";
 }
 
+// ===== RENDER TEXT =====
 function renderText(txt){
   const area=document.getElementById("text-area");
   area.innerHTML="";
@@ -143,6 +156,7 @@ function loadText(){
   renderText(document.getElementById("inputText").value);
 }
 
+// ===== PDF TEXT =====
 document.getElementById("pdfFile").addEventListener("change",e=>{
   const file=e.target.files[0];
   if(!file)return;
