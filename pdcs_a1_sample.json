@@ -1,52 +1,45 @@
 {
-  "be": {
-    "fa": "بودن",
-    "definition": "to exist or live",
-    "example": "I want to be happy."
-  },
-  "have": {
-    "fa": "داشتن",
-    "definition": "to own or hold something",
-    "example": "I have a job."
-  },
-  "do": {
-    "fa": "انجام دادن",
-    "definition": "to perform an action",
-    "example": "I do my work."
-  },
-  "go": {
-    "fa": "رفتن",
-    "definition": "to move from one place to another",
-    "example": "I go to school."
-  },
-  "come": {
-    "fa": "آمدن",
-    "definition": "to move to a place",
-    "example": "Please come here."
-  },
-  "get": {
-    "fa": "گرفتن / شدن",
-    "definition": "to receive something",
-    "example": "I get a message."
-  },
-  "make": {
-    "fa": "ساختن",
-    "definition": "to create something",
-    "example": "I make a plan."
-  },
-  "help": {
-    "fa": "کمک کردن",
-    "definition": "to give help to someone",
-    "example": "I help my friend."
-  },
-  "want": {
-    "fa": "خواستن",
-    "definition": "to wish for something",
-    "example": "I want coffee."
-  },
-  "need": {
-    "fa": "نیاز داشتن",
-    "definition": "to require something",
-    "example": "I need time."
-  }
+  "be": {"fa": "بودن", "definition": "to exist or live", "example": "I want to be happy."},
+  "am": {"fa": "هستم", "definition": "the form of be used with I", "example": "I am ready."},
+  "is": {"fa": "هست", "definition": "the form of be used with he, she, it", "example": "She is here."},
+  "are": {"fa": "هستید / هستند", "definition": "the form of be used with you, we, they", "example": "They are friends."},
+  "have": {"fa": "داشتن", "definition": "to own or hold something", "example": "I have a job."},
+  "has": {"fa": "دارد", "definition": "the form of have used with he, she, it", "example": "He has time."},
+  "do": {"fa": "انجام دادن", "definition": "to perform an action", "example": "I do my work."},
+  "does": {"fa": "انجام می‌دهد", "definition": "the form of do used with he, she, it", "example": "She does her homework."},
+  "work": {"fa": "کار کردن", "definition": "to do a job", "example": "I work every day."},
+  "go": {"fa": "رفتن", "definition": "to move from one place to another", "example": "I go to school."},
+  "come": {"fa": "آمدن", "definition": "to move to a place", "example": "Please come here."},
+  "get": {"fa": "گرفتن / شدن", "definition": "to receive something", "example": "I get a message."},
+  "make": {"fa": "ساختن", "definition": "to create something", "example": "I make a plan."},
+  "use": {"fa": "استفاده کردن", "definition": "to do something with a thing", "example": "I use my phone."},
+  "need": {"fa": "نیاز داشتن", "definition": "to require something", "example": "I need help."},
+  "want": {"fa": "خواستن", "definition": "to wish for something", "example": "I want coffee."},
+  "like": {"fa": "دوست داشتن", "definition": "to enjoy something", "example": "I like music."},
+  "love": {"fa": "دوست داشتن", "definition": "to like something very much", "example": "I love my family."},
+  "help": {"fa": "کمک کردن", "definition": "to give help to someone", "example": "I help my friend."},
+  "try": {"fa": "تلاش کردن", "definition": "to attempt to do something", "example": "I try to learn."},
+
+  "people": {"fa": "مردم", "definition": "men and women", "example": "Many people are here."},
+  "time": {"fa": "زمان", "definition": "minutes and hours", "example": "I have no time."},
+  "today": {"fa": "امروز", "definition": "this day", "example": "Today is Monday."},
+  "now": {"fa": "الان", "definition": "at this moment", "example": "I am busy now."},
+  "home": {"fa": "خانه", "definition": "the place you live", "example": "I go home."},
+  "good": {"fa": "خوب", "definition": "nice or fine", "example": "This is good."},
+  "bad": {"fa": "بد", "definition": "not good", "example": "The weather is bad."},
+  "big": {"fa": "بزرگ", "definition": "large in size", "example": "It is a big house."},
+  "small": {"fa": "کوچک", "definition": "not big", "example": "I have a small car."},
+  "new": {"fa": "جدید", "definition": "not old", "example": "I have a new phone."},
+
+  "and": {"fa": "و", "definition": "used to join words", "example": "You and me."},
+  "but": {"fa": "اما", "definition": "used to show difference", "example": "I try but fail."},
+  "because": {"fa": "چون", "definition": "for a reason", "example": "I stay because I care."},
+  "so": {"fa": "پس", "definition": "for this reason", "example": "I am tired, so I rest."},
+  "if": {"fa": "اگر", "definition": "used to show a condition", "example": "If you want, come."},
+
+  "yes": {"fa": "بله", "definition": "used to agree", "example": "Yes, I can."},
+  "no": {"fa": "نه", "definition": "used to disagree", "example": "No, thank you."},
+  "please": {"fa": "لطفاً", "definition": "used to be polite", "example": "Please help me."},
+  "thanks": {"fa": "ممنون", "definition": "used to show thanks", "example": "Thanks a lot."},
+  "sorry": {"fa": "ببخشید", "definition": "used to say you feel bad", "example": "Sorry, I'm late."}
 }
