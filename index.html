@@ -2,159 +2,90 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FredDic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FredDic – PDF Reader</title>
 
+  <!-- PDF.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
-    }
-
     body {
-      background: #ffffff;
-      color: #111;
-      padding: 20px 14px;
-      text-align: center;
-      overflow-x: hidden;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f6f6f6;
+      color: #222;
     }
-
+    .container {
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 16px;
+    }
     h1 {
-      font-size: 40px;
-      margin-bottom: 8px;
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
     }
-
-    p {
-      font-size: 16px;
-      color: #555;
-      margin-bottom: 14px;
-    }
-
-    .row {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-
     .btn {
-      display: inline-block;
-      padding: 12px 16px;
-      font-size: 16px;
-      border-radius: 14px;
-      background: #f2b705;
-      color: #111;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    input[type="file"] { display: none; }
-
-    #pdfViewer {
-      max-width: 100%;
-      margin: 0 auto;
-    }
-
-    .page {
-      position: relative;
-      width: 100%;
-      margin: 0 auto 18px auto;
-      max-width: 980px;
-    }
-
-    canvas {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
       display: block;
-    }
-
-    /* Text layer (clickable) */
-    .textLayer {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      opacity: 0.12;            /* کم‌رنگ تا مزاحم نشود */
-      pointer-events: auto;
-    }
-
-    /* PDF.js text spans */
-    .textLayer span {
-      position: absolute;
-      transform-origin: 0 0;
-      white-space: pre;
+      width: 100%;
+      padding: 14px;
+      font-size: 1.1rem;
+      border-radius: 14px;
+      border: none;
+      background: #f4b400;
+      color: #000;
+      font-weight: 600;
       cursor: pointer;
-      user-select: text;
-      -webkit-user-select: text;
-      padding: 2px 2px;
-      border-radius: 6px;
+      margin-bottom: 16px;
     }
-
-    .textLayer span:active {
-      background: rgba(242, 183, 5, 0.35);
-    }
-
-    /* Popup */
-    .popup {
-      position: fixed;
-      left: 50%;
-      bottom: 16px;
-      transform: translateX(-50%);
-      width: min(560px, calc(100% - 24px));
-      background: #111;
-      color: #fff;
-      border-radius: 16px;
-      padding: 14px 14px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-      text-align: left;
-      display: none;
-      z-index: 9999;
-    }
-
-    .popup .w {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 6px;
-      cursor: pointer;
-    }
-    .popup .fa { font-size: 18px; margin-bottom: 6px; }
-    .popup .en { font-size: 14px; opacity: 0.9; margin-bottom: 8px; }
-    .popup .ex { font-size: 14px; opacity: 0.9; line-height: 1.35; }
-    .popup .hint { font-size: 12px; opacity: 0.75; margin-top: 10px; }
-
-    .toast {
-      margin: 10px auto 0;
-      max-width: 680px;
-      font-size: 14px;
-      color: #a00;
-      display: none;
+    #pdfText {
+      background: #fff;
+      padding: 16px;
+      border-radius: 14px;
+      line-height: 1.9;
+      font-size: 1.15rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      white-space: pre-wrap;
     }
   </style>
 </head>
-
 <body>
 
-  <h1>FredDic</h1>
-  <p>Load your PDF → tap a word → see meaning + hear pronunciation</p>
+  <div class="container">
+    <h1>FredDic – PDF (Text)</h1>
 
-  <div class="row">
-    <label class="btn">
-      Load PDF
-      <input type="file" id="pdfInput" accept="application/pdf" />
-    </label>
+    <input type="file" id="pdfInput" accept="application/pdf" class="btn" />
+    <div id="pdfText">یک PDF متنی انتخاب کن…</div>
   </div>
 
-  <div id="toast" class="toast"></div>
-  <div id="pdfViewer"></div>
+  <script>
+    const pdfInput = document.getElementById("pdfInput");
+    const pdfText = document.getElementById("pdfText");
 
-  <div id="popup" class="popup"></div>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
-  <script src="app.js"></script>
+    pdfInput.addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      pdfText.textContent = "در حال خواندن PDF…";
+
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+      let fullText = "";
+
+      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        const page = await pdf.getPage(pageNum);
+        const textContent = await page.getTextContent();
+        const pageText = textContent.items.map(item => item.str).join(" ");
+        fullText += pageText + "\n\n";
+      }
+
+      pdfText.textContent = fullText || "متنی پیدا نشد (احتمالاً PDF اسکن‌شده است).";
+    });
+  </script>
+
 </body>
 </html>
