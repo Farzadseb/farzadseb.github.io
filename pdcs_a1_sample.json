@@ -1,0 +1,52 @@
+{
+  "be": {
+    "fa": "بودن",
+    "definition": "to exist or live",
+    "example": "I want to be happy."
+  },
+  "have": {
+    "fa": "داشتن",
+    "definition": "to own or hold something",
+    "example": "I have a job."
+  },
+  "do": {
+    "fa": "انجام دادن",
+    "definition": "to perform an action",
+    "example": "I do my work."
+  },
+  "go": {
+    "fa": "رفتن",
+    "definition": "to move from one place to another",
+    "example": "I go to school."
+  },
+  "come": {
+    "fa": "آمدن",
+    "definition": "to move to a place",
+    "example": "Please come here."
+  },
+  "get": {
+    "fa": "گرفتن / شدن",
+    "definition": "to receive something",
+    "example": "I get a message."
+  },
+  "make": {
+    "fa": "ساختن",
+    "definition": "to create something",
+    "example": "I make a plan."
+  },
+  "help": {
+    "fa": "کمک کردن",
+    "definition": "to give help to someone",
+    "example": "I help my friend."
+  },
+  "want": {
+    "fa": "خواستن",
+    "definition": "to wish for something",
+    "example": "I want coffee."
+  },
+  "need": {
+    "fa": "نیاز داشتن",
+    "definition": "to require something",
+    "example": "I need time."
+  }
+}
