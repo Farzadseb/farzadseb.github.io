@@ -3,69 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <title>PDCS Dictionary</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<link rel="apple-touch-icon" href="icon.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
 <style>
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, system-ui;
-    margin: 0;
-    padding: 12px;
-    background: #f4f5f7;
-  }
-  h1 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  input[type="file"] {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  #viewer {
-    background: #fff;
-    padding: 10px;
-    border-radius: 10px;
-    line-height: 1.9;
-    font-size: 16px;
-  }
-  .word {
-    padding: 2px 4px;
-    border-radius: 6px;
-  }
-  .word:active {
-    background: #ffe08a;
-  }
-  #popup {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    border-top: 1px solid #ccc;
-    padding: 14px;
-    display: none;
-    max-height: 45vh;
-    overflow-y: auto;
-  }
-  #popup b {
-    display: block;
-    margin-bottom: 6px;
-  }
+body {
+  font-family: system-ui, -apple-system;
+  margin: 0;
+  padding: 16px;
+  background: #f4f5f7;
+}
+h1 { font-size: 20px; }
+button {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0;
+  font-size: 16px;
+}
+#pdfInput { margin: 10px 0; }
+#viewer {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  line-height: 1.9;
+}
+.word {
+  padding: 2px 4px;
+  border-radius: 6px;
+}
+.word:active {
+  background: #ffe08a;
+}
+#popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #ccc;
+  padding: 14px;
+  display: none;
+}
 </style>
 </head>
 
 <body>
 
 <h1>📘 PDCS Dictionary</h1>
+<p>Tap a word → meaning + pronunciation</p>
+
+<button onclick="mode='ps'">📘 Practice PDF (PS)</button>
+<button onclick="mode='personal'">📂 My Book (PDF)</button>
+<button onclick="showSaved()">🧠 My Words</button>
+
 <input type="file" id="pdfInput" accept="application/pdf">
 
-<div id="viewer">Select a PDF to start.</div>
+<div id="viewer"></div>
 <div id="popup"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="app.js"></script>
-
 </body>
 </html>
