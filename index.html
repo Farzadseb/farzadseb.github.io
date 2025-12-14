@@ -5,6 +5,9 @@
   <title>FredDic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
   <style>
     * {
       box-sizing: border-box;
@@ -17,67 +20,47 @@
     body {
       background: #ffffff;
       color: #111;
-      padding: 32px 20px;
+      padding: 24px 16px;
       text-align: center;
       overflow-x: hidden;
     }
 
-    h1 { font-size: 50px; margin-bottom: 12px; }
-    p { font-size: 20px; color: #555; margin-bottom: 30px; }
-
-    input {
-      width: 100%;
-      max-width: 520px;
-      margin: 0 auto 28px;
-      padding: 24px 22px;
-      font-size: 32px;
-      border-radius: 18px;
-      border: 3px solid #f2b705;
-      outline: none;
-    }
-
-    .card, .saved {
-      max-width: 520px;
-      margin: 20px auto;
-      padding: 24px;
-      background: #fafafa;
-      border-radius: 20px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-      text-align: left;
-    }
-
-    .word {
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
+    h1 {
+      font-size: 42px;
       margin-bottom: 10px;
     }
 
-    .fa { font-size: 28px; margin-bottom: 8px; }
-    .en { font-size: 22px; margin-bottom: 12px; color: #444; }
-
-    .example {
-      font-size: 22px;
-      background: #f0f0f0;
-      padding: 16px;
-      border-radius: 12px;
-      line-height: 1.6;
+    p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 20px;
     }
 
-    .saved h2 {
-      font-size: 26px;
-      margin-bottom: 12px;
-    }
-
-    .saved-word {
-      font-size: 22px;
-      padding: 8px 0;
-      border-bottom: 1px solid #ddd;
+    .btn {
+      display: inline-block;
+      padding: 14px 20px;
+      font-size: 18px;
+      border-radius: 14px;
+      background: #f2b705;
+      color: #111;
       cursor: pointer;
+      margin-bottom: 20px;
     }
 
-    .saved-word:last-child {
-      border-bottom: none;
+    input[type="file"] {
+      display: none;
+    }
+
+    #pdfViewer {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    canvas {
+      width: 100%;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
   </style>
 </head>
@@ -85,15 +68,14 @@
 <body>
 
   <h1>FredDic</h1>
-  <p>Tap a word to hear & save</p>
+  <p>Load your PDF book</p>
 
-  <input id="search" placeholder="Type an English word..." />
-  <div id="result"></div>
+  <label class="btn">
+    Load PDF
+    <input type="file" id="pdfInput" accept="application/pdf" />
+  </label>
 
-  <div class="saved">
-    <h2>Saved Words</h2>
-    <div id="savedList"></div>
-  </div>
+  <div id="pdfViewer"></div>
 
   <script src="app.js"></script>
 </body>
