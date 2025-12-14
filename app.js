@@ -1,25 +1,42 @@
-let data = {};
+let dictionary = {};
 
 fetch("pdcs_a1_sample.json")
   .then(res => res.json())
-  .then(json => {
-    data = json;
+  .then(data => {
+    dictionary = data;
   });
 
-const input = document.querySelector("input");
+const input = document.getElementById("search");
 const result = document.getElementById("result");
 
 input.addEventListener("input", () => {
   const word = input.value.trim().toLowerCase();
 
-  if (data[word]) {
-    result.innerHTML = `
-      <h2>${word}</h2>
-      <p><b>فارسی:</b> ${data[word].fa}</p>
-      <p><b>Definition:</b> ${data[word].definition}</p>
-      <p><b>Example:</b> ${data[word].example}</p>
-    `;
-  } else {
+  if (!word || !dictionary[word]) {
     result.innerHTML = "";
+    return;
   }
+
+  const item = dictionary[word];
+
+  result.innerHTML = `
+    <div class="card">
+      <div class="word" onclick="speak('${word}')">${word}</div>
+      <div class="fa">${item.fa}</div>
+      <div class="en">${item.definition}</div>
+      <div class="example">${item.example}</div>
+    </div>
+  `;
 });
+
+function speak(text) {
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = "en-US";
+  utter.rate = 0.5;
+
+  const voices = speechSynthesis.getVoices();
+  const female = voices.find(v => v.lang === "en-US" && v.name.toLowerCase().includes("female"));
+  if (female) utter.voice = female;
+
+  speechSynthesis.speak(utter);
+}
