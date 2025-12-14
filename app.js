@@ -1,14 +1,17 @@
 let dictionary = {};
 
+// بارگذاری دیکشنری
 fetch("pdcs_a1_sample.json")
   .then(res => res.json())
   .then(data => {
     dictionary = data;
   });
 
+// عناصر صفحه
 const input = document.getElementById("search");
 const result = document.getElementById("result");
 
+// جستجو هنگام تایپ
 input.addEventListener("input", () => {
   const word = input.value.trim().toLowerCase();
 
@@ -29,14 +32,13 @@ input.addEventListener("input", () => {
   `;
 });
 
+// تلفظ (US – سرعت آموزشی)
 function speak(text) {
   const utter = new SpeechSynthesisUtterance(text);
   utter.lang = "en-US";
-  utter.rate = 0.5;
+  utter.rate = 0.7;   // 👈 دقیقاً طبق خواسته‌ات
+  utter.pitch = 1;
 
-  const voices = speechSynthesis.getVoices();
-  const female = voices.find(v => v.lang === "en-US" && v.name.toLowerCase().includes("female"));
-  if (female) utter.voice = female;
-
+  speechSynthesis.cancel(); // جلوگیری از هم‌پوشانی صدا
   speechSynthesis.speak(utter);
 }
