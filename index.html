@@ -2,70 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FredDic – Personal Dictionary</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FredDic</title>
 
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      padding: 16px;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
       background: #f7f7f7;
+      padding: 24px 16px;
+      text-align: center;
     }
 
     h1 {
-      text-align: center;
-      margin-bottom: 8px;
+      font-size: 32px;
+      margin-bottom: 6px;
     }
 
-    p.subtitle {
-      text-align: center;
-      color: #555;
-      margin-top: 0;
+    p {
+      color: #666;
+      margin-bottom: 20px;
     }
 
     input {
       width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      margin: 16px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+      max-width: 420px;
+      padding: 14px 16px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: 3px solid #e0a400;
+      outline: none;
+      margin-bottom: 20px;
     }
 
-    .word-card {
+    .card {
       background: #fff;
       border-radius: 12px;
       padding: 16px;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      max-width: 420px;
+      margin: 0 auto;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      display: none;
     }
 
     .word {
       font-size: 22px;
       font-weight: bold;
       cursor: pointer;
+      margin-bottom: 8px;
     }
 
     .fa {
-      margin-top: 6px;
-      color: #222;
-      font-size: 16px;
+      font-size: 18px;
+      margin-bottom: 6px;
     }
 
     .en {
-      margin-top: 4px;
       color: #555;
-      font-size: 14px;
+      margin-bottom: 10px;
     }
 
     .example {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #333;
-      background: #f0f0f0;
-      padding: 8px;
+      background: #f3f3f3;
       border-radius: 8px;
+      padding: 10px;
+      font-size: 15px;
     }
   </style>
 </head>
@@ -73,84 +80,54 @@
 <body>
 
   <h1>FredDic</h1>
-  <p class="subtitle">Tap a word to hear pronunciation</p>
+  <p>Tap a word to hear pronunciation</p>
 
-  <input type="text" id="search" placeholder="Type an English word…" />
+  <input id="search" placeholder="Type an English word..." />
 
-  <div id="results"></div>
+  <div id="result" class="card"></div>
 
   <script>
     let dictionary = {};
 
-    // 🔹 Load dictionary JSON
     fetch("pdcs_a1_sample.json")
       .then(res => res.json())
       .then(data => {
         dictionary = data.dictionary;
       });
 
-    const searchInput = document.getElementById("search");
-    const resultsDiv = document.getElementById("results");
+    const input = document.getElementById("search");
+    const result = document.getElementById("result");
 
-    searchInput.addEventListener("input", () => {
-      const value = searchInput.value.toLowerCase();
-      resultsDiv.innerHTML = "";
+    input.addEventListener("input", () => {
+      const value = input.value.trim().toLowerCase();
+      result.style.display = "none";
 
       if (!value) return;
 
-      Object.values(dictionary).forEach(item => {
-        if (item.word.toLowerCase().startsWith(value)) {
-          const card = document.createElement("div");
-          card.className = "word-card";
+      const entry = Object.values(dictionary)
+        .find(item => item.word.toLowerCase() === value);
 
-          const word = document.createElement("div");
-          word.className = "word";
-          word.textContent = item.word;
+      if (!entry) return;
 
-          // 🔊 Pronunciation on tap
-          word.onclick = () => speak(item.word);
+      result.innerHTML = `
+        <div class="word" onclick="speak('${entry.word}')">${entry.word}</div>
+        <div class="fa">${entry.fa}</div>
+        <div class="en">${entry.en}</div>
+        <div class="example">
+          ${entry.examples[0].en}<br/>
+          ${entry.examples[0].fa}
+        </div>
+      `;
 
-          const fa = document.createElement("div");
-          fa.className = "fa";
-          fa.textContent = "فارسی: " + item.fa;
-
-          const en = document.createElement("div");
-          en.className = "en";
-          en.textContent = item.en;
-
-          const ex = document.createElement("div");
-          ex.className = "example";
-          ex.textContent = item.examples[0].en + " — " + item.examples[0].fa;
-
-          card.appendChild(word);
-          card.appendChild(fa);
-          card.appendChild(en);
-          card.appendChild(ex);
-
-          resultsDiv.appendChild(card);
-        }
-      });
+      result.style.display = "block";
     });
 
-    // 🔊 TTS – female, American, slow
     function speak(text) {
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.lang = "en-US";
-      utter.rate = 0.5;
-
-      const voices = speechSynthesis.getVoices();
-      const female = voices.find(v => 
-        v.lang === "en-US" && v.name.toLowerCase().includes("female")
-      );
-
-      if (female) utter.voice = female;
-
-      speechSynthesis.cancel();
-      speechSynthesis.speak(utter);
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = "en-US";
+      u.rate = 0.5;
+      speechSynthesis.speak(u);
     }
-
-    // iOS needs this
-    speechSynthesis.getVoices();
   </script>
 
 </body>
