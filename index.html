@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FredDic – PDF Reader</title>
+  <title>FredDic – PDF Dictionary</title>
 
   <!-- PDF.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -16,24 +16,22 @@
       color: #222;
     }
     .container {
-      max-width: 700px;
+      max-width: 720px;
       margin: 20px auto;
       padding: 16px;
     }
     h1 {
       text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 12px;
+      font-size: 1.9rem;
+      margin-bottom: 14px;
     }
-    .btn {
-      display: block;
+    input[type="file"] {
       width: 100%;
       padding: 14px;
       font-size: 1.1rem;
       border-radius: 14px;
       border: none;
       background: #f4b400;
-      color: #000;
       font-weight: 600;
       cursor: pointer;
       margin-bottom: 16px;
@@ -42,50 +40,156 @@
       background: #fff;
       padding: 16px;
       border-radius: 14px;
-      line-height: 1.9;
-      font-size: 1.15rem;
+      line-height: 2;
+      font-size: 1.2rem;
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
       white-space: pre-wrap;
+    }
+    .word {
+      cursor: pointer;
+      user-select: none;
+    }
+    .word:hover {
+      background: #fff2b3;
+    }
+    #meaningBox {
+      margin-top: 18px;
+      padding: 16px;
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+    #meaningBox .en {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    #meaningBox .fa {
+      font-size: 1.3rem;
+      margin-top: 6px;
+    }
+    #meaningBox .def {
+      font-size: 1.15rem;
+      margin-top: 6px;
+      color: #444;
+    }
+    #meaningBox .ex {
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+    #meaningBox .ex-fa {
+      color: #555;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>FredDic – PDF (Text)</h1>
+<div class="container">
+  <h1>FredDic – PDF (Text)</h1>
 
-    <input type="file" id="pdfInput" accept="application/pdf" class="btn" />
-    <div id="pdfText">یک PDF متنی انتخاب کن…</div>
-  </div>
+  <input type="file" id="pdfInput" accept="application/pdf" />
 
-  <script>
-    const pdfInput = document.getElementById("pdfInput");
-    const pdfText = document.getElementById("pdfText");
+  <div id="pdfText">یک PDF متنی انتخاب کن…</div>
+</div>
 
-    pdfjsLib.GlobalWorkerOptions.workerSrc =
-      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+<script>
+  /* ---------------- PDF.js setup ---------------- */
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 
-    pdfInput.addEventListener("change", async (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
+  const pdfInput = document.getElementById("pdfInput");
+  const pdfText = document.getElementById("pdfText");
 
-      pdfText.textContent = "در حال خواندن PDF…";
+  /* ---------------- Dictionary ---------------- */
+  let DICTIONARY = {};
 
-      const arrayBuffer = await file.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-
-      let fullText = "";
-
-      for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-        const page = await pdf.getPage(pageNum);
-        const textContent = await page.getTextContent();
-        const pageText = textContent.items.map(item => item.str).join(" ");
-        fullText += pageText + "\n\n";
-      }
-
-      pdfText.textContent = fullText || "متنی پیدا نشد (احتمالاً PDF اسکن‌شده است).";
+  fetch("pdcs_a1_sample.json")
+    .then(res => res.json())
+    .then(data => {
+      DICTIONARY = data.dictionary || data;
     });
-  </script>
+
+  function normalize(word) {
+    return word.toLowerCase().replace(/[^a-z']/g, "");
+  }
+
+  function speak(word) {
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = "en-US";
+    utter.rate = 0.7;
+
+    const voices = speechSynthesis.getVoices();
+    const femaleUS = voices.find(v =>
+      v.lang === "en-US" && /female|woman/i.test(v.name)
+    );
+    if (femaleUS) utter.voice = femaleUS;
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utter);
+  }
+
+  function showMeaning(entry) {
+    let box = document.getElementById("meaningBox");
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "meaningBox";
+      document.querySelector(".container").appendChild(box);
+    }
+
+    const ex = entry.examples && entry.examples[0];
+
+    box.innerHTML = `
+      <div class="en">${entry.word}</div>
+      <div class="fa">${entry.fa}</div>
+      <div class="def">${entry.en}</div>
+      ${ex ? `
+        <hr>
+        <div class="ex">${ex.en}</div>
+        <div class="ex-fa">${ex.fa}</div>
+      ` : ""}
+    `;
+  }
+
+  function renderClickableText(text) {
+    pdfText.innerHTML = "";
+    text.split(/\s+/).forEach(raw => {
+      const clean = normalize(raw);
+      const span = document.createElement("span");
+      span.textContent = raw + " ";
+      span.className = "word";
+
+      span.addEventListener("click", () => {
+        if (!clean) return;
+        const entry = DICTIONARY[clean];
+        if (entry) {
+          showMeaning(entry);
+          speak(clean);
+        }
+      });
+
+      pdfText.appendChild(span);
+    });
+  }
+
+  /* ---------------- Load PDF ---------------- */
+  pdfInput.addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    pdfText.textContent = "در حال خواندن PDF…";
+
+    const buffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+
+    let fullText = "";
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const content = await page.getTextContent();
+      fullText += content.items.map(it => it.str).join(" ") + "\n\n";
+    }
+
+    renderClickableText(fullText);
+  });
+</script>
 
 </body>
 </html>
