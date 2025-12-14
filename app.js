@@ -1,93 +1,124 @@
-<script>
-  let WORD_MAP = {};
+/* ================================
+   FredDic – FINAL APP.JS
+   PDF Text + Dictionary (A Mode)
+   ================================ */
 
-  /* ---------- Load Dictionary & Build Word Map ---------- */
-  fetch("pdcs_a1_sample.json")
-    .then(res => res.json())
-    .then(data => {
-      const dict = data.dictionary || data;
+let WORD_MAP = {};
 
-      Object.values(dict).forEach(entry => {
-        if (entry.word) {
-          WORD_MAP[entry.word.toLowerCase()] = entry;
-        }
-      });
+/* ---------- Load Dictionary ---------- */
+fetch("pdcs_a1_sample.json")
+  .then(res => res.json())
+  .then(data => {
+    WORD_MAP = data.dictionary || {};
+    console.log("✅ Dictionary loaded:", Object.keys(WORD_MAP).length);
+  })
+  .catch(err => {
+    console.error("❌ Dictionary load error", err);
+  });
 
-      console.log("Word map ready:", Object.keys(WORD_MAP).length);
+/* ---------- Normalize Word ---------- */
+function normalizeWord(word) {
+  return word
+    .toLowerCase()
+    .replace(/[^a-z']/g, "")
+    .trim();
+}
+
+/* ---------- Speak Word ---------- */
+function speak(word) {
+  if (!window.speechSynthesis) return;
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-US";
+  utterance.rate = 0.7;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(utterance);
+}
+
+/* ---------- Show Dictionary Card ---------- */
+function showCard(rawWord) {
+  const cleanWord = normalizeWord(rawWord);
+  const entry = WORD_MAP[cleanWord];
+
+  const card = document.getElementById("dict-card");
+  const title = document.getElementById("dict-word");
+  const meaning = document.getElementById("dict-fa");
+  const def = document.getElementById("dict-def");
+  const exEn = document.getElementById("dict-ex-en");
+  const exFa = document.getElementById("dict-ex-fa");
+
+  if (!entry) {
+    title.textContent = cleanWord || rawWord;
+    meaning.textContent = "این لغت هنوز در دیکشنری شما نیست";
+    def.textContent = "";
+    exEn.textContent = "";
+    exFa.textContent = "";
+    card.classList.add("show");
+    speak(cleanWord);
+    return;
+  }
+
+  title.textContent = entry.word || cleanWord;
+  meaning.textContent = entry.fa || "";
+  def.textContent = entry.definition || "";
+
+  if (entry.example) {
+    exEn.textContent = entry.example.en || "";
+    exFa.textContent = entry.example.fa || "";
+  } else {
+    exEn.textContent = "";
+    exFa.textContent = "";
+  }
+
+  card.classList.add("show");
+  speak(cleanWord);
+}
+
+/* ---------- Attach Click to PDF Text ---------- */
+function makeTextClickable(container) {
+  const textNodes = [];
+
+  function walk(node) {
+    if (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim()) {
+      textNodes.push(node);
+    } else {
+      node.childNodes.forEach(walk);
+    }
+  }
+
+  walk(container);
+
+  textNodes.forEach(node => {
+    const words = node.nodeValue.split(/(\s+)/);
+    const fragment = document.createDocumentFragment();
+
+    words.forEach(word => {
+      if (word.trim()) {
+        const span = document.createElement("span");
+        span.textContent = word;
+        span.className = "click-word";
+        span.addEventListener("click", () => showCard(word));
+        fragment.appendChild(span);
+      } else {
+        fragment.appendChild(document.createTextNode(word));
+      }
     });
 
-  /* ---------- Helpers ---------- */
-  function normalize(word) {
-    return word
-      .toLowerCase()
-      .replace(/[^a-z']/g, "")
-      .trim();
-  }
+    node.parentNode.replaceChild(fragment, node);
+  });
+}
 
-  function speak(word) {
-    const u = new SpeechSynthesisUtterance(word);
-    u.lang = "en-US";
-    u.rate = 0.7;
+/* ---------- PDF Load Hook (call after render) ---------- */
+/*
+   بعد از اینکه pdf.js صفحه را رندر کرد،
+   این تابع را روی container صدا بزن
+*/
+function onPdfRendered(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  makeTextClickable(container);
+}
 
-    speechSynthesis.cancel();
-    speechSynthesis.speak(u);
-  }
-
-  /* ---------- UI ---------- */
-  function showMeaning(word, entry) {
-    let box = document.getElementById("meaningBox");
-    if (!box) {
-      box = document.createElement("div");
-      box.id = "meaningBox";
-      box.style.marginTop = "16px";
-      document.querySelector(".container").appendChild(box);
-    }
-
-    if (!entry) {
-      box.innerHTML = `
-        <div style="font-size:1.4rem;font-weight:700">${word}</div>
-        <div style="margin-top:6px;color:#777">
-          این کلمه هنوز در دیکشنری نیست
-        </div>
-      `;
-      speak(word);
-      return;
-    }
-
-    const ex = entry.examples && entry.examples[0];
-
-    box.innerHTML = `
-      <div style="font-size:1.6rem;font-weight:800">${entry.word}</div>
-      <div style="font-size:1.3rem;margin-top:6px">${entry.fa}</div>
-      <div style="font-size:1.15rem;margin-top:6px;color:#444">${entry.en}</div>
-      ${ex ? `
-        <hr>
-        <div>${ex.en}</div>
-        <div style="color:#555">${ex.fa}</div>
-      ` : ""}
-    `;
-
-    speak(entry.word);
-  }
-
-  /* ---------- Render Clickable Text ---------- */
-  function renderClickableText(text) {
-    const container = document.getElementById("pdfText");
-    container.innerHTML = "";
-
-    text.split(/\s+/).forEach(raw => {
-      const clean = normalize(raw);
-      const span = document.createElement("span");
-      span.textContent = raw + " ";
-      span.className = "word";
-
-      span.onclick = () => {
-        if (!clean) return;
-        const entry = WORD_MAP[clean];
-        showMeaning(clean, entry);
-      };
-
-      container.appendChild(span);
-    });
-  }
-</script>
+/* ---------- Close Card ---------- */
+function closeCard() {
+  document.getElementById("dict-card").classList.remove("show");
+}
