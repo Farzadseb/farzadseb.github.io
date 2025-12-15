@@ -1,17 +1,9 @@
 <!DOCTYPE html>
-<html lang="fa"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📘 PDF</title>
-<style>body{font-family:system-ui;background:#eef2ff;padding:16px}.card{background:#fff;border-radius:16px;padding:16px}textarea{width:100%;height:200px;font-size:18px}</style>
-</head><body>
-<h2>📘 متن کتاب</h2>
-<div class="card">
-<textarea id="text"></textarea><button onclick="render()">نمایش</button>
-</div>
-<div class="card" id="out"></div>
-<script>
-let DICT={}; fetch("pdcs_a1.json").then(r=>r.json()).then(d=>DICT=d.dictionary||d);
-function render(){
-  const t=document.getElementById("text").value.split(/\s+/);
-  out.innerHTML=t.map(w=>DICT[w.toLowerCase()]?`<b title="${DICT[w.toLowerCase()].fa}">${w}</b>`:w).join(" ");
-}
-</script></body></html>
+<html>
+<head><meta charset="UTF-8"><title>PDF</title></head>
+<body>
+<h2>PDF (Text Only)</h2>
+<p>فقط PDF متنی پشتیبانی می‌شود.</p>
+<input type="file" accept="application/pdf">
+</body>
+</html>
