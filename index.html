@@ -2,24 +2,43 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A1 Dictionary</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+  font-family: system-ui;
+  background:#f2f2f2;
+  padding:20px;
+}
+.box{
+  max-width:500px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+  border-radius:16px;
+}
+input,button{
+  width:100%;
+  padding:14px;
+  font-size:18px;
+  margin-top:10px;
+}
+.result{
+  margin-top:20px;
+  font-size:18px;
+}
+.word{font-size:28px;font-weight:bold}
+</style>
 </head>
+
 <body>
+<div class="box">
+  <h2>📘 A1 Dictionary</h2>
 
-<div class="container">
-  <h1>📘 A1 Dictionary</h1>
+  <input id="search" placeholder="Type a word">
+  <button onclick="searchWord()">Search</button>
 
-  <input id="wordInput" type="text" placeholder="Type a word..." />
-
-  <button onclick="searchWord()">🔍 Search</button>
-  <button class="secondary" onclick="speakWord()">🔊 Pronunciation</button>
-  <button class="secondary" onclick="saveWord()">⭐ Save</button>
-  <button class="secondary" onclick="location.href='progress.html'">📊 Progress</button>
-  <button class="secondary" onclick="toggleDark()">🌙 Dark</button>
-
-  <div id="result" class="result" style="display:none"></div>
+  <div id="result" class="result"></div>
 </div>
 
 <script src="app.js"></script>
