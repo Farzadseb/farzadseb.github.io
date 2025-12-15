@@ -1,15 +1,36 @@
 <!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><title>Progress</title></head>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A1 Progress</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-<h2>Your Progress</h2>
-<pre id="out"></pre>
 
-<script>
-out.textContent = JSON.stringify({
-  savedWords: JSON.parse(localStorage.getItem("savedWords")||"{}"),
-  seenWords: JSON.parse(localStorage.getItem("seenWords")||"{}")
-},null,2);
-</script>
+<div class="container">
+  <h1>📊 My Progress (A1)</h1>
+
+  <div class="result">
+    <p><b>Total saved words:</b> <span id="total">0</span></p>
+    <p><b>Due today:</b> <span id="due">0</span></p>
+    <p><b>Progress:</b> <span id="percent">0%</span></p>
+  </div>
+
+  <div class="result">
+    <h3>Leitner Boxes</h3>
+    <ul>
+      <li>Box 1: <span id="b1">0</span></li>
+      <li>Box 2: <span id="b2">0</span></li>
+      <li>Box 3: <span id="b3">0</span></li>
+      <li>Box 4: <span id="b4">0</span></li>
+      <li>Box 5: <span id="b5">0</span></li>
+    </ul>
+  </div>
+
+  <button class="secondary" onclick="location.href='index.html'">⬅ Back</button>
+</div>
+
+<script src="progress.js"></script>
 </body>
 </html>
