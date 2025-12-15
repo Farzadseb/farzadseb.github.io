@@ -2,35 +2,27 @@ const DICT_URL = "pdcs_a1.json";
 let DICT = {};
 
 fetch(DICT_URL)
-  .then(r => r.json())
-  .then(d => {
-    DICT = d;
-    console.log("Dictionary loaded", Object.keys(DICT).length);
+  .then(res => res.json())
+  .then(data => {
+    DICT = data;
+    console.log("Dictionary loaded", DICT);
   });
 
 function searchWord(){
-  const input = document.getElementById("search").value
-    .trim()
-    .toLowerCase();
-
+  const w = document.getElementById("search").value.trim().toLowerCase();
   const result = document.getElementById("result");
 
-  if(!input){
-    result.innerHTML = "";
-    return;
-  }
-
-  if(!DICT[input]){
+  if(!DICT[w]){
     result.innerHTML = "❌ Not found";
     return;
   }
 
-  const w = DICT[input];
+  const d = DICT[w];
 
   result.innerHTML = `
-    <div class="word">${input}</div>
-    <div>🇮🇷 <b>Fa:</b> ${w.fa}</div>
-    <div>📖 <b>Definition:</b> ${w.definition}</div>
-    <div>✏️ <b>Example:</b> ${w.example}</div>
+    <div class="word">${w}</div>
+    <div class="fa"><b>فارسی:</b> ${d.fa}</div>
+    <div><b>Definition:</b> ${d.definition || "-"}</div>
+    <div><b>Example:</b> ${d.example || "-"}</div>
   `;
 }
