@@ -1,27 +1,17 @@
 {
-  "get": {
-    "fa": "گرفتن / شدن",
-    "example": {
-      "en": "I get tired.",
-      "fa": "من خسته می‌شوم."
-    },
-    "collocations": [
-      { "en": "get ready", "fa": "آماده شدن" },
-      { "en": "get a job", "fa": "شغل پیدا کردن" }
-    ],
-    "phrasal": [
-      { "en": "get up", "fa": "بلند شدن" }
-    ]
+  "book": {
+    "fa": "کتاب",
+    "definition": "a set of written pages",
+    "example": "This book is interesting."
   },
   "be": {
     "fa": "بودن",
-    "example": {
-      "en": "I want to be happy.",
-      "fa": "من می‌خواهم خوشحال باشم."
-    },
-    "collocations": [
-      { "en": "be ready", "fa": "آماده بودن" }
-    ],
-    "phrasal": []
+    "definition": "to exist or live",
+    "example": "I want to be happy."
+  },
+  "am": {
+    "fa": "هستم",
+    "definition": "form of be used with I",
+    "example": "I am ready."
   }
 }
