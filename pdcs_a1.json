@@ -1,20 +1,27 @@
 {
-  "be": {
-    "fa": "بودن",
-    "example": "I want to be happy.",
-    "collocations": [
-      {"en":"be ready","fa":"آماده بودن"}
-    ],
-    "phrasal":[]
-  },
   "get": {
     "fa": "گرفتن / شدن",
-    "example": "I get tired.",
-    "collocations":[
-      {"en":"get ready","fa":"آماده شدن"}
+    "example": {
+      "en": "I get tired.",
+      "fa": "من خسته می‌شوم."
+    },
+    "collocations": [
+      { "en": "get ready", "fa": "آماده شدن" },
+      { "en": "get a job", "fa": "شغل پیدا کردن" }
     ],
-    "phrasal":[
-      {"en":"get up","fa":"بلند شدن"}
+    "phrasal": [
+      { "en": "get up", "fa": "بلند شدن" }
     ]
+  },
+  "be": {
+    "fa": "بودن",
+    "example": {
+      "en": "I want to be happy.",
+      "fa": "من می‌خواهم خوشحال باشم."
+    },
+    "collocations": [
+      { "en": "be ready", "fa": "آماده بودن" }
+    ],
+    "phrasal": []
   }
 }
