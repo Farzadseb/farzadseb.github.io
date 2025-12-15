@@ -2,51 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>PDCS Dictionary</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-body{
-  font-family: system-ui, sans-serif;
-  background:#f2f2f2;
-  padding:20px;
-}
-.box{
-  max-width:600px;
-  margin:auto;
-  background:#fff;
-  padding:20px;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.1);
-}
-input,button{
-  width:100%;
-  padding:16px;
-  font-size:18px;
-  margin-top:10px;
-}
-button{
-  background:#f7b500;
-  border:none;
-  border-radius:12px;
-}
-.result{
-  margin-top:20px;
-}
-.word{font-size:26px;font-weight:bold}
-.fa{font-size:20px}
-.ex{margin-top:10px;color:#333}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A1 Dictionary</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<div class="box">
-  <h2>📘 PDCS Dictionary</h2>
 
-  <input id="search" placeholder="Type a word (be, am, book)">
-  <button onclick="searchWord()">Search</button>
+<div class="container">
+  <h1>📘 A1 Dictionary</h1>
 
-  <div id="result" class="result"></div>
+  <input id="wordInput" type="text" placeholder="Type a word..." />
+
+  <button onclick="searchWord()">🔍 Search</button>
+  <button class="secondary" onclick="speakWord()">🔊 Pronunciation</button>
+  <button class="secondary" onclick="saveWord()">⭐ Save</button>
+  <button class="secondary" onclick="toggleDark()">🌙 Dark</button>
+
+  <div id="result" class="result" style="display:none"></div>
 </div>
 
 <script src="app.js"></script>
