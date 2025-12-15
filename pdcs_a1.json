@@ -1,8 +1,17 @@
 {
-  "dictionary": {
-    "be": {"fa":"بودن","example":"I want to be happy.","example_fa":"من می‌خواهم خوشحال باشم."},
-    "am": {"fa":"هستم","example":"I am ready.","example_fa":"من آماده هستم."},
-    "is": {"fa":"هست","example":"She is here.","example_fa":"او اینجاست."},
-    "are": {"fa":"هستید / هستند","example":"They are friends.","example_fa":"آن‌ها دوست هستند."}
+  "be": {
+    "fa": "بودن",
+    "definition": "to exist or live",
+    "example": "I want to be happy."
+  },
+  "am": {
+    "fa": "هستم",
+    "definition": "form of be for I",
+    "example": "I am ready."
+  },
+  "book": {
+    "fa": "کتاب",
+    "definition": "a set of written pages",
+    "example": "This book is interesting."
   }
 }
