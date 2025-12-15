@@ -4,41 +4,26 @@
 <meta charset="UTF-8">
 <title>A1 Dictionary</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body{
-  font-family: system-ui;
-  background:#f2f2f2;
-  padding:20px;
-}
-.box{
-  max-width:500px;
-  margin:auto;
-  background:#fff;
-  padding:20px;
-  border-radius:16px;
-}
-input,button{
-  width:100%;
-  padding:14px;
-  font-size:18px;
-  margin-top:10px;
-}
-.result{
-  margin-top:20px;
-  font-size:18px;
-}
-.word{font-size:28px;font-weight:bold}
-</style>
+
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 <div class="box">
-  <h2>📘 A1 Dictionary</h2>
+  <h1>📘 A1 Dictionary</h1>
 
-  <input id="search" placeholder="Type a word">
-  <button onclick="searchWord()">Search</button>
+  <input id="searchInput" placeholder="Type a word..." />
+  <button onclick="searchWord()">🔍 Search</button>
 
-  <div id="result" class="result"></div>
+  <div id="result"></div>
+
+  <hr>
+
+  <button onclick="location.href='quiz_a1.html'">📝 Quiz</button>
+  <button onclick="location.href='progress.html'">📊 Progress</button>
+  <button onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
+  <button onclick="location.href='pdf.html'">📄 PDF</button>
+  <button onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
 </div>
 
 <script src="app.js"></script>
