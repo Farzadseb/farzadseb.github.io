@@ -9,51 +9,51 @@
 body{
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   background:#f2f2f2;
-  margin:0;
   padding:20px;
 }
 .box{
-  max-width:520px;
+  max-width:500px;
   margin:auto;
   background:#fff;
   padding:20px;
   border-radius:16px;
   box-shadow:0 10px 30px rgba(0,0,0,.1);
 }
-h1{text-align:center}
-input{
+input,button{
   width:100%;
-  padding:18px;
-  font-size:22px;
+  padding:14px;
+  font-size:18px;
+  margin-top:10px;
   border-radius:12px;
   border:1px solid #ccc;
 }
 button{
-  width:100%;
-  margin-top:12px;
-  padding:16px;
-  font-size:20px;
+  background:#f4b400;
   border:none;
-  border-radius:12px;
-  background:#f5b400;
+  font-weight:bold;
 }
-#result{
+.result{
   margin-top:20px;
-  font-size:18px;
-  line-height:1.6;
+  font-size:17px;
 }
-.word{font-size:26px;font-weight:bold}
+.word{
+  font-size:26px;
+  font-weight:bold;
+}
+.fa{
+  direction:rtl;
+}
 </style>
 </head>
 
 <body>
 <div class="box">
-  <h1>📘 PDCS Dictionary</h1>
+  <h2>📘 PDCS Dictionary</h2>
 
-  <input id="search" placeholder="Type a word..." />
+  <input id="search" placeholder="Type a word">
   <button onclick="searchWord()">Search</button>
 
-  <div id="result"></div>
+  <div id="result" class="result"></div>
 </div>
 
 <script src="app.js"></script>
