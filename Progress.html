@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="fa"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>📊 پیشرفت</title>
-<style>body{font-family:system-ui;background:#f9fafb;padding:16px}.card{background:#fff;border-radius:16px;padding:16px;box-shadow:0 8px 20px rgba(0,0,0,.1)}</style>
-</head><body>
-<h1>📊 پیشرفت من</h1>
-<div class="card" id="stats"></div>
+<html>
+<head><meta charset="UTF-8"><title>Progress</title></head>
+<body>
+<h2>Your Progress</h2>
+<pre id="out"></pre>
+
 <script>
-const score=Number(localStorage.getItem("score")||0);
-const words=Object.keys(JSON.parse(localStorage.getItem("savedWords")||"{}")).length;
-document.getElementById("stats").innerHTML=`⭐ امتیاز: ${score}<br>📚 لغات ذخیره‌شده: ${words}`;
-</script></body></html>
+out.textContent = JSON.stringify({
+  savedWords: JSON.parse(localStorage.getItem("savedWords")||"{}"),
+  seenWords: JSON.parse(localStorage.getItem("seenWords")||"{}")
+},null,2);
+</script>
+</body>
+</html>
