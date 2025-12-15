@@ -1,141 +1,75 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PDCS Dictionary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
-:root{--bg:#f8fafc;--card:#fff;--text:#111827;--sub:#374151;--primary:#4f46e5}
-body.dark{--bg:#0f172a;--card:#111827;--text:#e5e7eb;--sub:#9ca3af;--primary:#818cf8}
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui;background:var(--bg);color:var(--text);padding:16px}
-.container{max-width:520px;margin:auto}
-.card{background:var(--card);border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:0 10px 30px rgba(0,0,0,.1)}
-input{width:100%;font-size:24px;padding:16px;border-radius:14px;border:1px solid #ccc;background:transparent;color:var(--text)}
-button{width:100%;padding:16px;font-size:20px;border:none;border-radius:16px;background:var(--primary);color:#fff;margin-top:10px}
-.word{font-size:30px;font-weight:700;text-align:center}
-.meaning{font-size:22px;text-align:center;margin-top:8px}
-.example{font-size:18px;text-align:center;margin-top:10px;color:var(--sub)}
-.phrase{font-size:17px;margin-top:8px}
-.popup{position:fixed;left:12px;right:12px;bottom:12px;background:var(--card);padding:18px;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
-.toggle{position:fixed;top:14px;right:14px;font-size:22px;background:var(--card);border-radius:50%;padding:10px 14px;cursor:pointer}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+  background:#f2f2f2;
+  padding:20px;
+  margin:0
+}
+.box{
+  max-width:600px;
+  margin:auto;
+  background:#fff;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.1)
+}
+h1{text-align:center}
+input{
+  width:100%;
+  padding:16px;
+  font-size:20px;
+  border-radius:10px;
+  border:1px solid #ccc
+}
+button{
+  width:100%;
+  padding:14px;
+  font-size:18px;
+  margin-top:10px;
+  border:none;
+  border-radius:10px;
+  background:#f5b400
+}
+.result{margin-top:20px}
+.word{font-size:28px;font-weight:bold}
+.fa{font-size:22px;margin-top:6px}
+.def{margin-top:6px;color:#555}
+.example{margin-top:8px;font-style:italic}
+.nav{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:20px
+}
 </style>
 </head>
-<body>
-<div class="toggle" onclick="toggleTheme()">🌙</div>
 
-<div class="container">
-  <div class="card">
-    <input id="search" placeholder="لغت را بنویس…" />
-    <button onclick="searchWord()">🔍 جستجو</button>
-    <button onclick="suggest()">🧠 پیشنهاد هوشمند</button>
-    <button onclick="startAdvancedTest()">🎯 تست پیشرفته</button>
-    <button onclick="location.href='progress.html'">📊 پیشرفت</button>
-    <button onclick="location.href='leaderboard.html'">🏆 رتبه‌بندی</button>
-    <button onclick="location.href='pdf.html'">📘 PDF</button>
-    <button onclick="location.href='teacher.html'">🧑‍🏫 تحلیل معلم</button>
-  </div>
+<body>
+<div class="box">
+<h1>📘 PDCS Dictionary</h1>
+
+<input id="search" placeholder="Type a word (A1)" />
+<button onclick="searchWord()">Search</button>
+
+<div id="result" class="result"></div>
+
+<div class="nav">
+  <button onclick="startMatch('A1')">🎮 Match A1</button>
+  <button onclick="location.href='quiz_a1.html'">📝 Quiz</button>
+  <button onclick="location.href='progress.html'">📊 Progress</button>
+  <button onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
+  <button onclick="location.href='pdf.html'">📄 PDF</button>
+  <button onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
+</div>
 </div>
 
-<div id="popup" class="popup" style="display:none"></div>
-
-<script>
-/* ====== Telegram (فعلاً همان توکن/آیدی که خودت دادی) ====== */
-const TG_TOKEN = "8553224514:AAG0XXzA8da55jCGXnzStP-0IxHhnfkTPRw";
-const TG_CHAT  = "96991859";
-function sendReport(text){
-  fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`,{
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({chat_id:TG_CHAT,text})
-  });
-}
-
-/* ====== Dictionary ====== */
-let DICT = {};
-fetch("pdcs_a1.json").then(r=>r.json()).then(d=>DICT=d.dictionary||d);
-
-function normalize(t){return t.trim().toLowerCase();}
-
-function speak(text){
-  if(!window.speechSynthesis) return;
-  const u=new SpeechSynthesisUtterance(text);
-  u.lang="en-US"; u.rate=0.7;
-  speechSynthesis.cancel(); speechSynthesis.speak(u);
-}
-
-function searchWord(){
-  const q=normalize(document.getElementById("search").value);
-  const pop=document.getElementById("popup");
-  if(!q) return;
-  const w=DICT[q];
-  if(!w){ pop.innerHTML="<div class='meaning'>❌ معنی در دیکشنری نیست</div>"; pop.style.display="block"; return; }
-  speak(q);
-  let html=`<div class="word">${q}</div><div class="meaning">${w.fa}</div>`;
-  if(w.example) html+=`<div class="example">${w.example}</div>`;
-  if(w.example_fa) html+=`<div class="example">${w.example_fa}</div>`;
-  if(w.phrases) w.phrases.forEach(p=>html+=`<div class="phrase">🔹 ${p.en} — ${p.fa}</div>`);
-  html+=`<button onclick="saveWord('${q}')">💾 ذخیره لغت</button>`;
-  pop.innerHTML=html; pop.style.display="block";
-}
-
-function saveWord(w){
-  let s=JSON.parse(localStorage.getItem("savedWords")||"{}"); s[w]=true;
-  localStorage.setItem("savedWords",JSON.stringify(s));
-}
-
-/* ====== Smart Suggest ====== */
-function getNextSmartWord(){
-  const saved=JSON.parse(localStorage.getItem("savedWords")||"{}");
-  const fails=JSON.parse(localStorage.getItem("wordFail")||"{}");
-  let best=null,score=-1;
-  for(const w in DICT){
-    let s=(saved[w]?2:0)+(fails[w]?fails[w]*3:0);
-    if(s>score){score=s;best=w;}
-  }
-  return best||Object.keys(DICT)[0];
-}
-function suggest(){
-  const w=getNextSmartWord();
-  document.getElementById("search").value=w; searchWord();
-}
-
-/* ====== Advanced Test ====== */
-let adv={i:0,score:0,list:[]};
-function startAdvancedTest(){
-  adv.i=0; adv.score=0;
-  const fails=Object.keys(JSON.parse(localStorage.getItem("wordFail")||"{}"));
-  const saved=Object.keys(JSON.parse(localStorage.getItem("savedWords")||"{}"));
-  adv.list=[...fails.slice(0,3),...saved.slice(0,2)];
-  if(!adv.list.length) adv.list=[Object.keys(DICT)[0]];
-  runAdvanced();
-}
-function runAdvanced(){
-  if(adv.i>=adv.list.length){ finishAdvanced(); return; }
-  const w=adv.list[adv.i], item=DICT[w];
-  popup.innerHTML=`<div class="word">${w}</div>
-  <input id="ans" placeholder="معنی فارسی">
-  <button onclick="checkAdvanced('${w}','${item.fa}')">بررسی</button>`;
-  popup.style.display="block";
-}
-function checkAdvanced(w,correct){
-  const v=document.getElementById("ans").value.trim();
-  let fails=JSON.parse(localStorage.getItem("wordFail")||"{}");
-  if(v===correct){adv.score++;} else {fails[w]=(fails[w]||0)+1; localStorage.setItem("wordFail",JSON.stringify(fails));}
-  adv.i++; runAdvanced();
-}
-function finishAdvanced(){
-  localStorage.setItem("score",Number(localStorage.getItem("score")||0)+adv.score);
-  sendReport(`🎯 Advanced Test\nScore: ${adv.score}/${adv.list.length}`);
-  alert("پایان تست");
-}
-
-/* ====== Theme ====== */
-function toggleTheme(){
-  document.body.classList.toggle("dark");
-  localStorage.setItem("theme",document.body.classList.contains("dark")?"dark":"light");
-}
-if(localStorage.getItem("theme")==="dark"){document.body.classList.add("dark");}
-</script>
+<script src="app.js"></script>
 </body>
 </html>
