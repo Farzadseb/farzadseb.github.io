@@ -1,17 +1,20 @@
 {
   "be": {
     "fa": "بودن",
-    "definition": "to exist or live",
-    "example": "I want to be happy."
+    "example": "I want to be happy.",
+    "collocations": [
+      {"en":"be ready","fa":"آماده بودن"}
+    ],
+    "phrasal":[]
   },
-  "am": {
-    "fa": "هستم",
-    "definition": "form of be for I",
-    "example": "I am ready."
-  },
-  "book": {
-    "fa": "کتاب",
-    "definition": "a set of written pages",
-    "example": "This book is interesting."
+  "get": {
+    "fa": "گرفتن / شدن",
+    "example": "I get tired.",
+    "collocations":[
+      {"en":"get ready","fa":"آماده شدن"}
+    ],
+    "phrasal":[
+      {"en":"get up","fa":"بلند شدن"}
+    ]
   }
 }
