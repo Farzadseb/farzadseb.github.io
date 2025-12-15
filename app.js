@@ -1,45 +1,57 @@
 const DICT_URL = "pdcs_a1.json";
 
 let DICT = {};
-let dictLoaded = false;
 
 fetch(DICT_URL)
-  .then(res => res.json())
-  .then(data => {
-    DICT = data;
-    dictLoaded = true;
+  .then(r => r.json())
+  .then(d => {
+    DICT = d;
     console.log("Dictionary loaded", Object.keys(DICT).length);
   })
-  .catch(err => {
-    alert("Dictionary load error");
-    console.error(err);
-  });
+  .catch(e => alert("❌ Dictionary not loaded"));
 
-function searchWord() {
-  if (!dictLoaded) {
-    alert("Dictionary is loading, try again");
-    return;
-  }
+function normalize(word){
+  return word
+    .toLowerCase()
+    .trim();
+}
 
-  let input = document.getElementById("search").value.trim().toLowerCase();
-  let result = document.getElementById("result");
+function searchWord(){
+  const input = document.getElementById("searchInput");
+  const result = document.getElementById("result");
 
-  if (!input) {
+  let w = normalize(input.value);
+
+  if(!w){
     result.innerHTML = "";
     return;
   }
 
-  if (!DICT[input]) {
-    alert("Not in dictionary");
+  if(!DICT[w]){
+    result.innerHTML = "❌ Not in dictionary";
     return;
   }
 
-  let w = DICT[input];
+  const item = DICT[w];
 
   result.innerHTML = `
-    <h2>${input}</h2>
-    <p>🇮🇷 ${w.fa}</p>
-    <p>📘 ${w.definition}</p>
-    <p>✏️ ${w.example}</p>
+    <h2>${w}</h2>
+    <p>🇮🇷 ${item.fa}</p>
+    <p>📘 ${item.definition}</p>
+    <p>✏️ ${item.example}</p>
   `;
+
+  saveToLeitner(w);
+}
+
+function saveToLeitner(word){
+  let L = JSON.parse(localStorage.getItem("leitner") || "{}");
+
+  if(!L[word]){
+    L[word] = {
+      box: 1,
+      last: Date.now()
+    };
+    localStorage.setItem("leitner", JSON.stringify(L));
+  }
 }
