@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="fa"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏆 رتبه‌بندی</title>
+<style>body{font-family:system-ui;background:#f3f4f6;padding:16px}.card{background:#fff;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:0 8px 20px rgba(0,0,0,.1)}</style>
+</head><body>
+<h1>🏆 رتبه‌بندی</h1><div id="list"></div>
+<script>
+const lb=JSON.parse(localStorage.getItem("leaderboard")||"[]");
+const list=document.getElementById("list");
+if(!lb.length){list.innerHTML="<div class='card'>داده‌ای نیست</div>";}
+else lb.forEach((u,i)=>list.innerHTML+=`<div class="card">#${i+1} ${u.name} — ⭐ ${u.score}</div>`);
+</script></body></html>
