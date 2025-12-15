@@ -7,12 +7,12 @@
 
 <style>
 body{
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: system-ui, sans-serif;
   background:#f2f2f2;
   padding:20px;
 }
 .box{
-  max-width:500px;
+  max-width:600px;
   margin:auto;
   background:#fff;
   padding:20px;
@@ -21,28 +21,21 @@ body{
 }
 input,button{
   width:100%;
-  padding:14px;
+  padding:16px;
   font-size:18px;
   margin-top:10px;
-  border-radius:12px;
-  border:1px solid #ccc;
 }
 button{
-  background:#f4b400;
+  background:#f7b500;
   border:none;
-  font-weight:bold;
+  border-radius:12px;
 }
 .result{
   margin-top:20px;
-  font-size:17px;
 }
-.word{
-  font-size:26px;
-  font-weight:bold;
-}
-.fa{
-  direction:rtl;
-}
+.word{font-size:26px;font-weight:bold}
+.fa{font-size:20px}
+.ex{margin-top:10px;color:#333}
 </style>
 </head>
 
@@ -50,7 +43,7 @@ button{
 <div class="box">
   <h2>📘 PDCS Dictionary</h2>
 
-  <input id="search" placeholder="Type a word">
+  <input id="search" placeholder="Type a word (be, am, book)">
   <button onclick="searchWord()">Search</button>
 
   <div id="result" class="result"></div>
