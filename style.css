@@ -1,130 +1,116 @@
 * {
   box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 }
 
 body {
   margin: 0;
   background: #f4f6fb;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #222;
+  direction: ltr;
 }
 
 .box {
-  max-width: 540px;
-  margin: auto;
-  padding: 20px 16px 40px;
+  max-width: 520px;
+  margin: 24px auto;
+  padding: 16px;
 }
 
-/* title */
 h1 {
   text-align: center;
-  margin-bottom: 18px;
-  font-size: 26px;
+  margin-bottom: 16px;
+  font-size: 1.6rem;
 }
 
-/* input */
 input {
   width: 100%;
-  padding: 18px;
-  font-size: 18px;
+  padding: 14px;
+  font-size: 1.1rem;
   border-radius: 14px;
-  border: 1px solid #d0d7e2;
+  border: 2px solid #ddd;
   outline: none;
-  margin-bottom: 20px;
 }
 
-/* result wrapper */
-#result {
-  margin-bottom: 28px;
+input:focus {
+  border-color: #7b8cff;
 }
 
-/* main card */
-.card {
-  background: #fff;
-  border-radius: 18px;
-  padding: 22px 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  position: relative;
-}
-
-/* blue side line */
-.card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 16px;
-  bottom: 16px;
-  width: 5px;
-  border-radius: 5px;
-  background: linear-gradient(180deg,#3b82f6,#2563eb);
-}
-
-/* word */
-.word {
-  font-size: 28px;
-  margin: 0;
-  color: #2563eb;
-}
-
-/* persian meaning */
-.fa {
-  direction: rtl;
-  text-align: right;
-  font-size: 20px;
-  margin-top: 6px;
-  color: #111;
-}
-
-/* section block */
-.section {
-  margin-top: 18px;
-}
-
-.section b {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 15px;
-  color: #374151;
-}
-
-/* english text */
-.en {
-  direction: ltr;
-  text-align: left;
-  font-size: 17px;
-  background: #f1f5ff;
-  padding: 12px 14px;
-  border-radius: 12px;
-  margin-bottom: 6px;
-}
-
-/* persian text under english */
-.section .fa {
-  background: #f8fafc;
-  padding: 12px 14px;
-  border-radius: 12px;
-  font-size: 17px;
-}
-
-/* collocation pair */
-.pair {
-  margin-bottom: 10px;
-}
-
-/* nav buttons */
-.nav {
+button {
   width: 100%;
-  padding: 16px;
+  padding: 14px;
   margin-top: 12px;
-  border: none;
   border-radius: 16px;
-  background: #e5e7eb;
-  font-size: 18px;
+  border: none;
+  font-size: 1.05rem;
   cursor: pointer;
 }
 
-/* mobile comfort */
-@media (max-width: 480px) {
-  .word { font-size: 26px; }
-  input { font-size: 17px; }
+button.search {
+  background: #7b8cff;
+  color: white;
+}
+
+button.search:hover {
+  background: #6a7bff;
+}
+
+.mute-btn {
+  margin-top: 10px;
+  background: #eee;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* RESULT CARD */
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  margin-top: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.word {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.fa {
+  direction: rtl;
+  text-align: right;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.section {
+  margin-top: 14px;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.en {
+  direction: ltr;
+  font-size: 1.05rem;
+}
+
+.fa-text {
+  direction: rtl;
+  font-size: 1.05rem;
+  color: #333;
+}
+
+/* NAV BUTTONS */
+.nav {
+  background: #5f74ff;
+  color: white;
+  margin-top: 14px;
+}
+
+.nav:hover {
+  background: #4e63ff;
 }
