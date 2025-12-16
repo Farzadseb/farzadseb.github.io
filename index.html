@@ -4,13 +4,39 @@
   <meta charset="UTF-8">
   <title>A1 Dictionary</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Main Style -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Force Bigger Text (override) -->
+  <style>
+    .word {
+      font-size: 3.2rem !important;
+    }
+
+    .en, .fa-text {
+      font-size: 2.2rem !important;
+      line-height: 1.7 !important;
+    }
+
+    .section-title {
+      font-size: 2rem !important;
+    }
+
+    .box {
+      max-width: 70%;
+      margin: 14px auto;
+      padding: 26px;
+    }
+  </style>
 </head>
 
 <body>
 
+  <!-- Title -->
   <h1 class="title">📘 A1 Dictionary</h1>
 
+  <!-- Search -->
   <input
     id="searchInput"
     type="search"
@@ -20,10 +46,21 @@
     onkeydown="if(event.key==='Enter'){searchWord()}"
   />
 
+  <!-- Result -->
   <div id="result"></div>
 
+  <!-- Audio Control -->
   <button id="muteBtn">🔇 Mute</button>
 
+  <!-- Leitner -->
+  <button
+    onclick="location.href='leitner.html'"
+    style="font-size:20px;margin:20px 0;"
+  >
+    ⭐ Leitner Review
+  </button>
+
+  <!-- Navigation -->
   <div class="nav-grid">
     <button onclick="location.href='progress.html'">📊 Progress</button>
     <button onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
@@ -31,6 +68,8 @@
     <button onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
   </div>
 
+  <!-- Logic -->
   <script src="app.js"></script>
+
 </body>
 </html>
