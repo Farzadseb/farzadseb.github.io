@@ -2,32 +2,33 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
   background: #f6f8ff;
   margin: 0;
-  padding: 24px;
+  padding: 20px;
   text-align: center;
 }
 
 /* ---------- Title ---------- */
 .title {
-  font-size: 40px; /* قبلاً 32 */
-  margin-bottom: 24px;
+  font-size: 38px;
+  margin-bottom: 26px;
+  font-weight: 700;
 }
 
 /* ---------- Search ---------- */
 #searchInput {
-  width: 92%;
-  max-width: 520px;
-  font-size: 26px; /* قبلاً 22 */
-  padding: 18px;
-  border-radius: 18px;
-  border: 3px solid #7aa2ff;
+  width: 85%;              /* از راست کمتر شد */
+  max-width: 480px;
+  font-size: 28px;         /* متن داخل کادر بزرگ‌تر */
+  padding: 18px 20px;
+  border-radius: 22px;
+  border: 4px solid #7aa2ff;
   outline: none;
 }
 
 /* ---------- Result Card ---------- */
 .card {
   background: white;
-  border-radius: 28px;
-  padding: 32px;
+  border-radius: 30px;
+  padding: 34px;
   margin: 36px auto;
   max-width: 760px;
   text-align: left;
@@ -35,16 +36,17 @@ body {
 
 /* ---------- Word Header ---------- */
 .word {
-  font-size: 42px; /* قبلاً 34 */
-  font-weight: bold;
+  font-size: 42px;         /* book / go */
+  font-weight: 800;
   margin-bottom: 6px;
 }
 
 .fa {
-  font-size: 32px; /* قبلاً 26 */
+  font-size: 30px;
   direction: rtl;
   text-align: right;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
+  color: #444;
 }
 
 /* ---------- Sections ---------- */
@@ -53,43 +55,40 @@ body {
 }
 
 .section-title {
-  font-size: 28px; /* قبلاً 22 */
-  font-weight: bold;
+  font-size: 26px;
+  font-weight: 700;
   margin-bottom: 14px;
 }
 
 /* ---------- Blue Boxes ---------- */
 .box {
   background: #eaf0ff;
-  border-radius: 20px;
+  border-radius: 22px;
   padding: 22px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
-/* English text */
 .en {
-  font-size: 28px; /* قبلاً 22 */
+  font-size: 26px;        /* انگلیسی */
   direction: ltr;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
-/* Persian text */
 .fa-text {
-  font-size: 28px; /* قبلاً 22 */
+  font-size: 26px;        /* فارسی */
   direction: rtl;
-  margin-top: 12px;
-  line-height: 1.7;
+  margin-top: 10px;
+  line-height: 1.6;
 }
 
 /* ---------- Mute ---------- */
 #muteBtn {
-  font-size: 22px;
-  padding: 14px 26px;
+  font-size: 20px;
+  padding: 12px 22px;
   border-radius: 18px;
   border: none;
   background: #e0e0e0;
-  margin: 30px auto 40px;
-  display: block;
+  margin: 24px 0 36px;
 }
 
 /* ---------- Navigation ---------- */
@@ -102,8 +101,8 @@ body {
 }
 
 .nav-grid button {
-  font-size: 24px; /* قبلاً 20 */
-  padding: 22px;
+  font-size: 22px;
+  padding: 20px;
   border-radius: 22px;
   border: none;
   background: #5b7cff;
