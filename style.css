@@ -1,95 +1,97 @@
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
-  background: #f6f8ff;
+  background: #f4f7ff;
   margin: 0;
-  padding: 20px;
+  padding: 16px;
   text-align: center;
 }
 
 /* ---------- Title ---------- */
 .title {
-  font-size: 32px;
-  margin-bottom: 24px;
+  font-size: 34px;
+  margin-bottom: 18px;
+  font-weight: 700;
 }
 
 /* ---------- Search ---------- */
 #searchInput {
-  width: 85%;
-  max-width: 520px;
+  width: 100%;
+  max-width: 100%;
   font-size: 24px;
-  padding: 18px;
-  border-radius: 20px;
+  padding: 18px 20px;
+  border-radius: 22px;
   border: 3px solid #7aa2ff;
   outline: none;
+  margin-bottom: 20px;
 }
 
 /* ---------- Result Card ---------- */
 .card {
   background: white;
   border-radius: 28px;
-  padding: 32px;
-  margin: 36px auto;
-  max-width: 760px;
+  padding: 24px 18px;
+  margin: 20px auto;
+  max-width: 100%;
   text-align: left;
 }
 
 /* ---------- Word Header ---------- */
 .word {
-  font-size: 38px;
-  font-weight: bold;
-  margin-bottom: 8px;
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 6px;
 }
 
 .fa {
   font-size: 30px;
   direction: rtl;
   text-align: right;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 /* ---------- Sections ---------- */
 .section {
-  margin-top: 28px;
+  margin-top: 26px;
 }
 
 .section-title {
   font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 14px;
+  font-weight: 700;
+  margin-bottom: 12px;
 }
 
-/* ---------- Blue Boxes (اصلاح اصلی اینجاست) ---------- */
+/* ---------- Blue Boxes (مثل نمونه) ---------- */
 .box {
   background: #eaf0ff;
   border-radius: 22px;
-  padding: 24px;
-  margin: 0 auto 18px auto;
-
-  /* 👇👇 فقط عرض کم شده، فونت دست نخورده */
-  width: 70%;
-  max-width: 520px;
+  padding: 22px 20px;
+  margin-bottom: 16px;
+  width: 100%;
 }
 
-/* ---------- Text ---------- */
+/* English text */
 .en {
-  font-size: 26px;
+  font-size: 28px;          /* ⬅⬅ خیلی مهم */
+  line-height: 1.6;
   direction: ltr;
 }
 
+/* Persian text */
 .fa-text {
-  font-size: 26px;
+  font-size: 28px;          /* ⬅⬅ خیلی مهم */
+  line-height: 1.7;
   direction: rtl;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 /* ---------- Mute ---------- */
 #muteBtn {
   font-size: 20px;
   padding: 12px 22px;
-  border-radius: 16px;
+  border-radius: 18px;
   border: none;
-  background: #ddd;
-  margin: 30px auto;
+  background: #e0e0e0;
+  margin: 18px auto 30px;
   display: block;
 }
 
@@ -97,15 +99,15 @@ body {
 .nav-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  max-width: 520px;
-  margin: 40px auto 0;
+  gap: 14px;
+  width: 100%;
+  margin: 10px auto;
 }
 
 .nav-grid button {
   font-size: 22px;
-  padding: 20px;
-  border-radius: 20px;
+  padding: 22px 0;
+  border-radius: 22px;
   border: none;
   background: #5b7cff;
   color: white;
