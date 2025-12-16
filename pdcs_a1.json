@@ -1,18 +1,11 @@
 {
-  "be": {
-    "fa": "بودن",
-    "definition": "to exist",
-    "example_en": "I want to be happy.",
-    "example_fa": "می‌خواهم خوشحال باشم",
-    "collocations": ["be happy", "be ready"],
-    "phrasal": []
-  },
-  "go": {
-    "fa": "رفتن",
-    "definition": "to move to a place",
-    "example_en": "I go to work every day.",
-    "example_fa": "هر روز به سر کار می‌روم",
-    "collocations": ["go home", "go to work"],
-    "phrasal": ["go on"]
+  "book":{
+    "fa":"کتاب",
+    "def":"a set of written pages",
+    "example":"This book is interesting.",
+    "collocations":[
+      {"en":"read a book","fa":"کتاب خواندن"},
+      {"en":"write a book","fa":"کتاب نوشتن"}
+    ]
   }
 }
