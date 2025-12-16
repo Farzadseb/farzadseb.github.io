@@ -1,63 +1,41 @@
-const DICT_URL = "pdcs_a1.json";
-
 let DICT = {};
-let muted = false;
+let mute = false;
 
-// LOAD DICTIONARY
-fetch(DICT_URL)
-  .then(res => res.json())
-  .then(data => {
-    DICT = data;
-    console.log("Dictionary loaded", Object.keys(DICT).length);
-  })
-  .catch(err => {
-    alert("❌ Dictionary file not loaded");
-    console.error(err);
-  });
-
-function speak(word){
-  if(muted) return;
-  let u = new SpeechSynthesisUtterance(word);
-  u.lang = "en-US";
-  speechSynthesis.speak(u);
-}
-
-function toggleMute(){
-  muted = !muted;
-  document.getElementById("muteBtn").innerText =
-    muted ? "🔇 Muted" : "🔊 Sound ON";
-}
+fetch("pdcs_a1.json")
+  .then(r => r.json())
+  .then(d => DICT = d);
 
 function searchWord(){
-  let w = document.getElementById("searchInput").value
-    .trim()
-    .toLowerCase();
-
-  let box = document.getElementById("result");
-  box.innerHTML = "";
+  let w = document.getElementById("searchInput").value.trim().toLowerCase();
+  let result = document.getElementById("result");
 
   if(!DICT[w]){
-    box.innerHTML = "❌ Not found in dictionary";
+    result.innerHTML = "❌ Not found in dictionary";
     return;
   }
 
-  let d = DICT[w];
-  speak(w);
+  let item = DICT[w];
 
-  let html = `
+  result.innerHTML = `
     <h2>${w}</h2>
-    <p>🇮🇷 ${d.fa}</p>
-    <p>📘 ${d.definition}</p>
-    <p>✏️ ${d.example}</p>
+    🇮🇷 ${item.fa}<br><br>
+    📘 ${item.def}<br><br>
+    ✏️ ${item.example}<br><br>
+
+    <b>📌 Collocations</b>
+    <ul>
+      ${item.collocations.map(c=>`<li>${c.en} — ${c.fa}</li>`).join("")}
+    </ul>
+
+    <button onclick="toggleMute()">🔇 Mute</button>
   `;
 
-  if(d.collocations){
-    html += "<h4>📌 Collocations</h4><ul>";
-    d.collocations.forEach(c=>{
-      html += `<li>${c.en} — ${c.fa}</li>`;
-    });
-    html += "</ul>";
+  if(!mute){
+    let u = new SpeechSynthesisUtterance(w);
+    speechSynthesis.speak(u);
   }
+}
 
-  box.innerHTML = html;
+function toggleMute(){
+  mute = !mute;
 }
