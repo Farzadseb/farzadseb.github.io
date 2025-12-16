@@ -1,84 +1,67 @@
-let dict = {};
+let data = {};
 let muted = false;
 
-// load json
 fetch("pdcs_a1.json")
   .then(res => res.json())
-  .then(data => dict = data);
+  .then(json => data = json);
 
-// Enter key support
-document.getElementById("searchInput")
-  .addEventListener("keydown", e => {
-    if (e.key === "Enter") searchWord();
-  });
+function speak(text) {
+  if (muted) return;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US";
+  speechSynthesis.speak(u);
+}
 
 function searchWord() {
-  const word = document
-    .getElementById("searchInput")
-    .value
-    .trim()
-    .toLowerCase();
-
+  const input = document.getElementById("searchInput");
+  const word = input.value.trim().toLowerCase();
   const result = document.getElementById("result");
-  result.innerHTML = "";
 
-  if (!dict[word]) {
-    result.innerHTML = `<div class="card">❌ Not found</div>`;
+  if (!data[word]) {
+    result.innerHTML = "<p class='notfound'>❌ Not found</p>";
     return;
   }
 
-  const d = dict[word];
+  const w = data[word];
+  speak(word);
 
-  if (!muted) {
-    const u = new SpeechSynthesisUtterance(word);
-    u.lang = "en-US";
-    speechSynthesis.speak(u);
+  let html = `
+    <div class="card">
+      <h2 class="word">${word}</h2>
+      <p class="fa">${w.fa}</p>
+
+      <div class="block">
+        <strong>Definition</strong>
+        <p class="en ltr">${w.def}</p>
+      </div>
+
+      <div class="block">
+        <strong>Example</strong>
+        <p class="en ltr">${w.example.en}</p>
+        <p class="fa">${w.example.fa}</p>
+      </div>
+  `;
+
+  if (w.collocations && w.collocations.length) {
+    html += `<div class="block"><strong>Collocations</strong>`;
+    w.collocations.forEach(c => {
+      html += `<p class="en ltr">${c.en}</p><p class="fa">${c.fa}</p>`;
+    });
+    html += `</div>`;
   }
 
-  result.innerHTML = `
-    <div class="card">
-      <h2 class="en">${word}</h2>
+  if (w.phrases && w.phrases.length) {
+    html += `<div class="block"><strong>Phrases</strong>`;
+    w.phrases.forEach(p => {
+      html += `<p class="en ltr">${p.en}</p><p class="fa">${p.fa}</p>`;
+    });
+    html += `</div>`;
+  }
 
-      <div class="fa">${d.fa}</div>
-
-      <div class="section">
-        <strong>Definition</strong>
-        <div class="en">${d.def}</div>
-      </div>
-
-      <div class="section">
-        <strong>Example</strong>
-        <div class="en">${d.example.en}</div>
-        <div class="fa">${d.example.fa}</div>
-      </div>
-
-      ${
-        d.collocations
-          ? `
-          <div class="section">
-            <strong>Collocations</strong>
-            ${d.collocations.map(c =>
-              `<div><span class="en">${c.en}</span> — <span class="fa">${c.fa}</span></div>`
-            ).join("")}
-          </div>`
-          : ""
-      }
-
-      ${
-        d.phrasal
-          ? `
-          <div class="section">
-            <strong>Phrasal Verbs</strong>
-            ${d.phrasal.map(p =>
-              `<div><span class="en">${p.en}</span> — <span class="fa">${p.fa}</span></div>`
-            ).join("")}
-          </div>`
-          : ""
-      }
-
-      <button class="mute" onclick="muted = !muted">
-        🔇 Mute
-      </button>
+  html += `
+      <button class="mute" onclick="muted=!muted">🔇 Mute</button>
     </div>
   `;
+
+  result.innerHTML = html;
 }
