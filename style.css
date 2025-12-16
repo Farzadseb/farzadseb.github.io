@@ -1,114 +1,118 @@
-/* ---------- Global ---------- */
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
   background: #f6f8ff;
   margin: 0;
   padding: 24px;
   text-align: center;
-  line-height: 1.6;
+  font-size: 18px; /* پایه */
 }
 
-/* ---------- Title ---------- */
+/* ===== TITLE ===== */
 .title {
-  font-size: 38px;        /* بزرگ‌تر */
-  font-weight: 700;
-  margin-bottom: 26px;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 24px;
 }
 
-/* ---------- Search ---------- */
+/* ===== SEARCH INPUT ===== */
 #searchInput {
-  width: 92%;
+  width: 100%;
   max-width: 520px;
-  font-size: 26px;        /* فونت داخل کادر بزرگ */
-  padding: 16px 18px;    /* از راست کمتر شد */
-  border-radius: 18px;
-  border: 3px solid #7aa2ff;
+  font-size: 1.6rem;          /* 🔥 بزرگ‌تر */
+  padding: 18px 20px;         /* 🔥 راست کمتر */
+  border-radius: 20px;
+  border: 4px solid #7aa2ff;
   outline: none;
-  text-align: left;
+  margin-bottom: 24px;
 }
 
-/* ---------- Result Card ---------- */
+/* ===== RESULT CARD ===== */
 .card {
-  background: white;
-  border-radius: 26px;
-  padding: 30px;
-  margin: 34px auto;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 28px;
+  margin: 30px auto;
   max-width: 760px;
   text-align: left;
 }
 
-/* ---------- Word Header ---------- */
+/* ===== WORD ===== */
 .word {
-  font-size: 42px;        /* خود کلمه خیلی خوانا */
+  font-size: 2.4rem;          /* 🔥 خیلی واضح */
   font-weight: 800;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
+/* ===== FA WORD ===== */
 .fa {
-  font-size: 30px;        /* فارسی درشت‌تر */
+  font-size: 1.8rem;
   direction: rtl;
   text-align: right;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
-/* ---------- Sections ---------- */
+/* ===== SECTIONS ===== */
 .section {
   margin-top: 26px;
 }
 
 .section-title {
-  font-size: 26px;        /* Definition / Example / ... */
+  font-size: 1.6rem;          /* 🔥 بزرگ‌تر */
   font-weight: 700;
   margin-bottom: 12px;
 }
 
-/* ---------- Blue Boxes ---------- */
+/* ===== BLUE BOX ===== */
 .box {
   background: #eaf0ff;
   border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 16px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
 }
 
-/* English text */
+/* ===== ENGLISH TEXT ===== */
 .en {
-  font-size: 26px;        /* بزرگ‌تر */
+  font-size: 1.6rem;          /* 🔥 بزرگ */
   direction: ltr;
 }
 
-/* Persian text */
+/* ===== FARSI TEXT ===== */
 .fa-text {
-  font-size: 26px;        /* بزرگ‌تر */
+  font-size: 1.6rem;          /* 🔥 بزرگ */
   direction: rtl;
   margin-top: 10px;
 }
 
-/* ---------- Mute ---------- */
+/* ===== MUTE BUTTON ===== */
 #muteBtn {
-  font-size: 20px;
+  font-size: 1.2rem;
   padding: 12px 22px;
   border-radius: 16px;
   border: none;
   background: #e0e0e0;
-  margin: 20px 0 36px;
-  cursor: pointer;
+  margin: 30px 0;
 }
 
-/* ---------- Navigation ---------- */
+/* ===== NAV GRID ===== */
 .nav-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   max-width: 520px;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .nav-grid button {
-  font-size: 22px;        /* دکمه‌ها خوانا */
+  font-size: 1.4rem;          /* 🔥 بزرگ */
   padding: 20px;
   border-radius: 20px;
   border: none;
   background: #5b7cff;
   color: white;
-  cursor: pointer;
 }
