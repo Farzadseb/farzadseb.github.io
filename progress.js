@@ -1,25 +1,31 @@
-// progress.js — FULL A1 LEITNER ENGINE
+const l = JSON.parse(localStorage.getItem("leitner") || "{}");
+const list = document.getElementById("list");
 
-let L = JSON.parse(localStorage.getItem("leitner") || "{}");
-
-let total = Object.keys(L).length;
-let boxes = [0,0,0,0,0];
-let due = 0;
-let now = Date.now();
-
-for(let w in L){
-  let b = L[w].box || 1;
-  boxes[b-1]++;
-
-  let days = [1,2,4,7,999][b-1];
-  if(now - L[w].last > days*86400000){
-    due++;
-  }
+if (!Object.keys(l).length) {
+  list.innerHTML = "<p>No words yet.</p>";
 }
 
-document.getElementById("total").innerText = total;
-document.getElementById("due").innerText = due;
+Object.keys(l).forEach(w=>{
+  const d = document.createElement("div");
+  d.className = "card";
+  d.innerHTML = `
+    <strong>${w}</strong><br>
+    Box: ${l[w].box}<br><br>
+    <button onclick="up('${w}')">✅ Know</button>
+    <button onclick="down('${w}')">❌ Forget</button>
+  `;
+  list.appendChild(d);
+});
 
-for(let i=0;i<5;i++){
-  document.getElementById("box"+(i+1)).innerText = boxes[i];
+function up(w){
+  l[w].box = Math.min(5, l[w].box+1);
+  save();
+}
+function down(w){
+  l[w].box = 1;
+  save();
+}
+function save(){
+  localStorage.setItem("leitner", JSON.stringify(l));
+  location.reload();
 }
