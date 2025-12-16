@@ -1,76 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>A1 Dictionary</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
-
-<style>
-/* ===== HARD OVERRIDE FOR BIG TEXT (همون چیزی که خودت گذاشتی) ===== */
-.box { padding: 26px !important; }
-.en { font-size: 2.2rem !important; line-height: 1.7 !important; direction:ltr !important; }
-.fa-text { font-size: 2.2rem !important; line-height: 1.8 !important; direction:rtl !important; }
-.section-title { font-size: 2rem !important; }
-.word { font-size: 3.2rem !important; }
-.fa { font-size: 2.4rem !important; }
-
-/* کنترل‌های صدا */
-.audio-bar{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  justify-content:center;
-  margin: 14px 0 18px;
-}
-#audioVoice{
-  width: 100%;
-  max-width: 520px;
-  font-size: 18px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  border: 2px solid #7aa2ff;
-  background: white;
-}
-#muteBtn{
-  font-size: 18px;
-  padding: 12px 18px;
-  border-radius: 14px;
-  border: none;
-  background: #e6e6e6;
-}
-#muteBtn.on{
-  background:#ffdddd;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>A1 Dictionary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1 class="title">📘 A1 Dictionary</h1>
+  <h1 class="title">📘 A1 Dictionary</h1>
 
-<input
-  id="searchInput"
-  placeholder="Type a word and press Enter..."
-  onkeydown="if(event.key==='Enter'){searchWord()}"
-/>
+  <input
+    id="searchInput"
+    type="search"
+    inputmode="search"
+    enterkeyhint="search"
+    placeholder="Type a word..."
+    onkeydown="if(event.key==='Enter'){searchWord()}"
+  />
 
-<div class="audio-bar">
-  <button id="muteBtn" type="button">🔊 Sound: ON</button>
-  <select id="audioVoice" title="Voice (optional)">
-    <option value="">Voice: Auto (Recommended)</option>
-  </select>
-</div>
+  <div id="result"></div>
 
-<div id="result"></div>
+  <button id="muteBtn">🔇 Mute</button>
 
-<div class="nav-grid">
-  <button onclick="location.href='progress.html'">📊 Progress</button>
-  <button onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
-  <button onclick="location.href='pdf.html'">📄 PDF</button>
-  <button onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
-</div>
+  <div class="nav-grid">
+    <button onclick="location.href='progress.html'">📊 Progress</button>
+    <button onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
+    <button onclick="location.href='pdf.html'">📄 PDF</button>
+    <button onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
+  </div>
 
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
