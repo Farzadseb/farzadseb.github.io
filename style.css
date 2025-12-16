@@ -1,115 +1,109 @@
-/* ===== RESET ===== */
-* {
-  box-sizing: border-box;
-}
-
-/* ===== BODY ===== */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
   background: #f6f8ff;
   margin: 0;
-  padding: 24px;
+  padding: 20px;
   text-align: center;
-  font-size: 18px; /* پایه */
 }
 
-/* ===== TITLE ===== */
+/* ---------- Title ---------- */
 .title {
-  font-size: 2.2rem;
-  font-weight: 800;
+  font-size: 32px;
   margin-bottom: 24px;
 }
 
-/* ===== SEARCH INPUT ===== */
+/* ---------- Search ---------- */
 #searchInput {
-  width: 100%;
+  width: 85%;
   max-width: 520px;
-  font-size: 1.6rem;          /* 🔥 بزرگ‌تر */
-  padding: 18px 20px;         /* 🔥 راست کمتر */
+  font-size: 24px;
+  padding: 18px;
   border-radius: 20px;
-  border: 4px solid #7aa2ff;
+  border: 3px solid #7aa2ff;
   outline: none;
-  margin-bottom: 24px;
 }
 
-/* ===== RESULT CARD ===== */
+/* ---------- Result Card ---------- */
 .card {
-  background: #ffffff;
+  background: white;
   border-radius: 28px;
-  padding: 28px;
-  margin: 30px auto;
+  padding: 32px;
+  margin: 36px auto;
   max-width: 760px;
   text-align: left;
 }
 
-/* ===== WORD ===== */
+/* ---------- Word Header ---------- */
 .word {
-  font-size: 2.4rem;          /* 🔥 خیلی واضح */
-  font-weight: 800;
+  font-size: 38px;
+  font-weight: bold;
   margin-bottom: 8px;
 }
 
-/* ===== FA WORD ===== */
 .fa {
-  font-size: 1.8rem;
+  font-size: 30px;
   direction: rtl;
   text-align: right;
   margin-bottom: 20px;
 }
 
-/* ===== SECTIONS ===== */
+/* ---------- Sections ---------- */
 .section {
-  margin-top: 26px;
+  margin-top: 28px;
 }
 
 .section-title {
-  font-size: 1.6rem;          /* 🔥 بزرگ‌تر */
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-/* ===== BLUE BOX ===== */
-.box {
-  background: #eaf0ff;
-  border-radius: 20px;
-  padding: 18px 20px;
+  font-size: 26px;
+  font-weight: bold;
   margin-bottom: 14px;
 }
 
-/* ===== ENGLISH TEXT ===== */
+/* ---------- Blue Boxes (اصلاح اصلی اینجاست) ---------- */
+.box {
+  background: #eaf0ff;
+  border-radius: 22px;
+  padding: 24px;
+  margin: 0 auto 18px auto;
+
+  /* 👇👇 فقط عرض کم شده، فونت دست نخورده */
+  width: 70%;
+  max-width: 520px;
+}
+
+/* ---------- Text ---------- */
 .en {
-  font-size: 1.6rem;          /* 🔥 بزرگ */
+  font-size: 26px;
   direction: ltr;
 }
 
-/* ===== FARSI TEXT ===== */
 .fa-text {
-  font-size: 1.6rem;          /* 🔥 بزرگ */
+  font-size: 26px;
   direction: rtl;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
-/* ===== MUTE BUTTON ===== */
+/* ---------- Mute ---------- */
 #muteBtn {
-  font-size: 1.2rem;
+  font-size: 20px;
   padding: 12px 22px;
   border-radius: 16px;
   border: none;
-  background: #e0e0e0;
-  margin: 30px 0;
+  background: #ddd;
+  margin: 30px auto;
+  display: block;
 }
 
-/* ===== NAV GRID ===== */
+/* ---------- Navigation ---------- */
 .nav-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 18px;
   max-width: 520px;
-  margin: 20px auto;
+  margin: 40px auto 0;
 }
 
 .nav-grid button {
-  font-size: 1.4rem;          /* 🔥 بزرگ */
+  font-size: 22px;
   padding: 20px;
   border-radius: 20px;
   border: none;
