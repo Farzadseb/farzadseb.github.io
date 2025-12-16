@@ -1,45 +1,84 @@
-let dictionary = {};
+let dict = {};
+let muted = false;
 
+// load json
 fetch("pdcs_a1.json")
   .then(res => res.json())
-  .then(data => dictionary = data);
+  .then(data => dict = data);
+
+// Enter key support
+document.getElementById("searchInput")
+  .addEventListener("keydown", e => {
+    if (e.key === "Enter") searchWord();
+  });
 
 function searchWord() {
-  const word = document.getElementById("searchInput").value.trim().toLowerCase();
-  const r = document.getElementById("result");
-  r.innerHTML = "";
+  const word = document
+    .getElementById("searchInput")
+    .value
+    .trim()
+    .toLowerCase();
 
-  if (!dictionary[word]) {
-    r.innerHTML = "<p>❌ Not found</p>";
+  const result = document.getElementById("result");
+  result.innerHTML = "";
+
+  if (!dict[word]) {
+    result.innerHTML = `<div class="card">❌ Not found</div>`;
     return;
   }
 
-  saveToLeitner(word);
+  const d = dict[word];
 
-  const d = dictionary[word];
-  r.innerHTML = `
+  if (!muted) {
+    const u = new SpeechSynthesisUtterance(word);
+    u.lang = "en-US";
+    speechSynthesis.speak(u);
+  }
+
+  result.innerHTML = `
     <div class="card">
-      <h2>${word}</h2>
-      <p><strong>FA:</strong> ${d.fa}</p>
-      <p><strong>Definition:</strong> ${d.def}</p>
-      <p><strong>Example:</strong> ${d.example}</p>
-      ${d.collocations.map(c=>`<small>${c.en} — ${c.fa}</small>`).join("<br>")}
+      <h2 class="en">${word}</h2>
+
+      <div class="fa">${d.fa}</div>
+
+      <div class="section">
+        <strong>Definition</strong>
+        <div class="en">${d.def}</div>
+      </div>
+
+      <div class="section">
+        <strong>Example</strong>
+        <div class="en">${d.example.en}</div>
+        <div class="fa">${d.example.fa}</div>
+      </div>
+
+      ${
+        d.collocations
+          ? `
+          <div class="section">
+            <strong>Collocations</strong>
+            ${d.collocations.map(c =>
+              `<div><span class="en">${c.en}</span> — <span class="fa">${c.fa}</span></div>`
+            ).join("")}
+          </div>`
+          : ""
+      }
+
+      ${
+        d.phrasal
+          ? `
+          <div class="section">
+            <strong>Phrasal Verbs</strong>
+            ${d.phrasal.map(p =>
+              `<div><span class="en">${p.en}</span> — <span class="fa">${p.fa}</span></div>`
+            ).join("")}
+          </div>`
+          : ""
+      }
+
+      <button class="mute" onclick="muted = !muted">
+        🔇 Mute
+      </button>
     </div>
   `;
-
-  speak(word);
-}
-
-function speak(text) {
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = "en-US";
-  u.rate = 0.7;
-  speechSynthesis.speak(u);
-}
-
-// Leitner
-function saveToLeitner(word) {
-  const l = JSON.parse(localStorage.getItem("leitner") || "{}");
-  if (!l[word]) l[word] = {box:1};
-  localStorage.setItem("leitner", JSON.stringify(l));
 }
