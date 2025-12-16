@@ -2,64 +2,56 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont;
   background: #f6f8ff;
   margin: 0;
-  padding: 20px;
+  padding: 24px;
   text-align: center;
 }
 
 /* Title */
 .title {
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-size: 40px;
+  margin-bottom: 24px;
 }
 
 /* Search */
 #searchInput {
-  width: 92%;
+  width: 95%;
   max-width: 520px;
-  font-size: 24px;
+  font-size: 28px;
   padding: 18px;
   border-radius: 18px;
   border: 3px solid #7aa2ff;
   outline: none;
 }
 
-/* Card */
+/* Result Card */
 .card {
-  background: #ffffff;
+  background: white;
   border-radius: 26px;
   padding: 28px;
   margin: 30px auto;
-  max-width: 720px;
+  max-width: 760px;
   text-align: left;
 }
 
 /* Word */
 .word {
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 6px;
-}
-
-/* Persian */
-.fa-text-main {
-  font-size: 30px;
-  direction: rtl;
-  text-align: right;
-  margin-bottom: 18px;
-}
-
-/* Sections */
-.section {
-  margin-top: 24px;
-}
-
-.section-title {
-  font-size: 24px;
+  font-size: 42px;
   font-weight: bold;
   margin-bottom: 12px;
 }
 
-/* Blue box */
+/* Sections */
+.section {
+  margin-top: 26px;
+}
+
+.section-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Blue boxes */
 .box {
   background: #eaf0ff;
   border-radius: 18px;
@@ -67,25 +59,27 @@ body {
   margin-bottom: 14px;
 }
 
+/* English */
 .en {
-  font-size: 24px;
+  font-size: 26px;
   direction: ltr;
 }
 
+/* Persian */
 .fa-text {
-  font-size: 24px;
+  font-size: 26px;
   direction: rtl;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 /* Mute */
 #muteBtn {
-  font-size: 20px;
+  font-size: 22px;
   padding: 12px 22px;
   border-radius: 16px;
   border: none;
   background: #ddd;
-  margin-bottom: 32px;
+  margin: 20px 0 30px;
 }
 
 /* Navigation */
