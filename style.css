@@ -1,112 +1,107 @@
-/* ===== RESET ===== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", system-ui, sans-serif;
-}
-
 body {
-  background: #f2f5ff;
-  padding: 16px;
-  font-size: 20px; /* 🔥 دو برابر پایه */
-}
-
-/* ===== HEADER ===== */
-h1 {
-  text-align: center;
-  margin-bottom: 16px;
-  font-size: 28px;
-}
-
-/* ===== SEARCH ===== */
-input {
-  width: 100%;
-  padding: 16px;
-  font-size: 22px;
-  border-radius: 16px;
-  border: 3px solid #6c7cff;
-  outline: none;
-  margin-bottom: 20px;
-}
-
-/* ===== RESULT CARD ===== */
-#result {
-  background: #ffffff;
-  border-radius: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  background: #f6f8ff;
+  margin: 0;
   padding: 20px;
-  margin-bottom: 24px;
+  text-align: center;
 }
 
-/* word */
-.word {
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-/* persian meaning */
-.word-fa {
-  font-size: 26px;
-  margin-bottom: 16px;
-  color: #333;
-}
-
-/* ===== SECTION ===== */
-.section {
+/* Title */
+.title {
+  font-size: 36px;
   margin-bottom: 20px;
 }
 
-.section-title {
-  font-weight: bold;
-  margin-bottom: 8px;
-  font-size: 22px;
+/* Search */
+#searchInput {
+  width: 92%;
+  max-width: 520px;
+  font-size: 24px;
+  padding: 18px;
+  border-radius: 18px;
+  border: 3px solid #7aa2ff;
+  outline: none;
 }
 
-/* ===== BOXES ===== */
-.box-en,
-.box-fa {
-  background: #eaf0ff;
-  border-radius: 14px;
-  padding: 14px;
-  margin-bottom: 8px;
-  font-size: 22px;
-}
-
-.box-en {
-  direction: ltr;
+/* Card */
+.card {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 28px;
+  margin: 30px auto;
+  max-width: 720px;
   text-align: left;
 }
 
-.box-fa {
+/* Word */
+.word {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+/* Persian */
+.fa-text-main {
+  font-size: 30px;
   direction: rtl;
   text-align: right;
+  margin-bottom: 18px;
 }
 
-/* ===== MUTE ===== */
-.mute-btn {
-  width: 100%;
-  padding: 14px;
+/* Sections */
+.section {
+  margin-top: 24px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+/* Blue box */
+.box {
+  background: #eaf0ff;
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.en {
+  font-size: 24px;
+  direction: ltr;
+}
+
+.fa-text {
+  font-size: 24px;
+  direction: rtl;
+  margin-top: 8px;
+}
+
+/* Mute */
+#muteBtn {
   font-size: 20px;
-  border-radius: 14px;
+  padding: 12px 22px;
+  border-radius: 16px;
   border: none;
-  background: #ffdddd;
-  margin-top: 12px;
+  background: #ddd;
+  margin-bottom: 32px;
 }
 
-/* ===== NAV GRID ===== */
+/* Navigation */
 .nav-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 20px;
+  gap: 16px;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
-.nav-btn {
-  background: #6c7cff;
-  color: white;
+.nav-grid button {
+  font-size: 22px;
+  padding: 20px;
+  border-radius: 20px;
   border: none;
-  border-radius: 18px;
-  padding: 18px;
-  font-size: 20px;
+  background: #5b7cff;
+  color: white;
 }
