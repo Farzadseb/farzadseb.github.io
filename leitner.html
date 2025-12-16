@@ -5,42 +5,59 @@
 <title>Leitner Review</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
+
+<style>
+.review-card {
+  background: white;
+  border-radius: 24px;
+  padding: 28px;
+  margin: 30px auto;
+  max-width: 700px;
+  text-align: center;
+}
+
+.review-word {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.review-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.review-buttons button {
+  font-size: 1.8rem;
+  padding: 18px 26px;
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+.correct {
+  background: #4caf50;
+  color: white;
+}
+
+.wrong {
+  background: #f44336;
+  color: white;
+}
+</style>
 </head>
 
 <body>
+
 <h1 class="title">⭐ Leitner Review</h1>
 
-<div id="card"></div>
+<div id="review"></div>
 
-<button onclick="mark(true)">✅ I knew it</button>
-<button onclick="mark(false)">❌ I forgot</button>
+<button onclick="location.href='index.html'" style="font-size:20px">
+⬅ Back to Dictionary
+</button>
 
-<script src="app.js"></script>
-<script>
-let words = getTodayWords();
-let current = 0;
-
-function show() {
-  if (!words.length) {
-    document.getElementById("card").innerHTML = "🎉 Nothing to review today";
-    return;
-  }
-  const w = words[current];
-  document.getElementById("card").innerHTML = `
-    <div class="card">
-      <div class="word">${w}</div>
-      <div class="fa-text">${data[w].fa}</div>
-    </div>
-  `;
-}
-
-function mark(correct) {
-  answerLeitner(words[current], correct);
-  current++;
-  show();
-}
-
-show();
-</script>
+<script src="leitner.js"></script>
 </body>
 </html>
