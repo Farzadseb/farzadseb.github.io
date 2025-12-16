@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Leitner Review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<h1 class="title">⭐ Leitner Review</h1>
+
+<div id="card"></div>
+
+<button onclick="mark(true)">✅ I knew it</button>
+<button onclick="mark(false)">❌ I forgot</button>
+
+<script src="app.js"></script>
+<script>
+let words = getTodayWords();
+let current = 0;
+
+function show() {
+  if (!words.length) {
+    document.getElementById("card").innerHTML = "🎉 Nothing to review today";
+    return;
+  }
+  const w = words[current];
+  document.getElementById("card").innerHTML = `
+    <div class="card">
+      <div class="word">${w}</div>
+      <div class="fa-text">${data[w].fa}</div>
+    </div>
+  `;
+}
+
+function mark(correct) {
+  answerLeitner(words[current], correct);
+  current++;
+  show();
+}
+
+show();
+</script>
+</body>
+</html>
