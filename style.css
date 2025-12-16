@@ -1,60 +1,130 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
   background: #f4f6fb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #222;
 }
 
 .box {
-  max-width: 420px;
+  max-width: 540px;
   margin: auto;
-  padding: 16px;
+  padding: 20px 16px 40px;
 }
 
+/* title */
 h1 {
   text-align: center;
+  margin-bottom: 18px;
+  font-size: 26px;
 }
 
+/* input */
 input {
   width: 100%;
-  padding: 14px;
+  padding: 18px;
   font-size: 18px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  margin-bottom: 14px;
-}
-
-.card {
-  background: white;
-  padding: 16px;
   border-radius: 14px;
-  margin-bottom: 16px;
+  border: 1px solid #d0d7e2;
+  outline: none;
+  margin-bottom: 20px;
 }
 
-.en {
-  direction: ltr;
-  text-align: left;
-  font-size: 18px;
+/* result wrapper */
+#result {
+  margin-bottom: 28px;
 }
 
+/* main card */
+.card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 22px 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  position: relative;
+}
+
+/* blue side line */
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 5px;
+  border-radius: 5px;
+  background: linear-gradient(180deg,#3b82f6,#2563eb);
+}
+
+/* word */
+.word {
+  font-size: 28px;
+  margin: 0;
+  color: #2563eb;
+}
+
+/* persian meaning */
 .fa {
   direction: rtl;
   text-align: right;
-  font-size: 17px;
-  color: #444;
+  font-size: 20px;
+  margin-top: 6px;
+  color: #111;
 }
 
+/* section block */
 .section {
-  margin-top: 12px;
+  margin-top: 18px;
 }
 
-.nav,
-.mute {
-  width: 100%;
-  padding: 14px;
-  margin-top: 10px;
+.section b {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #374151;
+}
+
+/* english text */
+.en {
+  direction: ltr;
+  text-align: left;
+  font-size: 17px;
+  background: #f1f5ff;
+  padding: 12px 14px;
   border-radius: 12px;
+  margin-bottom: 6px;
+}
+
+/* persian text under english */
+.section .fa {
+  background: #f8fafc;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 17px;
+}
+
+/* collocation pair */
+.pair {
+  margin-bottom: 10px;
+}
+
+/* nav buttons */
+.nav {
+  width: 100%;
+  padding: 16px;
+  margin-top: 12px;
   border: none;
+  border-radius: 16px;
+  background: #e5e7eb;
   font-size: 18px;
-  background: #4f6ef7;
-  color: white;
+  cursor: pointer;
+}
+
+/* mobile comfort */
+@media (max-width: 480px) {
+  .word { font-size: 26px; }
+  input { font-size: 17px; }
 }
