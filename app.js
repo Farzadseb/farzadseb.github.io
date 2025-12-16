@@ -1,14 +1,34 @@
 let data = {};
+let muted = false;
 
+// load dictionary
 fetch("pdcs_a1.json")
   .then(res => res.json())
-  .then(json => {
-    data = json;
-    console.log("Dictionary loaded:", Object.keys(data).length);
-  })
-  .catch(err => {
-    console.error("JSON load error:", err);
-  });
+  .then(json => data = json)
+  .catch(err => console.error("JSON load error:", err));
+
+// text to speech
+function speak(text) {
+  if (muted || !text) return;
+
+  speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = "en-US";
+  utter.rate = 0.7;
+
+  // try to pick female voice
+  const voices = speechSynthesis.getVoices();
+  const female = voices.find(v => v.lang === "en-US" && v.name.toLowerCase().includes("female"));
+  if (female) utter.voice = female;
+
+  speechSynthesis.speak(utter);
+}
+
+// mute button
+document.getElementById("muteBtn")?.addEventListener("click", () => {
+  muted = !muted;
+  document.getElementById("muteBtn").innerText = muted ? "🔈 Unmute" : "🔇 Mute";
+});
 
 function searchWord() {
   const input = document.getElementById("searchInput").value.trim().toLowerCase();
@@ -16,16 +36,18 @@ function searchWord() {
   result.innerHTML = "";
 
   if (!data[input]) {
-    result.innerHTML = "<p>❌ Not found</p>";
+    result.innerHTML = "<p style='font-size:22px'>❌ Not found</p>";
     return;
   }
 
   const w = data[input];
 
+  // speak word automatically
+  speak(input);
+
   let html = `
     <div class="card">
       <div class="word">${input}</div>
-      <div class="fa-text-main">${w.fa || ""}</div>
 
       <div class="section">
         <div class="section-title">Definition</div>
@@ -43,7 +65,7 @@ function searchWord() {
       </div>
   `;
 
-  if (Array.isArray(w.collocations)) {
+  if (w.collocations?.length) {
     html += `<div class="section"><div class="section-title">Collocations</div>`;
     w.collocations.forEach(c => {
       html += `
@@ -56,7 +78,7 @@ function searchWord() {
     html += `</div>`;
   }
 
-  if (Array.isArray(w.phrases)) {
+  if (w.phrases?.length) {
     html += `<div class="section"><div class="section-title">Phrases</div>`;
     w.phrases.forEach(p => {
       html += `
@@ -69,7 +91,7 @@ function searchWord() {
     html += `</div>`;
   }
 
-  if (Array.isArray(w.phrasal_verbs)) {
+  if (w.phrasal_verbs?.length) {
     html += `<div class="section"><div class="section-title">Phrasal Verbs</div>`;
     w.phrasal_verbs.forEach(pv => {
       html += `
