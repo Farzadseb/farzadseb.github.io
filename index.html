@@ -8,21 +8,24 @@
 </head>
 
 <body>
-<div class="box">
-  <h1>📘 A1 Dictionary</h1>
 
-  <input
-    id="searchInput"
-    placeholder="Type a word and press Enter"
-    autocomplete="off"
-  />
+<h1 class="title">📘 A1 Dictionary</h1>
 
-  <div id="result"></div>
+<input
+  id="searchInput"
+  placeholder="Type a word and press Enter..."
+  onkeydown="if(event.key==='Enter'){searchWord()}"
+/>
 
-  <button class="nav" onclick="location.href='progress.html'">📊 Progress</button>
-  <button class="nav" onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
-  <button class="nav" onclick="location.href='pdf.html'">📄 PDF</button>
-  <button class="nav" onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
+<div id="result"></div>
+
+<button id="muteBtn">🔇 Mute</button>
+
+<div class="nav-grid">
+  <button onclick="location.href='progress.html'">📊 Progress</button>
+  <button onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
+  <button onclick="location.href='pdf.html'">📄 PDF</button>
+  <button onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
 </div>
 
 <script src="app.js"></script>
