@@ -5,35 +5,21 @@
   <title>A1 Dictionary</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Main Style -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- UI OVERRIDE: Big, Clear, Mobile-First -->
   <style>
-    body {
-      background:#f6f8ff;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont;
-      margin:0;
-      padding:20px;
-      text-align:center;
-    }
+    body { background:#f6f8ff; font-family:system-ui; text-align:center; }
 
-    .title {
-      font-size:3rem;
-      margin-bottom:20px;
-    }
+    .title { font-size:3rem; margin:20px 0; }
 
-    #searchInput {
-      width:90%;
-      max-width:520px;
-      font-size:2.2rem;
-      padding:18px;
+    #searchInput{
+      width:90%; max-width:520px;
+      font-size:2.2rem; padding:18px;
       border-radius:18px;
       border:3px solid #7aa2ff;
-      outline:none;
     }
 
-    .card {
+    .card{
       background:#fff;
       border-radius:26px;
       padding:30px;
@@ -42,40 +28,21 @@
       text-align:left;
     }
 
-    .word {
-      font-size:3.4rem;
-      font-weight:bold;
-      margin-bottom:16px;
-    }
+    .word{ font-size:3.4rem; font-weight:bold; }
+    .section-title{ font-size:2.1rem; margin:18px 0 10px; }
 
-    .section-title {
-      font-size:2.1rem;
-      font-weight:bold;
-      margin:20px 0 10px;
-    }
-
-    .box {
+    .box{
       background:#eaf0ff;
       border-radius:18px;
       padding:24px;
-      margin:12px auto;
+      margin-bottom:14px;
       max-width:70%;
     }
 
-    .en {
-      font-size:2.2rem;
-      direction:ltr;
-      line-height:1.7;
-    }
+    .en{ font-size:2.2rem; direction:ltr; line-height:1.7; }
+    .fa-text{ font-size:2.2rem; direction:rtl; margin-top:8px; }
 
-    .fa-text {
-      font-size:2.2rem;
-      direction:rtl;
-      margin-top:8px;
-      line-height:1.8;
-    }
-
-    #muteBtn {
+    #muteBtn{
       font-size:1.6rem;
       padding:14px 22px;
       border-radius:16px;
@@ -84,15 +51,12 @@
       margin:20px 0;
     }
 
-    .main-actions {
-      display:flex;
-      gap:14px;
-      justify-content:center;
-      flex-wrap:wrap;
+    .actions{
+      display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
       margin:20px 0;
     }
 
-    .main-actions button {
+    .actions button{
       font-size:1.6rem;
       padding:16px 22px;
       border-radius:18px;
@@ -100,64 +64,32 @@
       background:#4caf50;
       color:white;
     }
-
-    .nav-grid {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      max-width:520px;
-      margin:30px auto;
-    }
-
-    .nav-grid button {
-      font-size:1.6rem;
-      padding:18px;
-      border-radius:18px;
-      border:none;
-      background:#5b7cff;
-      color:white;
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- Title -->
-  <h1 class="title">📘 A1 Dictionary</h1>
+<h1 class="title">📘 A1 Dictionary</h1>
 
-  <!-- Search -->
-  <input
-    id="searchInput"
-    type="search"
-    inputmode="search"
-    enterkeyhint="search"
-    placeholder="Type a word and press Enter…"
-    onkeydown="if(event.key==='Enter'){searchWord()}"
-  />
+<input
+  id="searchInput"
+  type="search"
+  inputmode="search"
+  enterkeyhint="search"
+  placeholder="Type a word and press Enter"
+  onkeydown="if(event.key==='Enter'){searchWord()}"
+>
 
-  <!-- Result -->
-  <div id="result"></div>
+<div id="result"></div>
 
-  <!-- Audio -->
-  <button id="muteBtn">🔇 Mute</button>
+<button id="muteBtn">🔇 Mute</button>
 
-  <!-- Main Actions -->
-  <div class="main-actions">
-    <button onclick="addToLeitner()">⭐ Add to Leitner</button>
-    <button onclick="location.href='leitner.html'">📖 Leitner Review</button>
-    <button onclick="location.href='competition.html'">🏁 Competition</button>
-  </div>
+<div class="actions">
+  <button onclick="addToLeitner()">⭐ Add to Leitner</button>
+  <button onclick="location.href='leitner.html'">📖 Leitner Review</button>
+  <button onclick="location.href='competition.html'">🏁 Competition</button>
+</div>
 
-  <!-- Navigation -->
-  <div class="nav-grid">
-    <button onclick="location.href='progress.html'">📊 Progress</button>
-    <button onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
-    <button onclick="location.href='pdf.html'">📄 PDF</button>
-    <button onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
-  </div>
-
-  <!-- Logic -->
-  <script src="app.js"></script>
-
+<script src="app.js"></script>
 </body>
 </html>
