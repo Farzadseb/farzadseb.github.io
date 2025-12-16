@@ -8,25 +8,107 @@
   <!-- Main Style -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Force Bigger Text (override) -->
+  <!-- HARD OVERRIDE: Big & Clear UI -->
   <style>
-    .word {
-      font-size: 3.2rem !important;
+    body { background:#f6f8ff; }
+
+    .title {
+      font-size: 3rem;
+      margin-bottom: 20px;
     }
 
-    .en, .fa-text {
-      font-size: 2.2rem !important;
-      line-height: 1.7 !important;
+    #searchInput {
+      width: 90%;
+      max-width: 520px;
+      font-size: 2.2rem;
+      padding: 18px;
+      border-radius: 18px;
+      border: 3px solid #7aa2ff;
+      outline: none;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 26px;
+      padding: 30px;
+      margin: 30px auto;
+      max-width: 720px;
+    }
+
+    .word {
+      font-size: 3.4rem;
+      font-weight: bold;
+      margin-bottom: 16px;
     }
 
     .section-title {
-      font-size: 2rem !important;
+      font-size: 2.1rem;
+      font-weight: bold;
+      margin: 18px 0 10px;
     }
 
     .box {
+      background: #eaf0ff;
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 14px;
       max-width: 70%;
-      margin: 14px auto;
-      padding: 26px;
+    }
+
+    .en {
+      font-size: 2.2rem;
+      direction: ltr;
+      line-height: 1.7;
+    }
+
+    .fa-text {
+      font-size: 2.2rem;
+      direction: rtl;
+      margin-top: 8px;
+      line-height: 1.8;
+    }
+
+    #muteBtn {
+      font-size: 1.6rem;
+      padding: 14px 22px;
+      border-radius: 16px;
+      border: none;
+      background: #ddd;
+      margin: 20px 0;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      max-width: 520px;
+      margin: 30px auto;
+    }
+
+    .nav-grid button {
+      font-size: 1.6rem;
+      padding: 18px;
+      border-radius: 18px;
+      border: none;
+      background: #5b7cff;
+      color: white;
+    }
+
+    .main-actions {
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin:20px 0;
+    }
+
+    .main-actions button {
+      font-size:1.6rem;
+      padding:16px 22px;
+      border-radius:18px;
+      border:none;
+      background:#4caf50;
+      color:white;
     }
   </style>
 </head>
@@ -42,23 +124,22 @@
     type="search"
     inputmode="search"
     enterkeyhint="search"
-    placeholder="Type a word..."
+    placeholder="Type a word and press Enter…"
     onkeydown="if(event.key==='Enter'){searchWord()}"
   />
 
   <!-- Result -->
   <div id="result"></div>
 
-  <!-- Audio Control -->
+  <!-- Audio -->
   <button id="muteBtn">🔇 Mute</button>
 
-  <!-- Leitner -->
-  <button
-    onclick="location.href='leitner.html'"
-    style="font-size:20px;margin:20px 0;"
-  >
-    ⭐ Leitner Review
-  </button>
+  <!-- Main Actions -->
+  <div class="main-actions">
+    <button onclick="addToLeitner()">⭐ Add to Leitner</button>
+    <button onclick="location.href='leitner.html'">📖 Leitner Review</button>
+    <button onclick="location.href='competition.html'">🏁 Competition</button>
+  </div>
 
   <!-- Navigation -->
   <div class="nav-grid">
