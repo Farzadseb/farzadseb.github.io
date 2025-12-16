@@ -6,18 +6,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
+<body>
 <div class="box">
   <h1>📘 A1 Dictionary</h1>
 
-  <input id="searchInput" placeholder="Type a word..." />
-  <button onclick="searchWord()">🔍 Search</button>
+  <input
+    id="searchInput"
+    placeholder="Type a word and press Enter"
+    autocomplete="off"
+  />
 
   <div id="result"></div>
 
-  <button class="nav" onclick="location.href='quiz_a1.html'">📝 Quiz</button>
-  <button class="nav" onclick="location.href='progress.html'">🧠 Leitner</button>
+  <button class="nav" onclick="location.href='progress.html'">📊 Progress</button>
+  <button class="nav" onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
+  <button class="nav" onclick="location.href='pdf.html'">📄 PDF</button>
+  <button class="nav" onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
 </div>
 
 <script src="app.js"></script>
