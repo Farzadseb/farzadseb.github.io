@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A1 Competition</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+
+<style>
+.quiz-box {
+  max-width: 600px;
+  margin: 30px auto;
+  background: white;
+  padding: 24px;
+  border-radius: 20px;
+  text-align: center;
+}
+.option {
+  background:#eaf0ff;
+  margin:12px 0;
+  padding:18px;
+  border-radius:16px;
+  font-size:1.8rem;
+}
+.option:active { background:#cddcff; }
+.timer { font-size:1.6rem; margin-bottom:12px; }
+</style>
+</head>
+
+<body>
+
+<h1 class="title">🏁 A1 Competition</h1>
+
+<div class="quiz-box">
+  <div class="timer" id="timer">Waiting for opponent... ⏳</div>
+  <div id="question"></div>
+  <div id="options"></div>
+</div>
+
+<script>
+let words = [];
+let correct = "";
+let countdown = 30;
+let started = false;
+
+// load dictionary
+fetch("pdcs_a1.json")
+.then(r=>r.json())
+.then(j=>{
+  words = Object.keys(j);
+});
+
+// wait 30s then start with AI
+const wait = setInterval(()=>{
+  countdown--;
+  document.getElementById("timer").innerText =
+    "Waiting for opponent... " + countdown;
+
+  if(countdown<=0){
+    clearInterval(wait);
+    startQuiz("AI");
+  }
+},1000);
+
+function startQuiz(opponent){
+  started=true;
+  document.getElementById("timer").innerText =
+    "Opponent: " + opponent;
+  nextQuestion();
+}
+
+function nextQuestion(){
+  const w = words[Math.floor(Math.random()*words.length)];
+  fetch("pdcs_a1.json")
+  .then(r=>r.json())
+  .then(d=>{
+    correct = d[w].fa;
+    document.getElementById("question").innerHTML =
+      `<div style="font-size:3rem">${w}</div>`;
+
+    let opts = [correct];
+    while(opts.length<4){
+      const r = d[words[Math.floor(Math.random()*words.length)]].fa;
+      if(!opts.includes(r)) opts.push(r);
+    }
+    opts.sort(()=>Math.random()-0.5);
+
+    document.getElementById("options").innerHTML =
+      opts.map(o=>`<div class="option" onclick="answer('${o}')">${o}</div>`).join("");
+  });
+}
+
+function answer(sel){
+  if(sel===correct){
+    alert("✅ Correct");
+  } else {
+    alert("❌ Wrong");
+  }
+  nextQuestion();
+}
+</script>
+
+</body>
+</html>
