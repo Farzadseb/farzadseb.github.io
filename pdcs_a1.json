@@ -1,28 +1,18 @@
 {
-  "book": {
-    "fa": "کتاب",
-    "definition": "a set of written pages",
-    "example": "This book is interesting.",
-    "collocations": [
-      { "en": "read a book", "fa": "کتاب خواندن" },
-      { "en": "write a book", "fa": "کتاب نوشتن" }
-    ],
-    "phrasal_verbs": [],
-    "pronunciation": "bʊk"
+  "be": {
+    "fa": "بودن",
+    "definition": "to exist",
+    "example_en": "I want to be happy.",
+    "example_fa": "می‌خواهم خوشحال باشم",
+    "collocations": ["be happy", "be ready"],
+    "phrasal": []
   },
-
-  "take": {
-    "fa": "گرفتن",
-    "definition": "to get or accept something",
-    "example": "Take your time.",
-    "collocations": [
-      { "en": "take a break", "fa": "استراحت کردن" },
-      { "en": "take notes", "fa": "یادداشت برداشتن" }
-    ],
-    "phrasal_verbs": [
-      { "en": "take off", "fa": "درآوردن / بلند شدن" },
-      { "en": "take care of", "fa": "مراقبت کردن" }
-    ],
-    "pronunciation": "teɪk"
+  "go": {
+    "fa": "رفتن",
+    "definition": "to move to a place",
+    "example_en": "I go to work every day.",
+    "example_fa": "هر روز به سر کار می‌روم",
+    "collocations": ["go home", "go to work"],
+    "phrasal": ["go on"]
   }
 }
