@@ -3,30 +3,43 @@
   "am": {"fa":"هستم","def":"form of be with I","example":"I am ready.","collocations":[{"en":"I am sure","fa":"من مطمئن هستم"}]},
   "is": {"fa":"هست","def":"form of be with he/she/it","example":"She is here.","collocations":[{"en":"is good","fa":"خوب است"}]},
   "are": {"fa":"هستند / هستید","def":"form of be with you/we/they","example":"They are friends.","collocations":[{"en":"are ready","fa":"آماده هستند"}]},
+
   "have": {"fa":"داشتن","def":"to own something","example":"I have time.","collocations":[{"en":"have time","fa":"وقت داشتن"}]},
-  "do": {"fa":"انجام دادن","def":"to perform an action","example":"I do my work.","collocations":[{"en":"do homework","fa":"تکلیف انجام دادن"}]},
+  "has": {"fa":"دارد","def":"form of have","example":"He has money.","collocations":[{"en":"has a job","fa":"شغل دارد"}]},
+  "do": {"fa":"انجام دادن","def":"to perform","example":"I do my work.","collocations":[{"en":"do homework","fa":"تکلیف انجام دادن"}]},
+  "does": {"fa":"انجام می‌دهد","def":"form of do","example":"She does her job.","collocations":[{"en":"does well","fa":"خوب انجام می‌دهد"}]},
+
   "go": {"fa":"رفتن","def":"to move to another place","example":"I go to school.","collocations":[{"en":"go home","fa":"به خانه رفتن"}]},
   "come": {"fa":"آمدن","def":"to move toward","example":"Come here.","collocations":[{"en":"come back","fa":"برگشتن"}]},
   "get": {"fa":"گرفتن / شدن","def":"to receive","example":"I get a gift.","collocations":[{"en":"get ready","fa":"آماده شدن"}]},
   "make": {"fa":"ساختن","def":"to create","example":"I make food.","collocations":[{"en":"make money","fa":"پول درآوردن"}]},
+  "use": {"fa":"استفاده کردن","def":"to use something","example":"I use my phone.","collocations":[{"en":"use a tool","fa":"ابزار استفاده کردن"}]},
 
-  "say": {"fa":"گفتن","def":"to speak words","example":"She says hello.","collocations":[{"en":"say hello","fa":"سلام گفتن"}]},
-  "tell": {"fa":"گفتن به کسی","def":"to give information","example":"Tell me.","collocations":[{"en":"tell the truth","fa":"حقیقت را گفتن"}]},
-  "ask": {"fa":"پرسیدن","def":"to question","example":"I ask a question.","collocations":[{"en":"ask for help","fa":"کمک خواستن"}]},
-  "answer": {"fa":"جواب دادن","def":"to reply","example":"I answer him.","collocations":[{"en":"answer a question","fa":"جواب دادن"}]},
+  "need": {"fa":"نیاز داشتن","def":"to require","example":"I need help.","collocations":[{"en":"need time","fa":"وقت نیاز داشتن"}]},
+  "want": {"fa":"خواستن","def":"to desire","example":"I want coffee.","collocations":[{"en":"want to go","fa":"خواستن رفتن"}]},
+  "like": {"fa":"دوست داشتن","def":"to enjoy","example":"I like music.","collocations":[{"en":"like it","fa":"دوست داشتن"}]},
+  "love": {"fa":"عاشق بودن","def":"to like very much","example":"I love you.","collocations":[{"en":"love someone","fa":"عاشق کسی بودن"}]},
+  "help": {"fa":"کمک کردن","def":"to assist","example":"Help me.","collocations":[{"en":"help someone","fa":"کمک به کسی"}]},
+  "try": {"fa":"تلاش کردن","def":"to make an effort","example":"I try again.","collocations":[{"en":"try hard","fa":"سخت تلاش کردن"}]},
+
+  "say": {"fa":"گفتن","def":"to speak","example":"She says hello.","collocations":[{"en":"say hello","fa":"سلام گفتن"}]},
+  "tell": {"fa":"گفتن به کسی","def":"to inform","example":"Tell me.","collocations":[{"en":"tell the truth","fa":"حقیقت را گفتن"}]},
+  "ask": {"fa":"پرسیدن","def":"to question","example":"I ask you.","collocations":[{"en":"ask for help","fa":"کمک خواستن"}]},
+  "answer": {"fa":"جواب دادن","def":"to reply","example":"I answer.","collocations":[{"en":"answer correctly","fa":"درست جواب دادن"}]},
+
   "see": {"fa":"دیدن","def":"to use eyes","example":"I see you.","collocations":[{"en":"see again","fa":"دوباره دیدن"}]},
   "look": {"fa":"نگاه کردن","def":"to watch","example":"Look at me.","collocations":[{"en":"look at","fa":"نگاه کردن به"}]},
   "hear": {"fa":"شنیدن","def":"to receive sound","example":"I hear music.","collocations":[{"en":"hear from","fa":"خبردار شدن"}]},
-  "listen": {"fa":"گوش دادن","def":"to pay attention to sound","example":"Listen to me.","collocations":[{"en":"listen to","fa":"گوش دادن به"}]},
-  "feel": {"fa":"احساس کردن","def":"to experience emotion","example":"I feel happy.","collocations":[{"en":"feel good","fa":"حال خوب داشتن"}]},
+  "listen": {"fa":"گوش دادن","def":"to pay attention","example":"Listen to me.","collocations":[{"en":"listen to","fa":"گوش دادن به"}]},
+  "feel": {"fa":"احساس کردن","def":"to experience","example":"I feel good.","collocations":[{"en":"feel happy","fa":"احساس خوشحالی"}]},
   "think": {"fa":"فکر کردن","def":"to use mind","example":"I think about you.","collocations":[{"en":"think about","fa":"فکر کردن به"}]},
 
   "know": {"fa":"دانستن","def":"to have knowledge","example":"I know him.","collocations":[{"en":"know well","fa":"خوب شناختن"}]},
-  "work": {"fa":"کار کردن","def":"to do a job","example":"I work hard.","collocations":[{"en":"work hard","fa":"سخت کار کردن"}]},
+  "work": {"fa":"کار کردن","def":"to do a job","example":"I work every day.","collocations":[{"en":"work hard","fa":"سخت کار کردن"}]},
   "live": {"fa":"زندگی کردن","def":"to stay alive","example":"I live here.","collocations":[{"en":"live in","fa":"زندگی کردن در"}]},
   "stay": {"fa":"ماندن","def":"to remain","example":"Stay here.","collocations":[{"en":"stay home","fa":"در خانه ماندن"}]},
   "leave": {"fa":"ترک کردن","def":"to go away","example":"I leave early.","collocations":[{"en":"leave home","fa":"خانه را ترک کردن"}]},
-  "move": {"fa":"حرکت کردن","def":"to change position","example":"Move your hand.","collocations":[{"en":"move on","fa":"ادامه دادن"}]},
+  "move": {"fa":"حرکت کردن","def":"to change position","example":"Move fast.","collocations":[{"en":"move on","fa":"ادامه دادن"}]},
   "happen": {"fa":"اتفاق افتادن","def":"to occur","example":"What happened?","collocations":[{"en":"happen again","fa":"دوباره رخ دادن"}]},
 
   "people": {"fa":"مردم","def":"persons","example":"People are kind.","collocations":[{"en":"many people","fa":"مردم زیاد"}]},
@@ -43,17 +56,5 @@
 
   "book": {"fa":"کتاب","def":"written pages","example":"I read a book.","collocations":[{"en":"read a book","fa":"کتاب خواندن"}]},
   "school": {"fa":"مدرسه","def":"place to learn","example":"I go to school.","collocations":[{"en":"at school","fa":"در مدرسه"}]},
-  "home": {"fa":"خانه","def":"place to live","example":"I am home.","collocations":[{"en":"go home","fa":"به خانه رفتن"}]},
-
-  "good": {"fa":"خوب","def":"nice","example":"Good job.","collocations":[{"en":"good idea","fa":"ایده خوب"}]},
-  "bad": {"fa":"بد","def":"not good","example":"Bad weather.","collocations":[{"en":"bad day","fa":"روز بد"}]},
-  "big": {"fa":"بزرگ","def":"large","example":"Big house.","collocations":[{"en":"big problem","fa":"مشکل بزرگ"}]},
-  "small": {"fa":"کوچک","def":"not big","example":"Small room.","collocations":[{"en":"small thing","fa":"چیز کوچک"}]},
-  "new": {"fa":"جدید","def":"not old","example":"New phone.","collocations":[{"en":"new job","fa":"کار جدید"}]},
-  "old": {"fa":"قدیمی","def":"not new","example":"Old book.","collocations":[{"en":"old friend","fa":"دوست قدیمی"}]},
-
-  "yes": {"fa":"بله","def":"positive answer","example":"Yes, I do.","collocations":[{"en":"yes please","fa":"بله لطفاً"}]},
-  "no": {"fa":"نه","def":"negative answer","example":"No, thanks.","collocations":[{"en":"no problem","fa":"مشکلی نیست"}]},
-  "please": {"fa":"لطفاً","def":"polite word","example":"Please help me.","collocations":[{"en":"please wait","fa":"لطفاً صبر کن"}]},
-  "thanks": {"fa":"ممنون","def":"thank you","example":"Thanks a lot.","collocations":[{"en":"thanks again","fa":"دوباره ممنون"}]}
+  "home": {"fa":"خانه","def":"place to live","example":"I am home.","collocations":[{"en":"go home","fa":"به خانه رفتن"}]}
 }
