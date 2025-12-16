@@ -4,39 +4,45 @@
 <meta charset="UTF-8">
 <title>A1 Dictionary</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* ===== HARD OVERRIDE FOR BIG TEXT ===== */
+/* ===== HARD OVERRIDE FOR BIG TEXT (همون چیزی که خودت گذاشتی) ===== */
+.box { padding: 26px !important; }
+.en { font-size: 2.2rem !important; line-height: 1.7 !important; direction:ltr !important; }
+.fa-text { font-size: 2.2rem !important; line-height: 1.8 !important; direction:rtl !important; }
+.section-title { font-size: 2rem !important; }
+.word { font-size: 3.2rem !important; }
+.fa { font-size: 2.4rem !important; }
 
-.box {
-  padding: 26px !important;
+/* کنترل‌های صدا */
+.audio-bar{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:center;
+  margin: 14px 0 18px;
 }
-
-.en {
-  font-size: 2.2rem !important;     /* 🔥 حدود ۲ برابر */
-  line-height: 1.7 !important;
+#audioVoice{
+  width: 100%;
+  max-width: 520px;
+  font-size: 18px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 2px solid #7aa2ff;
+  background: white;
 }
-
-.fa-text {
-  font-size: 2.2rem !important;     /* 🔥 حدود ۲ برابر */
-  line-height: 1.8 !important;
+#muteBtn{
+  font-size: 18px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: none;
+  background: #e6e6e6;
 }
-
-.section-title {
-  font-size: 2rem !important;       /* Example / Definition */
-}
-
-.word {
-  font-size: 3.2rem !important;
-}
-
-.fa {
-  font-size: 2.4rem !important;
+#muteBtn.on{
+  background:#ffdddd;
 }
 </style>
-
 </head>
 
 <body>
@@ -49,9 +55,14 @@
   onkeydown="if(event.key==='Enter'){searchWord()}"
 />
 
-<div id="result"></div>
+<div class="audio-bar">
+  <button id="muteBtn" type="button">🔊 Sound: ON</button>
+  <select id="audioVoice" title="Voice (optional)">
+    <option value="">Voice: Auto (Recommended)</option>
+  </select>
+</div>
 
-<button id="muteBtn">🔇 Mute</button>
+<div id="result"></div>
 
 <div class="nav-grid">
   <button onclick="location.href='progress.html'">📊 Progress</button>
