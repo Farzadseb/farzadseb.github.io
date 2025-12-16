@@ -1,43 +1,63 @@
-let dictionary = {};
-let mute = false;
+const DICT_URL = "pdcs_a1.json";
 
-fetch("pdcs_a1.json")
+let DICT = {};
+let muted = false;
+
+// LOAD DICTIONARY
+fetch(DICT_URL)
   .then(res => res.json())
-  .then(data => dictionary = data);
+  .then(data => {
+    DICT = data;
+    console.log("Dictionary loaded", Object.keys(DICT).length);
+  })
+  .catch(err => {
+    alert("❌ Dictionary file not loaded");
+    console.error(err);
+  });
 
-function searchWord() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
-  const result = document.getElementById("result");
-  const item = dictionary[input];
+function speak(word){
+  if(muted) return;
+  let u = new SpeechSynthesisUtterance(word);
+  u.lang = "en-US";
+  speechSynthesis.speak(u);
+}
 
-  if (!item) {
-    result.innerHTML = "❌ Not found in dictionary";
+function toggleMute(){
+  muted = !muted;
+  document.getElementById("muteBtn").innerText =
+    muted ? "🔇 Muted" : "🔊 Sound ON";
+}
+
+function searchWord(){
+  let w = document.getElementById("searchInput").value
+    .trim()
+    .toLowerCase();
+
+  let box = document.getElementById("result");
+  box.innerHTML = "";
+
+  if(!DICT[w]){
+    box.innerHTML = "❌ Not found in dictionary";
     return;
   }
 
-  result.innerHTML = `
-    <div class="word">${input}</div>
-    <div class="meaning"><b>FA:</b> ${item.fa}</div>
-    <div class="meaning"><b>EN:</b> ${item.definition}</div>
+  let d = DICT[w];
+  speak(w);
 
-    <div class="example">
-      <b>Example:</b><br>
-      ${item.example_en}<br>
-      ${item.example_fa}
-    </div>
-
-    <div>
-      ${item.collocations.map(c => `<span class="tag">${c}</span>`).join("")}
-      ${item.phrasal.map(p => `<span class="tag">${p}</span>`).join("")}
-    </div>
+  let html = `
+    <h2>${w}</h2>
+    <p>🇮🇷 ${d.fa}</p>
+    <p>📘 ${d.definition}</p>
+    <p>✏️ ${d.example}</p>
   `;
 
-  if (!mute) speak(input);
-}
+  if(d.collocations){
+    html += "<h4>📌 Collocations</h4><ul>";
+    d.collocations.forEach(c=>{
+      html += `<li>${c.en} — ${c.fa}</li>`;
+    });
+    html += "</ul>";
+  }
 
-function speak(word) {
-  const u = new SpeechSynthesisUtterance(word);
-  u.lang = "en-US";
-  u.rate = 0.7;
-  speechSynthesis.speak(u);
+  box.innerHTML = html;
 }
