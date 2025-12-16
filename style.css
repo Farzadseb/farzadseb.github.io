@@ -1,122 +1,115 @@
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Vazirmatn:wght@400;600&display=swap');
 
 * {
   box-sizing: border-box;
-  font-family: 'Vazirmatn', sans-serif;
 }
 
 body {
   margin: 0;
-  background: #f4f6fb;
+  background: #f6f8fc;
+  font-family: Inter, Vazirmatn, sans-serif;
 }
 
+/* صفحه اصلی */
 .box {
-  max-width: 720px;
-  margin: auto;
-  padding: 18px;
+  max-width: 900px;
+  margin: 30px auto 120px;
+  padding: 20px;
 }
 
+/* عنوان */
 h1 {
   text-align: center;
-  font-size: 28px;
-  margin-bottom: 16px;
+  font-size: 2.4rem;
+  margin-bottom: 20px;
 }
 
+/* سرچ */
 input {
   width: 100%;
-  font-size: 22px;
-  padding: 14px;
-  border-radius: 14px;
-  border: 2px solid #d6d9ff;
+  font-size: 1.4rem;
+  padding: 16px;
+  border-radius: 16px;
+  border: 3px solid #9bb7ff;
   outline: none;
 }
 
-input:focus {
-  border-color: #6b7cff;
-}
-
+/* کارت اصلی لغت */
 #result {
-  margin-top: 18px;
-}
-
-/* ===== WORD CARD ===== */
-.word-card {
+  margin-top: 30px;
   background: #ffffff;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  border-radius: 22px;
+  padding: 28px;
 }
 
-.word-title {
-  font-size: 30px;
-  font-weight: 700;
+/* کلمه */
+#result h2 {
+  font-size: 2.2rem;
   margin-bottom: 6px;
 }
 
-.word-fa {
-  font-size: 24px;
-  color: #333;
-  text-align: right;
+/* معنی فارسی */
+.meaning-fa {
+  font-size: 1.8rem;
+  color: #444;
+  margin-bottom: 20px;
+  direction: rtl;
 }
 
-/* ===== SECTION ===== */
-.section {
-  margin-top: 16px;
-}
-
+/* تیتر بخش‌ها */
 .section-title {
-  font-size: 20px;
+  font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin: 25px 0 10px;
 }
 
-/* ===== BOXES ===== */
+/* کادر انگلیسی */
 .en-box {
-  background: #eef2ff;
-  padding: 14px;
+  background: #eef3ff;
+  padding: 16px;
   border-radius: 14px;
-  font-size: 22px;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
   direction: ltr;
 }
 
+/* کادر فارسی */
 .fa-box {
-  background: #eef2ff;
-  padding: 14px;
+  background: #eef3ff;
+  padding: 16px;
   border-radius: 14px;
-  font-size: 22px;
+  font-size: 1.5rem;
   direction: rtl;
-  margin-top: 8px;
 }
 
-/* ===== LIST ===== */
-.list-item {
-  margin-bottom: 10px;
-}
-
-/* ===== MUTE ===== */
+/* دکمه mute */
 .mute-btn {
-  margin-top: 14px;
-  width: 100%;
-  padding: 14px;
-  font-size: 20px;
+  margin: 25px auto 10px;
+  display: block;
+  font-size: 1.3rem;
+  padding: 14px 26px;
   border-radius: 14px;
   border: none;
-  background: #6b7cff;
-  color: #fff;
+  background: #ff6b6b;
+  color: white;
 }
 
-/* ===== BOTTOM NAV ===== */
-.nav-grid {
+/* دکمه‌های پایین */
+.nav-container {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-  margin-top: 24px;
+  padding: 0 20px;
 }
 
-.nav-btn {
-  background: #6b7cff;
+.nav {
+  background: #4f6ef7;
   color: white;
-  font-size: 20px;
+  font-size: 1.4rem;
   padding: 18px;
   border-radius: 18px;
   border: none;
