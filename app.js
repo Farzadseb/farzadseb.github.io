@@ -1,63 +1,43 @@
-const DICT_URL = "pdcs_a1.json";
-let DICT = {};
-let autoSpeak = true;
+let dictionary = {};
+let mute = false;
 
-// load dictionary
-fetch(DICT_URL)
-  .then(r => r.json())
-  .then(d => DICT = d);
-
-function speak(word) {
-  if (!autoSpeak) return;
-  const u = new SpeechSynthesisUtterance(word);
-  u.lang = "en-US";
-  speechSynthesis.speak(u);
-}
+fetch("pdcs_a1.json")
+  .then(res => res.json())
+  .then(data => dictionary = data);
 
 function searchWord() {
-  const w = document.getElementById("searchInput").value
-    .toLowerCase()
-    .trim();
-
+  const input = document.getElementById("searchInput").value.toLowerCase();
   const result = document.getElementById("result");
-  result.innerHTML = "";
+  const item = dictionary[input];
 
-  if (!DICT[w]) {
-    alert("Not in dictionary");
+  if (!item) {
+    result.innerHTML = "❌ Not found in dictionary";
     return;
   }
 
-  const d = DICT[w];
-  speak(w);
+  result.innerHTML = `
+    <div class="word">${input}</div>
+    <div class="meaning"><b>FA:</b> ${item.fa}</div>
+    <div class="meaning"><b>EN:</b> ${item.definition}</div>
 
-  let html = `
-    <h2>${w}</h2>
-    <p>🇮🇷 ${d.fa}</p>
-    <p>📘 ${d.definition}</p>
-    <p>✏️ ${d.example}</p>
+    <div class="example">
+      <b>Example:</b><br>
+      ${item.example_en}<br>
+      ${item.example_fa}
+    </div>
+
+    <div>
+      ${item.collocations.map(c => `<span class="tag">${c}</span>`).join("")}
+      ${item.phrasal.map(p => `<span class="tag">${p}</span>`).join("")}
+    </div>
   `;
 
-  if (d.collocations && d.collocations.length) {
-    html += "<h3>📌 Collocations</h3><ul>";
-    d.collocations.forEach(c => {
-      html += `<li>${c.en} — ${c.fa}</li>`;
-    });
-    html += "</ul>";
-  }
+  if (!mute) speak(input);
+}
 
-  if (d.phrasal_verbs && d.phrasal_verbs.length) {
-    html += "<h3>🔗 Phrasal Verbs</h3><ul>";
-    d.phrasal_verbs.forEach(p => {
-      html += `<li>${p.en} — ${p.fa}</li>`;
-    });
-    html += "</ul>";
-  }
-
-  html += `
-    <button onclick="autoSpeak=!autoSpeak">
-      🔈 ${autoSpeak ? "Mute" : "Unmute"}
-    </button>
-  `;
-
-  result.innerHTML = html;
+function speak(word) {
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang = "en-US";
+  u.rate = 0.7;
+  speechSynthesis.speak(u);
 }
