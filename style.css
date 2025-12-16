@@ -8,17 +8,17 @@ body {
 
 /* ---------- Title ---------- */
 .title {
-  font-size: 42px;
-  margin-bottom: 28px;
+  font-size: 40px; /* قبلاً 32 */
+  margin-bottom: 24px;
 }
 
 /* ---------- Search ---------- */
 #searchInput {
-  width: 94%;
-  max-width: 560px;
-  font-size: 28px;
-  padding: 20px;
-  border-radius: 20px;
+  width: 92%;
+  max-width: 520px;
+  font-size: 26px; /* قبلاً 22 */
+  padding: 18px;
+  border-radius: 18px;
   border: 3px solid #7aa2ff;
   outline: none;
 }
@@ -35,16 +35,16 @@ body {
 
 /* ---------- Word Header ---------- */
 .word {
-  font-size: 44px;
-  font-weight: 800;
+  font-size: 42px; /* قبلاً 34 */
+  font-weight: bold;
   margin-bottom: 6px;
 }
 
 .fa {
-  font-size: 32px;
+  font-size: 32px; /* قبلاً 26 */
   direction: rtl;
   text-align: right;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 
 /* ---------- Sections ---------- */
@@ -53,29 +53,31 @@ body {
 }
 
 .section-title {
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 28px; /* قبلاً 22 */
+  font-weight: bold;
   margin-bottom: 14px;
 }
 
 /* ---------- Blue Boxes ---------- */
 .box {
   background: #eaf0ff;
-  border-radius: 22px;
+  border-radius: 20px;
   padding: 22px;
   margin-bottom: 18px;
 }
 
+/* English text */
 .en {
-  font-size: 30px;
+  font-size: 28px; /* قبلاً 22 */
   direction: ltr;
   line-height: 1.6;
 }
 
+/* Persian text */
 .fa-text {
-  font-size: 30px;
+  font-size: 28px; /* قبلاً 22 */
   direction: rtl;
-  margin-top: 14px;
+  margin-top: 12px;
   line-height: 1.7;
 }
 
@@ -85,8 +87,9 @@ body {
   padding: 14px 26px;
   border-radius: 18px;
   border: none;
-  background: #ddd;
-  margin-bottom: 36px;
+  background: #e0e0e0;
+  margin: 30px auto 40px;
+  display: block;
 }
 
 /* ---------- Navigation ---------- */
@@ -99,7 +102,7 @@ body {
 }
 
 .nav-grid button {
-  font-size: 24px;
+  font-size: 24px; /* قبلاً 20 */
   padding: 22px;
   border-radius: 22px;
   border: none;
