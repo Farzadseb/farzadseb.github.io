@@ -1,14 +1,16 @@
 /* ===== RESET ===== */
 * {
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+/* ===== BODY ===== */
 body {
-  margin: 0;
-  padding: 20px;
   background: #f2f4f8;
-  color: #111;
+  padding: 20px;
+  color: #222;
 }
 
 /* ===== MAIN BOX ===== */
@@ -16,73 +18,77 @@ body {
   max-width: 520px;
   margin: auto;
   background: #ffffff;
-  padding: 20px;
   border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 22px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
 /* ===== TITLE ===== */
 h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  font-size: 24px;
 }
 
 /* ===== INPUT ===== */
 input {
   width: 100%;
-  padding: 14px 16px;
+  padding: 16px;
   font-size: 18px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid #ccc;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
-/* ===== PRIMARY BUTTON ===== */
+/* ===== BUTTONS (GLOBAL) ===== */
 button {
   width: 100%;
-  padding: 14px;
-  font-size: 17px;
+  padding: 16px;
+  font-size: 18px;
   border-radius: 14px;
   border: none;
+  margin-bottom: 12px;
   cursor: pointer;
-  background: #1e6cff;
+  background: #1e73ff;
   color: white;
-  margin-top: 10px;
+  transition: 0.2s;
 }
 
 button:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
 /* ===== RESULT CARD ===== */
 #result {
-  margin-top: 20px;
-  padding: 18px;
-  background: #f9fafc;
+  background: #f9fafb;
   border-radius: 14px;
+  padding: 16px;
+  margin-top: 14px;
+  margin-bottom: 18px;
   line-height: 1.7;
+  font-size: 17px;
 }
 
 /* ===== WORD ===== */
 #result h2 {
-  margin: 0 0 8px 0;
-  font-size: 26px;
+  font-size: 22px;
+  margin-bottom: 8px;
 }
 
 /* ===== TRANSLATION ===== */
-.meaning {
+.fa {
   font-size: 18px;
-  margin: 6px 0;
+  margin-bottom: 6px;
 }
 
 /* ===== DEFINITION ===== */
 .definition {
-  margin: 8px 0;
+  margin-top: 6px;
 }
 
 /* ===== EXAMPLE ===== */
 .example {
-  margin: 8px 0;
+  margin-top: 6px;
   font-style: italic;
 }
 
@@ -92,41 +98,34 @@ button:active {
 }
 
 .collocations ul {
-  padding-left: 18px;
+  padding-left: 20px;
+}
+
+.collocations li {
+  margin-bottom: 6px;
 }
 
 /* ===== MUTE BUTTON ===== */
 .mute-btn {
   background: #444;
-  margin-top: 16px;
+  margin-top: 10px;
 }
 
-/* ===== SEPARATOR ===== */
+/* ===== DIVIDER ===== */
 hr {
-  margin: 22px 0;
   border: none;
   height: 1px;
   background: #ddd;
+  margin: 18px 0;
 }
 
 /* ===== NAV BUTTONS ===== */
 .nav-btn {
-  background: #2563eb;
-  margin-top: 12px;
+  background: #1e73ff;
 }
 
-/* ===== SMALL SCREENS ===== */
-@media (max-width: 480px) {
-  body {
-    padding: 14px;
-  }
-
-  h1 {
-    font-size: 22px;
-  }
-
-  button {
-    font-size: 16px;
-    padding: 13px;
-  }
+/* ===== NOT FOUND ===== */
+.notfound {
+  color: #c62828;
+  font-weight: bold;
 }
