@@ -8,20 +8,26 @@
 </head>
 
 <body>
+
 <div class="box">
+
   <h1>📘 A1 Dictionary</h1>
 
   <input id="searchInput" placeholder="Type a word..." />
-  <button onclick="searchWord()">🔍 Search</button>
+  <button class="primary" onclick="searchWord()">🔍 Search</button>
 
-  <div id="result"></div>
+  <!-- RESULT -->
+  <div id="result" class="result-box"></div>
 
-  <hr>
+  <!-- ACTION BUTTONS -->
+  <div class="actions">
+    <button onclick="location.href='quiz_a1.html'">📝 Quiz</button>
+    <button onclick="location.href='progress.html'">📊 Progress</button>
+    <button onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
+    <button onclick="location.href='pdf.html'">📄 PDF</button>
+    <button onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
+  </div>
 
-  <button onclick="location.href='progress.html'">📊 Progress</button>
-  <button onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
-  <button onclick="location.href='pdf.html'">📄 PDF</button>
-  <button onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
 </div>
 
 <script src="app.js"></script>
