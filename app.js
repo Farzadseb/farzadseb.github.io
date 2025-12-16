@@ -115,3 +115,72 @@ document.getElementById("muteBtn").onclick = () => {
   muted = !muted;
   document.getElementById("muteBtn").innerText = muted ? "🔈 Sound On" : "🔇 Mute";
 };
+/* =======================
+   LEITNER SYSTEM (REAL)
+======================= */
+
+const LEITNER_BOXES = 5;
+
+// init
+function getLeitner() {
+  return JSON.parse(localStorage.getItem("leitner")) || {};
+}
+
+function saveLeitner(data) {
+  localStorage.setItem("leitner", JSON.stringify(data));
+}
+
+// add word
+function addToLeitner() {
+  const word = document.getElementById("searchInput").value.trim().toLowerCase();
+  if (!word || !data[word]) {
+    alert("Search a valid word first");
+    return;
+  }
+
+  const leitner = getLeitner();
+
+  if (!leitner[word]) {
+    leitner[word] = {
+      box: 1,
+      last: Date.now()
+    };
+    saveLeitner(leitner);
+    alert("Added to Leitner (Box 1)");
+  } else {
+    alert("Already in Leitner");
+  }
+}
+
+// get words for today
+function getTodayWords() {
+  const leitner = getLeitner();
+  const today = [];
+
+  for (let w in leitner) {
+    const box = leitner[w].box;
+    const days = [0, 1, 2, 4, 7]; // فاصله مرور
+    const due =
+      Date.now() - leitner[w].last >= days[box - 1] * 86400000;
+
+    if (due) today.push(w);
+  }
+
+  return today;
+}
+
+// answer
+function answerLeitner(word, correct) {
+  const leitner = getLeitner();
+
+  if (!leitner[word]) return;
+
+  if (correct) {
+    leitner[word].box = Math.min(LEITNER_BOXES, leitner[word].box + 1);
+  } else {
+    leitner[word].box = 1;
+  }
+
+  leitner[word].last = Date.now();
+  saveLeitner(leitner);
+}
