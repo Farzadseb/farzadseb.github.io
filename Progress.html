@@ -1,36 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A1 Progress</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<title>Progress / Leitner</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="container">
-  <h1>📊 A1 Progress</h1>
+<div class="box">
+  <h1>📊 Progress / Leitner</h1>
 
-  <div class="result">
-    <p><b>Total saved words:</b> <span id="total">0</span></p>
-    <p><b>Due today:</b> <span id="due">0</span></p>
-    <p><b>Progress:</b> <span id="percent">0%</span></p>
+  <div id="stats" style="margin-bottom:14px; line-height:1.7;"></div>
+
+  <hr>
+
+  <h2 style="margin-top:0;">🧠 Review (Due Cards)</h2>
+  <div id="card" style="padding:14px; background:#fafafa; border-radius:12px; line-height:1.8;"></div>
+
+  <div style="display:flex; gap:10px; margin-top:12px;">
+    <button onclick="markCorrect()" style="flex:1;">✅ I knew it</button>
+    <button onclick="markWrong()" style="flex:1; background:#e11d48;">❌ I forgot</button>
   </div>
 
-  <div class="result">
-    <h3>Leitner Boxes</h3>
-    <ul>
-      <li>Box 1: <span id="b1">0</span></li>
-      <li>Box 2: <span id="b2">0</span></li>
-      <li>Box 3: <span id="b3">0</span></li>
-      <li>Box 4: <span id="b4">0</span></li>
-      <li>Box 5: <span id="b5">0</span></li>
-    </ul>
-  </div>
-
-  <button class="secondary" onclick="location.href='index.html'">⬅ Back</button>
+  <button onclick="nextCard()" style="margin-top:10px; background:#0a6cff;">➡️ Next</button>
+  <button onclick="location.href='index.html'" style="margin-top:10px; background:#3b82f6;">⬅️ Back to Dictionary</button>
 </div>
 
-<script src="progress.js"></script>
+<script>
+  // ----- Same keys as app.js -----
+  const LS_DECK = "leitner_deck_v1";
+  const LS_SEEN = "seen_words_v1";
+  const LS_LAST_LOOKUP = "last_lookup_v1";
+
+  let deck = {};
+  let currentWord = null;
+
+  function nowMs(){ return Date.now(); }
+
+  function loadDeck(){
+    try { return JSON.parse(localStorage.getItem(LS_DECK) || "{}"); }
+    catch { return {}; }
+  }
+  function saveDeck(d){
+    localStorage.setItem(LS_DECK, JSON.stringify(d));
+  }
+  function loadSeen(){
+    try { return JSON.parse(localStorage.getItem(LS_SEEN) || "[]"); }
+    catch { return []; }
+  }
+
+  function nextIntervalMs(box){
+    const minutes = 60 * 1000;
+    const hours = 60 * minutes;
+    const days = 24 * hours;
+    if (box === 1) return 10 * minutes;
+    if (box === 2) return 1 * hours;
+    if (box === 3) return 1 * days;
+    if (box === 4) return 3 * days;
+    return 7 * days;
+  }
+
+  function computeStats(){
+    const seen = loadSeen();
+    const words = Object.keys(deck);
+    const dueCount = words.filter(w => (deck[w].due || 0) <= nowMs()).length;
+
+    let boxCounts = {1:0,2:0,3:0,4:0,5:0};
+    words.forEach(w=>{
+      const b = deck[w].box || 1;
+      boxCounts[b] = (boxCounts[b] || 0) + 1;
+    });
+
+    document.getElementById("stats").innerHTML = `
+      <div><b>Words seen:</b> ${seen.length}</div>
+      <div><b>Total cards:</b> ${words.length}</div>
+      <div><b>Due now:</b> ${dueCount}</div>
+      <div><b>Boxes:</b> 1:${boxCounts[1]} | 2:${boxCounts[2]} | 3:${boxCounts[3]} | 4:${boxCounts[4]} | 5:${boxCounts[5]}</div>
+    `;
+  }
+
+  function pickDueWord(){
+    const words = Object.keys(deck);
+    const due = words.filter(w => (deck[w].due || 0) <= nowMs());
+    if (due.length === 0) return null;
+
+    // انتخاب تصادفی سبک
+    return due[Math.floor(Math.random() * due.length)];
+  }
+
+  function renderCard(word){
+    const card = document.getElementById("card");
+    if (!word){
+      card.innerHTML = "✅ No cards due right now. Come back later.";
+      currentWord = null;
+      return;
+    }
+    currentWord = word;
+    const c = deck[word];
+    const box = c.box || 1;
+
+    card.innerHTML = `
+      <div style="font-size:22px;"><b>${word}</b></div>
+      <div style="margin-top:6px;">Box: <b>${box}</b></div>
+      <div>Seen: ${c.seen || 0} | ✅ ${c.correct || 0} | ❌ ${c.wrong || 0}</div>
+      <div style="margin-top:10px; opacity:.8;">
+        Tip: Use dictionary page to see meaning/examples.
+      </div>
+      <button onclick="openInDictionary()" style="margin-top:12px; background:#3b82f6;">🔎 Open in Dictionary</button>
+    `;
+  }
+
+  function openInDictionary(){
+    if(!currentWord) return;
+    localStorage.setItem(LS_LAST_LOOKUP, currentWord);
+    // به صفحه اصلی برو و کاربر خود کلمه را سرچ کند (ساده و پایدار)
+    location.href = "index.html";
+  }
+
+  function nextCard(){
+    deck = loadDeck();
+    computeStats();
+    const w = pickDueWord();
+    renderCard(w);
+  }
+
+  function markCorrect(){
+    if(!currentWord) return;
+    deck[currentWord].correct = (deck[currentWord].correct || 0) + 1;
+    deck[currentWord].box = Math.min(5, (deck[currentWord].box || 1) + 1);
+    deck[currentWord].due = nowMs() + nextIntervalMs(deck[currentWord].box);
+    saveDeck(deck);
+    nextCard();
+  }
+
+  function markWrong(){
+    if(!currentWord) return;
+    deck[currentWord].wrong = (deck[currentWord].wrong || 0) + 1;
+    deck[currentWord].box = 1;
+    deck[currentWord].due = nowMs() + nextIntervalMs(1);
+    saveDeck(deck);
+    nextCard();
+  }
+
+  // init
+  deck = loadDeck();
+  computeStats();
+  nextCard();
+</script>
+
 </body>
 </html>
