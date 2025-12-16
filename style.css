@@ -1,3 +1,4 @@
+/* ===== RESET ===== */
 * {
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -5,72 +6,127 @@
 
 body {
   margin: 0;
+  padding: 20px;
   background: #f2f4f8;
+  color: #111;
 }
 
+/* ===== MAIN BOX ===== */
 .box {
   max-width: 520px;
-  margin: 20px auto;
+  margin: auto;
+  background: #ffffff;
   padding: 20px;
-  background: #fff;
-  border-radius: 16px;
+  border-radius: 18px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
+/* ===== TITLE ===== */
 h1 {
   text-align: center;
-  font-size: 1.6rem;
+  margin-bottom: 20px;
 }
 
+/* ===== INPUT ===== */
 input {
   width: 100%;
-  padding: 14px;
-  font-size: 1.2rem;
+  padding: 14px 16px;
+  font-size: 18px;
   border-radius: 12px;
   border: 1px solid #ccc;
   margin-bottom: 12px;
 }
 
+/* ===== PRIMARY BUTTON ===== */
 button {
   width: 100%;
   padding: 14px;
-  margin-bottom: 10px;
-  font-size: 1.05rem;
-  border-radius: 12px;
-  border: none;
-  background: #4a6cf7;
-  color: #fff;
-}
-
-#result {
-  margin-top: 15px;
-  background: #f9fafb;
-  padding: 15px;
+  font-size: 17px;
   border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  background: #1e6cff;
+  color: white;
+  margin-top: 10px;
 }
 
-.word {
-  font-size: 1.6rem;
-  font-weight: bold;
+button:active {
+  transform: scale(0.98);
 }
 
+/* ===== RESULT CARD ===== */
+#result {
+  margin-top: 20px;
+  padding: 18px;
+  background: #f9fafc;
+  border-radius: 14px;
+  line-height: 1.7;
+}
+
+/* ===== WORD ===== */
+#result h2 {
+  margin: 0 0 8px 0;
+  font-size: 26px;
+}
+
+/* ===== TRANSLATION ===== */
 .meaning {
-  font-size: 1.1rem;
-  margin-top: 6px;
+  font-size: 18px;
+  margin: 6px 0;
 }
 
+/* ===== DEFINITION ===== */
+.definition {
+  margin: 8px 0;
+}
+
+/* ===== EXAMPLE ===== */
 .example {
-  background: #eef2ff;
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 8px;
+  margin: 8px 0;
+  font-style: italic;
 }
 
-.tag {
-  display: inline-block;
-  background: #e0e7ff;
-  padding: 6px 10px;
-  border-radius: 10px;
-  font-size: 0.85rem;
-  margin: 4px 4px 0 0;
+/* ===== COLLOCATIONS ===== */
+.collocations {
+  margin-top: 12px;
+}
+
+.collocations ul {
+  padding-left: 18px;
+}
+
+/* ===== MUTE BUTTON ===== */
+.mute-btn {
+  background: #444;
+  margin-top: 16px;
+}
+
+/* ===== SEPARATOR ===== */
+hr {
+  margin: 22px 0;
+  border: none;
+  height: 1px;
+  background: #ddd;
+}
+
+/* ===== NAV BUTTONS ===== */
+.nav-btn {
+  background: #2563eb;
+  margin-top: 12px;
+}
+
+/* ===== SMALL SCREENS ===== */
+@media (max-width: 480px) {
+  body {
+    padding: 14px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 13px;
+  }
 }
