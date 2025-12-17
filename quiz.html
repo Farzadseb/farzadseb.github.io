@@ -7,42 +7,8 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-  .quiz-card {
-    max-width: 700px;
-    margin: 30px auto;
-    background: #fff;
-    padding: 30px;
-    border-radius: 24px;
-  }
-
-  .question {
-    font-size: 2.6rem;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  .options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .options button {
-    font-size: 1.8rem;
-    padding: 20px;
-    border-radius: 18px;
-    border: none;
-    background: #eaf0ff;
-    transition: 0.3s;
-  }
-
-  .options button.correct {
-    background: #c8f5d1 !important;
-  }
-
-  .options button.wrong {
-    background: #f8c6c6 !important;
-  }
+.correct { background:#c8f7c5 !important; }
+.wrong { background:#f7c5c5 !important; }
 </style>
 </head>
 
@@ -50,13 +16,83 @@
 
 <h1 class="title">📝 A1 Quiz</h1>
 
-<div class="quiz-card">
-  <div id="question" class="question"></div>
-  <div id="options" class="options"></div>
+<div class="card">
+  <div id="question" class="word"></div>
+  <div id="choices" class="nav-grid"></div>
 </div>
 
 <button onclick="location.href='index.html'">⬅ Back</button>
 
-<script src="quiz.js"></script>
+<script>
+let data = {};
+let words = [];
+let currentWord = "";
+
+/* ---------- LOAD FULL DICTIONARY ---------- */
+fetch("pdcs_a1.json")
+  .then(r => r.json())
+  .then(j => {
+    data = j;
+    words = Object.keys(data);   // ✅ کل دیکشنری
+    nextQuestion();
+  });
+
+/* ---------- NEXT QUESTION ---------- */
+function nextQuestion() {
+  const q = words[Math.floor(Math.random() * words.length)];
+  currentWord = q;
+
+  const qBox = document.getElementById("question");
+  qBox.innerHTML = `
+    ${q}
+    <div class="en" style="margin-top:10px;font-size:1.6rem">
+      ${data[q].example?.en || ""}
+    </div>
+  `;
+
+  const correct = data[q].fa;
+  let options = [correct];
+
+  while (options.length < 4) {
+    const r = words[Math.floor(Math.random() * words.length)];
+    const f = data[r].fa;
+    if (!options.includes(f)) options.push(f);
+  }
+
+  options.sort(() => Math.random() - 0.5);
+
+  const box = document.getElementById("choices");
+  box.innerHTML = "";
+
+  options.forEach(o => {
+    const b = document.createElement("button");
+    b.innerText = o;
+    b.onclick = () => checkAnswer(b, o);
+    box.appendChild(b);
+  });
+}
+
+/* ---------- CHECK ANSWER ---------- */
+function checkAnswer(btn, ans) {
+  const correct = data[currentWord].fa;
+
+  if (ans === correct) {
+    btn.classList.add("correct");
+  } else {
+    btn.classList.add("wrong");
+    addWrongToLeitner(currentWord);
+  }
+
+  setTimeout(nextQuestion, 900);
+}
+
+/* ---------- LEITNER ---------- */
+function addWrongToLeitner(word) {
+  let l = JSON.parse(localStorage.getItem("leitner")) || {};
+  l[word] = { box:1, last:Date.now() };
+  localStorage.setItem("leitner", JSON.stringify(l));
+}
+</script>
+
 </body>
 </html>
