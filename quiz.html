@@ -5,25 +5,109 @@
 <title>A1 Quiz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* ===== PAGE ===== */
+body {
+  background:#f6f8ff;
+  text-align:center;
+}
+
+/* ===== MODE SELECT ===== */
+.mode-bar {
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  margin:20px 0;
+  flex-wrap:wrap;
+}
+
+.mode-btn {
+  font-size:1.4rem;
+  padding:12px 20px;
+  border-radius:14px;
+  border:2px solid #5b7cff;
+  background:white;
+  color:#5b7cff;
+  cursor:pointer;
+}
+
+.mode-btn.active {
+  background:#5b7cff;
+  color:white;
+}
+
+/* ===== CARD ===== */
+.card {
+  background:white;
+  border-radius:26px;
+  padding:30px;
+  margin:20px auto;
+  max-width:720px;
+}
+
+/* ===== QUESTION ===== */
+.word {
+  font-size:3rem;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+/* ===== OPTIONS ===== */
+.options {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:20px;
+}
+
+.option {
+  font-size:2rem;
+  padding:22px;
+  border-radius:20px;
+  background:#eaf0ff;
+  border:none;
+  cursor:pointer;
+  color:#000; /* 🔥 متن مشکی */
+}
+
+.option.correct {
+  background:#c8f7c5;
+}
+
+.option.wrong {
+  background:#f7c5c5;
+}
+
+/* ===== BACK ===== */
+.back {
+  margin-top:30px;
+  font-size:1.4rem;
+  padding:12px 20px;
+  border-radius:14px;
+  border:none;
+}
+</style>
 </head>
 
 <body>
 
 <h1 class="title">📝 A1 Quiz</h1>
 
-<div class="main-actions">
-  <button onclick="setMode('en-fa')">EN → FA</button>
-  <button onclick="setMode('fa-en')">FA → EN</button>
-  <button onclick="setMode('listen')">🎧 Listening</button>
+<!-- MODE SELECT -->
+<div class="mode-bar">
+  <button class="mode-btn active" onclick="setMode('en-fa')">EN → FA</button>
+  <button class="mode-btn" onclick="setMode('fa-en')">FA → EN</button>
+  <button class="mode-btn" onclick="setMode('listen')">🎧 Listening</button>
 </div>
 
+<!-- QUIZ CARD -->
 <div class="card">
   <div id="question" class="word"></div>
-  <div id="choices" class="nav-grid"></div>
-  <div id="feedback"></div>
+  <div id="options" class="options"></div>
 </div>
 
-<button onclick="location.href='index.html'">⬅ Back</button>
+<button class="back" onclick="location.href='index.html'">⬅ Back</button>
 
 <script src="quiz.js"></script>
 </body>
