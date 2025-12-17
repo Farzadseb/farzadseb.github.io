@@ -112,3 +112,17 @@ body {
   background: #5b7cff;
   color: white;
 }
+#choices button {
+  font-size: 2rem;
+  padding: 18px;
+  margin: 10px 0;
+  width: 100%;
+  border-radius: 18px;
+  border: none;
+  background: #eaf0ff;
+}
+
+#choices button:hover {
+  background: #5b7cff;
+  color: white;
+}
