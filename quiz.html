@@ -5,73 +5,58 @@
 <title>A1 Quiz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
+
+<style>
+  .quiz-card {
+    max-width: 700px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 24px;
+  }
+
+  .question {
+    font-size: 2.6rem;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .options button {
+    font-size: 1.8rem;
+    padding: 20px;
+    border-radius: 18px;
+    border: none;
+    background: #eaf0ff;
+    transition: 0.3s;
+  }
+
+  .options button.correct {
+    background: #c8f5d1 !important;
+  }
+
+  .options button.wrong {
+    background: #f8c6c6 !important;
+  }
+</style>
 </head>
 
 <body>
 
 <h1 class="title">📝 A1 Quiz</h1>
 
-<div class="card">
-  <div id="question" class="word"></div>
-  <div id="choices"></div>
+<div class="quiz-card">
+  <div id="question" class="question"></div>
+  <div id="options" class="options"></div>
 </div>
 
 <button onclick="location.href='index.html'">⬅ Back</button>
 
-<script>
-let data = {};
-let currentWord = "";
-
-fetch("pdcs_a1.json")
-  .then(r => r.json())
-  .then(j => {
-    data = j;
-    nextQuestion();
-  });
-
-function nextQuestion() {
-  const keys = Object.keys(data);
-  currentWord = keys[Math.floor(Math.random() * keys.length)];
-  document.getElementById("question").innerText = currentWord;
-
-  const correct = data[currentWord].fa;
-  let options = [correct];
-
-  while (options.length < 4) {
-    const r = keys[Math.floor(Math.random() * keys.length)];
-    const f = data[r].fa;
-    if (!options.includes(f)) options.push(f);
-  }
-
-  options.sort(() => Math.random() - 0.5);
-
-  const box = document.getElementById("choices");
-  box.innerHTML = "";
-
-  options.forEach(o => {
-    const b = document.createElement("button");
-    b.innerText = o;
-    b.onclick = () => check(o);
-    box.appendChild(b);
-  });
-}
-
-function check(ans) {
-  if (ans === data[currentWord].fa) {
-    alert("✅ Correct");
-  } else {
-    alert("❌ Wrong → goes to Leitner");
-    addWrongToLeitner(currentWord);
-  }
-  nextQuestion();
-}
-
-function addWrongToLeitner(word) {
-  let l = JSON.parse(localStorage.getItem("leitner")) || {};
-  l[word] = { box: 1, last: Date.now() };
-  localStorage.setItem("leitner", JSON.stringify(l));
-}
-</script>
-
+<script src="quiz.js"></script>
 </body>
 </html>
