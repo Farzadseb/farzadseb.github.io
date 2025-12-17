@@ -1,34 +1,36 @@
 {
-  "go": {
-    "fa": "رفتن",
-    "def": "to move from one place to another"
-  },
-  "book": {
-    "fa": "کتاب",
-    "def": "a set of written or printed pages"
-  },
-  "take": {
-    "fa": "گرفتن",
-    "def": "to get something into your hands"
-  },
-  "make": {
-    "fa": "ساختن",
-    "def": "to create or produce something"
-  },
-  "come": {
-    "fa": "آمدن",
-    "def": "to move toward the speaker"
-  },
-  "see": {
-    "fa": "دیدن",
-    "def": "to notice something with your eyes"
-  },
-  "say": {
-    "fa": "گفتن",
-    "def": "to speak words"
-  },
-  "get": {
-    "fa": "گرفتن / شدن",
-    "def": "to receive or obtain"
-  }
+  "be": {"fa":"بودن","def":"to exist","example":{"en":"I want to be happy.","fa":"می‌خواهم خوشحال باشم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "have": {"fa":"داشتن","def":"to own something","example":{"en":"I have a car.","fa":"من یک ماشین دارم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "do": {"fa":"انجام دادن","def":"to perform an action","example":{"en":"I do my homework.","fa":"تکلیفم را انجام می‌دهم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "go": {"fa":"رفتن","def":"to move to another place","example":{"en":"I go to school.","fa":"من به مدرسه می‌روم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "come": {"fa":"آمدن","def":"to move toward someone","example":{"en":"Come here.","fa":"بیا اینجا."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "get": {"fa":"گرفتن / شدن","def":"to receive or become","example":{"en":"I get tired.","fa":"من خسته می‌شوم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "make": {"fa":"ساختن","def":"to create something","example":{"en":"She makes a cake.","fa":"او کیک درست می‌کند."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "use": {"fa":"استفاده کردن","def":"to use something","example":{"en":"I use my phone.","fa":"از گوشیم استفاده می‌کنم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "need": {"fa":"نیاز داشتن","def":"to need something","example":{"en":"I need help.","fa":"به کمک نیاز دارم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "want": {"fa":"خواستن","def":"to want something","example":{"en":"I want coffee.","fa":"قهوه می‌خواهم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+
+  "like": {"fa":"دوست داشتن","def":"to enjoy something","example":{"en":"I like music.","fa":"موسیقی دوست دارم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "work": {"fa":"کار کردن","def":"to do a job","example":{"en":"I work here.","fa":"اینجا کار می‌کنم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "play": {"fa":"بازی کردن","def":"to have fun","example":{"en":"Children play.","fa":"بچه‌ها بازی می‌کنند."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "eat": {"fa":"خوردن","def":"to have food","example":{"en":"I eat breakfast.","fa":"صبحانه می‌خورم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "drink": {"fa":"نوشیدن","def":"to drink liquid","example":{"en":"Drink water.","fa":"آب بنوش."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "sleep": {"fa":"خوابیدن","def":"to rest","example":{"en":"I sleep at night.","fa":"شب‌ها می‌خوابم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "see": {"fa":"دیدن","def":"to use your eyes","example":{"en":"I see a dog.","fa":"یک سگ می‌بینم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "hear": {"fa":"شنیدن","def":"to hear sound","example":{"en":"I hear music.","fa":"موسیقی می‌شنوم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "say": {"fa":"گفتن","def":"to speak words","example":{"en":"She says hello.","fa":"او سلام می‌کند."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "tell": {"fa":"گفتن به کسی","def":"to tell someone","example":{"en":"Tell me.","fa":"به من بگو."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+
+  "ask": {"fa":"پرسیدن","def":"to ask a question","example":{"en":"Ask the teacher.","fa":"از معلم بپرس."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "answer": {"fa":"جواب دادن","def":"to reply","example":{"en":"Answer me.","fa":"جوابم را بده."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "live": {"fa":"زندگی کردن","def":"to live somewhere","example":{"en":"I live here.","fa":"اینجا زندگی می‌کنم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "stay": {"fa":"ماندن","def":"to remain","example":{"en":"Stay here.","fa":"اینجا بمان."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "leave": {"fa":"ترک کردن","def":"to go away","example":{"en":"I leave now.","fa":"الان می‌روم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "move": {"fa":"حرکت کردن","def":"to change place","example":{"en":"Move here.","fa":"بیا اینجا."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "help": {"fa":"کمک کردن","def":"to help someone","example":{"en":"Help me.","fa":"کمکم کن."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "try": {"fa":"تلاش کردن","def":"to attempt","example":{"en":"Try again.","fa":"دوباره تلاش کن."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "start": {"fa":"شروع کردن","def":"to begin","example":{"en":"Start now.","fa":"الان شروع کن."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "stop": {"fa":"متوقف شدن","def":"to stop","example":{"en":"Stop here.","fa":"اینجا بایست."},"collocations":[],"phrases":[],"phrasal_verbs":[]}
+
+  /* ⛔️ عمداً اینجا تمام شد چون پیام محدودیت دارد */
 }
