@@ -1,107 +1,79 @@
 let data = {};
-let words = [];
+let keys = [];
 let currentWord = "";
-let mode = 1;
-let locked = false;
+let mode = "listenA"; // فقط Listen A فعلاً
 
 fetch("pdcs_a1.json")
   .then(r => r.json())
   .then(j => {
-    data = j.words;
-    words = Object.keys(data);
+    data = j.words || j; // اگر meta داشت
+    keys = Object.keys(data);
     nextQuestion();
   });
 
-function speak(text){
+function speak(text) {
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "en-US";
-  u.rate = 0.7;
+  u.rate = 0.75;
   speechSynthesis.speak(u);
 }
 
-function nextQuestion(){
-  locked = false;
-  document.getElementById("choices").innerHTML = "";
+function nextQuestion() {
+  if (keys.length < 4) return;
 
-  mode = Math.floor(Math.random()*3)+1;
-  currentWord = words[Math.floor(Math.random()*words.length)];
-  const w = data[currentWord];
+  currentWord = keys[Math.floor(Math.random() * keys.length)];
 
   const q = document.getElementById("question");
-  const m = document.getElementById("modeBox");
+  const c = document.getElementById("choices");
+
+  q.innerHTML = "🔊 Listen";
+  c.innerHTML = "";
+
+  // 🔊 فقط لغت پخش می‌شود
+  speak(currentWord);
 
   let answers = [];
-  let correct = "";
+  answers.push(data[currentWord].def);
 
-  /* MODE 1: English → Persian */
-  if(mode===1){
-    m.innerText = "English → Persian";
-    q.innerText = currentWord;
-    speak(currentWord);
-    correct = w.fa;
-    answers.push(correct);
-    while(answers.length<4){
-      let r = data[words[Math.floor(Math.random()*words.length)]].fa;
-      if(!answers.includes(r)) answers.push(r);
-    }
+  while (answers.length < 4) {
+    const r = keys[Math.floor(Math.random() * keys.length)];
+    const def = data[r].def;
+    if (!answers.includes(def)) answers.push(def);
   }
 
-  /* MODE 2: Definition → Word */
-  if(mode===2){
-    m.innerText = "Definition → Word";
-    q.innerText = w.def;
-    speak(w.def);
-    correct = currentWord;
-    answers.push(correct);
-    while(answers.length<4){
-      let r = words[Math.floor(Math.random()*words.length)];
-      if(!answers.includes(r)) answers.push(r);
-    }
-  }
+  answers.sort(() => Math.random() - 0.5);
 
-  /* MODE 3: Listening → Persian */
-  if(mode===3){
-    m.innerText = "Listening → Persian";
-    q.innerText = "🔊 Listen";
-    speak(currentWord);
-    correct = w.fa;
-    answers.push(correct);
-    while(answers.length<4){
-      let r = data[words[Math.floor(Math.random()*words.length)]].fa;
-      if(!answers.includes(r)) answers.push(r);
-    }
-  }
-
-  answers.sort(()=>Math.random()-0.5);
-
-  answers.forEach(a=>{
+  answers.forEach(a => {
     const b = document.createElement("button");
     b.innerText = a;
-    b.onclick = ()=>checkAnswer(b,a,correct);
-    document.getElementById("choices").appendChild(b);
+    b.onclick = () => check(a);
+    c.appendChild(b);
   });
 }
 
-function checkAnswer(btn,ans,correct){
-  if(locked) return;
-  locked = true;
+function check(ans) {
+  const correct = data[currentWord].def;
 
-  if(ans===correct){
-    btn.classList.add("correct");
-  }else{
-    btn.classList.add("wrong");
-    saveWrong();
-    [...document.querySelectorAll(".choices button")].forEach(b=>{
-      if(b.innerText===correct) b.classList.add("correct");
-    });
+  if (ans === correct) {
+    flash(true);
+  } else {
+    flash(false);
+    addToLeitner(currentWord);
   }
 
-  setTimeout(nextQuestion,1200);
+  setTimeout(nextQuestion, 800);
 }
 
-function saveWrong(){
+function flash(ok) {
+  document.body.style.background = ok ? "#e8fff0" : "#ffecec";
+  setTimeout(() => {
+    document.body.style.background = "";
+  }, 400);
+}
+
+function addToLeitner(word) {
   let l = JSON.parse(localStorage.getItem("leitner")) || {};
-  l[currentWord] = {box:1,last:Date.now()};
-  localStorage.setItem("leitner",JSON.stringify(l));
-    }
+  l[word] = { box: 1, last: Date.now() };
+  localStorage.setItem("leitner", JSON.stringify(l));
+}
