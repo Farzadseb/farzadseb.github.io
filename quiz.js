@@ -1,55 +1,67 @@
-<script>
 let data = {};
-let validKeys = [];
+let keys = [];
 let currentWord = "";
+let correctAnswer = "";
 
 fetch("pdcs_a1.json")
   .then(r => r.json())
   .then(j => {
     data = j;
-
-    // فقط لغت‌هایی که fa دارند
-    validKeys = Object.keys(data).filter(
-      k => data[k] && data[k].fa
-    );
-
+    keys = Object.keys(data);
     nextQuestion();
   });
 
 function nextQuestion() {
-  currentWord = validKeys[Math.floor(Math.random() * validKeys.length)];
-  document.getElementById("question").innerText = currentWord;
+  const q = keys[Math.floor(Math.random() * keys.length)];
+  currentWord = q;
+  const w = data[q];
 
-  const correct = data[currentWord].fa;
-  let options = [correct];
+  // حالت سوال: لغت یا مثال
+  const useExample = Math.random() > 0.5 && w.example;
+  document.getElementById("question").innerText =
+    useExample ? w.example.en : q;
+
+  correctAnswer = w.fa;
+
+  let options = [correctAnswer];
 
   while (options.length < 4) {
-    const r = validKeys[Math.floor(Math.random() * validKeys.length)];
+    const r = keys[Math.floor(Math.random() * keys.length)];
     const f = data[r].fa;
     if (!options.includes(f)) options.push(f);
   }
 
   options.sort(() => Math.random() - 0.5);
 
-  const box = document.getElementById("choices");
+  const box = document.getElementById("options");
   box.innerHTML = "";
 
   options.forEach(o => {
-    const b = document.createElement("button");
-    b.innerText = o;
-    b.onclick = () => check(o);
-    box.appendChild(b);
+    const btn = document.createElement("button");
+    btn.innerText = o;
+    btn.onclick = () => checkAnswer(btn, o);
+    box.appendChild(btn);
   });
 }
 
-function check(ans) {
-  if (ans === data[currentWord].fa) {
-    alert("✅ Correct");
+function checkAnswer(button, answer) {
+  const buttons = document.querySelectorAll(".options button");
+  buttons.forEach(b => b.disabled = true);
+
+  if (answer === correctAnswer) {
+    button.classList.add("correct");
   } else {
-    alert("❌ Wrong → goes to Leitner");
+    button.classList.add("wrong");
     addWrongToLeitner(currentWord);
+
+    buttons.forEach(b => {
+      if (b.innerText === correctAnswer) {
+        b.classList.add("correct");
+      }
+    });
   }
-  nextQuestion();
+
+  setTimeout(nextQuestion, 1000);
 }
 
 function addWrongToLeitner(word) {
@@ -57,4 +69,3 @@ function addWrongToLeitner(word) {
   l[word] = { box: 1, last: Date.now() };
   localStorage.setItem("leitner", JSON.stringify(l));
 }
-</script>
