@@ -35,9 +35,9 @@ function nextQuestion() {
   let answers = [];
   let correct = "";
 
-  // MODE 1 — word → Persian
+  // MODE 1 — Listen word → Persian
   if (mode === 1) {
-    m.innerText = "Mode 1: Listen → Persian Meaning";
+    m.innerText = "🎧 English → Persian";
     q.innerText = current;
     speak(current);
 
@@ -50,9 +50,9 @@ function nextQuestion() {
     }
   }
 
-  // MODE 2 — word → definition
+  // MODE 2 — Listen word → English definition
   if (mode === 2) {
-    m.innerText = "Mode 2: Listen → English Definition";
+    m.innerText = "🎧 English → Definition";
     q.innerText = "🔊 Listen";
     speak(current);
 
@@ -65,9 +65,9 @@ function nextQuestion() {
     }
   }
 
-  // MODE 3 — definition → Persian
+  // MODE 3 — Listen definition → Persian
   if (mode === 3) {
-    m.innerText = "Mode 3: Listen Definition → Persian";
+    m.innerText = "🎧 Definition → Persian";
     q.innerText = "🔊 Listen";
     speak(data[current].def);
 
@@ -85,20 +85,21 @@ function nextQuestion() {
   answers.forEach(a => {
     const b = document.createElement("button");
     b.innerText = a;
-    b.onclick = () => check(a, correct);
+    b.onclick = () => check(b, a, correct);
     c.appendChild(b);
   });
 }
 
-function check(ans, correct) {
+function check(btn, ans, correct) {
   if (ans === correct) {
-    event.target.style.background = "#c8f7c5";
+    btn.style.background = "#c8f7c5"; // سبز ملایم
   } else {
-    event.target.style.background = "#f7c5c5";
+    btn.style.background = "#f7c5c5"; // قرمز ملایم
+
     let l = JSON.parse(localStorage.getItem("leitner")) || {};
     l[current] = { box: 1, last: Date.now() };
     localStorage.setItem("leitner", JSON.stringify(l));
   }
 
-  setTimeout(nextQuestion, 700);
+  setTimeout(nextQuestion, 800);
 }
