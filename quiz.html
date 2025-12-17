@@ -1,26 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>A1 Quiz</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>A1 Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      margin: 0;
+      background: #f6f8ff;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 2.6rem;
+      margin: 24px 0;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 30px;
+      margin: 20px auto;
+      max-width: 720px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    #modeBox {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #4a63ff;
+      margin-bottom: 14px;
+    }
+
+    #question {
+      font-size: 2.4rem;
+      margin: 20px 0;
+      line-height: 1.4;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .choices button {
+      font-size: 1.3rem;
+      padding: 18px;
+      border-radius: 18px;
+      border: none;
+      background: #eef1ff;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .choices button:hover {
+      background: #dfe5ff;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+
+    .actions button {
+      font-size: 1.2rem;
+      padding: 14px 22px;
+      border-radius: 16px;
+      border: none;
+      background: #5b7cff;
+      color: white;
+      cursor: pointer;
+    }
+
+    .actions button.secondary {
+      background: #888;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1 class="title">📝 A1 Quiz</h1>
+  <h1 class="title">📝 A1 Quiz</h1>
 
-<div id="modeBox" class="card" style="text-align:center;font-size:1.4rem;"></div>
+  <div class="card">
+    <div id="modeBox"></div>
+    <div id="question"></div>
+    <div id="choices" class="choices"></div>
+  </div>
 
-<div class="card">
-  <div id="question" class="word" style="text-align:center;"></div>
-  <div id="choices" class="nav-grid"></div>
-</div>
+  <div class="actions">
+    <button onclick="nextQuestion()">➡ Next</button>
+    <button class="secondary" onclick="location.href='index.html'">⬅ Dictionary</button>
+  </div>
 
-<button onclick="nextQuestion()" style="font-size:1.4rem;">➡ Next</button>
-<button onclick="location.href='index.html'">⬅ Back</button>
-
-<script src="quiz.js"></script>
+  <script src="quiz.js"></script>
 </body>
 </html>
