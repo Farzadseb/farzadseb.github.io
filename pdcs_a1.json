@@ -3,10 +3,31 @@
     "be": {
       "fa": "بودن",
       "def": "to exist",
-      "example": {
-        "en": "I want to be happy.",
-        "fa": "می‌خواهم خوشحال باشم."
-      },
+      "example": { "en": "I want to be happy.", "fa": "می‌خواهم خوشحال باشم." },
+      "collocations": [],
+      "phrases": [],
+      "phrasal_verbs": []
+    },
+    "have": {
+      "fa": "داشتن",
+      "def": "to own something",
+      "example": { "en": "I have a car.", "fa": "من ماشین دارم." },
+      "collocations": [],
+      "phrases": [],
+      "phrasal_verbs": []
+    },
+    "do": {
+      "fa": "انجام دادن",
+      "def": "to perform an action",
+      "example": { "en": "I do my homework.", "fa": "تکلیفم را انجام می‌دهم." },
+      "collocations": [],
+      "phrases": [],
+      "phrasal_verbs": []
+    },
+    "go": {
+      "fa": "رفتن",
+      "def": "to move to another place",
+      "example": { "en": "I go home.", "fa": "به خانه می‌روم." },
       "collocations": [],
       "phrases": [],
       "phrasal_verbs": []
