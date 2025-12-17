@@ -1,159 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>A1 Dictionary</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>A1 Dictionary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 
-<style>
-body {
-  background:#f6f8ff;
-  text-align:center;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont;
-}
+  <!-- HARD UI OVERRIDE -->
+  <style>
+    body {
+      background:#f6f8ff;
+      text-align:center;
+      font-family: system-ui, -apple-system;
+    }
 
-/* Title */
-.title {
-  font-size: 3.2rem;
-  margin: 20px 0;
-}
+    .title {
+      font-size: 3.2rem;
+      margin: 20px 0;
+    }
 
-/* Search */
-#searchInput {
-  width: 92%;
-  max-width: 560px;
-  font-size: 2.4rem;
-  padding: 20px;
-  border-radius: 20px;
-  border: 3px solid #6b8cff;
-  outline: none;
-}
+    #searchInput {
+      width: 92%;
+      max-width: 560px;
+      font-size: 2.4rem;
+      padding: 20px;
+      border-radius: 20px;
+      border: 3px solid #7aa2ff;
+      outline: none;
+    }
 
-/* Result Card */
-.card {
-  background:#fff;
-  border-radius:28px;
-  padding:30px;
-  margin:30px auto;
-  max-width:760px;
-  text-align:left;
-}
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 34px;
+      margin: 30px auto;
+      max-width: 760px;
+      text-align: left;
+    }
 
-/* Word */
-.word {
-  font-size:3.8rem;
-  font-weight:800;
-  margin-bottom:20px;
-}
+    .word {
+      font-size: 3.6rem;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
 
-/* Section */
-.section-title {
-  font-size:2.4rem;
-  font-weight:700;
-  margin:22px 0 12px;
-}
+    .section-title {
+      font-size: 2.3rem;
+      margin: 22px 0 12px;
+      font-weight: bold;
+    }
 
-/* Blue Box */
-.box {
-  background:#eaf0ff;
-  border-radius:22px;
-  padding:28px;
-  margin-bottom:16px;
-  max-width:70%;
-}
+    .box {
+      background: #eaf0ff;
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 16px;
+      max-width: 70%;
+    }
 
-/* English */
-.en {
-  font-size:2.6rem;   /* 🔥 دو برابر */
-  direction:ltr;
-  line-height:1.8;
-}
+    .en {
+      font-size: 2.4rem;
+      direction: ltr;
+      line-height: 1.8;
+    }
 
-/* Persian */
-.fa-text {
-  font-size:2.6rem;   /* 🔥 دو برابر */
-  direction:rtl;
-  line-height:1.9;
-  margin-top:10px;
-}
+    .fa-text {
+      font-size: 2.4rem;
+      direction: rtl;
+      line-height: 1.9;
+      margin-top: 10px;
+    }
 
-/* Buttons */
-button {
-  font-size:1.9rem;
-  padding:18px 26px;
-  border-radius:20px;
-  border:none;
-  cursor:pointer;
-}
+    #muteBtn {
+      font-size: 1.8rem;
+      padding: 16px 26px;
+      border-radius: 18px;
+      border: none;
+      background: #ddd;
+      margin: 20px 0;
+    }
 
-/* Main Actions */
-.main-actions {
-  display:flex;
-  gap:16px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin:24px 0;
-}
+    .main-actions {
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin:30px 0;
+    }
 
-.main-actions button {
-  background:#4caf50;
-  color:#fff;
-}
+    .main-actions button {
+      font-size:1.8rem;
+      padding:18px 26px;
+      border-radius:20px;
+      border:none;
+      background:#4caf50;
+      color:white;
+    }
 
-/* Mute */
-#muteBtn {
-  background:#ddd;
-  margin:20px 0;
-}
+    .nav-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      max-width:560px;
+      margin:30px auto;
+    }
 
-/* Navigation */
-.nav-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-  max-width:560px;
-  margin:30px auto;
-}
-
-.nav-grid button {
-  background:#5b7cff;
-  color:white;
-}
-</style>
+    .nav-grid button {
+      font-size:1.8rem;
+      padding:20px;
+      border-radius:20px;
+      border:none;
+      background:#5b7cff;
+      color:white;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1 class="title">📘 A1 Dictionary</h1>
+  <h1 class="title">📘 A1 Dictionary</h1>
 
-<input
-  id="searchInput"
-  type="search"
-  inputmode="search"
-  enterkeyhint="search"
-  placeholder="Type a word and press Enter…"
-  onkeydown="if(event.key==='Enter'){searchWord()}"
->
+  <input
+    id="searchInput"
+    type="search"
+    inputmode="search"
+    enterkeyhint="search"
+    placeholder="Type a word and press Enter…"
+    onkeydown="if(event.key==='Enter'){searchWord()}"
+  />
 
-<div id="result"></div>
+  <div id="result"></div>
 
-<button id="muteBtn">🔇 Mute</button>
+  <button id="muteBtn">🔇 Mute</button>
 
-<div class="main-actions">
-  <button onclick="addToLeitner()">⭐ Add to Leitner</button>
-  <button onclick="location.href='leitner.html'">📖 Leitner</button>
-  <button onclick="location.href='quiz.html'">📝 Quiz</button>
-</div>
+  <!-- MAIN -->
+  <div class="main-actions">
+    <button onclick="addToLeitner()">⭐ Add to Leitner</button>
+    <button onclick="location.href='leitner.html'">📖 Leitner</button>
+    <button onclick="location.href='quiz.html'">📝 Quiz</button>
+  </div>
 
-<div class="nav-grid">
-  <button onclick="location.href='progress.html'">📊 Progress</button>
-  <button onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
-  <button onclick="location.href='pdf.html'">📄 PDF</button>
-  <button onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
-</div>
+  <!-- NAV -->
+  <div class="nav-grid">
+    <button onclick="location.href='progress.html'">📊 Progress</button>
+    <button onclick="location.href='leaderboard.html'">🏆 Leaderboard</button>
+    <button onclick="location.href='pdf.html'">📄 PDF</button>
+    <button onclick="location.href='teacher.html'">👨‍🏫 Teacher</button>
+  </div>
 
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
