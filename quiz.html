@@ -7,65 +7,44 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-  body{
-    background:#f6f8ff;
-    font-family:system-ui;
-    text-align:center;
+  body { background:#f6f8ff; text-align:center; font-family:system-ui }
+  .title { font-size:2.6rem; margin:20px 0 }
+  .card {
+    background:#fff; border-radius:26px; padding:26px;
+    max-width:520px; margin:20px auto;
   }
-  .title{
-    font-size:3rem;
-    margin:20px 0;
+  #modeBox { font-size:1.3rem; margin-bottom:14px }
+  .listen {
+    font-size:2.2rem; cursor:pointer; margin:16px 0;
   }
-  .card{
-    background:white;
-    border-radius:28px;
-    padding:30px;
-    max-width:720px;
-    margin:20px auto;
-  }
-  #modeBox{
-    font-size:1.8rem;
-    margin-bottom:10px;
-  }
-  #question{
-    font-size:2.8rem;
-    margin:20px 0;
-  }
-  .listen-btn{
-    font-size:2.8rem;
-    padding:18px 30px;
-    border:none;
-    border-radius:20px;
-    background:#eaf0ff;
-    margin-bottom:20px;
-  }
-  .choices{
+  .choices {
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:16px;
+    gap:14px;
   }
-  .choices button{
-    font-size:1.8rem;
-    padding:22px;
+  .choices button {
+    padding:18px;
+    font-size:1.3rem;
     border:none;
-    border-radius:20px;
+    border-radius:18px;
     background:#5b7cff;
-    color:white;
+    color:#fff;
   }
-  .actions{
+  .actions {
     display:flex;
     gap:16px;
     justify-content:center;
-    margin-top:20px;
+    margin:24px 0;
   }
-  .actions button{
-    font-size:1.6rem;
+  .actions button {
     padding:16px 26px;
-    border-radius:20px;
+    font-size:1.3rem;
     border:none;
-    background:#4caf50;
-    color:white;
+    border-radius:20px;
+    color:#fff;
   }
+  .next { background:#4caf50 }
+  .back { background:#777 }
 </style>
 </head>
 
@@ -76,16 +55,15 @@
 <div class="card">
   <div id="modeBox"></div>
 
-  <button class="listen-btn" onclick="repeatSound()">🔊 Listen</button>
-
-  <div id="question"></div>
+  <!-- LISTEN ICON -->
+  <div id="listenBtn" class="listen">🔊 Listen</div>
 
   <div id="choices" class="choices"></div>
 </div>
 
 <div class="actions">
-  <button onclick="nextQuestion()">➡ Next</button>
-  <button onclick="location.href='index.html'">⬅ Dictionary</button>
+  <button class="next" onclick="nextQuestion()">➡ Next</button>
+  <button class="back" onclick="location.href='index.html'">⬅ Dictionary</button>
 </div>
 
 <script src="quiz.js"></script>
