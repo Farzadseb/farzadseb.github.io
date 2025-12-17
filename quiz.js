@@ -2,7 +2,7 @@ let data = {};
 let keys = [];
 let current = "";
 let mode = 1;
-let lastSpeech = "";
+let lastSpoken = "";
 
 fetch("pdcs_a1.json")
   .then(r => r.json())
@@ -14,7 +14,7 @@ fetch("pdcs_a1.json")
 
 function speak(text) {
   if (!text) return;
-  lastSpeech = text;
+  lastSpoken = text;
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "en-US";
@@ -22,8 +22,10 @@ function speak(text) {
   speechSynthesis.speak(u);
 }
 
-document.getElementById("speaker")?.addEventListener("click", () => {
-  speak(lastSpeech);
+document.addEventListener("click", e => {
+  if (e.target.id === "listenBtn") {
+    speak(lastSpoken);
+  }
 });
 
 function nextQuestion() {
@@ -32,11 +34,9 @@ function nextQuestion() {
   mode = Math.floor(Math.random() * 3) + 1;
   current = keys[Math.floor(Math.random() * keys.length)];
 
-  const q = document.getElementById("question");
-  const c = document.getElementById("choices");
   const m = document.getElementById("modeBox");
+  const c = document.getElementById("choices");
 
-  q.innerHTML = "";
   c.innerHTML = "";
 
   let answers = [];
@@ -45,14 +45,11 @@ function nextQuestion() {
   // MODE 1 — English → Persian
   if (mode === 1) {
     m.innerText = "🎧 English → Persian";
-    q.innerText = current;
     speak(current);
-
     correct = data[current].fa;
     answers.push(correct);
-
     while (answers.length < 4) {
-      const r = data[keys[Math.floor(Math.random()*keys.length)]].fa;
+      let r = data[keys[Math.floor(Math.random()*keys.length)]].fa;
       if (!answers.includes(r)) answers.push(r);
     }
   }
@@ -60,14 +57,11 @@ function nextQuestion() {
   // MODE 2 — English → Definition
   if (mode === 2) {
     m.innerText = "🎧 English → Definition";
-    q.innerText = "Listen";
     speak(current);
-
     correct = data[current].def;
     answers.push(correct);
-
     while (answers.length < 4) {
-      const r = data[keys[Math.floor(Math.random()*keys.length)]].def;
+      let r = data[keys[Math.floor(Math.random()*keys.length)]].def;
       if (!answers.includes(r)) answers.push(r);
     }
   }
@@ -75,14 +69,11 @@ function nextQuestion() {
   // MODE 3 — Definition → Persian
   if (mode === 3) {
     m.innerText = "🎧 Definition → Persian";
-    q.innerText = "Listen";
     speak(data[current].def);
-
     correct = data[current].fa;
     answers.push(correct);
-
     while (answers.length < 4) {
-      const r = data[keys[Math.floor(Math.random()*keys.length)]].fa;
+      let r = data[keys[Math.floor(Math.random()*keys.length)]].fa;
       if (!answers.includes(r)) answers.push(r);
     }
   }
@@ -106,6 +97,5 @@ function check(btn, ans, correct) {
     l[current] = { box: 1, last: Date.now() };
     localStorage.setItem("leitner", JSON.stringify(l));
   }
-
   setTimeout(nextQuestion, 900);
 }
