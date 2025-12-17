@@ -4,68 +4,199 @@
 <meta charset="UTF-8">
 <title>A1 Quiz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
 
 <style>
-  body { background:#f6f8ff; text-align:center; font-family:system-ui }
-  .title { font-size:2.6rem; margin:20px 0 }
-  .card {
-    background:#fff; border-radius:26px; padding:26px;
-    max-width:520px; margin:20px auto;
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
+    background:#f7f8fa;
+    color:#111;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px;
   }
-  #modeBox { font-size:1.3rem; margin-bottom:14px }
-  .listen {
-    font-size:2.2rem; cursor:pointer; margin:16px 0;
+  h1{
+    font-size:2.4rem;
+    margin-bottom:10px;
   }
-  .choices {
+  .card{
+    width:100%;
+    max-width:520px;
+    background:#ffffff;
+    border-radius:16px;
+    box-shadow:0 6px 20px rgba(0,0,0,.08);
+    padding:20px;
+    margin-bottom:16px;
+  }
+  #modeBox{
+    font-size:1.4rem;
+    text-align:center;
+    margin-bottom:8px;
+    opacity:.85;
+  }
+  #question{
+    font-size:2.2rem;
+    text-align:center;
+    cursor:pointer;
+    user-select:none;
+  }
+  .speaker{
+    font-size:2.6rem;
+    cursor:pointer;
+    margin-top:8px;
+  }
+  .nav-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:14px;
+    gap:10px;
+    margin-top:16px;
   }
-  .choices button {
-    padding:18px;
+  .nav-grid button{
     font-size:1.3rem;
-    border:none;
-    border-radius:18px;
-    background:#5b7cff;
-    color:#fff;
+    padding:14px 10px;
+    border-radius:12px;
+    border:1px solid #ddd;
+    background:#f1f3f6;
+    cursor:pointer;
   }
-  .actions {
+  .nav-grid button:active{
+    transform:scale(.98);
+  }
+  .bottom{
     display:flex;
-    gap:16px;
-    justify-content:center;
-    margin:24px 0;
+    gap:10px;
   }
-  .actions button {
-    padding:16px 26px;
-    font-size:1.3rem;
+  .bottom button{
+    font-size:1.2rem;
+    padding:12px 18px;
+    border-radius:12px;
     border:none;
-    border-radius:20px;
-    color:#fff;
+    background:#e5e7eb;
+    cursor:pointer;
   }
-  .next { background:#4caf50 }
-  .back { background:#777 }
 </style>
 </head>
 
 <body>
 
-<h1 class="title">📝 A1 Quiz</h1>
+<h1>📝 A1 Quiz</h1>
+
+<div id="modeBox" class="card"></div>
 
 <div class="card">
-  <div id="modeBox"></div>
-
-  <!-- LISTEN ICON -->
-  <div id="listenBtn" class="listen">🔊 Listen</div>
-
-  <div id="choices" class="choices"></div>
+  <div id="question"></div>
+  <div class="speaker" id="speaker">🔊</div>
+  <div id="choices" class="nav-grid"></div>
 </div>
 
-<div class="actions">
-  <button class="next" onclick="nextQuestion()">➡ Next</button>
-  <button class="back" onclick="location.href='index.html'">⬅ Dictionary</button>
+<div class="bottom">
+  <button onclick="nextQuestion()">➡ Next</button>
+  <button onclick="location.href='index.html'">⬅ Back</button>
 </div>
 
-<script src="quiz.js"></script>
+<script>
+let data = {};
+let keys = [];
+let current = "";
+let mode = 1;
+let lastSpoken = "";
+
+fetch("pdcs_a1.json")
+  .then(r => r.json())
+  .then(j => {
+    data = j.words || j;
+    keys = Object.keys(data);
+    nextQuestion();
+  });
+
+function speak(text){
+  lastSpoken = text;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US";
+  u.rate = 0.8;
+  speechSynthesis.speak(u);
+}
+
+document.getElementById("speaker").onclick = () => {
+  if(lastSpoken) speak(lastSpoken);
+};
+
+function nextQuestion(){
+  if(keys.length < 4) return;
+
+  mode = Math.floor(Math.random()*3)+1;
+  current = keys[Math.floor(Math.random()*keys.length)];
+
+  const q = document.getElementById("question");
+  const c = document.getElementById("choices");
+  const m = document.getElementById("modeBox");
+
+  q.innerHTML = "";
+  c.innerHTML = "";
+
+  let answers = [];
+  let correct = "";
+
+  if(mode===1){
+    m.innerText = "🎧 English → Persian";
+    q.innerText = current;
+    speak(current);
+    correct = data[current].fa;
+    answers.push(correct);
+    while(answers.length<4){
+      let r = data[keys[Math.floor(Math.random()*keys.length)]].fa;
+      if(!answers.includes(r)) answers.push(r);
+    }
+  }
+
+  if(mode===2){
+    m.innerText = "🎧 English → Definition";
+    q.innerText = current;
+    speak(current);
+    correct = data[current].def;
+    answers.push(correct);
+    while(answers.length<4){
+      let r = data[keys[Math.floor(Math.random()*keys.length)]].def;
+      if(!answers.includes(r)) answers.push(r);
+    }
+  }
+
+  if(mode===3){
+    m.innerText = "🎧 Definition → Persian";
+    q.innerText = "Listen";
+    speak(data[current].def);
+    correct = data[current].fa;
+    answers.push(correct);
+    while(answers.length<4){
+      let r = data[keys[Math.floor(Math.random()*keys.length)]].fa;
+      if(!answers.includes(r)) answers.push(r);
+    }
+  }
+
+  answers.sort(()=>Math.random()-.5);
+
+  answers.forEach(a=>{
+    const b = document.createElement("button");
+    b.innerText = a;
+    b.onclick = ()=>check(b,a,correct);
+    c.appendChild(b);
+  });
+}
+
+function check(btn,ans,correct){
+  if(ans===correct){
+    btn.style.background="#c7f3d0";
+  }else{
+    btn.style.background="#f7c7c7";
+    let l = JSON.parse(localStorage.getItem("leitner"))||{};
+    l[current]={box:1,last:Date.now()};
+    localStorage.setItem("leitner",JSON.stringify(l));
+  }
+  setTimeout(nextQuestion,700);
+}
+</script>
+
 </body>
 </html>
