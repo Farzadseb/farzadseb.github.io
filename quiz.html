@@ -8,80 +8,73 @@
 <style>
   body {
     margin: 0;
-    padding: 0;
+    font-family: system-ui, -apple-system;
     background: #f6f8ff;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     text-align: center;
   }
 
   .title {
-    font-size: 3.2rem;
+    font-size: 3rem;
     margin: 24px 0;
   }
 
   .card {
     background: #ffffff;
     border-radius: 28px;
-    padding: 36px 28px;
+    padding: 30px;
     margin: 24px auto;
-    max-width: 760px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    max-width: 700px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
   }
 
   #modeBox {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #3f51b5;
+    font-size: 1.8rem;
+    font-weight: bold;
   }
 
   #question {
-    font-size: 3.6rem;
-    font-weight: bold;
-    margin: 24px 0;
+    font-size: 3.2rem;
+    margin-bottom: 20px;
   }
 
-  .nav-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-    margin-top: 20px;
-  }
-
-  .nav-grid button {
+  .replay {
     font-size: 2.4rem;
-    padding: 22px 20px;
-    border-radius: 22px;
-    border: none;
+    margin-bottom: 20px;
     background: #eaf0ff;
-    color: #222;
-    cursor: pointer;
-    transition: 0.2s;
+    border: none;
+    border-radius: 18px;
+    padding: 14px 26px;
   }
 
-  .nav-grid button:hover {
-    background: #dbe4ff;
+  .choices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
 
-  .actions {
-    display: flex;
-    gap: 18px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 28px 0;
-  }
-
-  .actions button {
+  .choices button {
     font-size: 2rem;
-    padding: 18px 28px;
+    padding: 22px;
     border-radius: 22px;
     border: none;
     background: #5b7cff;
     color: white;
-    cursor: pointer;
   }
 
-  .actions button.secondary {
-    background: #9aa7ff;
+  .controls {
+    margin: 30px 0;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .controls button {
+    font-size: 1.8rem;
+    padding: 18px 28px;
+    border-radius: 22px;
+    border: none;
+    background: #4caf50;
+    color: white;
   }
 </style>
 </head>
@@ -94,12 +87,16 @@
 
 <div class="card">
   <div id="question"></div>
-  <div id="choices" class="nav-grid"></div>
+
+  <!-- 🔊 REPLAY -->
+  <button class="replay" onclick="replay()">🔊</button>
+
+  <div id="choices" class="choices"></div>
 </div>
 
-<div class="actions">
+<div class="controls">
   <button onclick="nextQuestion()">➡ Next</button>
-  <button class="secondary" onclick="location.href='index.html'">⬅ Back</button>
+  <button onclick="location.href='index.html'">⬅ Dictionary</button>
 </div>
 
 <script src="quiz.js"></script>
