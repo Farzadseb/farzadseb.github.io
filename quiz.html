@@ -11,9 +11,12 @@
             --card: #ffffff;
             --primary: #5b7cff;
             --primary-dark: #4562e6;
+            --secondary: #4ecdc4;
             --correct: #d4edda;
+            --correct-dark: #28a745;
             --correct-text: #155724;
             --wrong: #f8d7da;
+            --wrong-dark: #dc3545;
             --wrong-text: #721c24;
             --text: #111;
             --text-secondary: #6c757d;
@@ -44,7 +47,7 @@
 
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -67,25 +70,65 @@
         .subtitle {
             color: var(--text-secondary);
             font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .quiz-settings {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .setting-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .setting-group label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .setting-group select {
+            padding: 8px 15px;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            background: white;
+            font-size: 1rem;
+            cursor: pointer;
         }
 
         .stats {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 15px;
+            gap: 15px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
         .stat-item {
             background: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 16px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             font-size: 1.1rem;
             display: flex;
             align-items: center;
             gap: 8px;
+            min-width: 140px;
+            justify-content: center;
+        }
+
+        .stat-item.highlight {
+            background: linear-gradient(135deg, var(--primary), #8a63ff);
+            color: white;
         }
 
         .card {
@@ -95,10 +138,29 @@
             padding: 30px;
             margin-bottom: 10px;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
             box-shadow: var(--shadow-hover);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .question-counter {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            background: #f8f9fa;
+            padding: 8px 16px;
+            border-radius: 20px;
         }
 
         #modeBox {
@@ -117,7 +179,7 @@
         }
 
         #question {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             text-align: center;
             margin: 20px 0;
             min-height: 120px;
@@ -126,37 +188,110 @@
             justify-content: center;
             font-weight: 700;
             color: #1a1a1a;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            border: 2px dashed var(--border);
         }
 
-        .speaker-container {
-            text-align: center;
+        .speaker-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
             margin: 25px 0;
+            flex-wrap: wrap;
         }
 
-        .speaker {
-            font-size: 3.5rem;
+        .speaker-btn {
+            font-size: 1.5rem;
+            padding: 15px 25px;
+            border-radius: 16px;
+            border: none;
+            background: white;
             cursor: pointer;
-            user-select: none;
-            display: inline-block;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid var(--border);
+        }
+
+        .speaker-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .speaker-btn.primary {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .speaker-btn.secondary {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .hint-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .hint-btn {
+            background: #fff3cd;
+            color: #856404;
+            border: 2px solid #ffeaa7;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 auto;
+        }
+
+        .hint-content {
+            background: #fff9e6;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 10px;
+            border-left: 4px solid #ffc107;
+            display: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress {
+            height: 100%;
             background: linear-gradient(to right, var(--primary), #8a63ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            padding: 10px;
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 5px;
         }
 
-        .speaker:hover {
-            transform: scale(1.1);
-        }
-
-        .speaker:active {
-            transform: scale(0.95);
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
         .nav-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 16px;
             margin-top: 20px;
         }
@@ -175,6 +310,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-grid button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-grid button:hover:not(:disabled)::before {
+            left: 100%;
         }
 
         .nav-grid button:hover:not(:disabled) {
@@ -186,20 +338,34 @@
         .nav-grid button.correct {
             background: var(--correct);
             color: var(--correct-text);
-            border-color: var(--correct);
+            border-color: var(--correct-dark);
+            animation: correctPulse 0.6s ease;
         }
 
         .nav-grid button.wrong {
             background: var(--wrong);
             color: var(--wrong-text);
-            border-color: var(--wrong);
+            border-color: var(--wrong-dark);
+            animation: wrongShake 0.5s ease;
+        }
+
+        @keyframes correctPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes wrongShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
         }
 
         .controls {
             display: flex;
             justify-content: space-between;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .controls button {
@@ -218,13 +384,14 @@
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), #8a63ff);
             color: white;
+            box-shadow: 0 8px 25px rgba(91, 124, 255, 0.3);
         }
 
         .btn-primary:hover:not(:disabled) {
-            background: var(--primary-dark);
             transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(91, 124, 255, 0.4);
         }
 
         .btn-secondary {
@@ -235,50 +402,67 @@
 
         .btn-secondary:hover:not(:disabled) {
             background: #e2e8f0;
+            transform: translateY(-3px);
         }
 
         button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
+            transform: none !important;
         }
 
         button:active:not(:disabled) {
             transform: scale(0.97);
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #e5e7eb;
-            border-radius: 4px;
-            margin-top: 15px;
-            overflow: hidden;
-        }
-
-        .progress {
-            height: 100%;
-            background: linear-gradient(to right, var(--primary), #8a63ff);
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-
         .feedback {
             text-align: center;
             font-size: 1.4rem;
             font-weight: 600;
-            min-height: 40px;
-            margin-top: 15px;
+            min-height: 60px;
+            margin-top: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 15px;
+            border-radius: 12px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .correct-feedback {
+            background: var(--correct);
             color: var(--correct-text);
+            border: 2px solid var(--correct-dark);
         }
 
         .wrong-feedback {
+            background: var(--wrong);
             color: var(--wrong-text);
+            border: 2px solid var(--wrong-dark);
+        }
+
+        .word-details {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 20px;
+            border-left: 4px solid var(--primary);
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .word-details h4 {
+            margin-bottom: 10px;
+            color: var(--primary);
         }
 
         .loader {
@@ -302,14 +486,43 @@
             100% { transform: rotate(360deg); }
         }
 
-        @media (max-width: 600px) {
+        .timer {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(91, 124, 255, 0.3);
+        }
+
+        .timer.warning {
+            background: #ff6b6b;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
             h1 {
                 font-size: 2.2rem;
             }
             
             #question {
-                font-size: 2.2rem;
+                font-size: 2rem;
                 min-height: 100px;
+                padding: 15px;
             }
             
             .nav-grid {
@@ -325,18 +538,40 @@
             }
             
             .stat-item {
-                padding: 8px 15px;
+                padding: 10px 15px;
                 font-size: 1rem;
+                min-width: 120px;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .timer {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 0 auto 15px;
             }
         }
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
             .card {
                 padding: 20px;
             }
             
             #question {
                 font-size: 1.8rem;
+            }
+            
+            .speaker-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .speaker-btn {
+                justify-content: center;
             }
         }
     </style>
@@ -346,10 +581,31 @@
         <header>
             <h1><i class="fas fa-language"></i> A1 Vocabulary Quiz</h1>
             <p class="subtitle">Learn English words with definitions and Persian translations</p>
+            
+            <div class="quiz-settings">
+                <div class="setting-group">
+                    <label for="quizMode"><i class="fas fa-cog"></i> Mode:</label>
+                    <select id="quizMode" onchange="changeQuizMode()">
+                        <option value="random">Random</option>
+                        <option value="1">English → Persian</option>
+                        <option value="2">English → Definition</option>
+                        <option value="3">Definition → Persian</option>
+                        <option value="4">Persian → English</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label for="difficulty"><i class="fas fa-chart-line"></i> Difficulty:</label>
+                    <select id="difficulty" onchange="changeDifficulty()">
+                        <option value="easy">Easy (4 choices)</option>
+                        <option value="medium">Medium (6 choices)</option>
+                        <option value="hard">Hard (8 choices)</option>
+                    </select>
+                </div>
+            </div>
         </header>
         
         <div class="stats">
-            <div class="stat-item">
+            <div class="stat-item highlight">
                 <i class="fas fa-book"></i>
                 <span>Words: <span id="totalWords">0</span></span>
             </div>
@@ -365,34 +621,67 @@
                 <i class="fas fa-chart-line"></i>
                 <span>Streak: <span id="streak">0</span></span>
             </div>
+            <div class="stat-item">
+                <i class="fas fa-clock"></i>
+                <span>Time: <span id="timerDisplay">60s</span></span>
+            </div>
         </div>
         
         <div class="card">
-            <div id="modeBox">
-                <i class="fas fa-info-circle"></i>
-                <span id="modeText">Loading quiz...</span>
+            <div class="card-header">
+                <div id="modeBox">
+                    <i class="fas fa-info-circle"></i>
+                    <span id="modeText">Loading quiz...</span>
+                </div>
+                <div class="question-counter">
+                    Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span>
+                </div>
             </div>
             
             <div id="question">Loading...</div>
             
-            <div class="speaker-container">
-                <div class="speaker" id="speaker">
-                    <i class="fas fa-volume-up"></i>
+            <div class="speaker-controls">
+                <button class="speaker-btn primary" onclick="speakQuestion()">
+                    <i class="fas fa-volume-up"></i> Listen
+                </button>
+                <button class="speaker-btn secondary" onclick="repeatSpeech()">
+                    <i class="fas fa-redo"></i> Repeat
+                </button>
+                <button class="speaker-btn" onclick="toggleHint()">
+                    <i class="fas fa-lightbulb"></i> Hint
+                </button>
+            </div>
+            
+            <div class="hint-section">
+                <div class="hint-content" id="hintContent">
+                    <!-- Hint will appear here -->
                 </div>
             </div>
             
             <div class="progress-bar">
                 <div class="progress" id="progress"></div>
             </div>
+            <div class="progress-labels">
+                <span>0%</span>
+                <span id="progressPercentage">0%</span>
+                <span>100%</span>
+            </div>
             
             <div id="choices" class="nav-grid"></div>
             
             <div class="feedback" id="feedback"></div>
+            
+            <div class="word-details" id="wordDetails" style="display: none;">
+                <!-- Word details will appear here -->
+            </div>
         </div>
         
         <div class="controls">
             <button class="btn-secondary" onclick="location.href='index.html'">
                 <i class="fas fa-arrow-left"></i> Back to Menu
+            </button>
+            <button class="btn-secondary" onclick="restartQuiz()">
+                <i class="fas fa-redo"></i> Restart
             </button>
             <button class="btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>
                 Next Question <i class="fas fa-arrow-right"></i>
@@ -406,27 +695,39 @@
     </div>
 
     <script>
-        // Quiz state management
+        // Enhanced Quiz State Management
         const quizState = {
             data: {},
             keys: [],
             currentWord: "",
-            mode: 1,
+            mode: "random",
+            difficulty: "easy",
             lastSpoken: "",
             questionCount: 0,
+            totalQuestions: 10,
             correctCount: 0,
             wrongCount: 0,
             currentStreak: 0,
             maxStreak: 0,
             selectedAnswer: null,
-            isAnswered: false
+            isAnswered: false,
+            timer: 60,
+            timerInterval: null,
+            isTimerRunning: false,
+            usedWords: new Set(),
+            showHint: false,
+            quizStats: {
+                totalAttempts: 0,
+                averageScore: 0,
+                bestStreak: 0,
+                timeSpent: 0
+            }
         };
 
         // DOM elements
         const elements = {
             modeText: document.getElementById('modeText'),
             question: document.getElementById('question'),
-            speaker: document.getElementById('speaker'),
             choices: document.getElementById('choices'),
             nextBtn: document.getElementById('nextBtn'),
             feedback: document.getElementById('feedback'),
@@ -435,7 +736,15 @@
             correctCount: document.getElementById('correctCount'),
             wrongCount: document.getElementById('wrongCount'),
             streak: document.getElementById('streak'),
-            progress: document.getElementById('progress')
+            progress: document.getElementById('progress'),
+            progressPercentage: document.getElementById('progressPercentage'),
+            wordDetails: document.getElementById('wordDetails'),
+            hintContent: document.getElementById('hintContent'),
+            currentQuestion: document.getElementById('currentQuestion'),
+            totalQuestions: document.getElementById('totalQuestions'),
+            timerDisplay: document.getElementById('timerDisplay'),
+            quizMode: document.getElementById('quizMode'),
+            difficulty: document.getElementById('difficulty')
         };
 
         // Initialize quiz
@@ -457,13 +766,18 @@
                 }
                 
                 elements.totalWords.textContent = quizState.keys.length;
+                elements.totalQuestions.textContent = quizState.totalQuestions;
                 elements.loader.style.display = 'none';
                 
                 // Load stats from localStorage
                 loadStats();
                 
+                // Initialize settings from localStorage
+                loadSettings();
+                
                 // Start with first question
                 nextQuestion();
+                
             } catch (error) {
                 elements.loader.innerHTML = `
                     <div style="color: #dc3545; font-size: 1.2rem;">
@@ -484,15 +798,50 @@
                 correct: 0,
                 wrong: 0,
                 streak: 0,
-                maxStreak: 0
+                maxStreak: 0,
+                totalQuestions: 0,
+                quizHistory: []
             };
             
-            quizState.correctCount = stats.correct;
-            quizState.wrongCount = stats.wrong;
-            quizState.currentStreak = stats.streak;
-            quizState.maxStreak = stats.maxStreak;
+            quizState.correctCount = stats.correct || 0;
+            quizState.wrongCount = stats.wrong || 0;
+            quizState.currentStreak = stats.streak || 0;
+            quizState.maxStreak = stats.maxStreak || 0;
+            quizState.questionCount = stats.totalQuestions || 0;
             
             updateStatsDisplay();
+        }
+
+        function loadSettings() {
+            const settings = JSON.parse(localStorage.getItem('quizSettings')) || {};
+            if (settings.mode) {
+                quizState.mode = settings.mode;
+                elements.quizMode.value = settings.mode;
+            }
+            if (settings.difficulty) {
+                quizState.difficulty = settings.difficulty;
+                elements.difficulty.value = settings.difficulty;
+            }
+        }
+
+        function saveSettings() {
+            const settings = {
+                mode: quizState.mode,
+                difficulty: quizState.difficulty
+            };
+            localStorage.setItem('quizSettings', JSON.stringify(settings));
+        }
+
+        function changeQuizMode() {
+            quizState.mode = elements.quizMode.value;
+            saveSettings();
+            restartQuiz();
+        }
+
+        function changeDifficulty() {
+            quizState.difficulty = elements.difficulty.value;
+            saveSettings();
+            restartQuiz();
         }
 
         function saveStats() {
@@ -500,8 +849,23 @@
                 correct: quizState.correctCount,
                 wrong: quizState.wrongCount,
                 streak: quizState.currentStreak,
-                maxStreak: quizState.maxStreak
+                maxStreak: quizState.maxStreak,
+                totalQuestions: quizState.questionCount,
+                quizHistory: JSON.parse(localStorage.getItem('quizStats'))?.quizHistory || []
             };
+            
+            // Add current quiz to history
+            stats.quizHistory.push({
+                date: new Date().toISOString(),
+                correct: quizState.correctCount,
+                total: quizState.correctCount + quizState.wrongCount,
+                streak: quizState.currentStreak
+            });
+            
+            // Keep only last 100 quizzes
+            if (stats.quizHistory.length > 100) {
+                stats.quizHistory = stats.quizHistory.slice(-100);
+            }
             
             localStorage.setItem('quizStats', JSON.stringify(stats));
         }
@@ -512,23 +876,25 @@
             elements.streak.textContent = quizState.currentStreak;
             
             // Update progress bar
-            const totalQuestions = quizState.correctCount + quizState.wrongCount;
-            const progressPercentage = totalQuestions > 0 ? (quizState.correctCount / totalQuestions) * 100 : 0;
+            const totalAnswered = quizState.correctCount + quizState.wrongCount;
+            const progressPercentage = totalAnswered > 0 ? 
+                Math.round((quizState.correctCount / totalAnswered) * 100) : 0;
             elements.progress.style.width = `${progressPercentage}%`;
+            elements.progressPercentage.textContent = `${progressPercentage}%`;
         }
 
         function speak(text) {
-            // Cancel any ongoing speech
-            window.speechSynthesis.cancel();
+            if (!text) return;
             
+            window.speechSynthesis.cancel();
             quizState.lastSpoken = text;
+            
             const utterance = new SpeechSynthesisUtterance(text);
             utterance.lang = "en-US";
             utterance.rate = 0.8;
             utterance.pitch = 1;
             utterance.volume = 1;
             
-            // Set a nicer voice if available
             const voices = window.speechSynthesis.getVoices();
             const preferredVoice = voices.find(voice => 
                 voice.lang.includes('en') && voice.name.includes('Female')
@@ -539,20 +905,97 @@
             }
             
             window.speechSynthesis.speak(utterance);
-            
-            // Add visual feedback while speaking
-            elements.speaker.style.animation = 'pulse 1s infinite';
-            utterance.onend = () => {
-                elements.speaker.style.animation = '';
-            };
         }
 
-        // Speaker click handler
-        elements.speaker.onclick = () => {
+        function speakQuestion() {
+            if (quizState.mode === 3) {
+                // Mode 3: Definition → Persian
+                speak(quizState.data[quizState.currentWord]?.def || '');
+            } else {
+                // Other modes: Speak the English word
+                speak(quizState.currentWord);
+            }
+        }
+
+        function repeatSpeech() {
             if (quizState.lastSpoken) {
                 speak(quizState.lastSpoken);
             }
-        };
+        }
+
+        function startTimer() {
+            clearInterval(quizState.timerInterval);
+            quizState.timer = 60;
+            quizState.isTimerRunning = true;
+            
+            elements.timerDisplay.textContent = `${quizState.timer}s`;
+            
+            quizState.timerInterval = setInterval(() => {
+                quizState.timer--;
+                elements.timerDisplay.textContent = `${quizState.timer}s`;
+                
+                if (quizState.timer <= 10) {
+                    elements.timerDisplay.style.color = '#ff6b6b';
+                }
+                
+                if (quizState.timer <= 0) {
+                    clearInterval(quizState.timerInterval);
+                    timeOut();
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(quizState.timerInterval);
+            quizState.isTimerRunning = false;
+            elements.timerDisplay.style.color = '';
+        }
+
+        function timeOut() {
+            if (quizState.isAnswered) return;
+            
+            quizState.isAnswered = true;
+            quizState.wrongCount++;
+            quizState.currentStreak = 0;
+            
+            // Disable all buttons
+            const allButtons = elements.choices.querySelectorAll('button');
+            allButtons.forEach(btn => {
+                btn.disabled = true;
+                btn.style.cursor = 'not-allowed';
+            });
+            
+            elements.feedback.textContent = "Time's up! ⏰";
+            elements.feedback.className = 'feedback wrong-feedback';
+            
+            // Show correct answer
+            allButtons.forEach(btn => {
+                if (btn.dataset.correct === 'true') {
+                    btn.classList.add('correct');
+                }
+            });
+            
+            // Save to Leitner for review
+            saveToLeitner(quizState.currentWord);
+            
+            // Show word details
+            showWordDetails();
+            
+            // Enable next button
+            elements.nextBtn.disabled = false;
+            
+            updateStatsDisplay();
+            saveStats();
+        }
+
+        function getNumberOfChoices() {
+            switch (quizState.difficulty) {
+                case 'easy': return 4;
+                case 'medium': return 6;
+                case 'hard': return 8;
+                default: return 4;
+            }
+        }
 
         function nextQuestion() {
             // Reset state
@@ -561,79 +1004,113 @@
             elements.nextBtn.disabled = true;
             elements.feedback.textContent = '';
             elements.feedback.className = 'feedback';
+            elements.wordDetails.style.display = 'none';
+            elements.hintContent.style.display = 'none';
+            quizState.showHint = false;
             
-            if (quizState.keys.length < 4) {
-                elements.question.textContent = "Not enough words in database";
+            // Stop timer if running
+            stopTimer();
+            
+            // Check if quiz is complete
+            if (quizState.questionCount >= quizState.totalQuestions) {
+                showQuizComplete();
                 return;
             }
             
-            // Select random mode and word
-            quizState.mode = Math.floor(Math.random() * 3) + 1;
-            quizState.currentWord = quizState.keys[Math.floor(Math.random() * quizState.keys.length)];
+            // Select random word that hasn't been used
+            let availableWords = quizState.keys.filter(word => !quizState.usedWords.has(word));
+            if (availableWords.length === 0) {
+                // Reset used words if all have been used
+                quizState.usedWords.clear();
+                availableWords = quizState.keys;
+            }
+            
+            quizState.currentWord = availableWords[Math.floor(Math.random() * availableWords.length)];
+            quizState.usedWords.add(quizState.currentWord);
             quizState.questionCount++;
+            
+            elements.currentQuestion.textContent = quizState.questionCount;
             
             // Clear choices
             elements.choices.innerHTML = '';
             
+            // Determine mode
+            let actualMode = quizState.mode;
+            if (actualMode === 'random') {
+                actualMode = Math.floor(Math.random() * 4) + 1;
+            }
+            
+            const numChoices = getNumberOfChoices();
             let answers = [];
             let correctAnswer = "";
             let questionText = "";
             
             // MODE 1: English → Persian
-            if (quizState.mode === 1) {
+            if (actualMode == 1) {
                 elements.modeText.textContent = "English → Persian Translation";
                 questionText = quizState.currentWord;
                 correctAnswer = quizState.data[quizState.currentWord].fa;
-                answers.push(correctAnswer);
+                answers.push({text: correctAnswer, correct: true});
                 
                 // Add random wrong answers
-                while (answers.length < 4) {
+                while (answers.length < numChoices) {
                     let randomWord = quizState.keys[Math.floor(Math.random() * quizState.keys.length)];
                     let randomAnswer = quizState.data[randomWord].fa;
-                    if (!answers.includes(randomAnswer)) {
-                        answers.push(randomAnswer);
+                    if (!answers.some(a => a.text === randomAnswer)) {
+                        answers.push({text: randomAnswer, correct: false});
                     }
                 }
-                
-                // Speak the word
-                speak(quizState.currentWord);
             }
             
             // MODE 2: English → Definition
-            if (quizState.mode === 2) {
+            else if (actualMode == 2) {
                 elements.modeText.textContent = "English → Definition";
                 questionText = quizState.currentWord;
                 correctAnswer = quizState.data[quizState.currentWord].def;
-                answers.push(correctAnswer);
+                answers.push({text: correctAnswer, correct: true});
                 
-                while (answers.length < 4) {
+                while (answers.length < numChoices) {
                     let randomWord = quizState.keys[Math.floor(Math.random() * quizState.keys.length)];
                     let randomAnswer = quizState.data[randomWord].def;
-                    if (!answers.includes(randomAnswer)) {
-                        answers.push(randomAnswer);
+                    if (!answers.some(a => a.text === randomAnswer)) {
+                        answers.push({text: randomAnswer, correct: false});
                     }
                 }
-                
-                speak(quizState.currentWord);
             }
             
             // MODE 3: Definition → Persian
-            if (quizState.mode === 3) {
+            else if (actualMode == 3) {
                 elements.modeText.textContent = "Listen to Definition → Persian";
                 questionText = "🎧 Listen to the definition";
                 correctAnswer = quizState.data[quizState.currentWord].fa;
-                answers.push(correctAnswer);
+                answers.push({text: correctAnswer, correct: true});
                 
-                while (answers.length < 4) {
+                while (answers.length < numChoices) {
                     let randomWord = quizState.keys[Math.floor(Math.random() * quizState.keys.length)];
                     let randomAnswer = quizState.data[randomWord].fa;
-                    if (!answers.includes(randomAnswer)) {
-                        answers.push(randomAnswer);
+                    if (!answers.some(a => a.text === randomAnswer)) {
+                        answers.push({text: randomAnswer, correct: false});
                     }
                 }
                 
-                // Speak the definition
+                // Speak the definition immediately
                 speak(quizState.data[quizState.currentWord].def);
+            }
+            
+            // MODE 4: Persian → English (New mode)
+            else if (actualMode == 4) {
+                elements.modeText.textContent = "Persian → English Translation";
+                questionText = quizState.data[quizState.currentWord].fa;
+                correctAnswer = quizState.currentWord;
+                answers.push({text: correctAnswer, correct: true});
+                
+                while (answers.length < numChoices) {
+                    let randomWord = quizState.keys[Math.floor(Math.random() * quizState.keys.length)];
+                    let randomAnswer = randomWord;
+                    if (!answers.some(a => a.text === randomAnswer)) {
+                        answers.push({text: randomAnswer, correct: false});
+                    }
+                }
             }
             
             // Display question
@@ -645,10 +1122,48 @@
             // Create answer buttons
             answers.forEach(answer => {
                 const button = document.createElement('button');
-                button.textContent = answer;
-                button.onclick = () => selectAnswer(button, answer, correctAnswer);
+                button.textContent = answer.text;
+                button.dataset.correct = answer.correct;
+                button.onclick = () => selectAnswer(button, answer.text, correctAnswer);
                 elements.choices.appendChild(button);
             });
+            
+            // Start timer
+            startTimer();
+            
+            // Set up hint
+            setupHint();
+        }
+
+        function setupHint() {
+            const wordData = quizState.data[quizState.currentWord];
+            let hintHTML = '';
+            
+            if (quizState.mode == 1 || quizState.mode == 4) {
+                // For translation modes, show first letter
+                const firstLetter = quizState.currentWord.charAt(0);
+                hintHTML = `Starts with: <strong>${firstLetter.toUpperCase()}</strong>`;
+            } else if (quizState.mode == 2) {
+                // For definition mode, show word length
+                hintHTML = `Word length: <strong>${quizState.currentWord.length} letters</strong>`;
+            } else if (quizState.mode == 3) {
+                // For definition to Persian, show example
+                if (wordData.example) {
+                    hintHTML = `Example: "${wordData.example.en}"`;
+                }
+            }
+            
+            elements.hintContent.innerHTML = hintHTML;
+        }
+
+        function toggleHint() {
+            if (quizState.showHint) {
+                elements.hintContent.style.display = 'none';
+                quizState.showHint = false;
+            } else {
+                elements.hintContent.style.display = 'block';
+                quizState.showHint = true;
+            }
         }
 
         function shuffleArray(array) {
@@ -665,6 +1180,7 @@
             
             quizState.isAnswered = true;
             quizState.selectedAnswer = selectedAnswer;
+            stopTimer();
             
             // Disable all buttons
             const allButtons = elements.choices.querySelectorAll('button');
@@ -686,18 +1202,9 @@
                     quizState.maxStreak = quizState.currentStreak;
                 }
                 
-                // Show additional info for learning
-                setTimeout(() => {
-                    const wordData = quizState.data[quizState.currentWord];
-                    elements.feedback.innerHTML = `
-                        <div>
-                            <strong>${quizState.currentWord}</strong> → 
-                            <span style="color: var(--primary);">${wordData.fa}</span>
-                            <br>
-                            <small style="color: var(--text-secondary);">${wordData.def}</small>
-                        </div>
-                    `;
-                }, 500);
+                // Add to mastered words
+                addToMastered(quizState.currentWord);
+                
             } else {
                 // Wrong answer
                 button.classList.add('wrong');
@@ -709,7 +1216,7 @@
                 
                 // Highlight correct answer
                 allButtons.forEach(btn => {
-                    if (btn.textContent === correctAnswer) {
+                    if (btn.dataset.correct === 'true') {
                         btn.classList.add('correct');
                     }
                 });
@@ -718,23 +1225,100 @@
                 saveToLeitner(quizState.currentWord);
             }
             
+            // Show word details
+            showWordDetails();
+            
             // Update stats and enable next button
             updateStatsDisplay();
             saveStats();
             elements.nextBtn.disabled = false;
         }
 
+        function showWordDetails() {
+            const wordData = quizState.data[quizState.currentWord];
+            if (!wordData) return;
+            
+            elements.wordDetails.innerHTML = `
+                <h4>📚 Word Details: <strong>${quizState.currentWord}</strong></h4>
+                <p><strong>Definition:</strong> ${wordData.def}</p>
+                <p><strong>Persian:</strong> ${wordData.fa}</p>
+                ${wordData.example ? `<p><strong>Example:</strong> ${wordData.example.en}</p>` : ''}
+                ${wordData.example?.fa ? `<p><strong>Example (Persian):</strong> ${wordData.example.fa}</p>` : ''}
+                <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">
+                    <i class="fas fa-info-circle"></i> This word has been added to your review list.
+                </p>
+            `;
+            elements.wordDetails.style.display = 'block';
+        }
+
         function saveToLeitner(word) {
             let leitner = JSON.parse(localStorage.getItem("leitner")) || {};
-            leitner[word] = {
-                box: 1,
-                lastReviewed: Date.now(),
-                nextReview: Date.now() + 24 * 60 * 60 * 1000 // 1 day later
-            };
+            const now = Date.now();
+            
+            if (!leitner[word]) {
+                leitner[word] = {
+                    box: 1,
+                    lastReviewed: now,
+                    nextReview: now + 24 * 60 * 60 * 1000,
+                    reviews: 0,
+                    correct: 0,
+                    wrong: 0
+                };
+            } else {
+                leitner[word].reviews = (leitner[word].reviews || 0) + 1;
+                leitner[word].lastReviewed = now;
+                leitner[word].nextReview = now + 24 * 60 * 60 * 1000;
+            }
+            
             localStorage.setItem("leitner", JSON.stringify(leitner));
         }
 
-        // Add CSS for pulse animation
+        function addToMastered(word) {
+            let mastered = JSON.parse(localStorage.getItem("masteredWords")) || [];
+            if (!mastered.includes(word)) {
+                mastered.push(word);
+                localStorage.setItem("masteredWords", JSON.stringify(mastered));
+            }
+        }
+
+        function showQuizComplete() {
+            elements.question.innerHTML = `
+                <div style="text-align: center; padding: 30px;">
+                    <i class="fas fa-trophy" style="font-size: 4rem; color: gold; margin-bottom: 20px;"></i>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 15px;">Quiz Complete! 🎉</h2>
+                    <div style="font-size: 1.4rem; margin-bottom: 25px;">
+                        <p>Score: <strong>${quizState.correctCount}/${quizState.totalQuestions}</strong></p>
+                        <p>Accuracy: <strong>${Math.round((quizState.correctCount/quizState.totalQuestions)*100)}%</strong></p>
+                        <p>Best Streak: <strong>${quizState.maxStreak}</strong></p>
+                    </div>
+                    <div style="display: flex; gap: 15px; justify-content: center;">
+                        <button onclick="restartQuiz()" style="padding: 12px 25px; background: var(--primary); color: white; border: none; border-radius: 12px; cursor: pointer;">
+                            <i class="fas fa-redo"></i> Try Again
+                        </button>
+                        <button onclick="location.href='index.html'" style="padding: 12px 25px; background: #f1f5f9; color: var(--text); border: 2px solid var(--border); border-radius: 12px; cursor: pointer;">
+                            <i class="fas fa-home"></i> Back to Menu
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            elements.choices.innerHTML = '';
+            elements.feedback.innerHTML = '';
+            elements.nextBtn.disabled = true;
+            stopTimer();
+        }
+
+        function restartQuiz() {
+            quizState.questionCount = 0;
+            quizState.correctCount = 0;
+            quizState.wrongCount = 0;
+            quizState.currentStreak = 0;
+            quizState.usedWords.clear();
+            elements.nextBtn.disabled = false;
+            nextQuestion();
+        }
+
+        // Add CSS for animations
         const style = document.createElement('style');
         style.textContent = `
             @keyframes pulse {
@@ -746,4 +1330,4 @@
         document.head.appendChild(style);
     </script>
 </body>
-  </html>
+</html>
