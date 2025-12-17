@@ -4,175 +4,23 @@
 <meta charset="UTF-8">
 <title>A1 Quiz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-  body{
-    background:#f6f8ff;
-    font-family:system-ui;
-    text-align:center;
-  }
-  .title{font-size:3rem;margin:20px}
-  .mode{
-    background:#fff;
-    border-radius:18px;
-    padding:14px;
-    font-size:1.6rem;
-    margin:10px auto;
-    max-width:520px;
-  }
-  .card{
-    background:#fff;
-    border-radius:26px;
-    padding:30px;
-    max-width:720px;
-    margin:20px auto;
-  }
-  .question{
-    font-size:3rem;
-    margin-bottom:20px;
-  }
-  .options{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:14px;
-  }
-  .options button{
-    font-size:1.8rem;
-    padding:18px;
-    border-radius:18px;
-    border:none;
-    background:#eaf0ff;
-  }
-  .options button.correct{background:#c8f7c5}
-  .options button.wrong{background:#f7c5c5}
-  .controls{
-    margin:20px;
-  }
-  .controls button{
-    font-size:1.4rem;
-    padding:12px 18px;
-    border-radius:14px;
-    border:none;
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <h1 class="title">📝 A1 Quiz</h1>
 
-<div id="modeBox" class="mode"></div>
+<div id="modeBox" class="card" style="text-align:center;font-size:1.4rem;"></div>
 
 <div class="card">
-  <div id="question" class="question"></div>
-  <div id="options" class="options"></div>
+  <div id="question" class="word" style="text-align:center;"></div>
+  <div id="choices" class="nav-grid"></div>
 </div>
 
-<div class="controls">
-  <button onclick="nextQuestion()">➡️ Next</button>
-  <button onclick="location.href='index.html'">⬅ Back</button>
-</div>
+<button onclick="nextQuestion()" style="font-size:1.4rem;">➡ Next</button>
+<button onclick="location.href='index.html'">⬅ Back</button>
 
-<script>
-let rawData = {};
-let data = {};
-let keys = [];
-let current = "";
-let correctAnswer = "";
-let mode = 1;
-
-fetch("pdcs_a1.json")
-.then(r=>r.json())
-.then(j=>{
-  rawData = j.words ? j.words : j;
-  data = rawData;
-  keys = Object.keys(data);
-  nextQuestion();
-});
-
-function speak(t){
-  speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(t);
-  u.lang="en-US";
-  u.rate=0.7;
-  speechSynthesis.speak(u);
-}
-
-function nextQuestion(){
-  if(keys.length < 4) return;
-
-  document.getElementById("options").innerHTML="";
-  document.getElementById("question").innerHTML="";
-
-  mode = Math.floor(Math.random()*3)+1;
-  current = keys[Math.floor(Math.random()*keys.length)];
-
-  let answers = [];
-  const box = document.getElementById("modeBox");
-
-  if(mode===1){
-    box.innerText="English → Persian";
-    document.getElementById("question").innerText=current;
-    speak(current);
-    correctAnswer=data[current].fa;
-    answers.push(correctAnswer);
-    while(answers.length<4){
-      let r=keys[Math.floor(Math.random()*keys.length)];
-      if(!answers.includes(data[r].fa)) answers.push(data[r].fa);
-    }
-  }
-
-  if(mode===2){
-    box.innerText="Definition → Word";
-    document.getElementById("question").innerText=data[current].def;
-    speak(data[current].def);
-    correctAnswer=current;
-    answers.push(correctAnswer);
-    while(answers.length<4){
-      let r=keys[Math.floor(Math.random()*keys.length)];
-      if(!answers.includes(r)) answers.push(r);
-    }
-  }
-
-  if(mode===3){
-    box.innerText="Listening → Persian";
-    document.getElementById("question").innerText="🔊 Listen";
-    speak(current);
-    correctAnswer=data[current].fa;
-    answers.push(correctAnswer);
-    while(answers.length<4){
-      let r=keys[Math.floor(Math.random()*keys.length)];
-      if(!answers.includes(data[r].fa)) answers.push(data[r].fa);
-    }
-  }
-
-  answers.sort(()=>Math.random()-0.5);
-
-  answers.forEach(a=>{
-    const b=document.createElement("button");
-    b.innerText=a;
-    b.onclick=()=>check(b,a);
-    document.getElementById("options").appendChild(b);
-  });
-}
-
-function check(btn,ans){
-  const buttons=document.querySelectorAll(".options button");
-  buttons.forEach(b=>b.disabled=true);
-
-  if(ans===correctAnswer){
-    btn.classList.add("correct");
-  }else{
-    btn.classList.add("wrong");
-    buttons.forEach(b=>{
-      if(b.innerText===correctAnswer) b.classList.add("correct");
-    });
-    let l=JSON.parse(localStorage.getItem("leitner"))||{};
-    l[current]={box:1,last:Date.now()};
-    localStorage.setItem("leitner",JSON.stringify(l));
-  }
-}
-</script>
-
+<script src="quiz.js"></script>
 </body>
 </html>
