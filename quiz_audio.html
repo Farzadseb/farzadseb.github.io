@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A1 Audio Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1 class="title">🎧 Audio Quiz</h1>
+
+<div class="card">
+  <div id="question" class="word">Listen…</div>
+  <div id="choices" class="nav-grid"></div>
+</div>
+
+<button onclick="location.href='index.html'">⬅ Back</button>
+
+<script>
+let data = {};
+let validKeys = [];
+let currentWord = "";
+
+/* ---------- Load ---------- */
+fetch("pdcs_a1.json")
+  .then(r => r.json())
+  .then(j => {
+    data = j;
+    validKeys = Object.keys(data).filter(k => data[k]);
+    nextQuestion();
+  });
+
+/* ---------- Speak ---------- */
+function speak(text) {
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US";
+  u.rate = 0.7;
+  speechSynthesis.speak(u);
+}
+
+/* ---------- Question ---------- */
+function nextQuestion() {
+  currentWord = validKeys[Math.floor(Math.random() * validKeys.length)];
+
+  document.getElementById("question").innerText = "🎧 Listen";
+  speak(currentWord);
+
+  let options = [currentWord];
+
+  while (options.length < 4) {
+    const r = validKeys[Math.floor(Math.random() * validKeys.length)];
+    if (!options.includes(r)) options.push(r);
+  }
+
+  options.sort(() => Math.random() - 0.5);
+
+  const box = document.getElementById("choices");
+  box.innerHTML = "";
+
+  options.forEach(o => {
+    const b = document.createElement("button");
+    b.innerText = o;
+    b.onclick = () => check(o);
+    box.appendChild(b);
+  });
+}
+
+/* ---------- Answer ---------- */
+function check(ans) {
+  if (ans === currentWord) {
+    alert("✅ Correct");
+  } else {
+    alert("❌ Wrong → goes to Leitner");
+    addWrongToLeitner(currentWord);
+  }
+  nextQuestion();
+}
+
+/* ---------- Leitner ---------- */
+function addWrongToLeitner(word) {
+  let l = JSON.parse(localStorage.getItem("leitner")) || {};
+  l[word] = { box: 1, last: Date.now() };
+  localStorage.setItem("leitner", JSON.stringify(l));
+}
+</script>
+
+</body>
+</html>
