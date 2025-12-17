@@ -1,25 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>A1 Quiz</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>A1 Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* فقط برای اینکه دقیقاً خوشگل و درشت و خوانا باشد */
+    .quiz-wrap { max-width: 820px; margin: 0 auto; padding: 18px; }
+    .mode-row{
+      display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+      margin: 10px 0 18px;
+    }
+    .mode-btn{
+      font-size: 1.3rem;
+      padding: 14px 20px;
+      border-radius: 18px;
+      border: 3px solid #7aa2ff;
+      background: #fff;
+      color:#1b2b5a;
+      cursor:pointer;
+      min-width: 160px;
+    }
+    .mode-btn.active{
+      background:#5b7cff;
+      color:#fff;
+      border-color:#5b7cff;
+    }
+
+    .quiz-card{
+      background:#fff;
+      border-radius: 26px;
+      padding: 26px;
+      margin: 18px auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,.05);
+    }
+
+    .q-top{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin-bottom: 16px;
+    }
+    .q-title{
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin:0;
+      color:#0f1e46;
+    }
+    .pill{
+      background:#eaf0ff;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 1.1rem;
+      color:#1b2b5a;
+      border: 2px solid rgba(91,124,255,.25);
+      white-space:nowrap;
+    }
+
+    .question-box{
+      background:#f6f8ff;
+      border-radius: 22px;
+      padding: 22px;
+      margin-top: 8px;
+      text-align:center;
+    }
+    .question-text{
+      font-size: 2.4rem;
+      font-weight: 800;
+      color:#0f1e46;
+      margin: 0;
+      word-break: break-word;
+    }
+    .question-sub{
+      margin-top: 10px;
+      font-size: 1.6rem;
+      color:#2b3b6a;
+      direction: rtl;
+    }
+
+    .choices-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .choice-btn{
+      font-size: 1.7rem;
+      padding: 18px 16px;
+      border-radius: 22px;
+      border: none;
+      background:#eaf0ff;
+      color:#0f1e46;           /* ✅ قفل: متن سفید نشود */
+      cursor:pointer;
+      min-height: 72px;
+    }
+    .choice-btn:active{ transform: scale(.99); }
+
+    .feedback{
+      margin-top: 16px;
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-size: 1.4rem;
+      display:none;
+    }
+    .ok{ background:#e7f8ee; color:#0f6b2e; border:2px solid rgba(15,107,46,.15); }
+    .bad{ background:#ffe8e8; color:#b30000; border:2px solid rgba(179,0,0,.12); }
+
+    .bottom-row{
+      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+      margin-top: 18px;
+    }
+    .soft-btn{
+      font-size: 1.3rem;
+      padding: 14px 18px;
+      border-radius: 18px;
+      border: none;
+      background:#ddd;
+      cursor:pointer;
+      color:#1b2b5a;
+      min-width: 140px;
+    }
+    .primary-btn{
+      background:#4caf50; color:#fff;
+    }
+
+    .error{
+      margin-top: 12px;
+      background:#ffe8e8;
+      color:#b30000;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 520px){
+      .choices-grid{ grid-template-columns: 1fr; }
+      .question-text{ font-size: 2.1rem; }
+      .choice-btn{ font-size: 1.55rem; }
+      .mode-btn{ min-width: 140px; font-size: 1.2rem; }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="quiz-wrap">
+    <h1 class="title">📝 A1 Quiz</h1>
 
-<h1 class="title">📝 A1 Quiz</h1>
+    <div class="mode-row">
+      <button class="mode-btn active" id="btnMode1">EN → FA</button>
+      <button class="mode-btn" id="btnMode2">FA → EN</button>
+      <button class="mode-btn" id="btnMode3">🎧 Listening</button>
+    </div>
 
-<div class="card">
-  <div id="modeBox" class="section-title"></div>
-  <div id="question" class="word"></div>
-  <div id="choices" class="nav-grid"></div>
-</div>
+    <div class="quiz-card">
+      <div class="q-top">
+        <div class="pill" id="modeLabel">Mode: EN → FA</div>
+        <div class="pill" id="counter">0 / 0</div>
+      </div>
 
-<button onclick="nextQuestion()">➡ Next</button>
-<button onclick="location.href='index.html'">⬅ Back</button>
+      <div class="question-box">
+        <p class="question-text" id="qMain">Loading…</p>
+        <div class="question-sub" id="qSub" style="display:none;"></div>
+      </div>
 
-<script src="quiz.js"></script>
+      <div class="choices-grid" id="choices"></div>
+
+      <div class="feedback ok" id="fbOk">✅ Correct</div>
+      <div class="feedback bad" id="fbBad">❌ Wrong</div>
+
+      <div id="errBox" class="error" style="display:none;"></div>
+
+      <div class="bottom-row">
+        <button class="soft-btn primary-btn" id="btnPlay">🔊 Play</button>
+        <button class="soft-btn" id="btnNext">➡️ Next</button>
+        <button class="soft-btn" onclick="location.href='index.html'">⬅ Back</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="quiz.js"></script>
 </body>
 </html>
