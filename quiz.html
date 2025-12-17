@@ -8,79 +8,80 @@
 <style>
   body {
     margin: 0;
-    background: #0f1220;
-    color: #f2f3f7;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont;
+    padding: 0;
+    background: #f6f8ff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     text-align: center;
   }
 
   .title {
-    font-size: 2.4rem;
-    margin: 24px 0 10px;
+    font-size: 3.2rem;
+    margin: 24px 0;
   }
 
   .card {
-    background: #181c32;
-    border-radius: 22px;
-    padding: 28px;
-    margin: 20px auto;
-    max-width: 520px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 36px 28px;
+    margin: 24px auto;
+    max-width: 760px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
   }
 
   #modeBox {
-    font-size: 1.2rem;
-    opacity: 0.85;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #3f51b5;
   }
 
   #question {
-    font-size: 2.2rem;
-    margin: 20px 0;
-    text-align: center;
+    font-size: 3.6rem;
+    font-weight: bold;
+    margin: 24px 0;
   }
 
   .nav-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    grid-template-columns: 1fr;
+    gap: 18px;
     margin-top: 20px;
   }
 
   .nav-grid button {
-    font-size: 1.1rem;
-    padding: 18px;
-    border-radius: 18px;
+    font-size: 2.4rem;
+    padding: 22px 20px;
+    border-radius: 22px;
     border: none;
-    background: #232861;
-    color: #f2f3f7;
+    background: #eaf0ff;
+    color: #222;
     cursor: pointer;
-    transition: transform .1s, background .2s;
+    transition: 0.2s;
   }
 
   .nav-grid button:hover {
-    background: #2f36a3;
-    transform: scale(1.03);
+    background: #dbe4ff;
   }
 
   .actions {
     display: flex;
-    gap: 14px;
+    gap: 18px;
     justify-content: center;
-    margin: 20px 0 40px;
+    flex-wrap: wrap;
+    margin: 28px 0;
   }
 
   .actions button {
-    font-size: 1rem;
-    padding: 14px 22px;
-    border-radius: 16px;
+    font-size: 2rem;
+    padding: 18px 28px;
+    border-radius: 22px;
     border: none;
-    background: #3b82f6;
+    background: #5b7cff;
     color: white;
     cursor: pointer;
   }
 
   .actions button.secondary {
-    background: #374151;
+    background: #9aa7ff;
   }
 </style>
 </head>
@@ -92,13 +93,13 @@
 <div id="modeBox" class="card"></div>
 
 <div class="card">
-  <div id="question">Loading…</div>
+  <div id="question"></div>
   <div id="choices" class="nav-grid"></div>
 </div>
 
 <div class="actions">
-  <button onclick="nextQuestion()">Next</button>
-  <button class="secondary" onclick="location.href='index.html'">Back</button>
+  <button onclick="nextQuestion()">➡ Next</button>
+  <button class="secondary" onclick="location.href='index.html'">⬅ Back</button>
 </div>
 
 <script src="quiz.js"></script>
