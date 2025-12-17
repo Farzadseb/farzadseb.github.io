@@ -1,36 +1,44 @@
 {
-  "words": {
-    "be": {
-      "fa": "بودن",
-      "def": "to exist",
-      "example": { "en": "I want to be happy.", "fa": "می‌خواهم خوشحال باشم." },
-      "collocations": [],
-      "phrases": [],
-      "phrasal_verbs": []
-    },
-    "have": {
-      "fa": "داشتن",
-      "def": "to own something",
-      "example": { "en": "I have a car.", "fa": "من ماشین دارم." },
-      "collocations": [],
-      "phrases": [],
-      "phrasal_verbs": []
-    },
-    "do": {
-      "fa": "انجام دادن",
-      "def": "to perform an action",
-      "example": { "en": "I do my homework.", "fa": "تکلیفم را انجام می‌دهم." },
-      "collocations": [],
-      "phrases": [],
-      "phrasal_verbs": []
-    },
-    "go": {
-      "fa": "رفتن",
-      "def": "to move to another place",
-      "example": { "en": "I go home.", "fa": "به خانه می‌روم." },
-      "collocations": [],
-      "phrases": [],
-      "phrasal_verbs": []
-    }
-  }
+  "be": {"fa":"بودن","def":"to exist","example":{"en":"I want to be happy.","fa":"می‌خواهم خوشحال باشم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "am": {"fa":"هستم","def":"first person of be","example":{"en":"I am here.","fa":"من اینجا هستم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "is": {"fa":"هست","def":"third person of be","example":{"en":"She is ready.","fa":"او آماده است."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "are": {"fa":"هستند","def":"plural of be","example":{"en":"They are happy.","fa":"آن‌ها خوشحال هستند."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "have": {"fa":"داشتن","def":"to own","example":{"en":"I have time.","fa":"من وقت دارم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "do": {"fa":"انجام دادن","def":"to perform","example":{"en":"I do my work.","fa":"کارم را انجام می‌دهم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "go": {"fa":"رفتن","def":"to move","example":{"en":"I go home.","fa":"به خانه می‌روم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "come": {"fa":"آمدن","def":"to move here","example":{"en":"Come here.","fa":"بیا اینجا."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "get": {"fa":"گرفتن","def":"to receive","example":{"en":"I get help.","fa":"کمک می‌گیرم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "make": {"fa":"ساختن","def":"to create","example":{"en":"I make tea.","fa":"چای درست می‌کنم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+
+  "use": {"fa":"استفاده کردن","def":"to use","example":{"en":"I use my phone.","fa":"از گوشیم استفاده می‌کنم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "need": {"fa":"نیاز داشتن","def":"to need","example":{"en":"I need water.","fa":"به آب نیاز دارم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "want": {"fa":"خواستن","def":"to want","example":{"en":"I want coffee.","fa":"قهوه می‌خواهم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "like": {"fa":"دوست داشتن","def":"to like","example":{"en":"I like music.","fa":"موسیقی دوست دارم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "love": {"fa":"عاشق بودن","def":"to love","example":{"en":"I love my family.","fa":"خانواده‌ام را دوست دارم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "help": {"fa":"کمک کردن","def":"to help","example":{"en":"Help me.","fa":"کمکم کن."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "try": {"fa":"تلاش کردن","def":"to try","example":{"en":"Try again.","fa":"دوباره تلاش کن."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "start": {"fa":"شروع کردن","def":"to begin","example":{"en":"Start now.","fa":"الان شروع کن."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "stop": {"fa":"متوقف کردن","def":"to stop","example":{"en":"Stop here.","fa":"اینجا بایست."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "say": {"fa":"گفتن","def":"to say","example":{"en":"Say hello.","fa":"سلام بگو."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+
+  "tell": {"fa":"گفتن به کسی","def":"to tell","example":{"en":"Tell me.","fa":"به من بگو."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "ask": {"fa":"پرسیدن","def":"to ask","example":{"en":"Ask a question.","fa":"سؤال بپرس."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "answer": {"fa":"جواب دادن","def":"to answer","example":{"en":"Answer me.","fa":"جواب بده."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "see": {"fa":"دیدن","def":"to see","example":{"en":"I see you.","fa":"تو را می‌بینم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "look": {"fa":"نگاه کردن","def":"to look","example":{"en":"Look at me.","fa":"به من نگاه کن."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "hear": {"fa":"شنیدن","def":"to hear","example":{"en":"I hear music.","fa":"موسیقی می‌شنوم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "listen": {"fa":"گوش دادن","def":"to listen","example":{"en":"Listen carefully.","fa":"دقیق گوش بده."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "think": {"fa":"فکر کردن","def":"to think","example":{"en":"I think so.","fa":"فکر می‌کنم بله."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "know": {"fa":"دانستن","def":"to know","example":{"en":"I know him.","fa":"او را می‌شناسم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+
+  "live": {"fa":"زندگی کردن","def":"to live","example":{"en":"I live here.","fa":"اینجا زندگی می‌کنم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "stay": {"fa":"ماندن","def":"to stay","example":{"en":"Stay here.","fa":"اینجا بمان."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "leave": {"fa":"ترک کردن","def":"to leave","example":{"en":"I leave now.","fa":"الان می‌روم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "move": {"fa":"حرکت کردن","def":"to move","example":{"en":"Move slowly.","fa":"آهسته حرکت کن."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "people": {"fa":"مردم","def":"people","example":{"en":"People are here.","fa":"مردم اینجا هستند."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "person": {"fa":"شخص","def":"person","example":{"en":"One person.","fa":"یک شخص."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "man": {"fa":"مرد","def":"man","example":{"en":"The man is tall.","fa":"آن مرد قدبلند است."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "woman": {"fa":"زن","def":"woman","example":{"en":"The woman smiles.","fa":"آن زن لبخند می‌زند."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "friend": {"fa":"دوست","def":"friend","example":{"en":"My friend is here.","fa":"دوستم اینجاست."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "family": {"fa":"خانواده","def":"family","example":{"en":"My family.","fa":"خانواده من."},"collocations":[],"phrases":[],"phrasal_verbs":[]}
 }
