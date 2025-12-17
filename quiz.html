@@ -9,68 +9,81 @@
   body{
     margin:0;
     font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
-    background:#f7f8fa;
+    background:#f4f6fb;
     color:#111;
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:20px;
+    padding:24px;
   }
+
   h1{
-    font-size:2.4rem;
-    margin-bottom:10px;
+    font-size:2.8rem;
+    margin-bottom:14px;
   }
+
   .card{
     width:100%;
-    max-width:520px;
+    max-width:560px;
     background:#ffffff;
-    border-radius:16px;
-    box-shadow:0 6px 20px rgba(0,0,0,.08);
-    padding:20px;
-    margin-bottom:16px;
+    border-radius:22px;
+    box-shadow:0 10px 28px rgba(0,0,0,.12);
+    padding:26px;
+    margin-bottom:18px;
   }
+
   #modeBox{
-    font-size:1.4rem;
+    font-size:1.6rem;
     text-align:center;
-    margin-bottom:8px;
-    opacity:.85;
+    margin-bottom:10px;
+    font-weight:600;
+    color:#4b5cff;
   }
+
   #question{
-    font-size:2.2rem;
+    font-size:2.6rem;
     text-align:center;
-    cursor:pointer;
+    margin-bottom:10px;
     user-select:none;
   }
+
   .speaker{
-    font-size:2.6rem;
+    font-size:3rem;
+    text-align:center;
     cursor:pointer;
-    margin-top:8px;
+    margin-bottom:14px;
   }
+
   .nav-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-top:16px;
+    gap:14px;
   }
+
   .nav-grid button{
-    font-size:1.3rem;
-    padding:14px 10px;
-    border-radius:12px;
-    border:1px solid #ddd;
-    background:#f1f3f6;
+    font-size:1.6rem;
+    padding:18px 14px;
+    border-radius:16px;
+    border:none;
+    background:#eef1ff;
     cursor:pointer;
+    transition:.15s;
   }
-  .nav-grid button:active{
-    transform:scale(.98);
+
+  .nav-grid button:hover{
+    background:#dde3ff;
   }
+
   .bottom{
     display:flex;
-    gap:10px;
+    gap:14px;
+    margin-top:10px;
   }
+
   .bottom button{
-    font-size:1.2rem;
-    padding:12px 18px;
-    border-radius:12px;
+    font-size:1.4rem;
+    padding:14px 22px;
+    border-radius:16px;
     border:none;
     background:#e5e7eb;
     cursor:pointer;
@@ -95,108 +108,7 @@
   <button onclick="location.href='index.html'">⬅ Back</button>
 </div>
 
-<script>
-let data = {};
-let keys = [];
-let current = "";
-let mode = 1;
-let lastSpoken = "";
-
-fetch("pdcs_a1.json")
-  .then(r => r.json())
-  .then(j => {
-    data = j.words || j;
-    keys = Object.keys(data);
-    nextQuestion();
-  });
-
-function speak(text){
-  lastSpoken = text;
-  speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = "en-US";
-  u.rate = 0.8;
-  speechSynthesis.speak(u);
-}
-
-document.getElementById("speaker").onclick = () => {
-  if(lastSpoken) speak(lastSpoken);
-};
-
-function nextQuestion(){
-  if(keys.length < 4) return;
-
-  mode = Math.floor(Math.random()*3)+1;
-  current = keys[Math.floor(Math.random()*keys.length)];
-
-  const q = document.getElementById("question");
-  const c = document.getElementById("choices");
-  const m = document.getElementById("modeBox");
-
-  q.innerHTML = "";
-  c.innerHTML = "";
-
-  let answers = [];
-  let correct = "";
-
-  if(mode===1){
-    m.innerText = "🎧 English → Persian";
-    q.innerText = current;
-    speak(current);
-    correct = data[current].fa;
-    answers.push(correct);
-    while(answers.length<4){
-      let r = data[keys[Math.floor(Math.random()*keys.length)]].fa;
-      if(!answers.includes(r)) answers.push(r);
-    }
-  }
-
-  if(mode===2){
-    m.innerText = "🎧 English → Definition";
-    q.innerText = current;
-    speak(current);
-    correct = data[current].def;
-    answers.push(correct);
-    while(answers.length<4){
-      let r = data[keys[Math.floor(Math.random()*keys.length)]].def;
-      if(!answers.includes(r)) answers.push(r);
-    }
-  }
-
-  if(mode===3){
-    m.innerText = "🎧 Definition → Persian";
-    q.innerText = "Listen";
-    speak(data[current].def);
-    correct = data[current].fa;
-    answers.push(correct);
-    while(answers.length<4){
-      let r = data[keys[Math.floor(Math.random()*keys.length)]].fa;
-      if(!answers.includes(r)) answers.push(r);
-    }
-  }
-
-  answers.sort(()=>Math.random()-.5);
-
-  answers.forEach(a=>{
-    const b = document.createElement("button");
-    b.innerText = a;
-    b.onclick = ()=>check(b,a,correct);
-    c.appendChild(b);
-  });
-}
-
-function check(btn,ans,correct){
-  if(ans===correct){
-    btn.style.background="#c7f3d0";
-  }else{
-    btn.style.background="#f7c7c7";
-    let l = JSON.parse(localStorage.getItem("leitner"))||{};
-    l[current]={box:1,last:Date.now()};
-    localStorage.setItem("leitner",JSON.stringify(l));
-  }
-  setTimeout(nextQuestion,700);
-}
-</script>
+<script src="quiz.js"></script>
 
 </body>
 </html>
