@@ -2,7 +2,7 @@ let data = {};
 let keys = [];
 let current = "";
 let mode = 1;
-let speakText = "";
+let lastSpeech = "";
 
 fetch("pdcs_a1.json")
   .then(r => r.json())
@@ -12,7 +12,9 @@ fetch("pdcs_a1.json")
     nextQuestion();
   });
 
-function speak(text){
+function speak(text) {
+  if (!text) return;
+  lastSpeech = text;
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "en-US";
@@ -20,15 +22,15 @@ function speak(text){
   speechSynthesis.speak(u);
 }
 
-document.getElementById("listen").onclick = () => {
-  if(speakText) speak(speakText);
-};
+document.getElementById("speaker")?.addEventListener("click", () => {
+  speak(lastSpeech);
+});
 
-function nextQuestion(){
-  if(keys.length < 4) return;
+function nextQuestion() {
+  if (keys.length < 4) return;
 
-  mode = Math.floor(Math.random()*3)+1;
-  current = keys[Math.floor(Math.random()*keys.length)];
+  mode = Math.floor(Math.random() * 3) + 1;
+  current = keys[Math.floor(Math.random() * keys.length)];
 
   const q = document.getElementById("question");
   const c = document.getElementById("choices");
@@ -40,67 +42,70 @@ function nextQuestion(){
   let answers = [];
   let correct = "";
 
-  // 1️⃣ English → Persian
-  if(mode === 1){
+  // MODE 1 — English → Persian
+  if (mode === 1) {
     m.innerText = "🎧 English → Persian";
     q.innerText = current;
-    speakText = current;
     speak(current);
 
     correct = data[current].fa;
     answers.push(correct);
 
-    while(answers.length<4){
+    while (answers.length < 4) {
       const r = data[keys[Math.floor(Math.random()*keys.length)]].fa;
-      if(!answers.includes(r)) answers.push(r);
+      if (!answers.includes(r)) answers.push(r);
     }
   }
 
-  // 2️⃣ English → Definition
-  if(mode === 2){
+  // MODE 2 — English → Definition
+  if (mode === 2) {
     m.innerText = "🎧 English → Definition";
     q.innerText = "Listen";
-    speakText = current;
     speak(current);
 
     correct = data[current].def;
     answers.push(correct);
 
-    while(answers.length<4){
+    while (answers.length < 4) {
       const r = data[keys[Math.floor(Math.random()*keys.length)]].def;
-      if(!answers.includes(r)) answers.push(r);
+      if (!answers.includes(r)) answers.push(r);
     }
   }
 
-  // 3️⃣ Definition → Persian
-  if(mode === 3){
+  // MODE 3 — Definition → Persian
+  if (mode === 3) {
     m.innerText = "🎧 Definition → Persian";
     q.innerText = "Listen";
-    speakText = data[current].def;
-    speak(speakText);
+    speak(data[current].def);
 
     correct = data[current].fa;
     answers.push(correct);
 
-    while(answers.length<4){
+    while (answers.length < 4) {
       const r = data[keys[Math.floor(Math.random()*keys.length)]].fa;
-      if(!answers.includes(r)) answers.push(r);
+      if (!answers.includes(r)) answers.push(r);
     }
   }
 
-  answers.sort(()=>Math.random()-0.5);
+  answers.sort(() => Math.random() - 0.5);
 
-  answers.forEach(a=>{
-    const b=document.createElement("button");
-    b.innerText=a;
-    b.onclick=()=>{
-      if(a===correct){
-        b.style.background="#9be7a4";
-      }else{
-        b.style.background="#f5a3a3";
-      }
-      setTimeout(nextQuestion,700);
-    };
+  answers.forEach(a => {
+    const b = document.createElement("button");
+    b.innerText = a;
+    b.onclick = () => check(b, a, correct);
     c.appendChild(b);
   });
+}
+
+function check(btn, ans, correct) {
+  if (ans === correct) {
+    btn.style.background = "#c8f7c5";
+  } else {
+    btn.style.background = "#f7c5c5";
+    let l = JSON.parse(localStorage.getItem("leitner")) || {};
+    l[current] = { box: 1, last: Date.now() };
+    localStorage.setItem("leitner", JSON.stringify(l));
+  }
+
+  setTimeout(nextQuestion, 900);
 }
