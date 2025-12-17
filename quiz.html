@@ -7,89 +7,92 @@
 
 <style>
 :root{
-  --bg:#f2f4f8;
+  --bg:#f4f6fb;
   --card:#ffffff;
-  --primary:#2563eb;
-  --correct:#d1fae5;
-  --wrong:#fee2e2;
-  --text:#111827;
+  --primary:#5b7cff;
+  --correct:#c7f3d0;
+  --wrong:#f7c7c7;
+  --text:#111;
 }
 
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Segoe UI,Roboto;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro",Segoe UI,Roboto;
   background:var(--bg);
   color:var(--text);
   display:flex;
   flex-direction:column;
   align-items:center;
-  padding:20px;
+  padding:24px 16px;
 }
 
 h1{
-  font-size:2.8rem;
-  margin:10px 0 20px;
+  font-size:2.6rem;
+  margin-bottom:12px;
 }
 
 .card{
   width:100%;
   max-width:520px;
   background:var(--card);
-  border-radius:20px;
+  border-radius:22px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
   padding:22px;
-  box-shadow:0 10px 28px rgba(0,0,0,.08);
   margin-bottom:18px;
 }
 
 #modeBox{
+  font-size:1.4rem;
   text-align:center;
-  font-size:1.6rem;
-  opacity:.8;
+  opacity:.75;
 }
 
 #question{
   font-size:2.6rem;
   text-align:center;
-  margin-top:10px;
+  margin:10px 0;
 }
 
-#speaker{
+.speaker{
   font-size:3rem;
   text-align:center;
-  margin:14px 0;
   cursor:pointer;
+  user-select:none;
 }
 
-#choices{
+.nav-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
+  margin-top:20px;
 }
 
-#choices button{
+.nav-grid button{
   font-size:1.4rem;
-  padding:14px 12px;
+  padding:14px 10px;
   border-radius:14px;
-  border:none;
-  background:#eef2ff;
+  border:2px solid #e5e7eb;
+  background:#f9fafb;
   cursor:pointer;
 }
 
-#choices button:active{
+.nav-grid button:active{
   transform:scale(.97);
 }
 
 .bottom{
   display:flex;
-  gap:14px;
+  gap:12px;
 }
 
 .bottom button{
   font-size:1.3rem;
-  padding:12px 20px;
-  border-radius:14px;
+  padding:14px 20px;
+  border-radius:16px;
   border:none;
-  background:#e5e7eb;
+  background:var(--primary);
+  color:white;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -102,25 +105,25 @@ h1{
 
 <div class="card">
   <div id="question"></div>
-  <div id="speaker">🔊</div>
-  <div id="choices"></div>
+  <div class="speaker" id="speaker">🔊</div>
+  <div id="choices" class="nav-grid"></div>
 </div>
 
 <div class="bottom">
-  <button onclick="nextQuestion()">Next</button>
-  <button onclick="location.href='index.html'">Back</button>
+  <button onclick="nextQuestion()">Next ➡</button>
+  <button onclick="location.href='index.html'">⬅ Back</button>
 </div>
 
 <script>
 let data={}, keys=[], current="", mode=1, lastSpoken="";
 
 fetch("pdcs_a1.json")
-.then(r=>r.json())
-.then(j=>{
-  data=j.words||j;
-  keys=Object.keys(data);
-  nextQuestion();
-});
+  .then(r=>r.json())
+  .then(j=>{
+    data=j.words||j;
+    keys=Object.keys(data);
+    nextQuestion();
+  });
 
 function speak(text){
   lastSpoken=text;
@@ -150,6 +153,7 @@ function nextQuestion(){
 
   let answers=[], correct="";
 
+  // MODE 1
   if(mode===1){
     m.innerText="🎧 English → Persian";
     q.innerText=current;
@@ -162,6 +166,7 @@ function nextQuestion(){
     }
   }
 
+  // MODE 2
   if(mode===2){
     m.innerText="🎧 English → Definition";
     q.innerText=current;
@@ -174,6 +179,7 @@ function nextQuestion(){
     }
   }
 
+  // MODE 3
   if(mode===3){
     m.innerText="🎧 Definition → Persian";
     q.innerText="Listen";
@@ -197,8 +203,15 @@ function nextQuestion(){
 }
 
 function check(btn,ans,correct){
-  btn.style.background = ans===correct ? "var(--correct)" : "var(--wrong)";
-  setTimeout(nextQuestion,700);
+  if(ans===correct){
+    btn.style.background="var(--correct)";
+  }else{
+    btn.style.background="var(--wrong)";
+    let l=JSON.parse(localStorage.getItem("leitner"))||{};
+    l[current]={box:1,last:Date.now()};
+    localStorage.setItem("leitner",JSON.stringify(l));
+  }
+  setTimeout(nextQuestion,800);
 }
 </script>
 
