@@ -1,36 +1,3049 @@
 {
-  "be": {"fa":"بودن","def":"to exist","example":{"en":"I want to be happy.","fa":"می‌خواهم خوشحال باشم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "have": {"fa":"داشتن","def":"to own something","example":{"en":"I have a car.","fa":"من یک ماشین دارم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "do": {"fa":"انجام دادن","def":"to perform an action","example":{"en":"I do my homework.","fa":"تکلیفم را انجام می‌دهم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "go": {"fa":"رفتن","def":"to move to another place","example":{"en":"I go to school.","fa":"من به مدرسه می‌روم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "come": {"fa":"آمدن","def":"to move toward someone","example":{"en":"Come here.","fa":"بیا اینجا."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "get": {"fa":"گرفتن / شدن","def":"to receive or become","example":{"en":"I get tired.","fa":"من خسته می‌شوم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "make": {"fa":"ساختن","def":"to create something","example":{"en":"She makes a cake.","fa":"او کیک درست می‌کند."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "use": {"fa":"استفاده کردن","def":"to use something","example":{"en":"I use my phone.","fa":"از گوشیم استفاده می‌کنم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "need": {"fa":"نیاز داشتن","def":"to need something","example":{"en":"I need help.","fa":"به کمک نیاز دارم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "want": {"fa":"خواستن","def":"to want something","example":{"en":"I want coffee.","fa":"قهوه می‌خواهم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "be": {
+    "fa": "بودن",
+    "def": "to exist or live; used to describe the identity or qualities of a person or thing",
+    "example": {
+      "en": "I want to be a doctor.",
+      "fa": "من می‌خواهم یک پزشک باشم."
+    },
+    "collocations": [
+      {"en": "be happy", "fa": "خوشحال بودن"},
+      {"en": "be careful", "fa": "مراقب بودن"}
+    ],
+    "phrases": [
+      {"en": "to be honest", "fa": "صادقانه بگویم / اگر راستش را بخواهید"}
+    ],
+    "phrasal_verbs": []
+  },
 
-  "like": {"fa":"دوست داشتن","def":"to enjoy something","example":{"en":"I like music.","fa":"موسیقی دوست دارم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "work": {"fa":"کار کردن","def":"to do a job","example":{"en":"I work here.","fa":"اینجا کار می‌کنم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "play": {"fa":"بازی کردن","def":"to have fun","example":{"en":"Children play.","fa":"بچه‌ها بازی می‌کنند."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "eat": {"fa":"خوردن","def":"to have food","example":{"en":"I eat breakfast.","fa":"صبحانه می‌خورم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "drink": {"fa":"نوشیدن","def":"to drink liquid","example":{"en":"Drink water.","fa":"آب بنوش."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "sleep": {"fa":"خوابیدن","def":"to rest","example":{"en":"I sleep at night.","fa":"شب‌ها می‌خوابم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "see": {"fa":"دیدن","def":"to use your eyes","example":{"en":"I see a dog.","fa":"یک سگ می‌بینم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "hear": {"fa":"شنیدن","def":"to hear sound","example":{"en":"I hear music.","fa":"موسیقی می‌شنوم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "say": {"fa":"گفتن","def":"to speak words","example":{"en":"She says hello.","fa":"او سلام می‌کند."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "tell": {"fa":"گفتن به کسی","def":"to tell someone","example":{"en":"Tell me.","fa":"به من بگو."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
+  "am": {
+    "fa": "هستم",
+    "def": "first-person singular present of 'be'",
+    "example": {
+      "en": "I am at home now.",
+      "fa": "من الان در خانه هستم."
+    },
+    "collocations": [],
+    "phrases": [
+      {"en": "I am sorry", "fa": "متاسفم / پوزش می‌خواهم"}
+    ],
+    "phrasal_verbs": []
+  },
 
-  "ask": {"fa":"پرسیدن","def":"to ask a question","example":{"en":"Ask the teacher.","fa":"از معلم بپرس."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "answer": {"fa":"جواب دادن","def":"to reply","example":{"en":"Answer me.","fa":"جوابم را بده."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "live": {"fa":"زندگی کردن","def":"to live somewhere","example":{"en":"I live here.","fa":"اینجا زندگی می‌کنم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "stay": {"fa":"ماندن","def":"to remain","example":{"en":"Stay here.","fa":"اینجا بمان."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "leave": {"fa":"ترک کردن","def":"to go away","example":{"en":"I leave now.","fa":"الان می‌روم."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "move": {"fa":"حرکت کردن","def":"to change place","example":{"en":"Move here.","fa":"بیا اینجا."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "help": {"fa":"کمک کردن","def":"to help someone","example":{"en":"Help me.","fa":"کمکم کن."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "try": {"fa":"تلاش کردن","def":"to attempt","example":{"en":"Try again.","fa":"دوباره تلاش کن."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "start": {"fa":"شروع کردن","def":"to begin","example":{"en":"Start now.","fa":"الان شروع کن."},"collocations":[],"phrases":[],"phrasal_verbs":[]},
-  "stop": {"fa":"متوقف شدن","def":"to stop","example":{"en":"Stop here.","fa":"اینجا بایست."},"collocations":[],"phrases":[],"phrasal_verbs":[]}
+  "is": {
+    "fa": "هست",
+    "def": "third-person singular present of 'be'",
+    "example": {
+      "en": "This is my new car.",
+      "fa": "این ماشین جدید من است."
+    },
+    "collocations": [],
+    "phrases": [
+      {"en": "as it is", "fa": "همان‌طور که هست"}
+    ],
+    "phrasal_verbs": []
+  },
 
-  /* ⛔️ عمداً اینجا تمام شد چون پیام محدودیت دارد */
+  "are": {
+    "fa": "هستید / هستند",
+    "def": "second-person singular and plural present of 'be'",
+    "example": {
+      "en": "They are my friends.",
+      "fa": "آن‌ها دوستان من هستند."
+    },
+    "collocations": [],
+    "phrases": [
+      {"en": "How are you?", "fa": "چطوری؟ / چطور هستید؟"}
+    ],
+    "phrasal_verbs": []
+  },
+
+  "have": {
+    "fa": "داشتن",
+    "def": "to own, possess, or hold something",
+    "example": {
+      "en": "I have a big problem.",
+      "fa": "من یک مشکل بزرگ دارم."
+    },
+    "collocations": [
+      {"en": "have breakfast", "fa": "صبحانه خوردن"},
+      {"en": "have a shower", "fa": "دوش گرفتن"}
+    ],
+    "phrases": [
+      {"en": "have a good time", "fa": "خوش گذراندن"}
+    ],
+    "phrasal_verbs": [
+      {"en": "have (something) on", "fa": "به تن داشتن (لباس)"}
+    ]
+  },
+
+  "has": {
+    "fa": "دارد",
+    "def": "third-person singular present of 'have'",
+    "example": {
+      "en": "She has a meeting today.",
+      "fa": "او امروز یک جلسه دارد."
+    },
+    "collocations": [],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+
+  "do": {
+    "fa": "انجام دادن",
+    "def": "to perform an action or activity",
+    "example": {
+      "en": "I do my homework every day.",
+      "fa": "من هر روز تکالیفم را انجام می‌دهم."
+    },
+    "collocations": [
+      {"en": "do exercise", "fa": "ورزش کردن"},
+      {"en": "do your best", "fa": "تمام تلاشت را کردن"}
+    ],
+    "phrases": [
+      {"en": "How do you do?", "fa": "از ملاقات شما خوشبختم (رسمی)"}
+    ],
+    "phrasal_verbs": [
+      {"en": "do over", "fa": "دوباره انجام دادن"}
+    ]
+  },
+
+  "does": {
+    "fa": "انجام می‌دهد",
+    "def": "third-person singular present of 'do'",
+    "example": {
+      "en": "He does his work very well.",
+      "fa": "او کارش را خیلی خوب انجام می‌دهد."
+    },
+    "collocations": [],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+
+  "work": {
+    "fa": "کار کردن",
+    "def": "to do a job or task that needs effort",
+    "example": {
+      "en": "I work in an office.",
+      "fa": "من در یک اداره کار می‌کنم."
+    },
+    "collocations": [
+      {"en": "work hard", "fa": "سخت کار کردن"},
+      {"en": "work together", "fa": "با هم کار کردن"}
+    ],
+    "phrases": [
+      {"en": "at work", "fa": "سرِ کار"}
+    ],
+    "phrasal_verbs": [
+      {"en": "work out", "fa": "تمرین بدنی کردن / حل شدن"}
+    ]
+  },
+
+  "go": {
+    "fa": "رفتن",
+    "def": "to move from one place to another",
+    "example": {
+      "en": "I go to school.",
+      "fa": "من به مدرسه می‌روم."
+    },
+
+    {
+  "come": {
+    "fa": "آمدن",
+    "def": "to move toward or arrive at a place",
+    "example": {
+      "en": "Can you come to my office?",
+      "fa": "می‌توانی به دفتر من بیایی؟"
+    },
+    "collocations": [
+      { "en": "come true", "fa": "به حقیقت پیوستن" },
+      { "en": "come home", "fa": "به خانه آمدن" }
+    ],
+    "phrases": [
+      { "en": "come on!", "fa": "زود باش! / بیخیال!" }
+    ],
+    "phrasal_verbs": [
+      { "en": "come back", "fa": "برگشتن" },
+      { "en": "come across", "fa": "اتفاقی روبرو شدن" }
+    ]
+  },
+  "get": {
+    "fa": "گرفتن / شدن",
+    "def": "to receive, obtain, or reach a state",
+    "example": {
+      "en": "I get tired after work.",
+      "fa": "من بعد از کار خسته می‌شوم."
+    },
+    "collocations": [
+      { "en": "get ready", "fa": "آماده شدن" },
+      { "en": "get a job", "fa": "کار پیدا کردن" }
+    ],
+    "phrases": [
+      { "en": "get it", "fa": "فهمیدن مطلب" }
+    ],
+    "phrasal_verbs": [
+      { "en": "get up", "fa": "بیدار شدن / بلند شدن" },
+      { "en": "get along", "fa": "رابطه خوبی داشتن با کسی" }
+    ]
+  },
+  "make": {
+    "fa": "ساختن",
+    "def": "to create or produce something",
+    "example": {
+      "en": "She makes delicious cakes.",
+      "fa": "او کیک‌های خوشمزه‌ای درست می‌کند."
+    },
+    "collocations": [
+      { "en": "make a mistake", "fa": "اشتباه کردن" },
+      { "en": "make a decision", "fa": "تصمیم گرفتن" }
+    ],
+    "phrases": [
+      { "en": "make sure", "fa": "مطمئن شدن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "make up", "fa": "جبران کردن / آرایش کردن / ابداع کردن" }
+    ]
+  },
+  "use": {
+    "fa": "استفاده کردن",
+    "def": "to put something into service for a purpose",
+    "example": {
+      "en": "Can I use your phone?",
+      "fa": "می‌توانم از تلفن شما استفاده کنم؟"
+    },
+    "collocations": [
+      { "en": "use technology", "fa": "استفاده از تکنولوژی" },
+      { "en": "widely used", "fa": "به‌طور گسترده استفاده شده" }
+    ],
+    "phrases": [
+      { "en": "it's no use", "fa": "فایده‌ای ندارد" }
+    ],
+    "phrasal_verbs": [
+      { "en": "use up", "fa": "تمام کردن (ذخیره چیزی)" }
+    ]
+  },
+  "need": {
+    "fa": "نیاز داشتن",
+    "def": "to require something because it is essential",
+    "example": {
+      "en": "I need some water.",
+      "fa": "من به مقداری آب نیاز دارم."
+    },
+    "collocations": [
+      { "en": "in need of", "fa": "نیازمندِ" },
+      { "en": "basic needs", "fa": "نیازهای اولیه" }
+    ],
+    "phrases": [
+      { "en": "if need be", "fa": "اگر لازم باشد" }
+    ],
+    "phrasal_verbs": []
+  },
+  "want": {
+    "fa": "خواستن",
+    "def": "to have a desire for something",
+    "example": {
+      "en": "I want to learn English.",
+      "fa": "من می‌خواهم انگلیسی یاد بگیرم."
+    },
+    "collocations": [
+      { "en": "want help", "fa": "کمک خواستن" }
+    ],
+    "phrases": [
+      { "en": "most wanted", "fa": "تحت تعقیب‌ترین / محبوب‌ترین" }
+    ],
+    "phrasal_verbs": []
+  },
+  "like": {
+    "fa": "دوست داشتن",
+    "def": "to enjoy or approve of something",
+    "example": {
+      "en": "I like this color.",
+      "fa": "من این رنگ را دوست دارم."
+    },
+    "collocations": [
+      { "en": "feel like", "fa": "میل داشتن به" },
+      { "en": "sound like", "fa": "به نظر رسیدن (صدا)" }
+    ],
+    "phrases": [
+      { "en": "would like", "fa": "تمایل داشتن (رسمی)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "love": {
+    "fa": "دوست داشتن / عشق ورزیدن",
+    "def": "to have a very strong feeling of affection",
+    "example": {
+      "en": "I love my family.",
+      "fa": "من خانواده‌ام را دوست دارم (عاشقشان هستم)."
+    },
+    "collocations": [
+      { "en": "fall in love", "fa": "عاشق شدن" },
+      { "en": "send love", "fa": "سلام و محبت رساندن" }
+    ],
+    "phrases": [
+      { "en": "for the love of", "fa": "به خاطرِ عشق به" }
+    ],
+    "phrasal_verbs": []
+  },
+  "help": {
+    "fa": "کمک کردن",
+    "def": "to make it easier for someone to do something",
+    "example": {
+      "en": "Can you help me with this?",
+      "fa": "می‌توانی در این کار به من کمک کنی؟"
+    },
+    "collocations": [
+      { "en": "ask for help", "fa": "کمک خواستن" },
+      { "en": "helpful advice", "fa": "نصیحت مفید" }
+    ],
+    "phrases": [
+      { "en": "can't help it", "fa": "دست خود نبودن / چاره‌ای نداشتن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "help out", "fa": "کمک کردن (به خصوص در شرایط سخت)" }
+    ]
+  },
+  "try": {
+    "fa": "تلاش کردن",
+    "def": "to make an attempt to do something",
+    "example": {
+      "en": "I will try my best.",
+      "fa": "من تمام تلاشم را خواهم کرد."
+    },
+    "collocations": [
+      { "en": "try hard", "fa": "سخت تلاش کردن" },
+      { "en": "try again", "fa": "دوباره امتحان کردن" }
+    ],
+    "phrases": [
+      { "en": "give it a try", "fa": "یک امتحانی بکن / شانس خود را امتحان کن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "try on", "fa": "پرو کردن (لباس)" },
+      { "en": "try out", "fa": "آزمایش کردن (وسیله یا روش)" }
+    ]
+  },
+  "start": {
+    "fa": "شروع کردن",
+    "def": "to begin doing something",
+    "example": {
+      "en": "Let's start the meeting.",
+      "fa": "بیایید جلسه را شروع کنیم."
+    },
+    "collocations": [
+      { "en": "start a car", "fa": "روشن کردن ماشین" },
+      { "en": "start a business", "fa": "شروع یک کسب‌وکار" }
+    ],
+    "phrases": [
+      { "en": "to start with", "fa": "در وهله اول / برای شروع" }
+    ],
+    "phrasal_verbs": [
+      { "en": "start over", "fa": "از اول شروع کردن" }
+    ]
+  },
+  "stop": {
+    "fa": "متوقف کردن / شدن",
+    "def": "to finish moving or happening",
+    "example": {
+      "en": "Please stop the car.",
+      "fa": "لطفاً ماشین را متوقف کن."
+    },
+    "collocations": [
+      { "en": "bus stop", "fa": "ایستگاه اتوبوس" },
+      { "en": "full stop", "fa": "توقف کامل / نقطه پایان" }
+    ],
+    "phrases": [
+      { "en": "stop it", "fa": "تمومش کن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "stop by", "fa": "سر زدن (کوتاه)" }
+    ]
+  },
+  "say": {
+    "fa": "گفتن",
+    "def": "to speak words to communicate something",
+    "example": {
+      "en": "What did you say?",
+      "fa": "چه گفتی؟"
+    },
+    "collocations": [
+      { "en": "say hello", "fa": "سلام کردن" },
+      { "en": "say sorry", "fa": "عذرخواهی کردن" }
+    ],
+    "phrases": [
+      { "en": "that is to say", "fa": "به عبارتی / یعنی" }
+    ],
+    "phrasal_verbs": []
+  },
+  "tell": {
+    "fa": "گفتن (به کسی)",
+    "def": "to give information to someone",
+    "example": {
+      "en": "Tell me the truth.",
+      "fa": "حقیقت را به من بگو."
+    },
+    "collocations": [
+      { "en": "tell a story", "fa": "داستان تعریف کردن" },
+      { "en": "tell a lie", "fa": "دروغ گفتن" }
+    ],
+    "phrases": [
+      { "en": "to tell you the truth", "fa": "راستش را بخواهی" }
+    ],
+    "phrasal_verbs": [
+      { "en": "tell apart", "fa": "تشخیص دادن از هم" }
+    ]
+  },
+  "ask": {
+    "fa": "پرسیدن / درخواست کردن",
+    "def": "to say something to get an answer or help",
+    "example": {
+      "en": "I need to ask a question.",
+      "fa": "باید یک سوال بپرسم."
+    },
+    "collocations": [
+      { "en": "ask for help", "fa": "درخواست کمک کردن" },
+      { "en": "ask permission", "fa": "اجازه گرفتن" }
+    ],
+    "phrases": [
+      { "en": "if you ask me", "fa": "اگر از من بپرسی (به نظر من)" }
+    ],
+    "phrasal_verbs": [
+      { "en": "ask out", "fa": "کسی را به قرار دعوت کردن" }
+    ]
+  },
+  "answer": {
+    "fa": "جواب دادن",
+    "def": "to say or write something back to a question",
+    "example": {
+      "en": "Please answer the phone.",
+      "fa": "لطفاً تلفن را جواب بده."
+    },
+    "collocations": [
+      { "en": "correct answer", "fa": "پاسخ صحیح" },
+      { "en": "answer a question", "fa": "جواب دادن به یک سوال" }
+    ],
+    "phrases": [
+      { "en": "no answer", "fa": "بدون پاسخ" }
+    ],
+    "phrasal_verbs": [
+      { "en": "answer back", "fa": "زبون‌درازی کردن / جواب پس دادن" }
+    ]
+  },
+  "talk": {
+    "fa": "صحبت کردن",
+    "def": "to speak to someone about something",
+    "example": {
+      "en": "We need to talk about it.",
+      "fa": "ما باید درباره آن صحبت کنیم."
+    },
+    "collocations": [
+      { "en": "talk loudly", "fa": "بلند صحبت کردن" },
+      { "en": "talk business", "fa": "صحبت کاری کردن" }
+    ],
+    "phrases": [
+      { "en": "small talk", "fa": "گپ زدن (درباره مسائل کم‌اهمیت)" }
+    ],
+    "phrasal_verbs": [
+      { "en": "talk over", "fa": "بحث و تبادل نظر کردن" }
+    ]
+  },
+  "speak": {
+    "fa": "صحبت کردن (رسمی‌تر/توانایی)",
+    "def": "to use your voice to say words",
+    "example": {
+      "en": "Do you speak English?",
+      "fa": "آیا انگلیسی صحبت می‌کنید؟"
+    },
+    "collocations": [
+      { "en": "speak fluently", "fa": "روان صحبت کردن" },
+      { "en": "speak publically", "fa": "در ملاء عام صحبت کردن" }
+    ],
+    "phrases": [
+      { "en": "generally speaking", "fa": "به‌طور کلی" }
+    ],
+    "phrasal_verbs": [
+      { "en": "speak up", "fa": "بلندتر صحبت کردن" }
+    ]
+  },
+  "see": {
+    "fa": "دیدن",
+    "def": "to notice or look at something with your eyes",
+    "example": {
+      "en": "I see a bird in the tree.",
+      "fa": "من یک پرنده در درخت می‌بینم."
+    },
+    "collocations": [
+      { "en": "see a doctor", "fa": "پیش دکتر رفتن" },
+      { "en": "see the world", "fa": "دنیا را دیدن" }
+    ],
+    "phrases": [
+      { "en": "let me see", "fa": "بذار ببینم" },
+      { "en": "I see", "fa": "متوجهم / می‌فهمم" }
+    ],
+    "phrasal_verbs": [
+      { "en": "see off", "fa": "بدرقه کردن" }
+    ]
+  },
+  "look": {
+    "fa": "نگاه کردن",
+    "def": "to direct your eyes toward something",
+    "example": {
+      "en": "Look at this picture.",
+      "fa": "به این عکس نگاه کن."
+    },
+    "collocations": [
+      { "en": "look good", "fa": "خوب به نظر رسیدن" },
+      { "en": "look tired", "fa": "خسته به نظر رسیدن" }
+    ],
+    "phrases": [
+      { "en": "take a look", "fa": "نگاهی انداختن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "look for", "fa": "دنبال چیزی گشتن" },
+      { "en": "look after", "fa": "مراقبت کردن" }
+    ]
+  }
+}
+
+    "collocations": [
+      {"en": "go shopping", "fa": "به خرید رفتن"},
+      {"en": "go home", "fa": "به خانه رفتن"}
+    ],
+    "phrases": [
+      {"en": "on the go", "fa": "در حال فعالیت و جنب‌وجوش"}
+    ],
+    "phrasal_verbs": [
+      {"en": "go on", "fa": "ادامه دادن"},
+      {"en": "go out", "fa": "بیرون رفتن (برای تفریح)"}
+    ]
+  }
+}
+
+{
+  "hear": {
+    "fa": "شنیدن",
+    "def": "to receive sound with your ears",
+    "example": {
+      "en": "Did you hear that noise?",
+      "fa": "آن صدا را شنیدی؟"
+    },
+    "collocations": [
+      { "en": "hear clearly", "fa": "واضح شنیدن" },
+      { "en": "hard of hearing", "fa": "کم‌شنوا" }
+    ],
+    "phrases": [
+      { "en": "hear from someone", "fa": "از کسی خبری داشتن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "hear out", "fa": "تا آخر گوش دادن به حرف کسی" }
+    ]
+  },
+  "listen": {
+    "fa": "گوش دادن",
+    "def": "to give attention to sound",
+    "example": {
+      "en": "Listen to the music.",
+      "fa": "به موسیقی گوش بده."
+    },
+    "collocations": [
+      { "en": "listen carefully", "fa": "با دقت گوش دادن" },
+      { "en": "listen to advice", "fa": "به نصیحت گوش دادن" }
+    ],
+    "phrases": [
+      { "en": "listen up!", "fa": "حواستان را جمع کنید / گوش کنید" }
+    ],
+    "phrasal_verbs": [
+      { "en": "listen in", "fa": "استراق سمع کردن / پنهانی گوش دادن" }
+    ]
+  },
+  "feel": {
+    "fa": "احساس داشتن",
+    "def": "to experience an emotion or physical sensation",
+    "example": {
+      "en": "I feel happy today.",
+      "fa": "من امروز احساس خوشحالی می‌کنم."
+    },
+    "collocations": [
+      { "en": "feel better", "fa": "بهتر شدن (حال)" },
+      { "en": "feel free", "fa": "راحت بودن / تعارف نداشتن" }
+    ],
+    "phrases": [
+      { "en": "get the feel of", "fa": "قلق چیزی دست آمدن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "feel up to", "fa": "حال و حوصله کاری را داشتن" }
+    ]
+  },
+  "think": {
+    "fa": "فکر کردن",
+    "def": "to use your mind to consider something",
+    "example": {
+      "en": "I think it will rain.",
+      "fa": "فکر می‌کنم باران ببارد."
+    },
+    "collocations": [
+      { "en": "think deeply", "fa": "عمیق فکر کردن" },
+      { "en": "think positive", "fa": "مثبت فکر کردن" }
+    ],
+    "phrases": [
+      { "en": "I think so", "fa": "فکر می‌کنم همین‌طور باشد" }
+    ],
+    "phrasal_verbs": [
+      { "en": "think over", "fa": "درباره چیزی سبک‌سنگین کردن" },
+      { "en": "think up", "fa": "اختراع کردن / به ذهن رسیدن" }
+    ]
+  },
+  "know": {
+    "fa": "دانستن / شناختن",
+    "def": "to have information or be familiar with someone",
+    "example": {
+      "en": "I know your brother.",
+      "fa": "من برادر شما را می‌شناسم."
+    },
+    "collocations": [
+      { "en": "know the truth", "fa": "حقیقت را دانستن" },
+      { "en": "as far as I know", "fa": "تا آنجا که من می‌دانم" }
+    ],
+    "phrases": [
+      { "en": "You know what?", "fa": "می‌دانی چیست؟ (برای شروع بحث)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "live": {
+    "fa": "زندگی کردن",
+    "def": "to have your home in a particular place",
+    "example": {
+      "en": "I live in Tehran.",
+      "fa": "من در تهران زندگی می‌کنم."
+    },
+    "collocations": [
+      { "en": "live alone", "fa": "تنها زندگی کردن" },
+      { "en": "live together", "fa": "با هم زندگی کردن" }
+    ],
+    "phrases": [
+      { "en": "live a happy life", "fa": "زندگی شادی داشتن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "live on", "fa": "با چیزی روزگار گذراندن" }
+    ]
+  },
+  "stay": {
+    "fa": "ماندن",
+    "def": "to continue to be in a place",
+    "example": {
+      "en": "Stay here with me.",
+      "fa": "اینجا پیش من بمان."
+    },
+    "collocations": [
+      { "en": "stay at home", "fa": "در خانه ماندن" },
+      { "en": "stay healthy", "fa": "سالم ماندن" }
+    ],
+    "phrases": [
+      { "en": "stay in touch", "fa": "در تماس بودن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "stay up", "fa": "بیدار ماندن (شب)" }
+    ]
+  },
+  "leave": {
+    "fa": "ترک کردن",
+    "def": "to go away from a place or person",
+    "example": {
+      "en": "What time do you leave work?",
+      "fa": "چه ساعتی محل کار را ترک می‌کنی؟"
+    },
+    "collocations": [
+      { "en": "leave a message", "fa": "پیام گذاشتن" },
+      { "en": "leave home", "fa": "از خانه خارج شدن" }
+    ],
+    "phrases": [
+      { "en": "leave it to me", "fa": "آن را به من بسپار" }
+    ],
+    "phrasal_verbs": [
+      { "en": "leave out", "fa": "از قلم انداختن / حذف کردن" }
+    ]
+  },
+  "move": {
+    "fa": "حرکت کردن / جابجا شدن",
+    "def": "to change position or go to a new home",
+    "example": {
+      "en": "We are moving to a new house.",
+      "fa": "ما داریم به یک خانه جدید نقل‌مکان می‌کنیم."
+    },
+    "collocations": [
+      { "en": "move fast", "fa": "سریع حرکت کردن" },
+      { "en": "make a move", "fa": "اقدام کردن / حرکت کردن" }
+    ],
+    "phrases": [
+      { "en": "get a move on", "fa": "عجله کردن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "move on", "fa": "به موضوع بعدی رفتن / ادامه دادن زندگی" }
+    ]
+  },
+  "happen": {
+    "fa": "اتفاق افتادن",
+    "def": "to take place or occur",
+    "example": {
+      "en": "What happened yesterday?",
+      "fa": "دیروز چه اتفاقی افتاد؟"
+    },
+    "collocations": [
+      { "en": "happen to be", "fa": "از قضا ... بودن" },
+      { "en": "happen again", "fa": "دوباره اتفاق افتادن" }
+    ],
+    "phrases": [
+      { "en": "as it happens", "fa": "از قضا / ضمناً" }
+    ],
+    "phrasal_verbs": []
+  },
+  "people": {
+    "fa": "مردم",
+    "def": "men, women, and children",
+    "example": {
+      "en": "The streets are full of people.",
+      "fa": "خیابان‌ها پر از مردم است."
+    },
+    "collocations": [
+      { "en": "young people", "fa": "جوانان" },
+      { "en": "many people", "fa": "افراد زیادی" }
+    ],
+    "phrases": [
+      { "en": "people person", "fa": "آدم اجتماعی" }
+    ],
+    "phrasal_verbs": []
+  },
+  "person": {
+    "fa": "شخص",
+    "def": "a human being",
+    "example": {
+      "en": "She is a very kind person.",
+      "fa": "او آدم (شخص) بسیار مهربانی است."
+    },
+    "collocations": [
+      { "en": "in person", "fa": "حضوری / شخصاً" },
+      { "en": "private person", "fa": "آدم تودار / منزوی" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "man": {
+    "fa": "مرد",
+    "def": "an adult male human",
+    "example": {
+      "en": "He is a tall man.",
+      "fa": "او مرد قد بلندی است."
+    },
+    "collocations": [
+      { "en": "young man", "fa": "مرد جوان" },
+      { "en": "old man", "fa": "مرد مسن" }
+    ],
+    "phrases": [
+      { "en": "man to man", "fa": "مردانه / رک و راست" }
+    ],
+    "phrasal_verbs": []
+  },
+  "woman": {
+    "fa": "زن",
+    "def": "an adult female human",
+    "example": {
+      "en": "She is a successful woman.",
+      "fa": "او زن موفقی است."
+    },
+    "collocations": [
+      { "en": "career woman", "fa": "زن شاغل" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "friend": {
+    "fa": "دوست",
+    "def": "a person you know and like",
+    "example": {
+      "en": "He is my best friend.",
+      "fa": "او بهترین دوست من است."
+    },
+    "collocations": [
+      { "en": "close friend", "fa": "دوست صمیمی" },
+      { "en": "make friends", "fa": "دوست پیدا کردن" }
+    ],
+    "phrases": [
+      { "en": "friend or foe", "fa": "دوست یا دشمن" }
+    ],
+    "phrasal_verbs": []
+  },
+  "family": {
+    "fa": "خانواده",
+    "def": "a group of people related to each other",
+    "example": {
+      "en": "I love my family.",
+      "fa": "من عاشق خانواده‌ام هستم."
+    },
+    "collocations": [
+      { "en": "family member", "fa": "عضو خانواده" },
+      { "en": "large family", "fa": "خانواده پرجمعیت" }
+    ],
+    "phrases": [
+      { "en": "run in the family", "fa": "در خانواده ارثی بودن" }
+    ],
+    "phrasal_verbs": []
+  },
+  "job": {
+    "fa": "شغل",
+    "def": "the regular work that you do for money",
+    "example": {
+      "en": "I'm looking for a new job.",
+      "fa": "من دنبال یک شغل جدید هستم."
+    },
+    "collocations": [
+      { "en": "full-time job", "fa": "شغل تمام وقت" },
+      { "en": "apply for a job", "fa": "درخواست کار دادن" }
+    ],
+    "phrases": [
+      { "en": "good job!", "fa": "آفرین! / کارِت خوب بود" }
+    ],
+    "phrasal_verbs": []
+  },
+  "work_noun": {
+    "fa": "کار",
+    "def": "effort used to do something; a place of employment",
+    "example": {
+      "en": "I have a lot of work to do.",
+      "fa": "من کارهای زیادی برای انجام دادن دارم."
+    },
+    "collocations": [
+      { "en": "at work", "fa": "سرِ کار" },
+      { "en": "hard work", "fa": "کار سخت" }
+    ],
+    "phrases": [
+      { "en": "out of work", "fa": "بیکار" }
+    ],
+    "phrasal_verbs": []
+  },
+  "money": {
+    "fa": "پول",
+    "def": "coins or notes used to buy things",
+    "example": {
+      "en": "I need some money for the taxi.",
+      "fa": "من مقداری پول برای تاکسی نیاز دارم."
+    },
+    "collocations": [
+      { "en": "save money", "fa": "پس‌انداز کردن پول" },
+      { "en": "spend money", "fa": "خرج کردن پول" }
+    ],
+    "phrases": [
+      { "en": "pocket money", "fa": "پول تو جیبی" }
+    ],
+    "phrasal_verbs": []
+  },
+  "time": {
+    "fa": "زمان / وقت",
+    "def": "seconds, minutes, hours, days, etc.",
+    "example": {
+      "en": "I don't have enough time.",
+      "fa": "من وقت کافی ندارم."
+    },
+    "collocations": [
+      { "en": "on time", "fa": "سرِ وقت" },
+      { "en": "waste time", "fa": "هدر دادن وقت" }
+    ],
+    "phrases": [
+      { "en": "once upon a time", "fa": "روزی روزگاری" }
+    ],
+    "phrasal_verbs": []
+  },
+  "day": {
+    "fa": "روز",
+    "def": "a period of 24 hours",
+    "example": {
+      "en": "Have a nice day!",
+      "fa": "روز خوبی داشته باشی!"
+    },
+    "collocations": [
+      { "en": "every day", "fa": "هر روز" },
+      { "en": "day off", "fa": "روز تعطیل / مرخصی" }
+    ],
+    "phrases": [
+      { "en": "day by day", "fa": "روز به روز" }
+    ],
+    "phrasal_verbs": []
+  },
+  "week": {
+    "fa": "هفته",
+    "def": "a period of seven days",
+    "example": {
+      "en": "I work five days a week.",
+      "fa": "من پنج روز در هفته کار می‌کنم."
+    },
+    "collocations": [
+      { "en": "next week", "fa": "هفته آینده" },
+      { "en": "per week", "fa": "در هفته" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "year": {
+    "fa": "سال",
+    "def": "a period of 365 days",
+    "example": {
+      "en": "Happy New Year!",
+      "fa": "سال نو مبارک!"
+    },
+    "collocations": [
+      { "en": "last year", "fa": "پارسال" },
+      { "en": "all year round", "fa": "تمام طول سال" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "today": {
+    "fa": "امروز",
+    "def": "this present day",
+    "example": {
+      "en": "Today is Monday.",
+      "fa": "امروز دوشنبه است."
+    },
+    "collocations": [],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "tomorrow": {
+    "fa": "فردا",
+    "def": "the day after today",
+    "example": {
+      "en": "See you tomorrow.",
+      "fa": "فردا می‌بینمت."
+    },
+    "collocations": [
+      { "en": "tomorrow morning", "fa": "فردا صبح" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "yesterday": {
+    "fa": "دیروز",
+    "def": "the day before today",
+    "example": {
+      "en": "I was busy yesterday.",
+      "fa": "من دیروز مشغول بودم."
+    },
+    "collocations": [
+      { "en": "yesterday afternoon", "fa": "دیروز بعدازظهر" }
+    ],
+    "phrases": [
+      { "en": "the day before yesterday", "fa": "پریروز" }
+    ],
+    "phrasal_verbs": []
+  },
+  "now": {
+    "fa": "الان / اکنون",
+    "def": "at the present time",
+    "example": {
+      "en": "Where are you now?",
+      "fa": "الان کجایی؟"
+    },
+    "collocations": [
+      { "en": "right now", "fa": "همین الان" }
+    ],
+    "phrases": [
+      { "en": "from now on", "fa": "از این به بعد" }
+    ],
+    "phrasal_verbs": []
+  },
+  "later": {
+    "fa": "بعداً",
+    "def": "at a time in the future",
+    "example": {
+      "en": "I will call you later.",
+      "fa": "بعداً با شما تماس می‌گیرم."
+    },
+    "collocations": [
+      { "en": "sooner or later", "fa": "دیر یا زود" },
+      { "en": "see you later", "fa": "بعداً می‌بینمت" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "early": {
+    "fa": "زود",
+    "def": "before the usual or expected time",
+    "example": {
+      "en": "I wake up early in the morning.",
+      "fa": "من صبح زود بیدار می‌شوم."
+    },
+    "collocations": [
+      { "en": "early stage", "fa": "مرحله اولیه" },
+      { "en": "get up early", "fa": "زود بیدار شدن" }
+    ],
+    "phrases": [
+      { "en": "early bird", "fa": "سحرخیز" }
+    ],
+    "phrasal_verbs": []
+  },
+  "late": {
+    "fa": "دیر",
+    "def": "after the usual or expected time",
+    "example": {
+      "en": "Don't be late for class.",
+      "fa": "برای کلاس دیر نکن."
+    },
+    "collocations": [
+      { "en": "stay up late", "fa": "تا دیروقت بیدار ماندن" },
+      { "en": "too late", "fa": "خیلی دیر" }
+    ],
+    "phrases": [
+      { "en": "better late than never", "fa": "دیر رسیدن بهتر از هرگز نرسیدن است" }
+    ],
+    "phrasal_verbs": []
+  }
+}
+
+{
+  "here": {
+    "fa": "اینجا",
+    "def": "in, at, or to this place",
+    "example": {
+      "en": "Come here and sit down.",
+      "fa": "بیا اینجا و بنشین."
+    },
+    "collocations": [
+      { "en": "around here", "fa": "این اطراف" },
+      { "en": "here and there", "fa": "اینجا و آنجا" }
+    ],
+    "phrases": [
+      { "en": "Here you are", "fa": "بفرمایید (هنگام دادن چیزی)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "there": {
+    "fa": "آنجا",
+    "def": "in, at, or to that place",
+    "example": {
+      "en": "The shop is over there.",
+      "fa": "مغازه آنجاست."
+    },
+    "collocations": [
+      { "en": "there is / there are", "fa": "وجود دارد / وجود دارند" }
+    ],
+    "phrases": [
+      { "en": "Hi there!", "fa": "سلام! (غیررسمی)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "home": {
+    "fa": "خانه",
+    "def": "the place where one lives",
+    "example": {
+      "en": "I'm going home now.",
+      "fa": "من الان دارم به خانه می‌روم."
+    },
+    "collocations": [
+      { "en": "at home", "fa": "در خانه" },
+      { "en": "feel at home", "fa": "احساس راحتی کردن (مثل خانه خود)" }
+    ],
+    "phrases": [
+      { "en": "Make yourself at home", "fa": "اینجا را خانه خودتان بدانید (راحت باشید)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "place": {
+    "fa": "مکان / جا",
+    "def": "a particular position or area",
+    "example": {
+      "en": "This is a quiet place.",
+      "fa": "اینجا مکان ساکتی است."
+    },
+    "collocations": [
+      { "en": "safe place", "fa": "جای امن" },
+      { "en": "take place", "fa": "رخ دادن / برگزار شدن" }
+    ],
+    "phrases": [
+      { "en": "all over the place", "fa": "همه جا / پخش و پلا" }
+    ],
+    "phrasal_verbs": []
+  },
+  "city": {
+    "fa": "شهر",
+    "def": "a large town",
+    "example": {
+      "en": "I love living in this city.",
+      "fa": "من زندگی در این شهر را دوست دارم."
+    },
+    "collocations": [
+      { "en": "city center", "fa": "مرکز شهر" },
+      { "en": "capital city", "fa": "پایتخت" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "country": {
+    "fa": "کشور / روستا (حومه)",
+    "def": "a nation or land outside towns and cities",
+    "example": {
+      "en": "Which country are you from?",
+      "fa": "اهل کدام کشور هستید؟"
+    },
+    "collocations": [
+      { "en": "foreign country", "fa": "کشور خارجی" },
+      { "en": "in the country", "fa": "در روستا / خارج از شهر" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "school": {
+    "fa": "مدرسه",
+    "def": "a place where children go to be educated",
+    "example": {
+      "en": "My kids go to school by bus.",
+      "fa": "بچه‌های من با اتوبوس به مدرسه می‌روند."
+    },
+    "collocations": [
+      { "en": "at school", "fa": "در مدرسه" },
+      { "en": "high school", "fa": "دبیرستان" }
+    ],
+    "phrases": [
+      { "en": "old school", "fa": "قدیمی / به سبک قدیم" }
+    ],
+    "phrasal_verbs": []
+  },
+  "office": {
+    "fa": "اداره / دفتر کار",
+    "def": "a room or building where people work at desks",
+    "example": {
+      "en": "Our office is on the third floor.",
+      "fa": "دفتر ما در طبقه سوم است."
+    },
+    "collocations": [
+      { "en": "head office", "fa": "دفتر مرکزی" },
+      { "en": "post office", "fa": "اداره پست" }
+    ],
+    "phrases": [
+      { "en": "out of the office", "fa": "خارج از محل کار" }
+    ],
+    "phrasal_verbs": []
+  },
+  "shop": {
+    "fa": "مغازه / فروشگاه",
+    "def": "a place where you buy things",
+    "example": {
+      "en": "Is the coffee shop open?",
+      "fa": "آیا کافی‌شاپ باز است؟"
+    },
+    "collocations": [
+      { "en": "online shop", "fa": "فروشگاه آنلاین" },
+      { "en": "go to the shops", "fa": "به خرید رفتن" }
+    ],
+    "phrases": [
+      { "en": "talk shop", "fa": "در جمع دوستانه حرف کاری زدن" }
+    ],
+    "phrasal_verbs": []
+  },
+  "street": {
+    "fa": "خیابان",
+    "def": "a public road in a city or town",
+    "example": {
+      "en": "He lives across the street.",
+      "fa": "او آن طرف خیابان زندگی می‌کند."
+    },
+    "collocations": [
+      { "en": "main street", "fa": "خیابان اصلی" },
+      { "en": "on the street", "fa": "در خیابان" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "good": {
+    "fa": "خوب",
+    "def": "of high quality or standard",
+    "example": {
+      "en": "That's a good idea.",
+      "fa": "آن ایده خوبی است."
+    },
+    "collocations": [
+      { "en": "good at", "fa": "ماهر در (چیزی)" },
+      { "en": "good for you", "fa": "برای تو خوب (مفید)" }
+    ],
+    "phrases": [
+      { "en": "for good", "fa": "برای همیشه" }
+    ],
+    "phrasal_verbs": []
+  },
+  "bad": {
+    "fa": "بد",
+    "def": "not good; unpleasant",
+    "example": {
+      "en": "I have bad news.",
+      "fa": "من خبرهای بدی دارم."
+    },
+    "collocations": [
+      { "en": "bad habit", "fa": "عادت بد" },
+      { "en": "too bad", "fa": "خیلی بد / متاسفانه" }
+    ],
+    "phrases": [
+      { "en": "feel bad about", "fa": "پشیمان بودن / حس بدی داشتن بابت" }
+    ],
+    "phrasal_verbs": []
+  },
+  "easy": {
+    "fa": "آسان",
+    "def": "not difficult",
+    "example": {
+      "en": "The test was very easy.",
+      "fa": "امتحان خیلی آسان بود."
+    },
+    "collocations": [
+      { "en": "easy to use", "fa": "کاربری آسان" },
+      { "en": "easy way", "fa": "راه آسان" }
+    ],
+    "phrases": [
+      { "en": "take it easy", "fa": "سخت نگیر / استراحت کن" }
+    ],
+    "phrasal_verbs": []
+  },
+  "hard": {
+    "fa": "سخت / سفت",
+    "def": "difficult to do or understand; solid",
+    "example": {
+      "en": "It's hard to say goodbye.",
+      "fa": "خداحافظی کردن سخت است."
+    },
+    "collocations": [
+      { "en": "hard work", "fa": "کار سخت" },
+      { "en": "try hard", "fa": "سخت تلاش کردن" }
+    ],
+    "phrases": [
+      { "en": "hard of hearing", "fa": "کم‌شنوا" }
+    ],
+    "phrasal_verbs": []
+  },
+  "big": {
+    "fa": "بزرگ",
+    "def": "large in size or importance",
+    "example": {
+      "en": "They live in a big house.",
+      "fa": "آن‌ها در یک خانه بزرگ زندگی می‌کنند."
+    },
+    "collocations": [
+      { "en": "big deal", "fa": "موضوع مهم" },
+      { "en": "big brother", "fa": "برادر بزرگتر" }
+    ],
+    "phrases": [
+      { "en": "make it big", "fa": "خیلی موفق شدن" }
+    ],
+    "phrasal_verbs": []
+  },
+  "small": {
+    "fa": "کوچک",
+    "def": "not large in size",
+    "example": {
+      "en": "I'll have a small coffee.",
+      "fa": "من یک قهوه کوچک می‌خورم."
+    },
+    "collocations": [
+      { "en": "small town", "fa": "شهر کوچک" },
+      { "en": "small business", "fa": "کسب‌وکار کوچک" }
+    ],
+    "phrases": [
+      { "en": "it's a small world", "fa": "دنیا چقدر کوچک است" }
+    ],
+    "phrasal_verbs": []
+  },
+  "new": {
+    "fa": "جدید / تازه",
+    "def": "recently made, built, or bought",
+    "example": {
+      "en": "I bought a new phone.",
+      "fa": "من یک گوشی جدید خریدم."
+    },
+    "collocations": [
+      { "en": "brand new", "fa": "کاملاً نو" },
+      { "en": "New Year", "fa": "سال نو" }
+    ],
+    "phrases": [
+      { "en": "what's new?", "fa": "چه خبر؟ (چیز جدیدی هست؟)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "old": {
+    "fa": "قدیمی / پیر",
+    "def": "having lived or existed for a long time",
+    "example": {
+      "en": "How old are you?",
+      "fa": "چند سالت است؟"
+    },
+    "collocations": [
+      { "en": "old friend", "fa": "دوست قدیمی" },
+      { "en": "grow old", "fa": "پیر شدن" }
+    ],
+    "phrases": [
+      { "en": "the good old days", "fa": "قدیما / یادش بخیر اون روزا" }
+    ],
+    "phrasal_verbs": []
+  },
+  "same": {
+    "fa": "یکسان / مشابه",
+    "def": "not different; exactly like another",
+    "example": {
+      "en": "We are the same age.",
+      "fa": "ما هم‌سن هستیم."
+    },
+    "collocations": [
+      { "en": "at the same time", "fa": "در عین حال / هم‌زمان" },
+      { "en": "the same as", "fa": "مشابه با" }
+    ],
+    "phrases": [
+      { "en": "the same to you", "fa": "همچنین برای شما (در جواب آرزوی خوب)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "different": {
+    "fa": "متفاوت",
+    "def": "not the same",
+    "example": {
+      "en": "Life is different now.",
+      "fa": "زندگی الان متفاوت است."
+    },
+    "collocations": [
+      { "en": "different from", "fa": "متفاوت از" },
+      { "en": "totally different", "fa": "کاملاً متفاوت" }
+    ],
+    "phrases": [
+      { "en": "think different", "fa": "متفاوت فکر کردن" }
+    ],
+    "phrasal_verbs": []
+  },
+  "busy": {
+    "fa": "مشغول / شلوغ",
+    "def": "working hard or full of activity",
+    "example": {
+      "en": "I'm very busy today.",
+      "fa": "من امروز خیلی مشغلم."
+    },
+    "collocations": [
+      { "en": "busy street", "fa": "خیابان شلوغ" },
+      { "en": "get busy", "fa": "دست به کار شدن" }
+    ],
+    "phrases": [
+      { "en": "as busy as a bee", "fa": "خیلی پرمشغله (مثل زنبور)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "free": {
+    "fa": "آزاد / رایگان",
+    "def": "not busy; costing no money",
+    "example": {
+      "en": "Are you free tonight?",
+      "fa": "آیا امشب آزادی (وقت داری)؟"
+    },
+    "collocations": [
+      { "en": "free time", "fa": "وقت آزاد" },
+      { "en": "for free", "fa": "به صورت رایگان" }
+    ],
+    "phrases": [
+      { "en": "free of charge", "fa": "بدون هزینه" }
+    ],
+    "phrasal_verbs": []
+  },
+  "tired": {
+    "fa": "خسته",
+    "def": "needing rest or sleep",
+    "example": {
+      "en": "I'm tired of waiting.",
+      "fa": "از منتظر ماندن خسته شده‌ام."
+    },
+    "collocations": [
+      { "en": "look tired", "fa": "خسته به نظر رسیدن" },
+      { "en": "tired of", "fa": "خسته (بیزار) از چیزی" }
+    ],
+    "phrases": [
+      { "en": "dead tired", "fa": "خیلی خسته (خستهِ مرده)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "happy": {
+    "fa": "خوشحال / شاد",
+    "def": "feeling or showing pleasure",
+    "example": {
+      "en": "I'm so happy for you.",
+      "fa": "من خیلی برایت خوشحالم."
+    },
+    "collocations": [
+      { "en": "happy ending", "fa": "پایان خوش" },
+      { "en": "be happy with", "fa": "راضی بودن از" }
+    ],
+    "phrases": [
+      { "en": "Happy Birthday!", "fa": "تولدت مبارک!" }
+    ],
+    "phrasal_verbs": []
+  },
+  "sad": {
+    "fa": "ناراحت / غمگین",
+    "def": "feeling unhappy",
+    "example": {
+      "en": "It's a sad story.",
+      "fa": "این داستان غم‌انگیزی است."
+    },
+    "collocations": [
+      { "en": "feel sad", "fa": "احساس ناراحتی کردن" },
+      { "en": "sad news", "fa": "اخبار ناراحت‌کننده" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "right": {
+    "fa": "درست / راست (جهت) / حق",
+    "def": "correct; opposite of left",
+    "example": {
+      "en": "You are absolutely right.",
+      "fa": "تو کاملاً درست می‌گویی."
+    },
+    "collocations": [
+      { "en": "right hand", "fa": "دست راست" },
+      { "en": "all right", "fa": "بسیار خب / حله" }
+    ],
+    "phrases": [
+      { "en": "right now", "fa": "همین الان" }
+    ],
+    "phrasal_verbs": []
+  },
+  "wrong": {
+    "fa": "غلط / اشتباه",
+    "def": "not correct; not true",
+    "example": {
+      "en": "What is wrong with you?",
+      "fa": "مشکلت چیست؟ (چت شده؟)"
+    },
+    "collocations": [
+      { "en": "wrong answer", "fa": "جواب غلط" },
+      { "en": "wrong way", "fa": "مسیر اشتباه" }
+    ],
+    "phrases": [
+      { "en": "go wrong", "fa": "به مشکل خوردن / اشتباه پیش رفتن" }
+    ],
+    "phrasal_verbs": []
+  },
+  "important": {
+    "fa": "مهم",
+    "def": "having great value or influence",
+    "example": {
+      "en": "This is an important meeting.",
+      "fa": "این یک جلسه مهم است."
+    },
+    "collocations": [
+      { "en": "very important", "fa": "خیلی مهم" },
+      { "en": "most important", "fa": "مهم‌ترین" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "possible": {
+    "fa": "ممکن",
+    "def": "able to be done or happen",
+    "example": {
+      "en": "Is it possible to call later?",
+      "fa": "آیا ممکن است بعداً تماس بگیرید؟"
+    },
+    "collocations": [
+      { "en": "as soon as possible", "fa": "در اسرع وقت (تا جای ممکن زود)" },
+      { "en": "if possible", "fa": "در صورت امکان" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "ready": {
+    "fa": "آماده",
+    "def": "prepared for something",
+    "example": {
+      "en": "Dinner is ready!",
+      "fa": "شام آماده است!"
+    },
+    "collocations": [
+      { "en": "get ready", "fa": "آماده شدن" },
+      { "en": "ready to go", "fa": "آماده رفتن" }
+    ],
+    "phrases": [
+      { "en": "ready or not", "fa": "چه آماده باشی چه نه" }
+    ],
+    "phrasal_verbs": []
+  }
+}
+
+{
+  "and": {
+    "fa": "و",
+    "def": "used to connect words or parts of sentences",
+    "example": {
+      "en": "I like coffee and tea.",
+      "fa": "من قهوه و چای دوست دارم."
+    },
+    "collocations": [],
+    "phrases": [
+      { "en": "and so on", "fa": "و غیره / و الی آخر" }
+    ],
+    "phrasal_verbs": []
+  },
+  "but": {
+    "fa": "اما / ولی",
+    "def": "used to introduce a contrast",
+    "example": {
+      "en": "It’s expensive but good.",
+      "fa": "گران است اما خوب است."
+    },
+    "collocations": [],
+    "phrases": [
+      { "en": "last but not least", "fa": "آخرین مورد ولی نه کم‌اهمیت‌ترین" }
+    ],
+    "phrasal_verbs": []
+  },
+  "because": {
+    "fa": "چون / زیرا",
+    "def": "for the reason that",
+    "example": {
+      "en": "I'm late because of traffic.",
+      "fa": "من به خاطر ترافیک دیر کردم."
+    },
+    "collocations": [
+      { "en": "just because", "fa": "فقط به این دلیل که" }
+    ],
+    "phrases": [
+      { "en": "because of", "fa": "به دلیلِ / به خاطرِ" }
+    ],
+    "phrasal_verbs": []
+  },
+  "so": {
+    "fa": "پس / بنابراین / خیلی",
+    "def": "for that reason; to a great degree",
+    "example": {
+      "en": "I was tired, so I went to bed.",
+      "fa": "خسته بودم، پس به رختخواب رفتم."
+    },
+    "collocations": [],
+    "phrases": [
+      { "en": "so far", "fa": "تا الان / تا اینجا" },
+      { "en": "I think so", "fa": "فکر کنم همین‌طوره" }
+    ],
+    "phrasal_verbs": []
+  },
+  "if": {
+    "fa": "اگر",
+    "def": "used to talk about a result of a condition",
+    "example": {
+      "en": "Call me if you need help.",
+      "fa": "اگر به کمک نیاز داشتی با من تماس بگیر."
+    },
+    "collocations": [],
+    "phrases": [
+      { "en": "even if", "fa": "حتی اگر" },
+      { "en": "as if", "fa": "انگار که / گویی" }
+    ],
+    "phrasal_verbs": []
+  },
+  "when": {
+    "fa": "وقتی که / چه زمانی",
+    "def": "at what time; at the time that",
+    "example": {
+      "en": "I'll call you when I arrive.",
+      "fa": "وقتی رسیدم با تو تماس می‌گیرم."
+    },
+    "collocations": [],
+    "phrases": [
+      { "en": "since when?", "fa": "از کی تا حالا؟" }
+    ],
+    "phrasal_verbs": []
+  },
+  "before": {
+    "fa": "قبل از / پیش از",
+    "def": "earlier than something else",
+    "example": {
+      "en": "Wash your hands before dinner.",
+      "fa": "قبل از شام دست‌هایت را بشوی."
+    },
+    "collocations": [
+      { "en": "day before", "fa": "روزِ قبل" }
+    ],
+    "phrases": [
+      { "en": "before long", "fa": "به زودی / طولی نکشید که" }
+    ],
+    "phrasal_verbs": []
+  },
+  "after": {
+    "fa": "بعد از / پس از",
+    "def": "later than something else",
+    "example": {
+      "en": "We can go after work.",
+      "fa": "می‌توانیم بعد از کار برویم."
+    },
+    "collocations": [
+      { "en": "day after", "fa": "روزِ بعد" }
+    ],
+    "phrases": [
+      { "en": "after all", "fa": "در هر صورت / بالاخره" }
+    ],
+    "phrasal_verbs": [
+      { "en": "look after", "fa": "مراقبت کردن از" }
+    ]
+  },
+  "about": {
+    "fa": "درباره / تقریباً",
+    "def": "on the subject of; approximately",
+    "example": {
+      "en": "Tell me about your job.",
+      "fa": "درباره شغلت به من بگو."
+    },
+    "collocations": [
+      { "en": "about time", "fa": "وقتش است که..." }
+    ],
+    "phrases": [
+      { "en": "How about...?", "fa": "نظرت درباره ... چیست؟" }
+    ],
+    "phrasal_verbs": []
+  },
+  "with": {
+    "fa": "با / به همراه",
+    "def": "accompanied by; using something",
+    "example": {
+      "en": "I live with my family.",
+      "fa": "من با خانواده‌ام زندگی می‌کنم."
+    },
+    "collocations": [
+      { "en": "with ease", "fa": "به آسانی" }
+    ],
+    "phrases": [
+      { "en": "along with", "fa": "به همراهِ" }
+    ],
+    "phrasal_verbs": []
+  },
+  "without": {
+    "fa": "بدونِ",
+    "def": "not having or including something",
+    "example": {
+      "en": "I can't see without glasses.",
+      "fa": "من بدون عینک نمی‌توانم ببینم."
+    },
+    "collocations": [],
+    "phrases": [
+      { "en": "go without", "fa": "بدون چیزی سر کردن" }
+    ],
+    "phrasal_verbs": []
+  },
+  "for": {
+    "fa": "برای / به مدتِ",
+    "def": "intended to be given to or used by; during",
+    "example": {
+      "en": "This gift is for you.",
+      "fa": "این هدیه برای توست."
+    },
+    "collocations": [
+      { "en": "for example", "fa": "به عنوان مثال" },
+      { "en": "for a while", "fa": "برای مدتی" }
+    ],
+    "phrases": [
+      { "en": "for sale", "fa": "برای فروش" }
+    ],
+    "phrasal_verbs": []
+  },
+  "from": {
+    "fa": "از",
+    "def": "starting point of a place, time, or source",
+    "example": {
+      "en": "I am from Iran.",
+      "fa": "من اهل ایران هستم."
+    },
+    "collocations": [
+      { "en": "from now on", "fa": "از این به بعد" }
+    ],
+    "phrases": [
+      { "en": "from A to Z", "fa": "از سیر تا پیاز / از اول تا آخر" }
+    ],
+    "phrasal_verbs": []
+  },
+  "to": {
+    "fa": "به / به سمتِ",
+    "def": "in the direction of; used with verbs",
+    "example": {
+      "en": "Go to the office.",
+      "fa": "به اداره برو."
+    },
+    "collocations": [],
+    "phrases": [
+      { "en": "face to face", "fa": "رو در رو / حضوری" }
+    ],
+    "phrasal_verbs": []
+  },
+  "in": {
+    "fa": "در / داخلِ",
+    "def": "inside a container, place, or time",
+    "example": {
+      "en": "He is in the kitchen.",
+      "fa": "او در آشپزخانه است."
+    },
+    "collocations": [
+      { "en": "in time", "fa": "به موقع" },
+      { "en": "in advance", "fa": "از قبل / پیشاپیش" }
+    ],
+    "phrases": [
+      { "en": "in common", "fa": "مشترک (تفاهم داشتن)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "on": {
+    "fa": "رویِ / در (برای روزها)",
+    "def": "on top of; used for days and dates",
+    "example": {
+      "en": "The book is on the table.",
+      "fa": "کتاب روی میز است."
+    },
+    "collocations": [
+      { "en": "on Monday", "fa": "در روز دوشنبه" },
+      { "en": "on foot", "fa": "پیاده" }
+    ],
+    "phrases": [
+      { "en": "on the other hand", "fa": "از طرف دیگر" }
+    ],
+    "phrasal_verbs": [
+      { "en": "on and off", "fa": "گهگاهی / قطع و وصل شدن" }
+    ]
+  },
+  "at": {
+    "fa": "در (نقطه مشخص) / در ساعتِ",
+    "def": "used to show a place or time",
+    "example": {
+      "en": "Meet me at 5 o'clock.",
+      "fa": "ساعت ۵ من را ملاقات کن."
+    },
+    "collocations": [
+      { "en": "at work", "fa": "سرِ کار" },
+      { "en": "at last", "fa": "سرانجام / بالاخره" }
+    ],
+    "phrases": [
+      { "en": "at all", "fa": "اصلاً / به هیچ وجه" }
+    ],
+    "phrasal_verbs": []
+  },
+  "of": {
+    "fa": "ِ (کسره مالکیت) / از",
+    "def": "belonging to; relating to",
+    "example": {
+      "en": "The color of the car is red.",
+      "fa": "رنگِ ماشین قرمز است."
+    },
+    "collocations": [
+      { "en": "kind of", "fa": "یک جورهایی / نوعی از" }
+    ],
+    "phrases": [
+      { "en": "out of", "fa": "خارج از / به دلیلِ" }
+    ],
+    "phrasal_verbs": []
+  },
+  "this": {
+    "fa": "این",
+    "def": "the person or thing close to the speaker",
+    "example": {
+      "en": "This is my friend.",
+      "fa": "این دوستِ من است."
+    },
+    "collocations": [
+      { "en": "this week", "fa": "این هفته" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "that": {
+    "fa": "آن / که",
+    "def": "the person or thing not close; used to connect clauses",
+    "example": {
+      "en": "Who is that man?",
+      "fa": "آن مرد کیست؟"
+    },
+    "collocations": [],
+    "phrases": [
+      { "en": "that's it", "fa": "همینه! / تمام شد" }
+    ],
+    "phrasal_verbs": []
+  },
+  "these": {
+    "fa": "این‌ها",
+    "def": "plural of 'this'",
+    "example": {
+      "en": "These books are new.",
+      "fa": "این کتاب‌ها جدید هستند."
+    },
+    "collocations": [],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "those": {
+    "fa": "آن‌ها",
+    "def": "plural of 'that'",
+    "example": {
+      "en": "Look at those birds.",
+      "fa": "به آن پرنده‌ها نگاه کن."
+    },
+    "collocations": [],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "something": {
+    "fa": "چیزی",
+    "def": "an unspecified thing",
+    "example": {
+      "en": "I want to tell you something.",
+      "fa": "می‌خواهم چیزی به تو بگویم."
+    },
+    "collocations": [
+      { "en": "something else", "fa": "یک چیز دیگر" }
+    ],
+    "phrases": [
+      { "en": "or something", "fa": "یا چیزی شبیه این" }
+    ],
+    "phrasal_verbs": []
+  },
+  "someone": {
+    "fa": "کسی",
+    "def": "an unspecified person",
+    "example": {
+      "en": "Someone is at the door.",
+      "fa": "کسی دم در است."
+    },
+    "collocations": [
+      { "en": "someone special", "fa": "یک شخص خاص" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "nothing": {
+    "fa": "هیچ‌چیز",
+    "def": "not anything",
+    "example": {
+      "en": "There is nothing in the box.",
+      "fa": "هیچ‌چیزی در جعبه نیست."
+    },
+    "collocations": [],
+    "phrases": [
+      { "en": "nothing much", "fa": "چیز خاصی نیست / سلامتی" },
+      { "en": "it's nothing", "fa": "چیزی نیست / قابلی ندارد" }
+    ],
+    "phrasal_verbs": []
+  },
+  "everything": {
+    "fa": "همه‌چیز",
+    "def": "all things",
+    "example": {
+      "en": "Everything is ready.",
+      "fa": "همه‌چیز آماده است."
+    },
+    "collocations": [],
+    "phrases": [
+      { "en": "everything's fine", "fa": "همه چیز روبراه است" }
+    ],
+    "phrasal_verbs": []
+  },
+  "one": {
+    "fa": "یک / یکی",
+    "def": "the number 1; a single person or thing",
+    "example": {
+      "en": "I have only one brother.",
+      "fa": "من فقط یک برادر دارم."
+    },
+    "collocations": [
+      { "en": "one day", "fa": "یک روزی" }
+    ],
+    "phrases": [
+      { "en": "one by one", "fa": "یکی یکی" }
+    ],
+    "phrasal_verbs": []
+  },
+  "two": {
+    "fa": "دو",
+    "def": "the number 2",
+    "example": {
+      "en": "Table for two, please.",
+      "fa": "میز برای دو نفر، لطفاً."
+    },
+    "collocations": [],
+    "phrases": [
+      { "en": "two-faced", "fa": "دو رو / منافق" }
+    ],
+    "phrasal_verbs": []
+  },
+  "many": {
+    "fa": "زیاد / بسیاری",
+    "def": "a large number of (for countable things)",
+    "example": {
+      "en": "Many people like this movie.",
+      "fa": "افراد زیادی این فیلم را دوست دارند."
+    },
+    "collocations": [
+      { "en": "how many", "fa": "چه تعداد / چند تا" }
+    ],
+    "phrases": [
+      { "en": "many thanks", "fa": "بسیار ممنون" }
+    ],
+    "phrasal_verbs": []
+  },
+  "few": {
+    "fa": "کم / اندک",
+    "def": "a small number of",
+    "example": {
+      "en": "I have a few friends.",
+      "fa": "من چندتایی (تعداد کمی) دوست دارم."
+    },
+    "collocations": [
+      { "en": "quite a few", "fa": "تعداد نسبتاً زیادی" }
+    ],
+    "phrases": [
+      { "en": "in a few words", "fa": "در چند کلمه / خلاصه" }
+    ],
+    "phrasal_verbs": []
+  }
+}
+
+{
+  "a_lot": {
+    "fa": "خیلی / مقدار زیاد",
+    "def": "a large amount or number of something",
+    "example": {
+      "en": "I have a lot of work today.",
+      "fa": "من امروز کارهای زیادی دارم."
+    },
+    "collocations": [
+      { "en": "a lot of money", "fa": "پول زیاد" },
+      { "en": "thanks a lot", "fa": "خیلی ممنون" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "more": {
+    "fa": "بیشتر",
+    "def": "a larger amount or number",
+    "example": {
+      "en": "I need more time.",
+      "fa": "من به زمان بیشتری نیاز دارم."
+    },
+    "collocations": [
+      { "en": "once more", "fa": "یک بار دیگر" },
+      { "en": "more and more", "fa": "بیشتر و بیشتر" }
+    ],
+    "phrases": [
+      { "en": "no more", "fa": "دیگر نه / تمام شد" }
+    ],
+    "phrasal_verbs": []
+  },
+  "less": {
+    "fa": "کمتر",
+    "def": "a smaller amount or degree",
+    "example": {
+      "en": "Eat more fruit and less sugar.",
+      "fa": "میوه بیشتر و شکر کمتری بخور."
+    },
+    "collocations": [
+      { "en": "less than", "fa": "کمتر از" }
+    ],
+    "phrases": [
+      { "en": "more or less", "fa": "کم و بیش / تقریباً" }
+    ],
+    "phrasal_verbs": []
+  },
+  "all": {
+    "fa": "همه / تمام",
+    "def": "every one of a group; the whole amount",
+    "example": {
+      "en": "All my friends are here.",
+      "fa": "همه دوستانم اینجا هستند."
+    },
+    "collocations": [
+      { "en": "all day", "fa": "تمام روز" },
+      { "en": "all the time", "fa": "همیشه / تمام مدت" }
+    ],
+    "phrases": [
+      { "en": "after all", "fa": "هر چه باشد / بالاخره" },
+      { "en": "all in all", "fa": "در مجموع" }
+    ],
+    "phrasal_verbs": []
+  },
+  "some": {
+    "fa": "بعضی / مقداری",
+    "def": "an unspecified amount or number",
+    "example": {
+      "en": "I need some help.",
+      "fa": "من به مقداری کمک نیاز دارم."
+    },
+    "collocations": [
+      { "en": "some people", "fa": "برخی مردم" },
+      { "en": "some day", "fa": "یک روزی" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "any": {
+    "fa": "هیچ / هر",
+    "def": "some, or every; used in questions and negatives",
+    "example": {
+      "en": "I don't have any money.",
+      "fa": "من هیچ پولی ندارم."
+    },
+    "collocations": [
+      { "en": "any time", "fa": "هر زمانی" },
+      { "en": "anybody else", "fa": "شخص دیگری" }
+    ],
+    "phrases": [
+      { "en": "at any rate", "fa": "در هر صورت / به هر تقدیر" }
+    ],
+    "phrasal_verbs": []
+  },
+  "other": {
+    "fa": "دیگر / متفاوت",
+    "def": "used to refer to things or people that are different",
+    "example": {
+      "en": "I have other things to do.",
+      "fa": "من کارهای دیگری برای انجام دادن دارم."
+    },
+    "collocations": [
+      { "en": "the other side", "fa": "طرف دیگر" },
+      { "en": "on the other hand", "fa": "از سوی دیگر" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "another": {
+    "fa": "یکی دیگر / دیگر",
+    "def": "one more; a different one",
+    "example": {
+      "en": "Would you like another cup of tea?",
+      "fa": "یک فنجان چای دیگر میل دارید؟"
+    },
+    "collocations": [
+      { "en": "one another", "fa": "یکدیگر" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "kind": {
+    "fa": "نوع / مهربان",
+    "def": "a group with similar qualities; caring about others",
+    "example": {
+      "en": "What kind of music do you like?",
+      "fa": "چه نوع موسیقی‌ای دوست داری؟"
+    },
+    "collocations": [
+      { "en": "kind of", "fa": "یه جورایی / تا حدی" },
+      { "en": "be kind to", "fa": "با کسی مهربان بودن" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "morning": {
+    "fa": "صبح",
+    "def": "the early part of the day",
+    "example": {
+      "en": "Good morning!",
+      "fa": "صبح بخیر!"
+    },
+    "collocations": [
+      { "en": "in the morning", "fa": "در صبح" },
+      { "en": "early morning", "fa": "اولِ صبح / صبحِ زود" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "afternoon": {
+    "fa": "بعدازظهر",
+    "def": "the part of the day between noon and evening",
+    "example": {
+      "en": "See you this afternoon.",
+      "fa": "امروز بعدازظهر می‌بینمت."
+    },
+    "collocations": [
+      { "en": "in the afternoon", "fa": "در بعدازظهر" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "evening": {
+    "fa": "عصر / غروب",
+    "def": "the late part of the day and early part of the night",
+    "example": {
+      "en": "We usually watch TV in the evening.",
+      "fa": "ما معمولاً عصرها تلویزیون تماشا می‌کنیم."
+    },
+    "collocations": [
+      { "en": "good evening", "fa": "عصر بخیر" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "night": {
+    "fa": "شب",
+    "def": "the time when it is dark and people sleep",
+    "example": {
+      "en": "Good night!",
+      "fa": "شب بخیر!"
+    },
+    "collocations": [
+      { "en": "at night", "fa": "در شب" },
+      { "en": "all night", "fa": "تمام شب" }
+    ],
+    "phrases": [
+      { "en": "last night", "fa": "دیشب" }
+    ],
+    "phrasal_verbs": []
+  },
+  "again": {
+    "fa": "دوباره / باز هم",
+    "def": "one more time",
+    "example": {
+      "en": "Can you say that again?",
+      "fa": "می‌توانی دوباره آن را بگویی؟"
+    },
+    "collocations": [
+      { "en": "again and again", "fa": "بارها و بارها" }
+    ],
+    "phrases": [
+      { "en": "never again", "fa": "هرگز دیگر نه / توبه!" }
+    ],
+    "phrasal_verbs": []
+  },
+  "always": {
+    "fa": "همیشه",
+    "def": "at all times",
+    "example": {
+      "en": "I always wake up at 7.",
+      "fa": "من همیشه ساعت ۷ بیدار می‌شوم."
+    },
+    "collocations": [
+      { "en": "as always", "fa": "طبق معمول / مثل همیشه" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "usually": {
+    "fa": "معمولاً",
+    "def": "in the way that most often happens",
+    "example": {
+      "en": "I usually go to work by car.",
+      "fa": "من معمولاً با ماشین به سر کار می‌روم."
+    },
+    "collocations": [
+      { "en": "usually happens", "fa": "معمولاً اتفاق می‌افتد" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "sometimes": {
+    "fa": "گاهی / بعضی اوقات",
+    "def": "on some occasions but not always",
+    "example": {
+      "en": "Sometimes I feel tired.",
+      "fa": "گاهی اوقات احساس خستگی می‌کنم."
+    },
+    "collocations": [],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "often": {
+    "fa": "اغلب / بارها",
+    "def": "many times",
+    "example": {
+      "en": "How often do you exercise?",
+      "fa": "هر چند وقت یک‌بار (اغلب چقدر) ورزش می‌کنی؟"
+    },
+    "collocations": [
+      { "en": "quite often", "fa": "خیلی وقت‌ها" }
+    ],
+    "phrases": [
+      { "en": "every so often", "fa": "هر از گاهی" }
+    ],
+    "phrasal_verbs": []
+  },
+  "never": {
+    "fa": "هرگز / هیچ‌وقت",
+    "def": "at no time in the past or future",
+    "example": {
+      "en": "I never drink coffee.",
+      "fa": "من هرگز قهوه نمی‌نوشم."
+    },
+    "collocations": [
+      { "en": "never mind", "fa": "بیخیال / مهم نیست" }
+    ],
+    "phrases": [
+      { "en": "better late than never", "fa": "دیر رسیدن بهتر از هرگز نرسیدن است" }
+    ],
+    "phrasal_verbs": []
+  },
+  "fast": {
+    "fa": "سریع / تند",
+    "def": "moving or happening quickly",
+    "example": {
+      "en": "You speak too fast.",
+      "fa": "تو خیلی تند صحبت می‌کنی."
+    },
+    "collocations": [
+      { "en": "fast food", "fa": "غذای آماده / فست‌فود" },
+      { "en": "drive fast", "fa": "تند رانندگی کردن" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "slow": {
+    "fa": "آهسته / کند",
+    "def": "moving or happening at a low speed",
+    "example": {
+      "en": "Please speak more slow.",
+      "fa": "لطفاً آهسته‌تر صحبت کنید."
+    },
+    "collocations": [
+      { "en": "slow down", "fa": "سرعت را کم کردن" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "very": {
+    "fa": "خیلی / بسیار",
+    "def": "used to emphasize an adjective or adverb",
+    "example": {
+      "en": "Thank you very much.",
+      "fa": "بسیار زیاد از شما ممنونم."
+    },
+    "collocations": [
+      { "en": "very well", "fa": "خیلی خوب" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "really": {
+    "fa": "واقعاً",
+    "def": "in fact; used to emphasize a statement",
+    "example": {
+      "en": "I really like this place.",
+      "fa": "من واقعاً این مکان را دوست دارم."
+    },
+    "collocations": [
+      { "en": "really good", "fa": "واقعاً خوب" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "just": {
+    "fa": "فقط / همین الان",
+    "def": "only; a very short time ago",
+    "example": {
+      "en": "I'm just a student.",
+      "fa": "من فقط یک دانش‌آموز هستم."
+    },
+    "collocations": [
+      { "en": "just now", "fa": "همین الان" }
+    ],
+    "phrases": [
+      { "en": "just in case", "fa": "فقط محض احتیاط" }
+    ],
+    "phrasal_verbs": []
+  },
+  "also": {
+    "fa": "همچنین / نیز",
+    "def": "in addition; too",
+    "example": {
+      "en": "She is a teacher and also a writer.",
+      "fa": "او یک معلم و همچنین یک نویسنده است."
+    },
+    "collocations": [
+      { "en": "but also", "fa": "بلکه همچنین" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "maybe": {
+    "fa": "شاید / احتمالاً",
+    "def": "used to show that something is possible",
+    "example": {
+      "en": "Maybe it will rain later.",
+      "fa": "شاید بعداً باران ببارد."
+    },
+    "collocations": [],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "sure": {
+    "fa": "مطمئن / حتماً",
+    "def": "having no doubt; certain",
+    "example": {
+      "en": "Are you sure about that?",
+      "fa": "آیا درباره آن مطمئن هستی؟"
+    },
+    "collocations": [
+      { "en": "make sure", "fa": "مطمئن شدن" }
+    ],
+    "phrases": [
+      { "en": "sure thing!", "fa": "حتماً! / البته!" }
+    ],
+    "phrasal_verbs": []
+  },
+  "yes": {
+    "fa": "بله / آری",
+    "def": "used to give a positive answer",
+    "example": {
+      "en": "Yes, I can do it.",
+      "fa": "بله، من می‌توانم انجامش دهم."
+    },
+    "collocations": [],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "no": {
+    "fa": "نه / خیر",
+    "def": "used to give a negative answer",
+    "example": {
+      "en": "No, I don't know him.",
+      "fa": "نه، من او را نمی‌شناسم."
+    },
+    "collocations": [
+      { "en": "no way", "fa": "اصلاً راه ندارد / به هیچ وجه" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "okay": {
+    "fa": "باشه / خوب / صحیح",
+    "def": "used to show agreement or that something is fine",
+    "example": {
+      "en": "Is everything okay?",
+      "fa": "آیا همه‌چیز روبراه است؟"
+    },
+    "collocations": [
+      { "en": "it's okay", "fa": "اشکالی ندارد / خوب است" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  }
+}
+{
+  "please": {
+    "fa": "لطفاً",
+    "def": "used to be polite when asking for something",
+    "example": {
+      "en": "Coffee, please.",
+      "fa": "قهوه، لطفاً."
+    },
+    "collocations": [
+      { "en": "please note", "fa": "لطفاً توجه کنید" }
+    ],
+    "phrases": [
+      { "en": "yes, please", "fa": "بله، لطفاً" }
+    ],
+    "phrasal_verbs": []
+  },
+  "thanks": {
+    "fa": "ممنون / تشکر",
+    "def": "used to show that you are grateful",
+    "example": {
+      "en": "Thanks for your help.",
+      "fa": "ممنون بابت کمکت."
+    },
+    "collocations": [
+      { "en": "many thanks", "fa": "بسیار ممنون" },
+      { "en": "thanks to", "fa": "به لطفِ / به خاطرِ" }
+    ],
+    "phrases": [
+      { "en": "no thanks", "fa": "نه، ممنون" }
+    ],
+    "phrasal_verbs": []
+  },
+  "sorry": {
+    "fa": "ببخشید / متاسفم",
+    "def": "used to apologize for something",
+    "example": {
+      "en": "I'm sorry I'm late.",
+      "fa": "متاسفم که دیر کردم."
+    },
+    "collocations": [
+      { "en": "feel sorry for", "fa": "دلسوزی کردن برای" }
+    ],
+    "phrases": [
+      { "en": "sorry?", "fa": "ببخشید؟ (وقتی متوجه حرف نشدید)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "hello": {
+    "fa": "سلام",
+    "def": "a common greeting",
+    "example": {
+      "en": "Hello, how are you?",
+      "fa": "سلام، چطوری؟"
+    },
+    "collocations": [
+      { "en": "say hello", "fa": "سلام رساندن / سلام کردن" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "hi": {
+    "fa": "سلام (غیررسمی)",
+    "def": "an informal greeting",
+    "example": {
+      "en": "Hi there!",
+      "fa": "سلام!"
+    },
+    "collocations": [],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "bye": {
+    "fa": "خداحافظ",
+    "def": "used when leaving someone",
+    "example": {
+      "en": "Bye! See you later.",
+      "fa": "خداحافظ! بعداً می‌بینمت."
+    },
+    "collocations": [
+      { "en": "say bye", "fa": "خداحافظی کردن" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "welcome": {
+    "fa": "خوش آمدید / خواهش می‌کنم",
+    "def": "used to greet someone or respond to thanks",
+    "example": {
+      "en": "You're welcome.",
+      "fa": "خواهش می‌کنم (در جواب تشکر)."
+    },
+    "collocations": [
+      { "en": "warm welcome", "fa": "استقبال گرم" }
+    ],
+    "phrases": [
+      { "en": "welcome back", "fa": "خوش آمدی (بعد از بازگشت)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "question": {
+    "fa": "سوال / پرسش",
+    "def": "a sentence or phrase used to find out information",
+    "example": {
+      "en": "I have a question for you.",
+      "fa": "من یک سوال از شما دارم."
+    },
+    "collocations": [
+      { "en": "ask a question", "fa": "سوال پرسیدن" },
+      { "en": "answer a question", "fa": "پاسخ دادن به سوال" }
+    ],
+    "phrases": [
+      { "en": "out of the question", "fa": "غیرممکن / غیرقابل بحث" }
+    ],
+    "phrasal_verbs": []
+  },
+  "answer_noun": {
+    "fa": "پاسخ / جواب",
+    "def": "the response to a question",
+    "example": {
+      "en": "What is the correct answer?",
+      "fa": "پاسخ صحیح چیست؟"
+    },
+    "collocations": [
+      { "en": "find an answer", "fa": "پیدا کردن جواب" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "problem": {
+    "fa": "مشکل / مسئله",
+    "def": "a situation that needs a solution",
+    "example": {
+      "en": "No problem!",
+      "fa": "مشکلی نیست!"
+    },
+    "collocations": [
+      { "en": "solve a problem", "fa": "حل کردن مشکل" },
+      { "en": "big problem", "fa": "مشکل بزرگ" }
+    ],
+    "phrases": [
+      { "en": "what's the problem?", "fa": "مشکل چیست؟" }
+    ],
+    "phrasal_verbs": []
+  },
+  "reason": {
+    "fa": "دلیل / علت",
+    "def": "the cause of something",
+    "example": {
+      "en": "What is the reason for this?",
+      "fa": "دلیل این (اتفاق) چیست؟"
+    },
+    "collocations": [
+      { "en": "main reason", "fa": "دلیل اصلی" },
+      { "en": "for some reason", "fa": "به دلیلی (نامعلوم)" }
+    ],
+    "phrases": [
+      { "en": "within reason", "fa": "در حد منطق / عاقلانه" }
+    ],
+    "phrasal_verbs": []
+  },
+  "idea": {
+    "fa": "ایده / نظر",
+    "def": "a thought or suggestion",
+    "example": {
+      "en": "That’s a great idea!",
+      "fa": "این ایده عالی است!"
+    },
+    "collocations": [
+      { "en": "good idea", "fa": "ایده خوب" },
+      { "en": "have no idea", "fa": "اصلاً خبر نداشتن / چیزی ندانستن" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "thing": {
+    "fa": "چیز / شیء",
+    "def": "an object or subject",
+    "example": {
+      "en": "What is that thing?",
+      "fa": "آن چیز چیست؟"
+    },
+    "collocations": [
+      { "en": "the main thing", "fa": "نکته اصلی" }
+    ],
+    "phrases": [
+      { "en": "first things first", "fa": "اول کارهای مهم‌تر" }
+    ],
+    "phrasal_verbs": []
+  },
+  "way": {
+    "fa": "راه / روش / مسیر",
+    "def": "a path or a method of doing something",
+    "example": {
+      "en": "Show me the way.",
+      "fa": "راه را به من نشان بده."
+    },
+    "collocations": [
+      { "en": "one-way", "fa": "یک‌طرفه" },
+      { "en": "best way", "fa": "بهترین راه" }
+    ],
+    "phrases": [
+      { "en": "by the way", "fa": "راستی / ضمناً" },
+      { "en": "on the way", "fa": "در مسیر" }
+    ],
+    "phrasal_verbs": []
+  },
+  "part": {
+    "fa": "بخش / قسمت",
+    "def": "a piece of a whole",
+    "example": {
+      "en": "This is the best part of the movie.",
+      "fa": "این بهترین بخش فیلم است."
+    },
+    "collocations": [
+      { "en": "take part", "fa": "شرکت کردن در" },
+      { "en": "part-time", "fa": "پاره‌وقت" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "life": {
+    "fa": "زندگی",
+    "def": "the period from birth to death",
+    "example": {
+      "en": "Life is beautiful.",
+      "fa": "زندگی زیباست."
+    },
+    "collocations": [
+      { "en": "daily life", "fa": "زندگی روزمره" },
+      { "en": "real life", "fa": "زندگی واقعی" }
+    ],
+    "phrases": [
+      { "en": "all my life", "fa": "تمام عمرم" }
+    ],
+    "phrasal_verbs": []
+  },
+  "world": {
+    "fa": "دنیا / جهان",
+    "def": "the earth and everything on it",
+    "example": {
+      "en": "I want to travel the world.",
+      "fa": "من می‌خواهم به کل دنیا سفر کنم."
+    },
+    "collocations": [
+      { "en": "all over the world", "fa": "در سراسر جهان" }
+    ],
+    "phrases": [
+      { "en": "out of this world", "fa": "فوق‌العاده / عالی" }
+    ],
+    "phrasal_verbs": []
+  },
+  "workday": {
+    "fa": "روز کاری",
+    "def": "a day on which work is done",
+    "example": {
+      "en": "I have a long workday today.",
+      "fa": "امروز روز کاری طولانی‌ای دارم."
+    },
+    "collocations": [],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "weekend": {
+    "fa": "آخر هفته",
+    "def": "Saturday and Sunday (or Friday/Saturday)",
+    "example": {
+      "en": "Have a nice weekend!",
+      "fa": "آخر هفته خوبی داشته باشی!"
+    },
+    "collocations": [
+      { "en": "at the weekend", "fa": "در آخر هفته" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "break": {
+    "fa": "استراحت (کوتاه) / شکستن",
+    "def": "a pause in work or activity",
+    "example": {
+      "en": "Let's take a break.",
+      "fa": "بیایید کمی استراحت کنیم."
+    },
+    "collocations": [
+      { "en": "lunch break", "fa": "زمان ناهار / استراحت ناهار" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": [
+      { "en": "break down", "fa": "خراب شدن (ماشین/دستگاه)" },
+      { "en": "break up", "fa": "کات کردن / تمام کردن رابطه" }
+    ]
+  },
+  "rest": {
+    "fa": "استراحت / بقیه",
+    "def": "period of relaxing; what is left",
+    "example": {
+      "en": "You need some rest.",
+      "fa": "تو به مقداری استراحت نیاز داری."
+    },
+    "collocations": [
+      { "en": "the rest of", "fa": "بقیه یِ ..." }
+    ],
+    "phrases": [
+      { "en": "rest assured", "fa": "خیالتان راحت باشد" }
+    ],
+    "phrasal_verbs": []
+  },
+  "plan": {
+    "fa": "برنامه / نقشه",
+    "def": "an arrangement for doing something later",
+    "example": {
+      "en": "Do you have a plan for tomorrow?",
+      "fa": "آیا برای فردا برنامه‌ای داری؟"
+    },
+    "collocations": [
+      { "en": "business plan", "fa": "برنامه کاری" },
+      { "en": "change of plan", "fa": "تغییر برنامه" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "change": {
+    "fa": "تغییر / پول خرد",
+    "def": "to make or become different",
+    "example": {
+      "en": "I need to change my clothes.",
+      "fa": "باید لباس‌هایم را عوض کنم."
+    },
+    "collocations": [
+      { "en": "climate change", "fa": "تغییرات اقلیمی" },
+      { "en": "small change", "fa": "پول خرد" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": [
+      { "en": "change mind", "fa": "تغییر نظر دادن" }
+    ]
+  },
+  "result": {
+    "fa": "نتیجه",
+    "def": "something that happens because of something else",
+    "example": {
+      "en": "Wait for the test results.",
+      "fa": "منتظر نتایج امتحان بمان."
+    },
+    "collocations": [
+      { "en": "as a result", "fa": "در نتیجه" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "example": {
+    "fa": "مثال / نمونه",
+    "def": "something that shows what a group is like",
+    "example": {
+      "en": "Can you give me an example?",
+      "fa": "می‌توانی یک مثال به من بزنی؟"
+    },
+    "collocations": [
+      { "en": "for example", "fa": "به عنوان مثال" }
+    ],
+    "phrases": [
+      { "en": "set an example", "fa": "الگو بودن / الگو قرار دادن" }
+    ],
+    "phrasal_verbs": []
+  },
+  "point": {
+    "fa": "نکته / امتیاز / اشاره کردن",
+    "def": "an idea or opinion; a mark in a game",
+    "example": {
+      "en": "What's your point?",
+      "fa": "منظورت (نکته‌ات) چیست؟"
+    },
+    "collocations": [
+      { "en": "good point", "fa": "نکته خوب" },
+      { "en": "turning point", "fa": "نقطه عطف" }
+    ],
+    "phrases": [
+      { "en": "beside the point", "fa": "بی‌ربط به موضوع" }
+    ],
+    "phrasal_verbs": [
+      { "en": "point out", "fa": "اشاره کردن (به نکته‌ای)" }
+    ]
+  },
+  "level": {
+    "fa": "سطح / مرحله",
+    "def": "a position on a scale of amount or quality",
+    "example": {
+      "en": "My English level is A1.",
+      "fa": "سطح انگلیسی من A1 است."
+    },
+    "collocations": [
+      { "en": "sea level", "fa": "سطح دریا" },
+      { "en": "entry level", "fa": "سطح مبتدی" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "begin": {
+    "fa": "شروع کردن",
+    "def": "to start doing something",
+    "example": {
+      "en": "Let's begin the lesson.",
+      "fa": "بیایید درس را شروع کنیم."
+    },
+    "collocations": [
+      { "en": "begin with", "fa": "شروع کردن با" }
+    ],
+    "phrases": [
+      { "en": "to begin with", "fa": "در وهله اول" }
+    ],
+    "phrasal_verbs": []
+  },
+  "finish": {
+    "fa": "تمام کردن",
+    "def": "to reach the end of something",
+    "example": {
+      "en": "I'll finish my work soon.",
+      "fa": "من به زودی کارم را تمام می‌کنم."
+    },
+    "collocations": [
+      { "en": "finish line", "fa": "خط پایان" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": [
+      { "en": "finish off", "fa": "کاملاً تمام کردن / ترتیب چیزی را دادن" }
+    ]
+  },
+  "wait": {
+    "fa": "صبر کردن / منتظر ماندن",
+    "def": "to stay in a place until something happens",
+    "example": {
+      "en": "Wait for me!",
+      "fa": "منتظر من بمان!"
+    },
+    "collocations": [
+      { "en": "wait in line", "fa": "در صف ایستادن" },
+      { "en": "can't wait", "fa": "بی‌صبرانه منتظر بودن" }
+    ],
+    "phrases": [
+      { "en": "wait and see", "fa": "صبر کن و ببین (زمان نشان می‌دهد)" }
+    ],
+    "phrasal_verbs": []
+  }
+}
+{
+  "meet": {
+    "fa": "ملاقات کردن / آشنا شدن",
+    "def": "to come together with someone at a place",
+    "example": {
+      "en": "Nice to meet you.",
+      "fa": "از آشنایی با شما خوشبختم."
+    },
+    "collocations": [
+      { "en": "meet a friend", "fa": "ملاقات با یک دوست" },
+      { "en": "meet a deadline", "fa": "انجام کار در مهلت مقرر" }
+    ],
+    "phrases": [
+      { "en": "meet halfway", "fa": "سازش کردن / با هم کنار آمدن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "meet up", "fa": "قرار ملاقات گذاشتن" }
+    ]
+  },
+  "call": {
+    "fa": "تماس گرفتن / صدا زدن",
+    "def": "to give a name to someone; to phone someone",
+    "example": {
+      "en": "Call me tonight.",
+      "fa": "امشب با من تماس بگیر."
+    },
+    "collocations": [
+      { "en": "phone call", "fa": "تماس تلفنی" },
+      { "en": "missed call", "fa": "تماس از دست رفته" }
+    ],
+    "phrases": [
+      { "en": "call it a day", "fa": "کار را تعطیل کردن (برای امروز کافی است)" }
+    ],
+    "phrasal_verbs": [
+      { "en": "call back", "fa": "دوباره تماس گرفتن" },
+      { "en": "call off", "fa": "لغو کردن" }
+    ]
+  },
+  "open": {
+    "fa": "باز کردن / باز",
+    "def": "not closed; to move something so that an opening is not blocked",
+    "example": {
+      "en": "Please open the window.",
+      "fa": "لطفاً پنجره را باز کن."
+    },
+    "collocations": [
+      { "en": "open mind", "fa": "ذهن باز / روشنفکر" },
+      { "en": "wide open", "fa": "کاملاً باز" }
+    ],
+    "phrases": [
+      { "en": "in the open", "fa": "در فضای باز" }
+    ],
+    "phrasal_verbs": [
+      { "en": "open up", "fa": "درددل کردن / سفره دل باز کردن" }
+    ]
+  },
+  "close": {
+    "fa": "بستن / نزدیک",
+    "def": "to move something to cover an opening; near in distance",
+    "example": {
+      "en": "Don't forget to close the door.",
+      "fa": "فراموش نکن در را ببندی."
+    },
+    "collocations": [
+      { "en": "close friend", "fa": "دوست صمیمی" },
+      { "en": "close to", "fa": "نزدیک به" }
+    ],
+    "phrases": [
+      { "en": "case closed", "fa": "پرونده بسته شد / تمام شد" }
+    ],
+    "phrasal_verbs": [
+      { "en": "close down", "fa": "تعطیل کردن (کسب و کار)" }
+    ]
+  },
+  "buy": {
+    "fa": "خریدن",
+    "def": "to get something by paying money for it",
+    "example": {
+      "en": "I want to buy a new laptop.",
+      "fa": "می‌خواهم یک لپ‌تاپ جدید بخرم."
+    },
+    "collocations": [
+      { "en": "buy online", "fa": "خرید آنلاین" },
+      { "en": "buy groceries", "fa": "خرید خواروبار" }
+    ],
+    "phrases": [
+      { "en": "I don't buy it", "fa": "باور نمی‌کنم / تو کتم نمی‌ره" }
+    ],
+    "phrasal_verbs": []
+  },
+  "pay": {
+    "fa": "پرداخت کردن",
+    "def": "to give money for something you buy",
+    "example": {
+      "en": "Can I pay by credit card?",
+      "fa": "آیا می‌توانم با کارت اعتباری پرداخت کنم؟"
+    },
+    "collocations": [
+      { "en": "pay cash", "fa": "نقد پرداخت کردن" },
+      { "en": "pay attention", "fa": "توجه کردن" }
+    ],
+    "phrases": [
+      { "en": "pay a visit", "fa": "ملاقات کردن / سر زدن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "pay back", "fa": "پس دادن پول" }
+    ]
+  },
+  "bring": {
+    "fa": "آوردن",
+    "def": "to take someone or something with you to a place",
+    "example": {
+      "en": "Bring your umbrella with you.",
+      "fa": "چترت را با خودت بیاور."
+    },
+    "collocations": [
+      { "en": "bring help", "fa": "کمک آوردن" }
+    ],
+    "phrases": [
+      { "en": "bring it on!", "fa": "بیا جلو! / آماده‌ام!" }
+    ],
+    "phrasal_verbs": [
+      { "en": "bring up", "fa": "مطرح کردن یک موضوع / پرورش دادن فرزند" }
+    ]
+  },
+  "take": {
+    "fa": "برداشتن / گرفتن / بردن",
+    "def": "to move something from one place to another",
+    "example": {
+      "en": "Take a deep breath.",
+      "fa": "یک نفس عمیق بکش."
+    },
+    "collocations": [
+      { "en": "take a photo", "fa": "عکس گرفتن" },
+      { "en": "take a seat", "fa": "نشستن" }
+    ],
+    "phrases": [
+      { "en": "take care", "fa": "مواظب باش" },
+      { "en": "take it easy", "fa": "سخت نگیر / استراحت کن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "take off", "fa": "درآوردن لباس / بلند شدن هواپیما" },
+      { "en": "take over", "fa": "به دست گرفتن کنترل" }
+    ]
+  },
+  "find": {
+    "fa": "پیدا کردن",
+    "def": "to discover something by searching",
+    "example": {
+      "en": "I can't find my keys.",
+      "fa": "نمی‌توانم کلیدهایم را پیدا کنم."
+    },
+    "collocations": [
+      { "en": "find a way", "fa": "پیدا کردن راه" },
+      { "en": "find out", "fa": "فهمیدن / پی بردن" }
+    ],
+    "phrases": [
+      { "en": "find fault", "fa": "عیب‌جویی کردن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "find out", "fa": "کشف کردن / مطلع شدن" }
+    ]
+  },
+  "keep": {
+    "fa": "نگه داشتن / ادامه دادن",
+    "def": "to have or continue to have something",
+    "example": {
+      "en": "Please keep the change.",
+      "fa": "لطفاً بقیه پول را نگه دارید (انعام)."
+    },
+    "collocations": [
+      { "en": "keep a secret", "fa": "رازدار بودن" },
+      { "en": "keep quiet", "fa": "ساکت ماندن" }
+    ],
+    "phrases": [
+      { "en": "keep in touch", "fa": "در تماس بودن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "keep on", "fa": "ادامه دادن به انجام کاری" }
+    ]
+  },
+  "give": {
+    "fa": "دادن",
+    "def": "to offer something to someone",
+    "example": {
+      "en": "Can you give me a hand?",
+      "fa": "می‌توانی به من کمک کنی؟"
+    },
+    "collocations": [
+      { "en": "give advice", "fa": "نصیحت کردن" },
+      { "en": "give a gift", "fa": "هدیه دادن" }
+    ],
+    "phrases": [
+      { "en": "give it a try", "fa": "یک امتحانی بکن" }
+    ],
+    "phrasal_verbs": [
+      { "en": "give up", "fa": "تسلیم شدن / ترک کردن عادت" },
+      { "en": "give back", "fa": "پس دادن" }
+    ]
+  },
+  "receive": {
+    "fa": "دریافت کردن",
+    "def": "to get something that is given or sent to you",
+    "example": {
+      "en": "I received an email today.",
+      "fa": "من امروز یک ایمیل دریافت کردم."
+    },
+    "collocations": [
+      { "en": "receive a gift", "fa": "هدیه گرفتن" },
+      { "en": "receive training", "fa": "آموزش دیدن" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "learn": {
+    "fa": "یاد گرفتن",
+    "def": "to get knowledge or skill in something",
+    "example": {
+      "en": "I want to learn English.",
+      "fa": "من می‌خواهم انگلیسی یاد بگیرم."
+    },
+    "collocations": [
+      { "en": "learn by heart", "fa": "حفظ کردن" },
+      { "en": "learn a lesson", "fa": "درس گرفتن" }
+    ],
+    "phrases": [],
+    "phrasal_verbs": []
+  },
+  "teach": {
+    "fa": "درس دادن / آموختن",
+    "def": "to give someone knowledge or skills",
+    "example": {
+      "en": "She teaches math at school.",
+      "fa": "او در مدرسه ریاضی درس می‌دهد."
+    },
+    "collocations": [
+      { "en": "teach a class", "fa": "کلاس داشتن / تدریس کردن" }
+    ],
+    "phrases": [
+      { "en": "that'll teach you", "fa": "تا تو باشی که دیگه ... (درس عبرت)" }
+    ],
+    "phrasal_verbs": []
+  },
+  "practice": {
+    "fa": "تمرین کردن",
+    "def": "to do something regularly to become better",
+    "example": {
+      "en": "You need to practice every day.",
+      "fa": "تو باید هر روز تمرین کنی."
+    },
+    "collocations": [
+      { "en": "daily practice", "fa": "تمرین روزانه" },
+      { "en": "practice session", "fa": "جلسه تمرین" }
+    ],
+    "phrases": [
+      { "en": "put into practice", "fa": "به مرحله اجرا درآوردن" }
+    ],
+    "phrasal_verbs": []
+  },
+  "understand": {
+    "fa": "فهمیدن / درک کردن",
+    "def": "to know the meaning of something",
+    "example": {
+      "en": "I don't understand this word.",
+      "fa": "من این کلمه را نمی‌فهمم."
+    },
+    "collocations": [
+      { "en": "easily understood", "fa": "به راحتی قابل فهم" }
+    ],
+    "phrases": [
+      { "en": "make yourself understood", "fa": "منظور خود را فهماندن" }
+    ],
+    "phrasal_verbs": []
+  },
+  "remember": {
+    "fa": "به خاطر سپردن / یادآوری کردن",
+    "def": "to keep a piece of information in your mind",
+    "example": {
+      "en": "Remember to lock the door.",
+      "fa": "یادت باشد در را قفل کنی."
+    },
+    "collocations": [
+      { "en": "remember correctly", "fa": "درست به خاطر آوردن" }
+    ],
+    "phrases": [
+      { "en": "as far as I remember", "fa": "تا آنجا که یادم می‌آید" }
+    ],
+    "phrasal_verbs": []
+  }
 }
