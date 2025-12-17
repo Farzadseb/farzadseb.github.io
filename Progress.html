@@ -1,19 +1,1135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Leitner</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>🧠 Leitner System - Vocabulary Review</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg: linear-gradient(135deg, #f4f6fb 0%, #eef2ff 100%);
+            --card: #ffffff;
+            --primary: #5b7cff;
+            --primary-dark: #4562e6;
+            --secondary: #8b5cf6;
+            --box-1: #dbeafe;
+            --box-2: #c7d2fe;
+            --box-3: #a5b4fc;
+            --box-4: #818cf8;
+            --box-5: #6366f1;
+            --text: #1f2937;
+            --text-secondary: #6b7280;
+            --border: #e5e7eb;
+            --shadow: 0 10px 30px rgba(0, 0, 0, .08);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, .12);
+            --radius: 24px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Stats Overview */
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stat-card.box-1 { border-top: 6px solid var(--box-1); }
+        .stat-card.box-2 { border-top: 6px solid var(--box-2); }
+        .stat-card.box-3 { border-top: 6px solid var(--box-3); }
+        .stat-card.box-4 { border-top: 6px solid var(--box-4); }
+        .stat-card.box-5 { border-top: 6px solid var(--box-5); }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Leitner Boxes */
+        .leitner-system {
+            margin-bottom: 40px;
+        }
+
+        .system-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .boxes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .box-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border-top: 10px solid;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .box-card.box-1 { border-color: var(--box-1); }
+        .box-card.box-2 { border-color: var(--box-2); }
+        .box-card.box-3 { border-color: var(--box-3); }
+        .box-card.box-4 { border-color: var(--box-4); }
+        .box-card.box-5 { border-color: var(--box-5); }
+
+        .box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .box-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .box-count {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .box-description {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .review-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .review-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .review-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Words List */
+        .words-container {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .container-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .container-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            padding: 12px 24px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-btn:hover {
+            background: #f8fafc;
+            border-color: var(--primary);
+        }
+
+        .control-btn.danger {
+            border-color: #f87171;
+            color: #dc2626;
+        }
+
+        .control-btn.danger:hover {
+            background: #fef2f2;
+        }
+
+        #list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .word-item {
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 20px;
+            border: 2px solid var(--border);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .word-item:hover {
+            border-color: var(--primary);
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        .word-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .word-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .word-box {
+            background: var(--primary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .word-details {
+            margin-bottom: 20px;
+        }
+
+        .word-definition {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .word-translation {
+            color: var(--text);
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .word-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .word-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .word-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: #f1f5f9;
+            color: var(--text);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .action-btn.speak {
+            background: #dbeafe;
+            color: var(--primary);
+        }
+
+        .action-btn.edit {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .action-btn.delete {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            grid-column: 1 / -1;
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+
+        .empty-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .empty-text {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        /* Progress Bar */
+        .progress-section {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .progress-title {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .progress-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 18px;
+        }
+
+        .progress-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .progress-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .progress-bar-container {
+            margin-top: 30px;
+        }
+
+        .progress-bar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: #e5e7eb;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--box-1), var(--box-5));
+            border-radius: 6px;
+            transition: width 1s ease;
+        }
+
+        /* Back Button */
+        .back-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-btn {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(91, 124, 250, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(91, 124, 250, 0.4);
+        }
+
+        .back-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .stats-overview,
+            .boxes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .controls {
+                justify-content: center;
+            }
+            
+            #list {
+                grid-template-columns: 1fr;
+            }
+            
+            .word-item {
+                padding: 16px;
+            }
+            
+            .word-text {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+            
+            .main-title {
+                font-size: 1.8rem;
+            }
+            
+            .box-card,
+            .words-container,
+            .progress-section {
+                padding: 20px;
+            }
+            
+            .control-btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+            }
+            
+            .back-btn {
+                width: 100%;
+                padding: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="main-title">
+                <i class="fas fa-brain"></i> Leitner System
+            </h1>
+            <p class="subtitle">
+                Spaced repetition system for efficient vocabulary learning. Words move through boxes based on your performance.
+            </p>
+        </header>
 
-<div class="box">
-  <h1>🧠 Leitner</h1>
-  <div id="list"></div>
-  <button onclick="location.href='index.html'">⬅ Back</button>
-</div>
+        <!-- Stats Overview -->
+        <div class="stats-overview">
+            <div class="stat-card box-1">
+                <div class="stat-icon">📚</div>
+                <div class="stat-number" id="totalWords">0</div>
+                <div class="stat-label">Total Words</div>
+            </div>
+            <div class="stat-card box-2">
+                <div class="stat-icon">⏰</div>
+                <div class="stat-number" id="dueToday">0</div>
+                <div class="stat-label">Due Today</div>
+            </div>
+            <div class="stat-card box-3">
+                <div class="stat-icon">📊</div>
+                <div class="stat-number" id="mastered">0</div>
+                <div class="stat-label">Mastered</div>
+            </div>
+            <div class="stat-card box-4">
+                <div class="stat-icon">🔥</div>
+                <div class="stat-number" id="streak">0</div>
+                <div class="stat-label">Day Streak</div>
+            </div>
+        </div>
 
-<script src="progress.js"></script>
-</body>
-</html>
+        <!-- Leitner Boxes -->
+        <section class="leitner-system">
+            <h2 class="system-title">
+                <i class="fas fa-boxes"></i> Review Boxes
+            </h2>
+            <div class="boxes-grid">
+                <div class="box-card box-1">
+                    <div class="box-header">
+                        <div class="box-title">
+                            <i class="fas fa-inbox"></i> Box 1
+                        </div>
+                        <div class="box-count" id="box1Count">0</div>
+                    </div>
+                    <p class="box-description">Daily review. New and difficult words.</p>
+                    <button class="review-btn" onclick="reviewBox(1)">
+                        <i class="fas fa-play-circle"></i> Review Now
+                    </button>
+                </div>
+                
+                <div class="box-card box-2">
+                    <div class="box-header">
+                        <div class="box-title">
+                            <i class="fas fa-box"></i> Box 2
+                        </div>
+                        <div class="box-count" id="box2Count">0</div>
+                    </div>
+                    <p class="box-description">Every 3 days. Getting familiar.</p>
+                    <button class="review-btn" onclick="reviewBox(2)">
+                        <i class="fas fa-play-circle"></i> Review Now
+                    </button>
+                </div>
+                
+                <div class="box-card box-3">
+                    <div class="box-header">
+                        <div class="box-title">
+                            <i class="fas fa-archive"></i> Box 3
+                        </div>
+                        <div class="box-count" id="box3Count">0</div>
+                    </div>
+                    <p class="box-description">Weekly review. Well learned.</p>
+                    <button class="review-btn" onclick="reviewBox(3)">
+                        <i class="fas fa-play-circle"></i> Review Now
+                    </button>
+                </div>
+                
+                <div class="box-card box-4">
+                    <div class="box-header">
+                        <div class="box-title">
+                            <i class="fas fa-gem"></i> Box 4
+                        </div>
+                        <div class="box-count" id="box4Count">0</div>
+                    </div>
+                    <p class="box-description">Every 2 weeks. Almost mastered.</p>
+                    <button class="review-btn" onclick="reviewBox(4)">
+                        <i class="fas fa-play-circle"></i> Review Now
+                    </button>
+                </div>
+                
+                <div class="box-card box-5">
+                    <div class="box-header">
+                        <div class="box-title">
+                            <i class="fas fa-trophy"></i> Box 5
+                        </div>
+                        <div class="box-count" id="box5Count">0</div>
+                    </div>
+                    <p class="box-description">Monthly review. Mastered words.</p>
+                    <button class="review-btn" onclick="reviewBox(5)">
+                        <i class="fas fa-play-circle"></i> Review Now
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Tracking -->
+        <section class="progress-section">
+            <h2 class="progress-title">
+                <i class="fas fa-chart-line"></i> Learning Progress
+            </h2>
+            
+            <div class="progress-stats">
+                <div class="progress-item">
+                    <div class="progress-number" id="progressTotal">0</div>
+                    <div class="progress-label">Total Reviewed</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-number" id="progressAccuracy">0%</div>
+                    <div class="progress-label">Accuracy Rate</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-number" id="progressDays">0</div>
+                    <div class="progress-label">Active Days</div>
+                </div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar-header">
+                    <span>Overall Mastery</span>
+                    <span id="masteryPercentage">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="masteryBar"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Words List -->
+        <section class="words-container">
+            <div class="container-header">
+                <h2 class="container-title">
+                    <i class="fas fa-list"></i> All Words in System
+                </h2>
+                <div class="controls">
+                    <button class="control-btn" onclick="sortByDate()">
+                        <i class="fas fa-calendar-alt"></i> Sort by Date
+                    </button>
+                    <button class="control-btn" onclick="sortByBox()">
+                        <i class="fas fa-filter"></i> Sort by Box
+                    </button>
+                    <button class="control-btn danger" onclick="clearAllWords()">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                </div>
+            </div>
+            
+            <div id="list">
+                <!-- Words will be dynamically inserted here -->
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">📭</div>
+                    <h3 class="empty-title">No words yet</h3>
+                    <p class="empty-text">
+                        Words you get wrong in the quiz will appear here. 
+                        Start practicing to build your vocabulary!
+                    </p>
+                    <button class="control-btn" onclick="location.href='quiz.html'">
+                        <i class="fas fa-play"></i> Start Quiz
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back Button -->
+        <div class="back-section">
+            <button class="back-btn" onclick="location.href='index.html'">
+                <i class="fas fa-arrow-left"></i> Back to Main Menu
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Leitner System State
+        const leitnerState = {
+            words: {},
+            stats: {
+                total: 0,
+                dueToday: 0,
+                mastered: 0,
+                streak: 0,
+                boxCounts: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
+            }
+        };
+
+        // DOM Elements
+        const elements = {
+            list: document.getElementById('list'),
+            emptyState: document.getElementById('emptyState'),
+            totalWords: document.getElementById('totalWords'),
+            dueToday: document.getElementById('dueToday'),
+            mastered: document.getElementById('mastered'),
+            streak: document.getElementById('streak'),
+            box1Count: document.getElementById('box1Count'),
+            box2Count: document.getElementById('box2Count'),
+            box3Count: document.getElementById('box3Count'),
+            box4Count: document.getElementById('box4Count'),
+            box5Count: document.getElementById('box5Count'),
+            progressTotal: document.getElementById('progressTotal'),
+            progressAccuracy: document.getElementById('progressAccuracy'),
+            progressDays: document.getElementById('progressDays'),
+            masteryPercentage: document.getElementById('masteryPercentage'),
+            masteryBar: document.getElementById('masteryBar')
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadLeitnerData();
+            updateUI();
+        });
+
+        // Load Leitner Data
+        function loadLeitnerData() {
+            const saved = localStorage.getItem('leitner');
+            if (saved) {
+                try {
+                    leitnerState.words = JSON.parse(saved);
+                    calculateStats();
+                } catch (error) {
+                    console.error('Error loading leitner data:', error);
+                    leitnerState.words = {};
+                }
+            }
+            
+            // Load additional stats
+            loadAdditionalStats();
+        }
+
+        // Calculate Statistics
+        function calculateStats() {
+            const words = leitnerState.words;
+            const now = Date.now();
+            
+            // Reset counts
+            leitnerState.stats = {
+                total: Object.keys(words).length,
+                dueToday: 0,
+                mastered: 0,
+                streak: 0,
+                boxCounts: {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
+            };
+            
+            // Calculate stats for each word
+            Object.entries(words).forEach(([word, data]) => {
+                // Count by box
+                const box = data.box || 1;
+                leitnerState.stats.boxCounts[box]++;
+                
+                // Check if due for review
+                if (data.nextReview && data.nextReview <= now) {
+                    leitnerState.stats.dueToday++;
+                }
+                
+                // Check if mastered (box 5)
+                if (box === 5) {
+                    leitnerState.stats.mastered++;
+                }
+            });
+        }
+
+        // Load Additional Stats
+        function loadAdditionalStats() {
+            // Load streak from localStorage
+            const streakData = JSON.parse(localStorage.getItem('leitnerStreak')) || {
+                current: 0,
+                lastDate: null
+            };
+            
+            // Update streak
+            updateStreak(streakData);
+            leitnerState.stats.streak = streakData.current;
+            
+            // Load progress stats
+            const progressData = JSON.parse(localStorage.getItem('leitnerProgress')) || {
+                totalReviewed: 0,
+                correctAnswers: 0,
+                activeDays: new Set()
+            };
+            
+            // Calculate accuracy
+            const accuracy = progressData.totalReviewed > 0 
+                ? Math.round((progressData.correctAnswers / progressData.totalReviewed) * 100)
+                : 0;
+            
+            // Update progress display
+            elements.progressTotal.textContent = progressData.totalReviewed;
+            elements.progressAccuracy.textContent = `${accuracy}%`;
+            elements.progressDays.textContent = progressData.activeDays.size;
+            
+            // Calculate mastery percentage
+            const mastery = leitnerState.stats.total > 0
+                ? Math.round((leitnerState.stats.mastered / leitnerState.stats.total) * 100)
+                : 0;
+            
+            elements.masteryPercentage.textContent = `${mastery}%`;
+            elements.masteryBar.style.width = `${mastery}%`;
+        }
+
+        // Update Streak
+        function updateStreak(streakData) {
+            const today = new Date().toDateString();
+            const lastDate = streakData.lastDate ? new Date(streakData.lastDate).toDateString() : null;
+            
+            if (lastDate === today) {
+                // Already updated today
+                return;
+            }
+            
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const yesterdayString = yesterday.toDateString();
+            
+            if (lastDate === yesterdayString) {
+                // Consecutive day
+                streakData.current++;
+            } else if (lastDate !== today) {
+                // Broken streak
+                streakData.current = 1;
+            }
+            
+            streakData.lastDate = new Date().toISOString();
+            localStorage.setItem('leitnerStreak', JSON.stringify(streakData));
+        }
+
+        // Update UI
+        function updateUI() {
+            // Update stats
+            elements.totalWords.textContent = leitnerState.stats.total;
+            elements.dueToday.textContent = leitnerState.stats.dueToday;
+            elements.mastered.textContent = leitnerState.stats.mastered;
+            elements.streak.textContent = leitnerState.stats.streak;
+            
+            // Update box counts
+            elements.box1Count.textContent = leitnerState.stats.boxCounts[1];
+            elements.box2Count.textContent = leitnerState.stats.boxCounts[2];
+            elements.box3Count.textContent = leitnerState.stats.boxCounts[3];
+            elements.box4Count.textContent = leitnerState.stats.boxCounts[4];
+            elements.box5Count.textContent = leitnerState.stats.boxCounts[5];
+            
+            // Update review buttons
+            updateReviewButtons();
+            
+            // Update words list
+            renderWordsList();
+        }
+
+        // Update Review Buttons
+        function updateReviewButtons() {
+            // Disable review buttons if no words in box
+            for (let i = 1; i <= 5; i++) {
+                const btn = document.querySelector(`.box-card.box-${i} .review-btn`);
+                if (btn) {
+                    btn.disabled = leitnerState.stats.boxCounts[i] === 0;
+                }
+            }
+        }
+
+        // Render Words List
+        function renderWordsList() {
+            const words = leitnerState.words;
+            
+            if (Object.keys(words).length === 0) {
+                elements.emptyState.style.display = 'block';
+                elements.list.innerHTML = '';
+                elements.list.appendChild(elements.emptyState);
+                return;
+            }
+            
+            elements.emptyState.style.display = 'none';
+            
+            // Create word items
+            const wordItems = Object.entries(words).map(([word, data]) => {
+                const date = new Date(data.lastReviewed || Date.now());
+                const formattedDate = date.toLocaleDateString();
+                
+                // Get word definition from main dictionary (if available)
+                const dictionary = JSON.parse(localStorage.getItem('dictionaryData')) || {};
+                const wordData = dictionary[word] || {};
+                
+                return `
+                    <div class="word-item">
+                        <div class="word-header">
+                            <div class="word-text">${word}</div>
+                            <div class="word-box box-${data.box || 1}">Box ${data.box || 1}</div>
+                        </div>
+                        <div class="word-details">
+                            ${wordData.def ? `<div class="word-definition">${wordData.def}</div>` : ''}
+                            ${wordData.fa ? `<div class="word-translation">${wordData.fa}</div>` : ''}
+                        </div>
+                        <div class="word-footer">
+                            <div class="word-date">
+                                Last reviewed: ${formattedDate}
+                                ${data.nextReview && data.nextReview > Date.now() 
+                                    ? `<br><small>Next: ${new Date(data.nextReview).toLocaleDateString()}</small>` 
+                                    : `<br><small><strong>Due now!</strong></small>`
+                                }
+                            </div>
+                            <div class="word-actions">
+                                <button class="action-btn speak" onclick="speakWord('${word}')" title="Listen">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <button class="action-btn edit" onclick="moveWordBox('${word}', ${(data.box || 1) + 1})" title="Promote">
+                                    <i class="fas fa-arrow-up"></i>
+                                </button>
+                                <button class="action-btn delete" onclick="removeWord('${word}')" title="Remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            elements.list.innerHTML = wordItems;
+        }
+
+        // Review Box
+        function reviewBox(boxNumber) {
+            // Filter words in this box that are due for review
+            const dueWords = Object.entries(leitnerState.words)
+                .filter(([word, data]) => 
+                    (data.box || 1) === boxNumber && 
+                    (!data.nextReview || data.nextReview <= Date.now())
+                )
+                .map(([word]) => word);
+            
+            if (dueWords.length === 0) {
+                alert(`No words due for review in Box ${boxNumber}`);
+                return;
+            }
+            
+            // Save current box for quiz
+            localStorage.setItem('currentLeitnerBox', JSON.stringify({
+                box: boxNumber,
+                words: dueWords
+            }));
+            
+            // Redirect to quiz
+            location.href = `leitner-quiz.html?box=${boxNumber}`;
+        }
+
+        // Speak Word
+        function speakWord(word) {
+            const utterance = new SpeechSynthesisUtterance(word);
+            utterance.lang = "en-US";
+            utterance.rate = 0.8;
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Move Word to Different Box
+        function moveWordBox(word, newBox) {
+            if (leitnerState.words[word]) {
+                leitnerState.words[word].box = Math.min(Math.max(newBox, 1), 5);
+                leitnerState.words[word].lastReviewed = Date.now();
+                
+                // Update next review time based on box
+                const reviewIntervals = [1, 3, 7, 14, 30]; // days
+                const interval = reviewIntervals[newBox - 1] || 1;
+                leitnerState.words[word].nextReview = Date.now() + (interval * 24 * 60 * 60 * 1000);
+                
+                saveLeitnerData();
+                calculateStats();
+                updateUI();
+                
+                showNotification(`"${word}" moved to Box ${newBox}`);
+            }
+        }
+
+        // Remove Word
+        function removeWord(word) {
+            if (confirm(`Are you sure you want to remove "${word}" from the Leitner system?`)) {
+                delete leitnerState.words[word];
+                saveLeitnerData();
+                calculateStats();
+                updateUI();
+                
+                showNotification(`"${word}" removed from Leitner system`);
+            }
+        }
+
+        // Sort Functions
+        function sortByDate() {
+            const wordsArray = Object.entries(leitnerState.words);
+            wordsArray.sort((a, b) => (b[1].lastReviewed || 0) - (a[1].lastReviewed || 0));
+            
+            leitnerState.words = Object.fromEntries(wordsArray);
+            renderWordsList();
+            showNotification('Sorted by date');
+        }
+
+        function sortByBox() {
+            const wordsArray = Object.entries(leitnerState.words);
+            wordsArray.sort((a, b) => (a[1].box || 1) - (b[1].box || 1));
+            
+            leitnerState.words = Object.fromEntries(wordsArray);
+            renderWordsList();
+            showNotification('Sorted by box');
+        }
+
+        // Clear All Words
+        function clearAllWords() {
+            if (confirm('Are you sure you want to clear ALL words from the Leitner system? This action cannot be undone.')) {
+                leitnerState.words = {};
+                saveLeitnerData();
+                calculateStats();
+                updateUI();
+                
+                showNotification('All words cleared');
+            }
+        }
+
+        // Save Leitner Data
+        function saveLeitnerData() {
+            localStorage.setItem('leitner', JSON.stringify(leitnerState.words));
+        }
+
+        // Show Notification
+        function showNotification(message, type = 'success') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.classList.add('fade-out');
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
