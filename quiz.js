@@ -1,10 +1,8 @@
 let data = {};
 let words = [];
-let current = "";
-let correctAnswer = "";
 let mode = "enfa";
+let current = "";
 
-/* ---------- LOAD DICTIONARY ---------- */
 fetch("pdcs_a1.json")
   .then(r => r.json())
   .then(j => {
@@ -13,7 +11,6 @@ fetch("pdcs_a1.json")
     nextQuestion();
   });
 
-/* ---------- MODE ---------- */
 function setMode(m) {
   mode = m;
   document.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("active"));
@@ -21,7 +18,6 @@ function setMode(m) {
   nextQuestion();
 }
 
-/* ---------- SPEAK ---------- */
 function speak(text) {
   speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
@@ -30,48 +26,46 @@ function speak(text) {
   speechSynthesis.speak(u);
 }
 
-/* ---------- QUESTION ---------- */
 function nextQuestion() {
-  if (!words.length) return;
+  const q = words[Math.floor(Math.random() * words.length)];
+  current = q;
 
-  current = words[Math.floor(Math.random() * words.length)];
-  const w = data[current];
+  const box = document.getElementById("question");
+  const opts = document.getElementById("options");
+  opts.innerHTML = "";
+  box.innerHTML = "";
 
-  const q = document.getElementById("question");
-  const a = document.getElementById("answers");
-  a.innerHTML = "";
-
-  let options = [];
+  let correct, options = [];
 
   if (mode === "enfa") {
-    q.innerText = current;
-    correctAnswer = w.fa;
-    options = makeOptions(w.fa, "fa");
+    box.innerText = q;
+    correct = data[q].fa;
+    options = getOptions("fa", correct);
   }
 
   if (mode === "faen") {
-    q.innerText = w.fa;
-    correctAnswer = current;
-    options = makeOptions(current, "en");
+    box.innerText = data[q].fa;
+    correct = q;
+    options = getOptions("en", correct);
   }
 
   if (mode === "listen") {
-    q.innerText = "🔊 Listen carefully";
-    speak(current);
-    correctAnswer = w.fa;
-    options = makeOptions(w.fa, "fa");
+    box.innerHTML = "🔊 Listen...";
+    speak(q);
+    correct = q;
+    options = getOptions("en", correct);
   }
 
-  options.forEach(opt => {
-    const btn = document.createElement("button");
-    btn.innerText = opt;
-    btn.onclick = () => checkAnswer(btn, opt);
-    a.appendChild(btn);
+  options.forEach(o => {
+    const b = document.createElement("button");
+    b.className = "option";
+    b.innerText = o;
+    b.onclick = () => check(b, o, correct);
+    opts.appendChild(b);
   });
 }
 
-/* ---------- OPTIONS ---------- */
-function makeOptions(correct, type) {
+function getOptions(type, correct) {
   let arr = [correct];
   while (arr.length < 4) {
     const r = words[Math.floor(Math.random() * words.length)];
@@ -81,19 +75,20 @@ function makeOptions(correct, type) {
   return arr.sort(() => Math.random() - 0.5);
 }
 
-/* ---------- CHECK ---------- */
-function checkAnswer(btn, ans) {
-  if (ans === correctAnswer) {
+function check(btn, ans, correct) {
+  document.querySelectorAll(".option").forEach(b => b.disabled = true);
+
+  if (ans === correct) {
     btn.classList.add("correct");
   } else {
     btn.classList.add("wrong");
-    addToLeitner(current);
+    addWrong(correct);
   }
-  setTimeout(nextQuestion, 800);
+
+  setTimeout(nextQuestion, 900);
 }
 
-/* ---------- LEITNER ---------- */
-function addToLeitner(word) {
+function addWrong(word) {
   let l = JSON.parse(localStorage.getItem("leitner")) || {};
   l[word] = { box: 1, last: Date.now() };
   localStorage.setItem("leitner", JSON.stringify(l));
