@@ -3047,3 +3047,50 @@
     "phrasal_verbs": []
   }
 }
+{
+  "forget": {
+    "fa": "فراموش کردن",
+    "def": "to be unable to remember something",
+    "example": {
+      "en": "Don't forget your umbrella.",
+      "fa": "چترت را فراموش نکن."
+    },
+    "collocations": [
+      { "en": "easily forgotten", "fa": "زودیادرفتنی / به راحتی فراموش‌شونده" }
+    ],
+    "phrases": [
+      { "en": "forget it!", "fa": "بیخیالش شو! / مهم نیست" }
+    ],
+    "phrasal_verbs": []
+  },
+  "believe": {
+    "fa": "باور کردن / اعتقاد داشتن",
+    "def": "to think that something is true",
+    "example": {
+      "en": "I believe you.",
+      "fa": "حرف تو را باور می‌کنم."
+    },
+    "collocations": [
+      { "en": "believe in", "fa": "اعتقاد داشتن به" }
+    ],
+    "phrases": [
+      { "en": "believe it or not", "fa": "باور کنی یا نه" }
+    ],
+    "phrasal_verbs": []
+  },
+  "hope": {
+    "fa": "امیدوار بودن / امید",
+    "def": "to want something to happen",
+    "example": {
+      "en": "I hope to see you soon.",
+      "fa": "امیدوارم به زودی ببینمت."
+    },
+    "collocations": [
+      { "en": "full of hope", "fa": "پر از امید" }
+    ],
+    "phrases": [
+      { "en": "I hope so", "fa": "امیدوارم همین‌طور باشد" }
+    ],
+    "phrasal_verbs": []
+  }
+}
