@@ -7,86 +7,58 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* ===== PAGE ===== */
-body {
-  background:#f6f8ff;
-  text-align:center;
-}
-
-/* ===== MODE SELECT ===== */
 .mode-bar {
   display:flex;
   gap:14px;
   justify-content:center;
   margin:20px 0;
-  flex-wrap:wrap;
 }
 
 .mode-btn {
+  padding:14px 22px;
   font-size:1.4rem;
-  padding:12px 20px;
-  border-radius:14px;
-  border:2px solid #5b7cff;
+  border-radius:16px;
+  border:2px solid #6c8cff;
   background:white;
-  color:#5b7cff;
-  cursor:pointer;
+  color:#6c8cff;
 }
 
 .mode-btn.active {
-  background:#5b7cff;
+  background:#6c8cff;
   color:white;
 }
 
-/* ===== CARD ===== */
-.card {
+.quiz-card {
   background:white;
   border-radius:26px;
   padding:30px;
+  max-width:700px;
   margin:20px auto;
-  max-width:720px;
 }
 
-/* ===== QUESTION ===== */
-.word {
+#question {
   font-size:3rem;
   font-weight:bold;
-  margin-bottom:20px;
+  margin-bottom:30px;
+  text-align:center;
 }
 
-/* ===== OPTIONS ===== */
 .options {
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:16px;
-  margin-top:20px;
+  gap:18px;
 }
 
 .option {
-  font-size:2rem;
-  padding:22px;
-  border-radius:20px;
   background:#eaf0ff;
-  border:none;
-  cursor:pointer;
-  color:#000; /* 🔥 متن مشکی */
-}
-
-.option.correct {
-  background:#c8f7c5;
-}
-
-.option.wrong {
-  background:#f7c5c5;
-}
-
-/* ===== BACK ===== */
-.back {
-  margin-top:30px;
-  font-size:1.4rem;
-  padding:12px 20px;
-  border-radius:14px;
+  border-radius:20px;
+  padding:22px;
+  font-size:2rem;
   border:none;
 }
+
+.option.correct { background:#d7f5e1; }
+.option.wrong { background:#f9d6d5; }
 </style>
 </head>
 
@@ -94,20 +66,18 @@ body {
 
 <h1 class="title">📝 A1 Quiz</h1>
 
-<!-- MODE SELECT -->
 <div class="mode-bar">
   <button class="mode-btn active" onclick="setMode('en-fa')">EN → FA</button>
   <button class="mode-btn" onclick="setMode('fa-en')">FA → EN</button>
   <button class="mode-btn" onclick="setMode('listen')">🎧 Listening</button>
 </div>
 
-<!-- QUIZ CARD -->
-<div class="card">
-  <div id="question" class="word"></div>
-  <div id="options" class="options"></div>
+<div class="quiz-card">
+  <div id="question"></div>
+  <div class="options" id="options"></div>
 </div>
 
-<button class="back" onclick="location.href='index.html'">⬅ Back</button>
+<button onclick="location.href='index.html'">← Back</button>
 
 <script src="quiz.js"></script>
 </body>
