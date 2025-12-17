@@ -11,7 +11,7 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto;
   background:#f6f8ff;
   color:#111;
-  padding:16px;
+  padding:20px;
 }
 
 h1{
@@ -20,91 +20,76 @@ h1{
   margin-bottom:14px;
 }
 
-.search{
-  width:100%;
+.search-box{
   max-width:520px;
   margin:0 auto 20px;
+  display:flex;
 }
 
-.search input{
-  width:100%;
+.search-box input{
+  flex:1;
+  font-size:1.4rem;
   padding:14px 18px;
-  font-size:1.2rem;
-  border-radius:18px;
+  border-radius:16px;
   border:2px solid #6b8cff;
   outline:none;
 }
 
 .card{
   max-width:520px;
-  margin:0 auto 18px;
+  margin:0 auto 16px;
   background:#fff;
   border-radius:18px;
-  padding:18px;
-  box-shadow:0 8px 22px rgba(0,0,0,.08);
+  padding:16px 18px;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+.word-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 .word{
-  font-size:2.2rem;
+  font-size:2rem;
   font-weight:700;
+  color:#4f6cff;
 }
 
-.phonetic{
-  opacity:.6;
-  margin-top:4px;
-}
-
-.actions{
-  display:flex;
-  gap:12px;
-  margin:12px 0;
-}
-
-.actions button{
-  flex:1;
-  padding:10px;
-  border:none;
-  border-radius:12px;
-  font-size:1.2rem;
-  background:#eef2ff;
+.speaker{
+  font-size:1.8rem;
+  cursor:pointer;
 }
 
 .section{
-  margin-top:18px;
+  margin-top:14px;
 }
 
-.section h3{
-  font-size:1.2rem;
+.section-title{
+  font-size:1.1rem;
+  opacity:.7;
   margin-bottom:6px;
-  opacity:.75;
 }
 
 .box{
-  background:#eef3ff;
+  background:#eef2ff;
   border-radius:14px;
-  padding:14px;
-  font-size:1.3rem;
-  line-height:1.8;
+  padding:12px 14px;
+  font-size:1.2rem;
 }
 
 .fa{
   direction:rtl;
   text-align:right;
-  font-size:1.4rem;
 }
 
 .list{
-  margin-top:8px;
+  padding-left:18px;
 }
 
-.item{
-  display:flex;
-  justify-content:space-between;
-  background:#f3f6ff;
-  padding:10px 12px;
-  border-radius:12px;
+.list li{
   margin-bottom:6px;
-  font-size:1.1rem;
+  font-size:1.15rem;
 }
 </style>
 </head>
@@ -113,7 +98,7 @@ h1{
 
 <h1>📘 A1 English Dictionary</h1>
 
-<div class="search">
+<div class="search-box">
   <input id="search" placeholder="Type a word and press Enter">
 </div>
 
@@ -125,90 +110,99 @@ let lastSpoken = "";
 
 fetch("pdcs_a1.json")
   .then(r=>r.json())
-  .then(j=>data=j.words||j);
+  .then(j=>data = j.words || j);
 
-function speak(t){
-  lastSpoken = t;
+function speak(text){
+  lastSpoken = text;
   speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(t);
+  const u = new SpeechSynthesisUtterance(text);
   u.lang="en-US";
-  u.rate=.8;
+  u.rate=0.8;
   speechSynthesis.speak(u);
 }
 
 document.getElementById("search").addEventListener("keydown",e=>{
-  if(e.key==="Enter") show(e.target.value.trim().toLowerCase());
+  if(e.key==="Enter") search();
 });
 
-function show(word){
-  const r=document.getElementById("result");
-  r.innerHTML="";
-  if(!data[word]){
-    r.innerHTML="<p style='text-align:center'>❌ Not found</p>";
+function search(){
+  const w = document.getElementById("search").value.trim().toLowerCase();
+  const r = document.getElementById("result");
+  r.innerHTML = "";
+
+  if(!data[w]){
+    r.innerHTML = "<div class='card'>❌ Not found</div>";
     return;
   }
 
-  const w=data[word];
+  const d = data[w];
+  speak(w);
 
-  r.innerHTML=`
+  let html = `
   <div class="card">
-    <div class="word">${word}</div>
-    <div class="phonetic">/${word}/</div>
-
-    <div class="actions">
-      <button onclick="speak('${word}')">🔊</button>
-      <button onclick="addLeitner('${word}')">⭐</button>
+    <div class="word-row">
+      <div class="word">${w}</div>
+      <div class="speaker" onclick="speak('${w}')">🔊</div>
     </div>
+  </div>
+  `;
 
-    <div class="section">
-      <h3>English Definition</h3>
-      <div class="box">${w.def}</div>
-    </div>
+  if(d.def){
+    html+=`
+    <div class="card">
+      <div class="section-title">English Definition</div>
+      <div class="box">${d.def}</div>
+    </div>`;
+  }
 
-    <div class="section">
-      <h3>Persian Meaning</h3>
-      <div class="box fa">${w.fa}</div>
-    </div>
+  if(d.fa){
+    html+=`
+    <div class="card">
+      <div class="section-title">Persian Meaning</div>
+      <div class="box fa">${d.fa}</div>
+    </div>`;
+  }
 
-    ${w.example?`
-    <div class="section">
-      <h3>Example</h3>
-      <div class="box">
-        ${w.example.en}<br>
-        <span class="fa">${w.example.fa}</span>
-      </div>
-    </div>`:""}
+  if(d.example){
+    html+=`
+    <div class="card">
+      <div class="section-title">Example</div>
+      <div class="box">${d.example.en}</div>
+      <div class="box fa" style="margin-top:6px">${d.example.fa}</div>
+    </div>`;
+  }
 
-    ${w.collocations?.length?`
-    <div class="section">
-      <h3>Collocations</h3>
-      <div class="list">
-        ${w.collocations.map(c=>`
-          <div class="item">
-            <span>${c.en}</span>
-            <span class="fa">${c.fa}</span>
-          </div>`).join("")}
-      </div>
-    </div>`:""}
+  if(d.collocations && d.collocations.length){
+    html+=`
+    <div class="card">
+      <div class="section-title">Collocations</div>
+      <ul class="list">
+        ${d.collocations.map(c=>`<li>${c.en} — <span class="fa">${c.fa}</span></li>`).join("")}
+      </ul>
+    </div>`;
+  }
 
-    ${w.phrasal_verbs?.length?`
-    <div class="section">
-      <h3>Phrasal Verbs</h3>
-      <div class="list">
-        ${w.phrasal_verbs.map(p=>`
-          <div class="item">
-            <span>${p.en}</span>
-            <span class="fa">${p.fa}</span>
-          </div>`).join("")}
-      </div>
-    </div>`:""}
-  </div>`;
-}
+  if(d.phrases && d.phrases.length){
+    html+=`
+    <div class="card">
+      <div class="section-title">Phrases</div>
+      <ul class="list">
+        ${d.phrases.map(p=>`<li>${p.en} — <span class="fa">${p.fa}</span></li>`).join("")}
+      </ul>
+    </div>`;
+  }
 
-function addLeitner(w){
-  let l=JSON.parse(localStorage.getItem("leitner"))||{};
-  l[w]={box:1,last:Date.now()};
-  localStorage.setItem("leitner",JSON.stringify(l));
+  if(d.phrasal_verbs && d.phrasal_verbs.length){
+    html+=`
+    <div class="card">
+      <div class="section-title">Phrasal Verbs</div>
+      <ul class="list">
+        ${d.phrasal_verbs.map(p=>`<li>${p.en} — <span class="fa">${p.fa}</span></li>`).join("")}
+      </ul>
+    </div>`;
+  }
+
+  r.innerHTML = html;
 }
 </script>
 
