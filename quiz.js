@@ -1,9 +1,10 @@
 let data = {};
 let words = [];
 let current = "";
-let mode = "en-fa";
-let locked = false;
+let correctAnswer = "";
+let mode = "enfa";
 
+/* ---------- LOAD DICTIONARY ---------- */
 fetch("pdcs_a1.json")
   .then(r => r.json())
   .then(j => {
@@ -12,6 +13,7 @@ fetch("pdcs_a1.json")
     nextQuestion();
   });
 
+/* ---------- MODE ---------- */
 function setMode(m) {
   mode = m;
   document.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("active"));
@@ -19,81 +21,80 @@ function setMode(m) {
   nextQuestion();
 }
 
+/* ---------- SPEAK ---------- */
 function speak(text) {
+  speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = "en-US";
-  u.rate = 0.8;
-  speechSynthesis.cancel();
+  u.rate = 0.7;
   speechSynthesis.speak(u);
 }
 
+/* ---------- QUESTION ---------- */
 function nextQuestion() {
-  locked = false;
+  if (!words.length) return;
+
   current = words[Math.floor(Math.random() * words.length)];
+  const w = data[current];
+
   const q = document.getElementById("question");
-  const opt = document.getElementById("options");
-  opt.innerHTML = "";
+  const a = document.getElementById("answers");
+  a.innerHTML = "";
 
-  let correct, options = [];
+  let options = [];
 
-  if (mode === "en-fa") {
+  if (mode === "enfa") {
     q.innerText = current;
-    correct = data[current].fa;
-    options.push(correct);
-    while (options.length < 4) {
-      const r = data[words[Math.floor(Math.random()*words.length)]].fa;
-      if (!options.includes(r)) options.push(r);
-    }
+    correctAnswer = w.fa;
+    options = makeOptions(w.fa, "fa");
   }
 
-  if (mode === "fa-en") {
-    q.innerText = data[current].fa;
-    correct = current;
-    options.push(correct);
-    while (options.length < 4) {
-      const r = words[Math.floor(Math.random()*words.length)];
-      if (!options.includes(r)) options.push(r);
-    }
+  if (mode === "faen") {
+    q.innerText = w.fa;
+    correctAnswer = current;
+    options = makeOptions(current, "en");
   }
 
   if (mode === "listen") {
-    q.innerText = "🎧 Listen…";
+    q.innerText = "🔊 Listen carefully";
     speak(current);
-    correct = current;
-    options.push(correct);
-    while (options.length < 4) {
-      const r = words[Math.floor(Math.random()*words.length)];
-      if (!options.includes(r)) options.push(r);
-    }
+    correctAnswer = w.fa;
+    options = makeOptions(w.fa, "fa");
   }
 
-  options.sort(() => Math.random() - 0.5);
-
-  options.forEach(o => {
-    const b = document.createElement("button");
-    b.className = "option";
-    b.innerText = o;
-    b.onclick = () => checkAnswer(b, o === correct);
-    opt.appendChild(b);
+  options.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.innerText = opt;
+    btn.onclick = () => checkAnswer(btn, opt);
+    a.appendChild(btn);
   });
 }
 
-function checkAnswer(btn, ok) {
-  if (locked) return;
-  locked = true;
+/* ---------- OPTIONS ---------- */
+function makeOptions(correct, type) {
+  let arr = [correct];
+  while (arr.length < 4) {
+    const r = words[Math.floor(Math.random() * words.length)];
+    const val = type === "fa" ? data[r].fa : r;
+    if (!arr.includes(val)) arr.push(val);
+  }
+  return arr.sort(() => Math.random() - 0.5);
+}
 
-  if (ok) {
+/* ---------- CHECK ---------- */
+function checkAnswer(btn, ans) {
+  if (ans === correctAnswer) {
     btn.classList.add("correct");
   } else {
     btn.classList.add("wrong");
     addToLeitner(current);
   }
-
-  setTimeout(nextQuestion, 900);
+  setTimeout(nextQuestion, 800);
 }
 
+/* ---------- LEITNER ---------- */
 function addToLeitner(word) {
   let l = JSON.parse(localStorage.getItem("leitner")) || {};
-  l[word] = { box:1, last:Date.now() };
+  l[word] = { box: 1, last: Date.now() };
   localStorage.setItem("leitner", JSON.stringify(l));
 }
