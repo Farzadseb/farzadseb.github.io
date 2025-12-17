@@ -1,183 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>A1 Quiz</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<title>A1 Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <style>
-    /* فقط برای اینکه دقیقاً خوشگل و درشت و خوانا باشد */
-    .quiz-wrap { max-width: 820px; margin: 0 auto; padding: 18px; }
-    .mode-row{
-      display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
-      margin: 10px 0 18px;
-    }
-    .mode-btn{
-      font-size: 1.3rem;
-      padding: 14px 20px;
-      border-radius: 18px;
-      border: 3px solid #7aa2ff;
-      background: #fff;
-      color:#1b2b5a;
-      cursor:pointer;
-      min-width: 160px;
-    }
-    .mode-btn.active{
-      background:#5b7cff;
-      color:#fff;
-      border-color:#5b7cff;
-    }
-
-    .quiz-card{
-      background:#fff;
-      border-radius: 26px;
-      padding: 26px;
-      margin: 18px auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,.05);
-    }
-
-    .q-top{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      margin-bottom: 16px;
-    }
-    .q-title{
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin:0;
-      color:#0f1e46;
-    }
-    .pill{
-      background:#eaf0ff;
-      border-radius: 999px;
-      padding: 10px 14px;
-      font-size: 1.1rem;
-      color:#1b2b5a;
-      border: 2px solid rgba(91,124,255,.25);
-      white-space:nowrap;
-    }
-
-    .question-box{
-      background:#f6f8ff;
-      border-radius: 22px;
-      padding: 22px;
-      margin-top: 8px;
-      text-align:center;
-    }
-    .question-text{
-      font-size: 2.4rem;
-      font-weight: 800;
-      color:#0f1e46;
-      margin: 0;
-      word-break: break-word;
-    }
-    .question-sub{
-      margin-top: 10px;
-      font-size: 1.6rem;
-      color:#2b3b6a;
-      direction: rtl;
-    }
-
-    .choices-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 18px;
-    }
-    .choice-btn{
-      font-size: 1.7rem;
-      padding: 18px 16px;
-      border-radius: 22px;
-      border: none;
-      background:#eaf0ff;
-      color:#0f1e46;           /* ✅ قفل: متن سفید نشود */
-      cursor:pointer;
-      min-height: 72px;
-    }
-    .choice-btn:active{ transform: scale(.99); }
-
-    .feedback{
-      margin-top: 16px;
-      border-radius: 18px;
-      padding: 14px 16px;
-      font-size: 1.4rem;
-      display:none;
-    }
-    .ok{ background:#e7f8ee; color:#0f6b2e; border:2px solid rgba(15,107,46,.15); }
-    .bad{ background:#ffe8e8; color:#b30000; border:2px solid rgba(179,0,0,.12); }
-
-    .bottom-row{
-      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
-      margin-top: 18px;
-    }
-    .soft-btn{
-      font-size: 1.3rem;
-      padding: 14px 18px;
-      border-radius: 18px;
-      border: none;
-      background:#ddd;
-      cursor:pointer;
-      color:#1b2b5a;
-      min-width: 140px;
-    }
-    .primary-btn{
-      background:#4caf50; color:#fff;
-    }
-
-    .error{
-      margin-top: 12px;
-      background:#ffe8e8;
-      color:#b30000;
-      border-radius: 16px;
-      padding: 12px 14px;
-      font-size: 1.2rem;
-    }
-
-    @media (max-width: 520px){
-      .choices-grid{ grid-template-columns: 1fr; }
-      .question-text{ font-size: 2.1rem; }
-      .choice-btn{ font-size: 1.55rem; }
-      .mode-btn{ min-width: 140px; font-size: 1.2rem; }
-    }
-  </style>
+<style>
+  body{
+    background:#f6f8ff;
+    font-family:system-ui;
+    text-align:center;
+  }
+  .title{font-size:3rem;margin:20px}
+  .mode{
+    background:#fff;
+    border-radius:18px;
+    padding:14px;
+    font-size:1.6rem;
+    margin:10px auto;
+    max-width:520px;
+  }
+  .card{
+    background:#fff;
+    border-radius:26px;
+    padding:30px;
+    max-width:720px;
+    margin:20px auto;
+  }
+  .question{
+    font-size:3rem;
+    margin-bottom:20px;
+  }
+  .options{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .options button{
+    font-size:1.8rem;
+    padding:18px;
+    border-radius:18px;
+    border:none;
+    background:#eaf0ff;
+  }
+  .options button.correct{background:#c8f7c5}
+  .options button.wrong{background:#f7c5c5}
+  .controls{
+    margin:20px;
+  }
+  .controls button{
+    font-size:1.4rem;
+    padding:12px 18px;
+    border-radius:14px;
+    border:none;
+  }
+</style>
 </head>
 
 <body>
-  <div class="quiz-wrap">
-    <h1 class="title">📝 A1 Quiz</h1>
 
-    <div class="mode-row">
-      <button class="mode-btn active" id="btnMode1">EN → FA</button>
-      <button class="mode-btn" id="btnMode2">FA → EN</button>
-      <button class="mode-btn" id="btnMode3">🎧 Listening</button>
-    </div>
+<h1 class="title">📝 A1 Quiz</h1>
 
-    <div class="quiz-card">
-      <div class="q-top">
-        <div class="pill" id="modeLabel">Mode: EN → FA</div>
-        <div class="pill" id="counter">0 / 0</div>
-      </div>
+<div id="modeBox" class="mode"></div>
 
-      <div class="question-box">
-        <p class="question-text" id="qMain">Loading…</p>
-        <div class="question-sub" id="qSub" style="display:none;"></div>
-      </div>
+<div class="card">
+  <div id="question" class="question"></div>
+  <div id="options" class="options"></div>
+</div>
 
-      <div class="choices-grid" id="choices"></div>
+<div class="controls">
+  <button onclick="nextQuestion()">➡️ Next</button>
+  <button onclick="location.href='index.html'">⬅ Back</button>
+</div>
 
-      <div class="feedback ok" id="fbOk">✅ Correct</div>
-      <div class="feedback bad" id="fbBad">❌ Wrong</div>
+<script>
+let rawData = {};
+let data = {};
+let keys = [];
+let current = "";
+let correctAnswer = "";
+let mode = 1;
 
-      <div id="errBox" class="error" style="display:none;"></div>
+fetch("pdcs_a1.json")
+.then(r=>r.json())
+.then(j=>{
+  rawData = j.words ? j.words : j;
+  data = rawData;
+  keys = Object.keys(data);
+  nextQuestion();
+});
 
-      <div class="bottom-row">
-        <button class="soft-btn primary-btn" id="btnPlay">🔊 Play</button>
-        <button class="soft-btn" id="btnNext">➡️ Next</button>
-        <button class="soft-btn" onclick="location.href='index.html'">⬅ Back</button>
-      </div>
-    </div>
-  </div>
+function speak(t){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(t);
+  u.lang="en-US";
+  u.rate=0.7;
+  speechSynthesis.speak(u);
+}
 
-  <script src="quiz.js"></script>
+function nextQuestion(){
+  if(keys.length < 4) return;
+
+  document.getElementById("options").innerHTML="";
+  document.getElementById("question").innerHTML="";
+
+  mode = Math.floor(Math.random()*3)+1;
+  current = keys[Math.floor(Math.random()*keys.length)];
+
+  let answers = [];
+  const box = document.getElementById("modeBox");
+
+  if(mode===1){
+    box.innerText="English → Persian";
+    document.getElementById("question").innerText=current;
+    speak(current);
+    correctAnswer=data[current].fa;
+    answers.push(correctAnswer);
+    while(answers.length<4){
+      let r=keys[Math.floor(Math.random()*keys.length)];
+      if(!answers.includes(data[r].fa)) answers.push(data[r].fa);
+    }
+  }
+
+  if(mode===2){
+    box.innerText="Definition → Word";
+    document.getElementById("question").innerText=data[current].def;
+    speak(data[current].def);
+    correctAnswer=current;
+    answers.push(correctAnswer);
+    while(answers.length<4){
+      let r=keys[Math.floor(Math.random()*keys.length)];
+      if(!answers.includes(r)) answers.push(r);
+    }
+  }
+
+  if(mode===3){
+    box.innerText="Listening → Persian";
+    document.getElementById("question").innerText="🔊 Listen";
+    speak(current);
+    correctAnswer=data[current].fa;
+    answers.push(correctAnswer);
+    while(answers.length<4){
+      let r=keys[Math.floor(Math.random()*keys.length)];
+      if(!answers.includes(data[r].fa)) answers.push(data[r].fa);
+    }
+  }
+
+  answers.sort(()=>Math.random()-0.5);
+
+  answers.forEach(a=>{
+    const b=document.createElement("button");
+    b.innerText=a;
+    b.onclick=()=>check(b,a);
+    document.getElementById("options").appendChild(b);
+  });
+}
+
+function check(btn,ans){
+  const buttons=document.querySelectorAll(".options button");
+  buttons.forEach(b=>b.disabled=true);
+
+  if(ans===correctAnswer){
+    btn.classList.add("correct");
+  }else{
+    btn.classList.add("wrong");
+    buttons.forEach(b=>{
+      if(b.innerText===correctAnswer) b.classList.add("correct");
+    });
+    let l=JSON.parse(localStorage.getItem("leitner"))||{};
+    l[current]={box:1,last:Date.now()};
+    localStorage.setItem("leitner",JSON.stringify(l));
+  }
+}
+</script>
+
 </body>
 </html>
